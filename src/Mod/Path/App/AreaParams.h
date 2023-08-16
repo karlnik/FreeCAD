@@ -100,7 +100,7 @@
  * */
 #define AREA_PARAMS_POCKET \
     ((enum,mode,PocketMode,0,"Selects the pocket toolpath pattern",\
-        (None)(ZigZag)(Offset)(Spiral)(ZigZagOffset)(Line)(Grid)(Triangle)))\
+        (None)(ZigZag)(Offset)(Spiral)(ZigZagOffset)(Line)(Grid)(Triangle)(Zig)))\
 	((double,tool_radius,ToolRadius,1.0,"Tool radius for pocketing",App::PropertyLength))\
 	((double,extra_offset,PocketExtraOffset,0.0,"Extra offset for pocketing",App::PropertyDistance))\
 	((double,stepover,PocketStepover,0.0,\

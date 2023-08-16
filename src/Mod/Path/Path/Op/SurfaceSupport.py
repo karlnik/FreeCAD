@@ -60,7 +60,7 @@ class PathGeometryGenerator:
 
     # Register valid patterns here by name
     # Create a corresponding processing method below. Precede the name with an underscore(_)
-    patterns = ("Circular", "CircularZigZag", "Line", "Offset", "Spiral", "ZigZag")
+    patterns = ("Circular", "CircularZigZag", "Line", "Offset", "Spiral", "ZigZag", "Zig")
 
     def __init__(self, obj, shape, pattern):
         """__init__(obj, shape, pattern)... Instantiate PathGeometryGenerator class.
