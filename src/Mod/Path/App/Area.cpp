@@ -1522,7 +1522,7 @@ std::vector<shared_ptr<Area> > Area::makeSections(
                             for (TopExp_Explorer xp(shape, myParams.Fill == FillNone ? TopAbs_WIRE : TopAbs_FACE);
                                 xp.More(); xp.Next())
                             {
-                                builder.Add(comp, xp.Current());
+                                builder.Add(comp, xp.Current()); // This seems to add the paths for surfacing operation but maybe not engage/retract moves
                             }
                         }
                     }
@@ -1729,7 +1729,7 @@ void Area::build() {
 }
 
 TopoDS_Shape Area::toShape(CArea& area, short fill, int reorient) {
-    gp_Trsf trsf(myTrsf.Inverted());
+    gp_Trsf trsf(myTrsf.Inverted()); // Transformation
     bool bFill;
     switch (fill) {
     case Area::FillAuto:
@@ -2064,6 +2064,9 @@ TopoDS_Shape Area::makePocket(int index, PARAM_ARGS(PARAM_FARG, AREA_PARAMS_POCK
     case Area::PocketModeZigZag:
         pm = ZigZagPocketMode;
         break;
+    case Area::PocketModeConstantToolAngleEngagement:
+        pm = ConstantToolAngleEngagementPocketMode;
+        break;
     case Area::PocketModeSpiral:
         pm = SpiralPocketMode;
         break;
@@ -2146,6 +2149,11 @@ TopoDS_Shape Area::makePocket(int index, PARAM_ARGS(PARAM_FARG, AREA_PARAMS_POCK
         // reorder before input, otherwise nothing is shown.
         in.Reorder();
         in.MakePocketToolpath(out.m_curves, params);
+        /* Data model seems to be paths are stored in a list of data type of
+         * CCurve with one element for each path. Within each element of data
+         * type of CCurve path is stored as a list of CVertex but is currently
+         * unknown how anything else than straight lines are stored.
+         */
     }
 
     FC_TIME_LOG(t, "makePocket");
@@ -2183,7 +2191,7 @@ TopoDS_Shape Area::toShape(const CCurve& _c, const gp_Trsf* trsf, int reorient) 
     const CCurve& c = reorient ? cReversed : _c;
 
     TopoDS_Shape shape;
-    gp_Pnt pstart, pt;
+    gp_Pnt pstart, pt; // gp_Pnt is probably an Open CASCADE object https://dev.opencascade.org/doc/refman/html/classgp___pnt.html
     bool first = true;
     for (const CVertex& v : c.m_vertices) {
         if (first) {
@@ -2192,13 +2200,13 @@ TopoDS_Shape Area::toShape(const CCurve& _c, const gp_Trsf* trsf, int reorient) 
             continue;
         }
         gp_Pnt pnext(v.m_p.x, v.m_p.y, 0);
-        if (pnext.SquareDistance(pt) <= Precision::SquareConfusion())
+        if (pnext.SquareDistance(pt) <= Precision::SquareConfusion()) // Close enough to last position consider they are the same position?
             continue;
-        if (v.m_type == 0) {
-            auto edge = BRepBuilderAPI_MakeEdge(pt, pnext).Edge();
+        if (v.m_type == 0) { // Type == 0 => line
+            auto edge = BRepBuilderAPI_MakeEdge(pt, pnext).Edge(); // BRepBuilderAPI_MakeEdge is probably and Open CASCADE object https://dev.opencascade.org/doc/occt-7.5.0/refman/html/class_b_rep_builder_a_p_i___make_edge.html
             hEdges->Append(edge);
         }
-        else {
+        else { // Not at same point or type is not line assume it is an arc?
             gp_Pnt center(v.m_c.x, v.m_c.y, 0);
             double r = center.Distance(pt);
             double r2 = center.Distance(pnext);
@@ -2258,14 +2266,14 @@ TopoDS_Shape Area::toShape(const CCurve& _c, const gp_Trsf* trsf, int reorient) 
     }
 #endif
 
-    ShapeAnalysis_FreeBounds::ConnectEdgesToWires(
+    ShapeAnalysis_FreeBounds::ConnectEdgesToWires( // ShapeAnalysis_FreeBounds is probably and Open CASCADE object https://dev.opencascade.org/doc/refman/html/class_shape_analysis___free_bounds.html#a4809fe812b6a663a286df71b4d7bda3b
         hEdges, Precision::Confusion(), Standard_False, hWires);
     if (!hWires->Length())
         return shape;
     if (hWires->Length() == 1)
         shape = hWires->Value(1);
     else {
-        BRep_Builder builder;
+        BRep_Builder builder; // BRep_Builder is probably and Open CASCADE object https://dev.opencascade.org/doc/refman/html/class_b_rep___builder.html#ad9143342351b900d7ce1ba8a46125ce3
         TopoDS_Compound compound;
         builder.MakeCompound(compound);
         for (int i = 1; i <= hWires->Length(); ++i)
@@ -2961,7 +2969,8 @@ std::list<TopoDS_Shape> Area::sortWires(const std::list<TopoDS_Shape>& shapes,
     short _arc_plane = ArcPlaneNone;
     short& arc_plane = _parc_plane ? *_parc_plane : _arc_plane;
 
-    if (sort_mode == SortModeNone) {
+#warning sort mode otherwise does not work??
+    if (1||sort_mode == SortModeNone) {
         gp_Dir dir;
         switch (arc_plane) {
         case ArcPlaneYZ:
@@ -3402,7 +3411,7 @@ void Area::toPath(Toolpath& path, const std::list<TopoDS_Shape>& shapes,
         for (; xp.More(); xp.Next(), plast = p) {
             const auto& edge = xp.Current();
             BRepAdaptor_Curve curve(edge);
-            bool reversed = (edge.Orientation() == TopAbs_REVERSED);
+            bool reversed = (edge.Orientation() == TopAbs_REVERSED); // Does not work with zig and possible others. Conventional or climb cut may make a difference so must be decided during path generation
             p = curve.Value(reversed ? curve.FirstParameter() : curve.LastParameter());
 
             switch (curve.GetType()) {

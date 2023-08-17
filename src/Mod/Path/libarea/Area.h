@@ -13,6 +13,7 @@ enum PocketMode
 {
 	SpiralPocketMode,
 	ZigZagPocketMode,
+	ConstantToolAngleEngagementPocketMode,
 	SingleOffsetPocketMode,
 	ZigZagThenSingleOffsetPocketMode,
 };

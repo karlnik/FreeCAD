@@ -280,7 +280,7 @@ void test_y_point(int i, const Point& p, Point& best_p, bool &found, int &best_i
 	}
 }
 
-static void make_zig_curve(const CCurve& input_curve, double y0, double y)
+static void make_zig_zag_curve(const CCurve& input_curve, double y0, double y)
 {
 	CCurve curve(input_curve);
 
@@ -396,18 +396,18 @@ static void make_zig_curve(const CCurve& input_curve, double y0, double y)
 		zigzag_list_for_zigs.emplace_back(zig, zag);
 }
 
-void make_zig(const CArea &a, double y0, double y)
+void make_zig_zag(const CArea &a, double y0, double y)
 {
 	for(std::list<CCurve>::const_iterator It = a.m_curves.begin(); It != a.m_curves.end(); It++)
 	{
 		const CCurve &curve = *It;
-		make_zig_curve(curve, y0, y);
+		make_zig_zag_curve(curve, y0, y);
 	}
 }
         
 std::list< std::list<ZigZag> > reorder_zig_list_list;
         
-void add_reorder_zig(ZigZag &zigzag)
+void add_reorder_zig_zag(ZigZag &zigzag)
 {
     // look in existing lists
 
@@ -456,12 +456,13 @@ void add_reorder_zig(ZigZag &zigzag)
     reorder_zig_list_list.push_back(zigzag_list);
 }
 
-void reorder_zigs()
+/* Assume data is stored in variable zigzag_list_for_zigs */
+void reorder_zig_zags()
 {
 	for(std::list<ZigZag>::iterator It = zigzag_list_for_zigs.begin(); It != zigzag_list_for_zigs.end(); It++)
 	{
 		ZigZag &zigzag = *It;
-        add_reorder_zig(zigzag);
+        add_reorder_zig_zag(zigzag);
 	}
         
 	zigzag_list_for_zigs.clear();
@@ -544,14 +545,111 @@ static void zigzag(const CArea &input_a)
 		CArea a2;
 		a2.m_curves.push_back(c);
 		a2.Intersect(a);
-		make_zig(a2, y0, y);
+		make_zig_zag(a2, y0, y);
 		rightward_for_zigs = !rightward_for_zigs;
 		if(CArea::m_please_abort)
 		    return;
 		CArea::m_processing_done += step_percent_increment;
 	}
 
-	reorder_zigs();
+	reorder_zig_zags();
+	CArea::m_processing_done += 0.2 * CArea::m_single_area_processing_length;
+}
+
+/* Experimental zig tool path */
+static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
+{
+    const Point null_point(0, 0);
+
+	if(input_a.m_curves.size() == 0)
+	{
+		CArea::m_processing_done += CArea::m_single_area_processing_length;
+		return;
+	}
+
+    one_over_units = 1 / CArea::m_units;
+
+	CArea a(input_a);                               // Make copy of area
+    rotate_area(a);                                 // Rotate copy of area
+
+    CBox2D b;
+	a.GetBox(b);
+
+    const double xMin = b.MinX();// - 1.0;
+    const double xMax = b.MaxX();// + 1.0;
+
+    const double height = b.MaxY() - b.MinY();
+    const int num_steps = int(height / stepover_for_pocket + 1);
+    double y = b.MinY();// + 0.1 * one_over_units;
+    double yOld = y;
+
+	if(CArea::m_please_abort)
+	    return;
+
+	const double step_percent_increment = 0.8 * CArea::m_single_area_processing_length / num_steps;
+
+	for(int i = 0; i<num_steps; i++)
+	{
+		int left = xMax; // Initialize to right end so all values will be smaller
+		int right = xMin; // Initialize to left end so all values will be larger
+		double y0 = y;
+
+		y = y + stepover_for_pocket;
+		{
+			CArea a2;
+			{
+				Point p0(xMin, yOld);
+				Point p1(xMin, y);
+				Point p2(xMax, y);
+				Point p3(xMax, yOld);
+				CCurve c;
+
+				/* Outer bounding box */
+				c.m_vertices.emplace_back(0, p0, null_point, 0);
+				c.m_vertices.emplace_back(0, p1, null_point, 0);
+				c.m_vertices.emplace_back(0, p2, null_point, 1);
+				c.m_vertices.emplace_back(0, p3, null_point, 0);
+				c.m_vertices.emplace_back(0, p0, null_point, 1);
+
+				a2.m_curves.push_back(c);
+			}
+
+			a2.Intersect(a);
+			for(std::list<CCurve>::const_iterator It = a2.m_curves.begin(); It != a2.m_curves.end(); It++)
+			{
+				const CCurve &curve = *It;
+				for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
+				{
+					const CVertex &vertex = *It2;
+					if(vertex.m_p.x < left){
+						left = vertex.m_p.x;
+					}
+					if(vertex.m_p.x > right){
+						right = vertex.m_p.x;
+					}
+				}
+			}
+		}
+		{
+			CCurve curve;
+
+			if(0){ // Conventional cut??
+				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(left, y0))));
+				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(right, y0))));
+			}
+			else{ // Climb cut??
+				right += 6.0;
+				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(right, y0))));
+				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(left, y0))));
+			}
+			curve_list.emplace_back(curve);
+		}
+		if(CArea::m_please_abort)
+		    return;
+		CArea::m_processing_done += step_percent_increment;
+		yOld = y0;
+	}
+
 	CArea::m_processing_done += 0.2 * CArea::m_single_area_processing_length;
 }
 
@@ -600,6 +698,13 @@ void CArea::MakePocketToolpath(std::list<CCurve> &curve_list, const CAreaPocketP
 	{
 		curve_list_for_zigs = &curve_list;
 		zigzag(a_offset);
+	}
+	if(params.mode == ConstantToolAngleEngagementPocketMode)
+	{
+		curve_list_for_zigs = &curve_list;
+#warning below since there is a problem face region is slow while clear edges does not work for stock
+		CArea no_offset = *this;
+		ConstantToolAngleEngagement(curve_list, no_offset);
 	}
 	else if(params.mode == SpiralPocketMode)
 	{

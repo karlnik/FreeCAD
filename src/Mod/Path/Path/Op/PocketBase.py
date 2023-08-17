@@ -67,6 +67,7 @@ class ObjectPocket(PathAreaOp.ObjectOp):
             ],
             "OffsetPattern": [
                 (translate("Path_Pocket", "ZigZag"), "ZigZag"),
+                (translate("Path_Pocket", "ConstantToolAngleEngagement"), "ConstantToolAngleEngagement"),
                 (translate("Path_Pocket", "Offset"), "Offset"),
                 (translate("Path_Pocket", "ZigZagOffset"), "ZigZagOffset"),
                 (translate("Path_Pocket", "Line"), "Line"),
@@ -223,6 +224,7 @@ class ObjectPocket(PathAreaOp.ObjectOp):
             "ZigZagOffset": 4,
             "Line": 5,
             "Grid": 6,
+            "ConstantToolAngleEngagement": 9,
         }
 
         params["PocketMode"] = Pattern.get(obj.OffsetPattern, 1)
