@@ -33,14 +33,18 @@ using namespace InspectionGui;
 /// @namespace InspectionGui @class Workbench
 TYPESYSTEM_SOURCE(InspectionGui::Workbench, Gui::StdWorkbench)
 
-Workbench::Workbench() = default;
+Workbench::Workbench()
+{
+}
 
-Workbench::~Workbench() = default;
+Workbench::~Workbench()
+{
+}
 
 Gui::MenuItem* Workbench::setupMenuBar() const
 {
     Gui::MenuItem* root = StdWorkbench::setupMenuBar();
-    Gui::MenuItem* item = root->findItem("&Windows");
+    Gui::MenuItem* item = root->findItem( "&Windows" );
     Gui::MenuItem* insp = new Gui::MenuItem;
     root->insertItem(item, insp);
     insp->setCommand("Inspection");
@@ -52,8 +56,8 @@ Gui::MenuItem* Workbench::setupMenuBar() const
 Gui::ToolBarItem* Workbench::setupToolBars() const
 {
     Gui::ToolBarItem* root = StdWorkbench::setupToolBars();
-    // Gui::ToolBarItem* insp = new Gui::ToolBarItem(root);
-    // insp->setCommand( "Inspection Tools" );
-    //*insp << "Inspection_VisualInspection";
+    //Gui::ToolBarItem* insp = new Gui::ToolBarItem(root);
+    //insp->setCommand( "Inspection Tools" );
+    //*insp << "Inspection_VisualInspection"; 
     return root;
 }

@@ -36,6 +36,7 @@ class MeshExport MeshTrimByPlane
 {
 public:
     explicit MeshTrimByPlane(MeshKernel& mesh);
+    ~MeshTrimByPlane();
 
 public:
     /**

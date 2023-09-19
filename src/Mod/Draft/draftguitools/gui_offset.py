@@ -69,7 +69,7 @@ class Offset(gui_base_original.Modifier):
     def Activated(self):
         """Execute when the command is called."""
         self.running = False
-        super().Activated(name="Offset")
+        super(Offset, self).Activated(name="Offset")
         self.ghost = None
         self.linetrack = None
         self.arctrack = None
@@ -160,6 +160,7 @@ class Offset(gui_base_original.Modifier):
             from the 3D view.
         """
         import DraftGeomUtils
+        plane = App.DraftWorkingPlane
 
         if arg["Type"] == "SoKeyboardEvent":
             if arg["Key"] == "ESCAPE":
@@ -182,8 +183,8 @@ class Offset(gui_base_original.Modifier):
                                                    self.point)
                     v2 = DraftGeomUtils.getTangent(self.shape.Edges[dist[1]],
                                                    self.point)
-                    a = -DraftVecUtils.angle(v1, v2, self.wp.axis)
-                    self.dvec = DraftVecUtils.rotate(d, a, self.wp.axis)
+                    a = -DraftVecUtils.angle(v1, v2, plane.axis)
+                    self.dvec = DraftVecUtils.rotate(d, a, plane.axis)
                     occmode = self.ui.occOffset.isChecked()
                     self.param.SetBool("Offset_OCC", occmode)
                     _wire = DraftGeomUtils.offsetWire(self.shape,
@@ -197,8 +198,8 @@ class Offset(gui_base_original.Modifier):
                     self.npts = []
                     for p in self.sel.Points:
                         currtan = DraftGeomUtils.getTangent(e, p)
-                        a = -DraftVecUtils.angle(currtan, basetan, self.wp.axis)
-                        self.dvec = DraftVecUtils.rotate(d, a, self.wp.axis)
+                        a = -DraftVecUtils.angle(currtan, basetan, plane.axis)
+                        self.dvec = DraftVecUtils.rotate(d, a, plane.axis)
                         self.npts.append(p.add(self.dvec))
                     self.ghost.update(self.npts)
                 elif self.mode == "Circle":
@@ -273,7 +274,7 @@ class Offset(gui_base_original.Modifier):
                 self.linetrack.finalize()
             if self.ghost:
                 self.ghost.finalize()
-        super().finish()
+        super(Offset, self).finish()
 
     def numericRadius(self, rad):
         """Validate the radius entry field in the user interface.

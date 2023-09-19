@@ -37,7 +37,10 @@ ViewProviderImport::ViewProviderImport()
     sPixmap = "Part_FeatureImport";
 }
 
-ViewProviderImport::~ViewProviderImport() = default;
+ViewProviderImport::~ViewProviderImport()
+{
+
+}
 
 // **********************************************************************************
 

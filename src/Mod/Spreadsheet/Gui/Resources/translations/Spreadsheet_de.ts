@@ -352,36 +352,36 @@
       <translation>Zelle bearbeiten</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="326"/>
-      <location filename="../../SheetTableView.cpp" line="358"/>
+      <location filename="../../SheetTableView.cpp" line="325"/>
+      <location filename="../../SheetTableView.cpp" line="357"/>
       <source>Insert rows</source>
       <translation>Zeilen einfügen</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="378"/>
-      <location filename="../../SheetTableView.cpp" line="453"/>
+      <location filename="../../SheetTableView.cpp" line="376"/>
+      <location filename="../../SheetTableView.cpp" line="449"/>
       <source>Remove rows</source>
       <translation>Zeilen entfernen</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="400"/>
-      <location filename="../../SheetTableView.cpp" line="433"/>
+      <location filename="../../SheetTableView.cpp" line="397"/>
+      <location filename="../../SheetTableView.cpp" line="430"/>
       <source>Insert columns</source>
       <translation>Spalten einfügen</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="634"/>
-      <location filename="../../SpreadsheetView.cpp" line="161"/>
+      <location filename="../../SheetTableView.cpp" line="632"/>
+      <location filename="../../SpreadsheetView.cpp" line="159"/>
       <source>Clear cell(s)</source>
       <translation>Zelle(n) löschen</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="130"/>
+      <location filename="../../Workbench.cpp" line="132"/>
       <source>Set foreground color</source>
       <translation>Vordergrundfarbe festlegen</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="157"/>
+      <location filename="../../Workbench.cpp" line="159"/>
       <source>Set background color</source>
       <translation>Hintergrundfarbe festlegen</translation>
     </message>
@@ -605,7 +605,7 @@ switch the design configuration. The property will be created if not exist.</sou
     <message>
       <location filename="../../PropertiesDialog.ui" line="95"/>
       <source>Left</source>
-      <translation>Links</translation>
+      <translation>Seitenansicht von links</translation>
     </message>
     <message>
       <location filename="../../PropertiesDialog.ui" line="102"/>
@@ -616,7 +616,7 @@ switch the design configuration. The property will be created if not exist.</sou
     <message>
       <location filename="../../PropertiesDialog.ui" line="109"/>
       <source>Right</source>
-      <translation>Rechts</translation>
+      <translation>Seitenansicht von rechts</translation>
     </message>
     <message>
       <location filename="../../PropertiesDialog.ui" line="141"/>
@@ -626,12 +626,12 @@ switch the design configuration. The property will be created if not exist.</sou
     <message>
       <location filename="../../PropertiesDialog.ui" line="148"/>
       <source>Top</source>
-      <translation>Oben</translation>
+      <translation>Draufsicht</translation>
     </message>
     <message>
       <location filename="../../PropertiesDialog.ui" line="162"/>
       <source>Bottom</source>
-      <translation>Unten</translation>
+      <translation>Untersicht</translation>
     </message>
     <message>
       <location filename="../../PropertiesDialog.ui" line="188"/>
@@ -685,12 +685,12 @@ switch the design configuration. The property will be created if not exist.</sou
     <message>
       <location filename="../../Command.cpp" line="187"/>
       <source>Import file</source>
-      <translation>Datei importieren</translation>
+      <translation>Importiere Datei</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="243"/>
       <source>Export file</source>
-      <translation>Datei exportieren</translation>
+      <translation>Exportiere Datei</translation>
     </message>
     <message>
       <location filename="../../ViewProviderSpreadsheet.cpp" line="129"/>
@@ -698,48 +698,48 @@ switch the design configuration. The property will be created if not exist.</sou
       <translation>Kalkulationstabelle anzeigen</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="89"/>
       <location filename="../../Workbench.cpp" line="91"/>
+      <location filename="../../Workbench.cpp" line="93"/>
       <source>Set cell(s) foreground color</source>
       <translation>Stellt die Vordergrundfarbe der Zelle(n) ein</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="90"/>
+      <location filename="../../Workbench.cpp" line="92"/>
       <source>Sets the Spreadsheet cell(s) foreground color</source>
       <translation>Vordergrundfarbe der Tabellen-Zelle(n) einstellen</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="104"/>
       <location filename="../../Workbench.cpp" line="106"/>
+      <location filename="../../Workbench.cpp" line="108"/>
       <source>Set cell(s) background color</source>
       <translation>Stellt die Hintergrundfarbe der Zelle(n) ein</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="105"/>
+      <location filename="../../Workbench.cpp" line="107"/>
       <source>Sets the Spreadsheet cell(s) background color</source>
       <translation>Hintergrundfarbe der Tabellen-Zelle(n) einstellen</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="754"/>
+      <location filename="../../SheetTableView.cpp" line="752"/>
       <source>Copy &amp; Paste failed</source>
       <translation>Kopieren &amp; Einfügen fehlgeschlagen</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="430"/>
+      <location filename="../../SpreadsheetView.cpp" line="426"/>
       <source>Alias contains invalid characters!</source>
       <translation>Alias enthält ungültige Zeichen!</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="436"/>
+      <location filename="../../SpreadsheetView.cpp" line="432"/>
       <source>Refer to cell by alias, for example
 Spreadsheet.my_alias_name instead of Spreadsheet.B1</source>
       <translation>Zellbezug mit Alias, zum Beispiel
 Tabelle.my_Alias_name anstelle von Tabelle.B1</translation>
     </message>
     <message>
-      <location filename="../../AppSpreadsheetGui.cpp" line="119"/>
+      <location filename="../../AppSpreadsheetGui.cpp" line="121"/>
       <source>Spreadsheet</source>
-      <translation>Tabelle</translation>
+      <translation>Kalkulationstabelle</translation>
     </message>
   </context>
   <context>
@@ -856,6 +856,11 @@ Tabelle.my_Alias_name anstelle von Tabelle.B1</translation>
   <context>
     <name>Sheet</name>
     <message>
+      <location filename="../../Sheet.ui" line="14"/>
+      <source>Form</source>
+      <translation>Form</translation>
+    </message>
+    <message>
       <location filename="../../Sheet.ui" line="22"/>
       <source>&amp;Content:</source>
       <translation>&amp;Inhalt:</translation>
@@ -896,9 +901,9 @@ Möchten Sie fortfahren?</translation>
     </message>
     <message>
       <location filename="../../DlgBindSheet.cpp" line="225"/>
-      <source>Error:
+      <source>Error: 
 </source>
-      <translation>Fehler:
+      <translation>Fehler: 
 </translation>
     </message>
     <message>
@@ -1064,61 +1069,61 @@ Standard: %V = %A
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="169"/>
-      <location filename="../../SheetTableView.cpp" line="615"/>
+      <location filename="../../SheetTableView.cpp" line="613"/>
       <source>Properties...</source>
       <translation>Eigenschaften...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="181"/>
-      <location filename="../../SheetTableView.cpp" line="616"/>
+      <location filename="../../SheetTableView.cpp" line="614"/>
       <source>Recompute</source>
       <translation>Neuberechnung</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="185"/>
-      <location filename="../../SheetTableView.cpp" line="624"/>
+      <location filename="../../SheetTableView.cpp" line="622"/>
       <source>Bind...</source>
       <translation>Binden...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="189"/>
-      <location filename="../../SheetTableView.cpp" line="617"/>
+      <location filename="../../SheetTableView.cpp" line="615"/>
       <source>Configuration table...</source>
       <translation>Konfigurationstabelle...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="197"/>
-      <location filename="../../SheetTableView.cpp" line="618"/>
+      <location filename="../../SheetTableView.cpp" line="616"/>
       <source>Merge cells</source>
       <translation>Zellen verbinden</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="199"/>
-      <location filename="../../SheetTableView.cpp" line="619"/>
+      <location filename="../../SheetTableView.cpp" line="617"/>
       <source>Split cells</source>
       <translation>Zellen teilen</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="203"/>
-      <location filename="../../SheetTableView.cpp" line="622"/>
+      <location filename="../../SheetTableView.cpp" line="620"/>
       <source>Cut</source>
-      <translation>Ausschneiden</translation>
+      <translation>Differenz</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="205"/>
-      <location filename="../../SheetTableView.cpp" line="620"/>
+      <location filename="../../SheetTableView.cpp" line="618"/>
       <source>Copy</source>
       <translation>Kopieren</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="207"/>
-      <location filename="../../SheetTableView.cpp" line="621"/>
+      <location filename="../../SheetTableView.cpp" line="619"/>
       <source>Paste</source>
       <translation>Einfügen</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="209"/>
-      <location filename="../../SheetTableView.cpp" line="623"/>
+      <location filename="../../SheetTableView.cpp" line="621"/>
       <source>Delete</source>
       <translation>Löschen</translation>
     </message>
@@ -1126,12 +1131,12 @@ Standard: %V = %A
   <context>
     <name>SpreadsheetGui::SheetView</name>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="256"/>
+      <location filename="../../SpreadsheetView.cpp" line="254"/>
       <source>Export PDF</source>
       <translation>PDF exportieren</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="257"/>
+      <location filename="../../SpreadsheetView.cpp" line="255"/>
       <source>PDF file</source>
       <translation>PDF-Datei</translation>
     </message>
@@ -1162,7 +1167,7 @@ Standard: %V = %A
   <context>
     <name>Py</name>
     <message>
-      <location filename="../../AppSpreadsheetGui.cpp" line="78"/>
+      <location filename="../../AppSpreadsheetGui.cpp" line="80"/>
       <source>Unnamed</source>
       <translation>Unbenannt</translation>
     </message>

@@ -62,7 +62,9 @@ TaskPadParameters::TaskPadParameters(ViewProviderPad *PadView, QWidget *parent, 
     }
 }
 
-TaskPadParameters::~TaskPadParameters() = default;
+TaskPadParameters::~TaskPadParameters()
+{
+}
 
 void TaskPadParameters::translateModeList(int index)
 {

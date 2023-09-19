@@ -77,7 +77,9 @@ SoShapeScale::SoShapeScale()
 }
 
 // Destructor.
-SoShapeScale::~SoShapeScale() = default;
+SoShapeScale::~SoShapeScale()
+{
+}
 
 void
 SoShapeScale::initClass()
@@ -144,7 +146,9 @@ SoAxisCrossKit::SoAxisCrossKit()
    createAxes();
 }
 
-SoAxisCrossKit::~SoAxisCrossKit() = default;
+SoAxisCrossKit::~SoAxisCrossKit()
+{
+}
 
 // This kit is made up entirely of SoShapeKits.
 // Since SoShapeKits do not affect state, neither does this.

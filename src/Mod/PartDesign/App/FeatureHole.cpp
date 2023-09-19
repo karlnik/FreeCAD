@@ -954,10 +954,10 @@ double Hole::getThreadClassClearance() const
 
     // Calculate how much clearance to add based on Thread tolerance class and pitch
     if (ThreadClass.getValueAsString()[1] == 'G') {
-        for (auto it : ThreadClass_ISOmetric_data) {
-            double p = it[0];
+        for (unsigned int i = 0; i < ThreadClass_ISOmetric_data_size; i++) {
+            double p = ThreadClass_ISOmetric_data[i][0];
             if (pitch <= p) {
-                return it[1];
+                return ThreadClass_ISOmetric_data[i][1];
             }
         }
     }
@@ -988,10 +988,10 @@ double Hole::getThreadRunout(int mode) const
     default:
         throw Base::ValueError("Unsupported argument");
     }
-    for (auto it : ThreadRunout) {
-        double p = it[0];
+    for (unsigned int i = 0; i < ThreadRunout_size; i++) {
+        double p = ThreadRunout[i][0];
         if (pitch <= p) {
-            return sf * it[1];
+            return sf * ThreadRunout[i][1];
         }
     }
 
@@ -1647,7 +1647,7 @@ void Hole::updateProps()
 
 static gp_Pnt toPnt(gp_Vec dir)
 {
-    return {dir.X(), dir.Y(), dir.Z()};
+    return gp_Pnt(dir.X(), dir.Y(), dir.Z());
 }
 
 App::DocumentObjectExecReturn* Hole::execute()

@@ -77,7 +77,7 @@ TopoDS_Shape Feature::getSolid(const TopoDS_Shape& shape)
         return xp.Current();
     }
 
-    return {};
+    return TopoDS_Shape();
 }
 
 int Feature::countSolids(const TopoDS_Shape& shape, TopAbs_ShapeEnum type)

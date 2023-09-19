@@ -28,24 +28,18 @@
 
 
 // forward
-namespace Gui
-{
-namespace TaskView
-{
-class TaskSelectLinkProperty;
-}
-}  // namespace Gui
+namespace Gui { namespace TaskView { class TaskSelectLinkProperty;}}
 
-namespace RobotGui
-{
+namespace RobotGui {
 
 /// simulation dialog for the TaskView
-class RobotGuiExport TaskDlgTrajectoryCompound: public Gui::TaskView::TaskDialog
+class RobotGuiExport TaskDlgTrajectoryCompound : public Gui::TaskView::TaskDialog
 {
     Q_OBJECT
 
 public:
-    TaskDlgTrajectoryCompound(Robot::TrajectoryCompound*);
+    TaskDlgTrajectoryCompound(Robot::TrajectoryCompound *);
+    ~TaskDlgTrajectoryCompound() override;
 
 public:
     /// is called the TaskView when the dialog is opened
@@ -54,21 +48,20 @@ public:
     bool accept() override;
     /// is called by the framework if the dialog is rejected (Cancel)
     bool reject() override;
-    /// is called by the framework if the user press the help button
+    /// is called by the framework if the user press the help button 
     void helpRequested() override;
 
-    /// returns for Close and Help button
+    /// returns for Close and Help button 
     QDialogButtonBox::StandardButtons getStandardButtons() const override
-    {
-        return QDialogButtonBox::Ok | QDialogButtonBox::Cancel;
-    }
+    { return QDialogButtonBox::Ok|QDialogButtonBox::Cancel; }
 
 protected:
-    Gui::TaskView::TaskSelectLinkProperty* select;
-    Robot::TrajectoryCompound* TrajectoryCompound;
+    Gui::TaskView::TaskSelectLinkProperty *select;
+    Robot::TrajectoryCompound             *TrajectoryCompound;
 };
 
 
-}  // namespace RobotGui
 
-#endif  // ROBOTGUI_TASKDLGSIMULATE_H
+} //namespace RobotGui
+
+#endif // ROBOTGUI_TASKDLGSIMULATE_H

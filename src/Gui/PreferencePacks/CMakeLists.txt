@@ -4,15 +4,9 @@ SET(PreferencePacks_Files
 )
 
 SET(PreferencePacks_Directories
-"Classic"
-"Dark"
-"Darker"
-"Dark modern"
-"Dark behave"
-"Dark contrast"
-"ProDark"
-"Light"
-"Light modern"
+"Classic theme"
+"Dark theme"
+"Light theme"
 )
 
 ADD_CUSTOM_TARGET(PreferencePacks_data ALL

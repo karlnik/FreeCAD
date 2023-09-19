@@ -96,15 +96,12 @@ public:
             bool xfree = isXDoF();
             bool yfree = isYDoF();
 
-            if (xfree && yfree) {
+            if (xfree && yfree)
                 return 2;
-            }
-            else if (xfree || yfree) {
+            else if (xfree || yfree)
                 return 1;
-            }
-            else {
+            else
                 return 0;
-            }
         }
 
         void setStatus(ParameterStatus status)
@@ -159,9 +156,8 @@ public:
 
         void setStatus(int index, ParameterStatus status)
         {
-            if (index >= int(pstatus.size())) {
+            if (index >= int(pstatus.size()))
                 pstatus.resize(index + 1, ParameterStatus::Dependent);
-            }
 
             pstatus.at(index) = status;
         };
@@ -331,9 +327,8 @@ public:
         {
             int npoles = pstatus.size() / 3;
 
-            if (poleindex < npoles) {
+            if (poleindex < npoles)
                 return pstatus[poleindex * 2];
-            }
 
             THROWM(Base::IndexError, "Pole index out of range")
         }
@@ -342,9 +337,8 @@ public:
         {
             int npoles = pstatus.size() / 3;
 
-            if (poleindex < npoles) {
+            if (poleindex < npoles)
                 return pstatus[poleindex * 2 + 1];
-            }
 
             THROWM(Base::IndexError, "Pole index out of range")
         }
@@ -353,9 +347,8 @@ public:
         {
             int nweights = pstatus.size() / 3;
 
-            if (weightindex < nweights) {
+            if (weightindex < nweights)
                 return pstatus[nweights * 2 + weightindex];
-            }
 
             THROWM(Base::IndexError, "Weight index out of range")
         }
@@ -497,7 +490,7 @@ private:
     Base::Type GeometryType;
 };
 
-}  // namespace Sketcher
+}// namespace Sketcher
 
 
-#endif  // SKETCHER_SOLVERGEOMETRYEXTENSION_H
+#endif// SKETCHER_SOLVERGEOMETRYEXTENSION_H

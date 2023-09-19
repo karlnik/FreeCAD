@@ -35,7 +35,7 @@ using namespace Base;
 
 double Vector2d::GetAngle (const Vector2d &rclVect) const
 {
-  double fDivid = 0.0, fNum = 0.0;
+  double fDivid, fNum;
 
   fDivid = Length() * rclVect.Length();
 
@@ -106,6 +106,18 @@ bool BoundBox2d::Intersect(const Line2d &rclLine) const
 
 bool BoundBox2d::Intersect(const BoundBox2d &rclBB) const
 {
+//// compare bb2-points to this
+//if (Contains (Vector2d (rclBB.fMinX, rclBB.fMinY))) return true;
+//if (Contains (Vector2d (rclBB.fMaxX, rclBB.fMinY))) return true;
+//if (Contains (Vector2d (rclBB.fMaxX, rclBB.fMaxY))) return true;
+//if (Contains (Vector2d (rclBB.fMinX, rclBB.fMaxY))) return true;
+//
+//// compare this-points to bb2
+//if (rclBB.Contains (Vector2d (fMinX, fMinY))) return true;
+//if (rclBB.Contains (Vector2d (fMaxX, fMinY))) return true;
+//if (rclBB.Contains (Vector2d (fMaxX, fMaxY))) return true;
+//if (rclBB.Contains (Vector2d (fMinX, fMaxY))) return true;
+
   if (MinX       < rclBB.MaxX  &&
       rclBB.MinX < MaxX        &&
       MinY       < rclBB.MaxY  &&
@@ -117,7 +129,7 @@ bool BoundBox2d::Intersect(const BoundBox2d &rclBB) const
 
 bool BoundBox2d::Intersect(const Polygon2d &rclPoly) const
 {
-  unsigned long i = 0;
+  unsigned long i;
   Line2d clLine;
 
   // points contained in boundbox
@@ -169,7 +181,7 @@ BoundBox2d Line2d::CalcBoundBox () const
 
 bool Line2d::Intersect (const Line2d& rclLine, Vector2d &rclV) const
 {
-  double m1 = 0.0, m2 = 0.0, b1 = 0.0, b2 = 0.0;
+  double m1, m2, b1, b2;
 
   // calc coefficients
   if (fabs (clV2.x - clV1.x) > 1e-10)
@@ -233,7 +245,7 @@ Vector2d Line2d::FromPos (double fDistance) const
 {
   Vector2d clDir(clV2 - clV1);
   clDir.Normalize();
-  return {clV1.x + (clDir.x * fDistance), clV1.y + (clDir.y * fDistance)};
+  return Vector2d(clV1.x + (clDir.x * fDistance), clV1.y + (clDir.y * fDistance));
 }
 
 bool Line2d::IntersectAndContain (const Line2d& rclLine, Vector2d &rclV) const
@@ -249,7 +261,7 @@ bool Line2d::IntersectAndContain (const Line2d& rclLine, Vector2d &rclV) const
 
 BoundBox2d Polygon2d::CalcBoundBox () const
 {
-  unsigned long i = 0;
+  unsigned long i;
   BoundBox2d clBB;
   for (i = 0; i < _aclVct.size(); i++)
   {
@@ -263,8 +275,8 @@ BoundBox2d Polygon2d::CalcBoundBox () const
 
 static short _CalcTorsion (double *pfLine, double fX, double fY)
 {
-  int sQuad[2], i = 0; // Changing this from short to int allows the compiler to inline this function
-  double fResX = 0.0;
+  int sQuad[2], i; // Changing this from short to int allows the compiler to inline this function
+  double fResX;
 
   // Classification of both polygon points into quadrants
   for (i = 0; i < 2; i++)
@@ -303,7 +315,7 @@ bool Polygon2d::Contains (const Vector2d &rclV) const
   // whether a point is contained within a polygon.
   // The sum of all turns indicates whether yes or no.
   double pfTmp[4];
-  unsigned long i = 0;
+  unsigned long i;
   short sTorsion = 0;
 
   // Error check

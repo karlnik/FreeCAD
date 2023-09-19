@@ -4,18 +4,18 @@
   <context>
     <name>CmdDrawingAnnotation</name>
     <message>
-      <location filename="../../Command.cpp" line="476"/>
+      <location filename="../../Command.cpp" line="475"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="477"/>
+      <location filename="../../Command.cpp" line="476"/>
       <source>&amp;Annotation</source>
       <translation>Szövegmagyarázat</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="478"/>
-      <location filename="../../Command.cpp" line="480"/>
+      <location filename="../../Command.cpp" line="477"/>
+      <location filename="../../Command.cpp" line="479"/>
       <source>Inserts an Annotation view in the active drawing</source>
       <translation>Egy jegyzet nézet beillesztése az aktív rajzba</translation>
     </message>
@@ -23,18 +23,18 @@
   <context>
     <name>CmdDrawingClip</name>
     <message>
-      <location filename="../../Command.cpp" line="524"/>
+      <location filename="../../Command.cpp" line="523"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="525"/>
+      <location filename="../../Command.cpp" line="524"/>
       <source>&amp;Clip</source>
       <translation>Kivágás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="526"/>
-      <location filename="../../Command.cpp" line="528"/>
+      <location filename="../../Command.cpp" line="525"/>
+      <location filename="../../Command.cpp" line="527"/>
       <source>Inserts a clip group in the active drawing</source>
       <translation>Kivágás csoport beillesztése az aktív rajzba</translation>
     </message>
@@ -42,18 +42,18 @@
   <context>
     <name>CmdDrawingDraftView</name>
     <message>
-      <location filename="../../Command.cpp" line="715"/>
+      <location filename="../../Command.cpp" line="714"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="716"/>
+      <location filename="../../Command.cpp" line="715"/>
       <source>&amp;Draft View</source>
       <translation>Tervrajz nézet</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="717"/>
-      <location filename="../../Command.cpp" line="719"/>
+      <location filename="../../Command.cpp" line="716"/>
+      <location filename="../../Command.cpp" line="718"/>
       <source>Inserts a Draft view of the selected object(s) in the active drawing</source>
       <translation>Beilleszt a kiválasztott tárgy(ak)ról egy Tervezet nézetet az aktív rajzba</translation>
     </message>
@@ -61,18 +61,18 @@
   <context>
     <name>CmdDrawingExportPage</name>
     <message>
-      <location filename="../../Command.cpp" line="626"/>
+      <location filename="../../Command.cpp" line="625"/>
       <source>File</source>
       <translation>Fájl</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="627"/>
+      <location filename="../../Command.cpp" line="626"/>
       <source>&amp;Export page...</source>
       <translation>Oldal exportálása...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="628"/>
-      <location filename="../../Command.cpp" line="630"/>
+      <location filename="../../Command.cpp" line="627"/>
+      <location filename="../../Command.cpp" line="629"/>
       <source>Export a page to an SVG file</source>
       <translation>Egy oldal exportálása SVG-fájlba</translation>
     </message>
@@ -80,13 +80,13 @@
   <context>
     <name>CmdDrawingNewA3Landscape</name>
     <message>
-      <location filename="../../Command.cpp" line="270"/>
+      <location filename="../../Command.cpp" line="269"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
+      <location filename="../../Command.cpp" line="270"/>
       <location filename="../../Command.cpp" line="271"/>
-      <location filename="../../Command.cpp" line="272"/>
       <source>Insert new A3 landscape drawing</source>
       <translation>Új A3 fekvő rajzot illeszt</translation>
     </message>
@@ -108,17 +108,17 @@
   <context>
     <name>CmdDrawingNewView</name>
     <message>
-      <location filename="../../Command.cpp" line="309"/>
+      <location filename="../../Command.cpp" line="308"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="310"/>
+      <location filename="../../Command.cpp" line="309"/>
       <source>Insert view in drawing</source>
       <translation>Nézet beszúrása a rajzba</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="311"/>
+      <location filename="../../Command.cpp" line="310"/>
       <source>Insert a new View of a Part in the active drawing</source>
       <translation>Egy rész új nézetének beszúrása az aktív rajzba</translation>
     </message>
@@ -144,18 +144,18 @@
   <context>
     <name>CmdDrawingOpenBrowserView</name>
     <message>
-      <location filename="../../Command.cpp" line="438"/>
+      <location filename="../../Command.cpp" line="437"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="439"/>
+      <location filename="../../Command.cpp" line="438"/>
       <source>Open &amp;browser view</source>
       <translation>&amp;Böngészőnézet megnyitása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="440"/>
-      <location filename="../../Command.cpp" line="442"/>
+      <location filename="../../Command.cpp" line="439"/>
+      <location filename="../../Command.cpp" line="441"/>
       <source>Opens the selected page in a browser view</source>
       <translation>Megnyitja a kijelölt oldalt egy böngészőnézetben</translation>
     </message>
@@ -163,17 +163,17 @@
   <context>
     <name>CmdDrawingOrthoViews</name>
     <message>
-      <location filename="../../Command.cpp" line="388"/>
+      <location filename="../../Command.cpp" line="387"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="389"/>
+      <location filename="../../Command.cpp" line="388"/>
       <source>Insert orthographic views</source>
       <translation>Merőleges vetítés nézetek beszúrása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="390"/>
+      <location filename="../../Command.cpp" line="389"/>
       <source>Insert an orthographic projection of a part in the active drawing</source>
       <translation>Az aktív rajz egy részének a merőleges vetítés beszúrása</translation>
     </message>
@@ -181,18 +181,18 @@
   <context>
     <name>CmdDrawingProjectShape</name>
     <message>
-      <location filename="../../Command.cpp" line="679"/>
+      <location filename="../../Command.cpp" line="678"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="680"/>
+      <location filename="../../Command.cpp" line="679"/>
       <source>Project shape...</source>
       <translation>Terv formák...</translation>
     </message>
     <message>
+      <location filename="../../Command.cpp" line="680"/>
       <location filename="../../Command.cpp" line="681"/>
-      <location filename="../../Command.cpp" line="682"/>
       <source>Project shape onto a user-defined plane</source>
       <translation>A felhasználó által meghatározott síkra vetített formák</translation>
     </message>
@@ -200,18 +200,18 @@
   <context>
     <name>CmdDrawingSpreadsheetView</name>
     <message>
-      <location filename="../../Command.cpp" line="746"/>
+      <location filename="../../Command.cpp" line="745"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="747"/>
+      <location filename="../../Command.cpp" line="746"/>
       <source>&amp;Spreadsheet View</source>
       <translation>&amp;Számolótábla megtekintése</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="748"/>
-      <location filename="../../Command.cpp" line="750"/>
+      <location filename="../../Command.cpp" line="747"/>
+      <location filename="../../Command.cpp" line="749"/>
       <source>Inserts a view of a selected spreadsheet in the active drawing</source>
       <translation>Alkatrészlista beillesztése az aktív rajzba</translation>
     </message>
@@ -219,18 +219,18 @@
   <context>
     <name>CmdDrawingSymbol</name>
     <message>
-      <location filename="../../Command.cpp" line="569"/>
+      <location filename="../../Command.cpp" line="568"/>
       <source>Drawing</source>
       <translation>Rajz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="570"/>
+      <location filename="../../Command.cpp" line="569"/>
       <source>&amp;Symbol</source>
       <translation>&amp;Szimbólum</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="571"/>
-      <location filename="../../Command.cpp" line="573"/>
+      <location filename="../../Command.cpp" line="570"/>
+      <location filename="../../Command.cpp" line="572"/>
       <source>Inserts a symbol from a svg file in the active drawing</source>
       <translation>Egy szimbólumot szúr be az aktív rajzon szereplő svg-fájlból</translation>
     </message>
@@ -336,7 +336,7 @@
       <location filename="../../DrawingView.cpp" line="574"/>
       <source>The printer uses a different orientation than the drawing.
 Do you want to continue?</source>
-      <translation>A nyomtató a rajztól eltérő tájolást használ.
+      <translation>A nyomtató a rajztól eltérő tájolást használ. 
 Szeretné folytatni?</translation>
     </message>
     <message>
@@ -350,7 +350,7 @@ Szeretné folytatni?</translation>
       <location filename="../../DrawingView.cpp" line="590"/>
       <source>The printer uses a different paper size than the drawing.
 Do you want to continue?</source>
-      <translation>A nyomtató a rajztól eltérő méretű papír méretet használ.
+      <translation>A nyomtató a rajztól eltérő méretű papír méretet használ. 
 Szeretné folytatni?</translation>
     </message>
     <message>
@@ -635,37 +635,32 @@ Szeretné folytatni?</translation>
   <context>
     <name>Drawing_NewPage</name>
     <message>
-      <location filename="../../Command.cpp" line="104"/>
-      <source>Page</source>
-      <translation>Oldal</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="218"/>
+      <location filename="../../Command.cpp" line="217"/>
       <source>Landscape</source>
       <translation>Fekvő</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="220"/>
+      <location filename="../../Command.cpp" line="219"/>
       <source>Portrait</source>
       <translation>Álló</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="224"/>
+      <location filename="../../Command.cpp" line="223"/>
       <source>%1%2 %3</source>
       <translation>%1%2 %3</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="229"/>
+      <location filename="../../Command.cpp" line="228"/>
       <source>Insert new %1%2 %3 drawing</source>
       <translation>Új %1%2 %3 rajz beszúrása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="236"/>
+      <location filename="../../Command.cpp" line="235"/>
       <source>%1%2 %3 (%4)</source>
       <translation>%1%2 %3 (%4)</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="242"/>
+      <location filename="../../Command.cpp" line="241"/>
       <source>Insert new %1%2 %3 (%4) drawing</source>
       <translation>Új %1%2 %3 (%4) rajz beszúrása</translation>
     </message>
@@ -674,30 +669,40 @@ Szeretné folytatni?</translation>
     <name>QObject</name>
     <message>
       <location filename="../../Command.cpp" line="70"/>
-      <location filename="../../Command.cpp" line="590"/>
+      <location filename="../../Command.cpp" line="589"/>
       <source>Choose an SVG file to open</source>
       <translation>SVG fájl kiválasztása megnyitáshoz</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="71"/>
-      <location filename="../../Command.cpp" line="591"/>
-      <location filename="../../Command.cpp" line="645"/>
+      <location filename="../../Command.cpp" line="590"/>
+      <location filename="../../Command.cpp" line="644"/>
       <source>Scalable Vector Graphic</source>
       <translation>Méretezhető vektorgrafika</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="322"/>
-      <location filename="../../Command.cpp" line="401"/>
-      <location filename="../../Command.cpp" line="451"/>
-      <location filename="../../Command.cpp" line="639"/>
-      <location filename="../../Command.cpp" line="759"/>
+      <location filename="../../Command.cpp" line="321"/>
+      <location filename="../../Command.cpp" line="400"/>
+      <location filename="../../Command.cpp" line="450"/>
+      <location filename="../../Command.cpp" line="638"/>
+      <location filename="../../Command.cpp" line="758"/>
       <source>Wrong selection</source>
       <translation>Nem megfelelő kiválasztás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="323"/>
+      <location filename="../../Command.cpp" line="322"/>
       <source>Select a Part object.</source>
       <translation>Objektum rész kiválasztása.</translation>
+    </message>
+    <message>
+      <location filename="../../Command.cpp" line="330"/>
+      <location filename="../../Command.cpp" line="409"/>
+      <location filename="../../Command.cpp" line="490"/>
+      <location filename="../../Command.cpp" line="538"/>
+      <location filename="../../Command.cpp" line="583"/>
+      <location filename="../../Command.cpp" line="764"/>
+      <source>No page found</source>
+      <translation>Az oldal nem található</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="331"/>
@@ -706,42 +711,32 @@ Szeretné folytatni?</translation>
       <location filename="../../Command.cpp" line="539"/>
       <location filename="../../Command.cpp" line="584"/>
       <location filename="../../Command.cpp" line="765"/>
-      <source>No page found</source>
-      <translation>Az oldal nem található</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="332"/>
-      <location filename="../../Command.cpp" line="411"/>
-      <location filename="../../Command.cpp" line="492"/>
-      <location filename="../../Command.cpp" line="540"/>
-      <location filename="../../Command.cpp" line="585"/>
-      <location filename="../../Command.cpp" line="766"/>
       <source>Create a page first.</source>
       <translation>Először hozzon létre egy oldalt.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="402"/>
+      <location filename="../../Command.cpp" line="401"/>
       <source>Select exactly one Part object.</source>
       <translation>Jelöljön ki pontosan egy tárgy alkotórészt.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="452"/>
-      <location filename="../../Command.cpp" line="640"/>
+      <location filename="../../Command.cpp" line="451"/>
+      <location filename="../../Command.cpp" line="639"/>
       <source>Select one Page object.</source>
       <translation>Válasszon ki egy teljes oldal tárgyat.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="646"/>
+      <location filename="../../Command.cpp" line="645"/>
       <source>All Files</source>
       <translation>Összes fájl</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="648"/>
+      <location filename="../../Command.cpp" line="647"/>
       <source>Export page</source>
       <translation>Oldal exportálása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="760"/>
+      <location filename="../../Command.cpp" line="759"/>
       <source>Select exactly one Spreadsheet object.</source>
       <translation>Jelöljön ki pontosan egy számolótábla tárgyat.</translation>
     </message>

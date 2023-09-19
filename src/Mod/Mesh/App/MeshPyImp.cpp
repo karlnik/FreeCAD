@@ -25,7 +25,6 @@
 #include <Base/Converter.h>
 #include <Base/GeometryPyCXX.h>
 #include <Base/MatrixPy.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/Stream.h>
 #include <Base/Tools.h>
 #include <Base/VectorPy.h>
@@ -132,8 +131,8 @@ PyObject* MeshPy::copy(PyObject *args)
 PyObject*  MeshPy::read(PyObject *args, PyObject *kwds)
 {
     char* Name;
-    static const std::array<const char *, 2> keywords_path {"Filename",nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "et", keywords_path, "utf-8", &Name)) {
+    static char* keywords_path[] = {"Filename",nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "et", keywords_path, "utf-8", &Name)) {
         getMeshObjectPtr()->load(Name);
         PyMem_Free(Name);
         Py_Return;
@@ -163,8 +162,8 @@ PyObject*  MeshPy::read(PyObject *args, PyObject *kwds)
 
     PyObject* input;
     char* Ext;
-    static const std::array<const char *, 3> keywords_stream {"Stream", "Format", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "Os",keywords_stream, &input, &Ext)) {
+    static char* keywords_stream[] = {"Stream","Format",nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "Os",keywords_stream, &input, &Ext)) {
         std::string fmt(Ext);
         boost::to_upper(fmt);
         if (ext.find(fmt) != ext.end()) {
@@ -216,9 +215,9 @@ PyObject*  MeshPy::write(PyObject *args, PyObject *kwds)
     ext["ASY"  ] = MeshCore::MeshIO::ASY;
     ext["3MF"  ] = MeshCore::MeshIO::ThreeMF;
 
-    static const std::array<const char *, 5> keywords_path {"Filename","Format","Name","Material",nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "et|ssO", keywords_path, "utf-8",
-                                            &Name, &Ext, &ObjName, &List)) {
+    static char* keywords_path[] = {"Filename","Format","Name","Material",nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "et|ssO", keywords_path, "utf-8",
+                                    &Name, &Ext, &ObjName, &List)) {
         if (Ext) {
             std::string fmt(Ext);
             boost::to_upper(fmt);
@@ -256,10 +255,10 @@ PyObject*  MeshPy::write(PyObject *args, PyObject *kwds)
 
     PyErr_Clear();
 
-    static const std::array<const char *, 5> keywords_stream {"Stream", "Format", "Name", "Material", nullptr};
+    static char* keywords_stream[] = {"Stream","Format","Name","Material",nullptr};
     PyObject* input;
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "Os|sO", keywords_stream,
-                                            &input, &Ext, &ObjName, &List)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "Os|sO", keywords_stream,
+                                    &input, &Ext, &ObjName, &List)) {
         std::string fmt(Ext);
         boost::to_upper(fmt);
         if (ext.find(fmt) != ext.end()) {
@@ -489,11 +488,10 @@ PyObject*  MeshPy::section(PyObject *args, PyObject *kwds)
     PyObject *connectLines = Py_True;
     float fMinDist = 0.0001f;
 
-    static const std::array<const char *, 4> keywords_section {"Mesh", "ConnectLines", "MinDist", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!|O!f",keywords_section,
-                                     &(MeshPy::Type), &pcObj, &PyBool_Type, &connectLines, &fMinDist)) {
+    static char* keywords_section[] = {"Mesh", "ConnectLines", "MinDist", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!|O!f",keywords_section,
+                                     &(MeshPy::Type), &pcObj, &PyBool_Type, &connectLines, &fMinDist))
         return nullptr;
-    }
 
     MeshPy* pcObject = static_cast<MeshPy*>(pcObj);
 
@@ -1119,11 +1117,10 @@ PyObject*  MeshPy::hasPointsOnEdge(PyObject *args)
 
 PyObject*  MeshPy::removePointsOnEdge(PyObject *args, PyObject *kwds)
 {
-    PyObject *fillBoundary = Py_False; // NOLINT
-    static const std::array<const char *, 2> keywords {"FillBoundary", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "|O!", keywords, &PyBool_Type, &fillBoundary)) {
+    PyObject *fillBoundary = Py_False;
+    static char* keywords[] = {"FillBoundary", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O!", keywords, &PyBool_Type, &fillBoundary))
         return nullptr;
-    }
     try {
         getMeshObjectPtr()->removePointsOnEdge(Base::asBoolean(fillBoundary));
     }
@@ -1756,12 +1753,10 @@ PyObject* MeshPy::smooth(PyObject *args, PyObject *kwds)
     double micro = 0;
     double maximum = 1000;
     int weight = 1;
-    static const std::array<const char *, 7> keywords_smooth{"Method", "Iteration", "Lambda", "Micro", "Maximum",
-                                                             "Weight", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "|sidddi",keywords_smooth,
-                                            &method, &iter, &lambda, &micro, &maximum, &weight)) {
+    static char* keywords_smooth[] = {"Method", "Iteration", "Lambda", "Micro", "Maximum", "Weight", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|sidddi",keywords_smooth,
+                                     &method, &iter, &lambda, &micro, &maximum, &weight))
         return nullptr;
-    }
 
     PY_TRY {
         MeshPropertyLock lock(this->parentProperty);

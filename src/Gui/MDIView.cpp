@@ -341,7 +341,7 @@ QStringList MDIView::redoActions() const
 
 QSize MDIView::minimumSizeHint () const
 {
-    return {400, 300};
+    return QSize(400, 300);
 }
 
 void MDIView::changeEvent(QEvent *e)

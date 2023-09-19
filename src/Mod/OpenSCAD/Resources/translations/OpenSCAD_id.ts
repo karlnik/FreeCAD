@@ -110,11 +110,6 @@
       <translation type="unfinished">Maximum fragment size</translation>
     </message>
     <message>
-      <location filename="../ui/openscadprefs-base.ui" line="289"/>
-      <source>angle (fa)</source>
-      <translation type="unfinished">angle (fa)</translation>
-    </message>
-    <message>
       <location filename="../ui/openscadprefs-base.ui" line="385"/>
       <source>Convexity</source>
       <translation type="unfinished">Convexity</translation>
@@ -124,6 +119,11 @@
       <location filename="../ui/openscadprefs-base.ui" line="296"/>
       <source>Minimum angle for a fragment</source>
       <translation>Sudut minimum untuk fragmen</translation>
+    </message>
+    <message>
+      <location filename="../ui/openscadprefs-base.ui" line="289"/>
+      <source>angular (fa)</source>
+      <translation>sudut (fa)</translation>
     </message>
     <message>
       <location filename="../ui/openscadprefs-base.ui" line="328"/>

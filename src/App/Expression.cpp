@@ -449,12 +449,12 @@ Py::Object pyObjectFromAny(const App::any &value) {
 App::any pyObjectToAny(Py::Object value, bool check) {
 
     if(value.isNone())
-        return {};
+        return App::any();
 
     PyObject *pyvalue = value.ptr();
 
     if(!check)
-        return {pyObjectWrap(pyvalue)};
+        return App::any(pyObjectWrap(pyvalue));
 
     if (PyObject_TypeCheck(pyvalue, &Base::QuantityPy::Type)) {
         Base::QuantityPy * qp = static_cast<Base::QuantityPy*>(pyvalue);
@@ -967,7 +967,7 @@ std::map<App::ObjectIdentifier,bool> Expression::getIdentifiers()  const {
 class AdjustLinksExpressionVisitor : public ExpressionVisitor {
 public:
     explicit AdjustLinksExpressionVisitor(const std::set<App::DocumentObject*> &inList)
-        :inList(inList)
+        :inList(inList),res(false)
     {}
 
     void visit(Expression &e) override {
@@ -976,7 +976,7 @@ public:
     }
 
     const std::set<App::DocumentObject*> &inList;
-    bool res{false};
+    bool res;
 };
 
 bool Expression::adjustLinks(const std::set<App::DocumentObject*> &inList) {
@@ -1048,7 +1048,7 @@ ExpressionPtr Expression::updateLabelReference(
         App::DocumentObject *obj, const std::string &ref, const char *newLabel) const
 {
     if(ref.size()<=2)
-        return {};
+        return ExpressionPtr();
     std::vector<std::string> labels;
     for(auto &v : getIdentifiers())
         v.first.getDepLabels(labels);
@@ -1061,7 +1061,7 @@ ExpressionPtr Expression::updateLabelReference(
             return ExpressionPtr(expr);
         }
     }
-    return {};
+    return ExpressionPtr();
 }
 
 class ReplaceObjectExpressionVisitor : public ExpressionVisitor {
@@ -1097,7 +1097,7 @@ ExpressionPtr Expression::replaceObject(const DocumentObject *parent,
     const_cast<Expression*>(this)->visit(v);
 
     if(v.paths.empty())
-        return {};
+        return ExpressionPtr();
 
     // Now make a copy and do the actual replacement
     auto expr = copy();
@@ -1871,7 +1871,7 @@ bool FunctionExpression::isTouched() const
 
 class Collector {
 public:
-    Collector() = default;
+    Collector() : first(true) { }
     virtual ~Collector() = default;
     virtual void collect(Quantity value) {
         if (first)
@@ -1881,7 +1881,7 @@ public:
         return q;
     }
 protected:
-    bool first{true};
+    bool first;
     Quantity q;
 };
 
@@ -1899,7 +1899,7 @@ public:
 
 class AverageCollector : public Collector {
 public:
-    AverageCollector() : Collector() { }
+    AverageCollector() : Collector(), n(0) { }
 
     void collect(Quantity value) override {
         Collector::collect(value);
@@ -1911,12 +1911,12 @@ public:
     Quantity getQuantity() const override { return q/(double)n; }
 
 private:
-    unsigned int n{0};
+    unsigned int n;
 };
 
 class StdDevCollector : public Collector {
 public:
-    StdDevCollector() : Collector() { }
+    StdDevCollector() : Collector(), n(0) { }
 
     void collect(Quantity value) override {
         Collector::collect(value);
@@ -1941,14 +1941,14 @@ public:
     }
 
 private:
-    unsigned int n{0};
+    unsigned int n;
     Quantity mean;
     Quantity M2;
 };
 
 class CountCollector : public Collector {
 public:
-    CountCollector() : Collector() { }
+    CountCollector() : Collector(), n(0) { }
 
     void collect(Quantity value) override {
         Collector::collect(value);
@@ -1959,7 +1959,7 @@ public:
     Quantity getQuantity() const override { return Quantity(n); }
 
 private:
-    unsigned int n{0};
+    unsigned int n;
 };
 
 class MinCollector : public Collector {
@@ -3027,28 +3027,17 @@ bool VariableExpression::_updateElementReference(
 }
 
 bool VariableExpression::_renameObjectIdentifier(
-    const std::map<ObjectIdentifier, ObjectIdentifier>& paths,
-    const ObjectIdentifier& path,
-    ExpressionVisitor& visitor)
+        const std::map<ObjectIdentifier,ObjectIdentifier> &paths,
+        const ObjectIdentifier &path, ExpressionVisitor &v)
 {
-    const auto& oldPath = var.canonicalPath();
+    const auto &oldPath = var.canonicalPath();
     auto it = paths.find(oldPath);
     if (it != paths.end()) {
-        visitor.aboutToChange();
-        const bool originalHasDocumentObjectName = var.hasDocumentObjectName();
-        ObjectIdentifier::String originalDocumentObjectName = var.getDocumentObjectName();
-        std::string originalSubObjectName = var.getSubObjectName();
-        if (path.getOwner()) {
+        v.aboutToChange();
+        if(path.getOwner())
             var = it->second.relativeTo(path);
-        }
-        else {
+        else
             var = it->second;
-        }
-        if (originalHasDocumentObjectName) {
-            var.setDocumentObjectName(std::move(originalDocumentObjectName),
-                                      true,
-                                      originalSubObjectName);
-        }
         return true;
     }
     return false;

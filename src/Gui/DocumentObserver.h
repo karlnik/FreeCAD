@@ -240,7 +240,8 @@ class WeakPtrT
 public:
     explicit WeakPtrT(T* t) : ptr(t) {
     }
-    ~WeakPtrT() = default;
+    ~WeakPtrT() {
+    }
 
     /*!
      * \brief reset

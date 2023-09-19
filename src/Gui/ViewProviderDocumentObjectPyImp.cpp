@@ -74,7 +74,7 @@ void ViewProviderDocumentObjectPy::setObject(Py::Object pyobj)
 
 Py::Boolean ViewProviderDocumentObjectPy::getForceUpdate() const
 {
-    return {getViewProviderDocumentObjectPtr()->isUpdateForced()};
+    return Py::Boolean(getViewProviderDocumentObjectPtr()->isUpdateForced());
 }
 
 void ViewProviderDocumentObjectPy::setForceUpdate(Py::Boolean arg)

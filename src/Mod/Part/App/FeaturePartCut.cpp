@@ -33,7 +33,9 @@ using namespace Part;
 PROPERTY_SOURCE(Part::Cut, Part::Boolean)
 
 
-Cut::Cut() = default;
+Cut::Cut()
+{
+}
 
 BRepAlgoAPI_BooleanOperation* Cut::makeOperation(const TopoDS_Shape& base, const TopoDS_Shape& tool) const
 {

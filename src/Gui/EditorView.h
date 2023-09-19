@@ -41,7 +41,6 @@ namespace Gui {
 
 class EditorViewP;
 class TextEdit;
-class PythonTracingWatcher;
 
 /**
  * A special view class which sends the messages from the application to
@@ -141,7 +140,6 @@ public Q_SLOTS:
 
 private:
     PythonEditor* _pye;
-    PythonTracingWatcher* watcher;
 };
 
 class SearchBar : public QWidget

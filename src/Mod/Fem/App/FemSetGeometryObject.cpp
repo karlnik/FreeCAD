@@ -32,9 +32,13 @@ using namespace App;
 PROPERTY_SOURCE(Fem::FemSetGeometryObject, Fem::FemSetObject)
 
 
-FemSetGeometryObject::FemSetGeometryObject() = default;
+FemSetGeometryObject::FemSetGeometryObject()
+{
+}
 
-FemSetGeometryObject::~FemSetGeometryObject() = default;
+FemSetGeometryObject::~FemSetGeometryObject()
+{
+}
 
 short FemSetGeometryObject::mustExecute() const
 {

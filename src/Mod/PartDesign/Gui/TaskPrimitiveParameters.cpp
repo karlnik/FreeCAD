@@ -936,7 +936,10 @@ TaskPrimitiveParameters::TaskPrimitiveParameters(ViewProviderPrimitive* Primitiv
     Content.push_back(parameter);
 }
 
-TaskPrimitiveParameters::~TaskPrimitiveParameters() = default;
+TaskPrimitiveParameters::~TaskPrimitiveParameters()
+{
+
+}
 
 bool TaskPrimitiveParameters::accept()
 {

@@ -40,7 +40,10 @@ DlgSettingsMeasure::DlgSettingsMeasure(QWidget* parent)
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsMeasure::~DlgSettingsMeasure() = default;
+DlgSettingsMeasure::~DlgSettingsMeasure()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsMeasure::saveSettings()
 {

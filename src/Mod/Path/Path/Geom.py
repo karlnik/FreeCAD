@@ -676,7 +676,7 @@ def flipEdge(edge):
             poles, mults, knots, perio, degree, weights, ratio
         )
 
-        return Part.Edge(flipped, ma + mi - edge.LastParameter, ma + mi - edge.FirstParameter)
+        return Part.Edge(flipped)
     elif type(edge.Curve) == Part.OffsetCurve:
         return edge.reversed()
 

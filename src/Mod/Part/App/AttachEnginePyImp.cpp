@@ -40,7 +40,7 @@ using namespace Attacher;
 // returns a string which represents the object e.g. when printed in python
 std::string AttachEnginePy::representation() const
 {
-    return {"<Attacher::AttachEngine>"};
+    return std::string("<Attacher::AttachEngine>");
 }
 
 PyObject* AttachEnginePy::PyMake(struct _typeobject *, PyObject *, PyObject *)
@@ -94,7 +94,7 @@ int AttachEnginePy::PyInit(PyObject* args, PyObject* /*kwd*/)
 
 Py::String AttachEnginePy::getAttacherType() const
 {
-    return {std::string(this->getAttachEnginePtr()->getTypeId().getName())};
+    return  Py::String(std::string(this->getAttachEnginePtr()->getTypeId().getName()));
 }
 
 /**
@@ -114,7 +114,7 @@ Py::String AttachEnginePy::getMode() const
 {
     try {
         AttachEngine &attacher = *(this->getAttachEnginePtr());
-        return {attacher.getModeName(attacher.mapMode)};
+        return Py::String(attacher.getModeName(attacher.mapMode));
     } ATTACHERPY_STDCATCH_ATTR;
 }
 
@@ -171,7 +171,7 @@ Py::Boolean AttachEnginePy::getReverse() const
 {
     try {
         AttachEngine &attacher = *(this->getAttachEnginePtr());
-        return {attacher.mapReverse};
+        return Py::Boolean(attacher.mapReverse);
     } ATTACHERPY_STDCATCH_ATTR;
 }
 

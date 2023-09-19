@@ -185,7 +185,7 @@ public:
 protected:
     void evaluate() override;
 private:
-    ~ArcEngine() override = default;
+    ~ArcEngine() override{}
     void defaultValues(); //some non error values if something goes wrong.
 };
 

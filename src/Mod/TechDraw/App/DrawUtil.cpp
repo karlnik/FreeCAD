@@ -61,7 +61,6 @@
 #include <Base/FileInfo.h>
 #include <Base/Parameter.h>
 #include <Base/Stream.h>
-#include <Base/Tools.h>
 #include <Base/UnitsApi.h>
 #include <Base/Vector3D.h>
 
@@ -69,7 +68,6 @@
 #include "GeometryObject.h"
 #include "LineGroup.h"
 #include "Preferences.h"
-#include "DrawViewPart.h"
 
 
 using namespace TechDraw;
@@ -547,7 +545,7 @@ TopoDS_Shape DrawUtil::vectorToCompound(std::vector<TopoDS_Edge> vecIn, bool inv
         builder.Add(compOut, v);
     }
     if (invert) {
-        return ShapeUtils::mirrorShape(compOut);
+        return TechDraw::mirrorShape(compOut);
     }
     return compOut;
 }
@@ -562,25 +560,7 @@ TopoDS_Shape DrawUtil::vectorToCompound(std::vector<TopoDS_Wire> vecIn, bool inv
         builder.Add(compOut, v);
     }
     if (invert) {
-        return ShapeUtils::mirrorShape(compOut);
-    }
-    return compOut;
-}
-
-// construct a compound shape from a list of shapes
-// this version needs a different name since edges/wires are shapes
-TopoDS_Shape DrawUtil::shapeVectorToCompound(std::vector<TopoDS_Shape> vecIn, bool invert)
-{
-    BRep_Builder builder;
-    TopoDS_Compound compOut;
-    builder.MakeCompound(compOut);
-    for (auto& v : vecIn) {
-        if (!v.IsNull()) {
-            builder.Add(compOut, v);
-        }
-    }
-    if (invert) {
-        return ShapeUtils::mirrorShape(compOut);
+        return TechDraw::mirrorShape(compOut);
     }
     return compOut;
 }
@@ -1614,39 +1594,6 @@ void DrawUtil::copyFile(std::string inSpec, std::string outSpec)
     }
 }
 
-//! static method that provides a translated std::string for objects that are not derived from DrawView
-std::string DrawUtil::translateArbitrary(std::string context, std::string baseName, std::string uniqueName)
-{
-    std::string suffix("");
-    if (uniqueName.length() > baseName.length()) {
-        suffix = uniqueName.substr(baseName.length(), uniqueName.length() - baseName.length());
-    }
-    QString qTranslated = qApp->translate(context.c_str(), baseName.c_str());
-    std::string ssTranslated = Base::Tools::toStdString(qTranslated);
-    return ssTranslated + suffix;
-}
-
-// true if owner->element is a cosmetic vertex
-bool DrawUtil::isCosmeticVertex(App::DocumentObject* owner, std::string element)
-{
-    auto ownerView = static_cast<TechDraw::DrawViewPart*>(owner);
-    auto vertex = ownerView->getVertex(element);
-    if (vertex) {
-        return vertex->getCosmetic();
-    }
-    return false;
-}
-
-// true if owner->element is a cosmetic edge
-bool DrawUtil::isCosmeticEdge(App::DocumentObject* owner, std::string element)
-{
-    auto ownerView = static_cast<TechDraw::DrawViewPart*>(owner);
-    auto edge = ownerView->getEdge(element);
-    if (edge) {
-        return edge->getCosmetic();
-    }
-    return false;
-}
 
 //============================
 // various debugging routines.

@@ -163,7 +163,9 @@ MeshSearchNeighbourFacetsVisitor::MeshSearchNeighbourFacetsVisitor (const MeshKe
                                                                     FacetIndex ulStartFacetIdx)
   : _rclMeshBase(rclMesh),
     _clCenter(rclMesh.GetFacet(ulStartFacetIdx).GetGravityPoint()),
-    _fRadius(fRadius)
+    _fRadius(fRadius),
+    _ulCurrentLevel(0),
+    _bFacetsFoundInCurrentLevel(false)
 {
 }
 

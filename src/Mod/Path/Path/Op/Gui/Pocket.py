@@ -46,7 +46,7 @@ class TaskPanelOpPage(PathPocketBaseGui.TaskPanelOpPage):
 
     def pocketFeatures(self):
         """pocketFeatures() ... return FeaturePocket (see PathPocketBaseGui)"""
-        return PathPocketBaseGui.FeaturePocket | PathPocketBaseGui.FeatureRestMachining
+        return PathPocketBaseGui.FeaturePocket
 
 
 Command = PathOpGui.SetupOperation(

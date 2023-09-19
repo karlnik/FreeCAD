@@ -30,9 +30,10 @@
 // STL
 #include <string>
 
-// opencascade
+//opencascade
 #include <Mod/Part/App/OpenCascadeAll.h>
 
-#endif  //_PreComp_
+#endif //_PreComp_
 
 #endif
+

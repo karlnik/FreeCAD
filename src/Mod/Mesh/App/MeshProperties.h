@@ -53,6 +53,7 @@ class MeshExport PropertyNormalList: public App::PropertyLists
 
 public:
     PropertyNormalList();
+    ~PropertyNormalList() override;
 
     void setSize(int newSize) override;
     int getSize() const override;
@@ -119,6 +120,7 @@ public:
 
 public:
     PropertyCurvatureList();
+    ~PropertyCurvatureList() override;
 
     void setSize(int newSize) override{_lValueList.resize(newSize);}
     int getSize() const override {return _lValueList.size();}
@@ -167,6 +169,7 @@ class MeshExport PropertyMaterial : public App::Property
 
 public:
     PropertyMaterial() = default;
+    ~PropertyMaterial() override = default;
 
     /** Sets the property
      */
@@ -298,7 +301,7 @@ public:
 
 private:
     Base::Reference<MeshObject> _meshObject;
-    MeshPy* meshPyObject{nullptr};
+    MeshPy* meshPyObject;
 };
 
 } // namespace Mesh

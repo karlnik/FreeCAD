@@ -67,7 +67,7 @@ namespace Gui
         Q_OBJECT
     public:
         explicit DockWindow(Gui::Document* gDocumentIn = nullptr, QWidget *parent = nullptr);
-        ~DockWindow() override = default;
+        ~DockWindow() override{}
 
     private:
         View *dagView;

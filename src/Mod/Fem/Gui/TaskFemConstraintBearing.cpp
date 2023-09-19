@@ -287,7 +287,8 @@ bool TaskFemConstraintBearing::getAxial() const
     return ui->checkAxial->isChecked();
 }
 
-TaskFemConstraintBearing::~TaskFemConstraintBearing() = default;
+TaskFemConstraintBearing::~TaskFemConstraintBearing()
+{}
 
 bool TaskFemConstraintBearing::event(QEvent *e)
 {

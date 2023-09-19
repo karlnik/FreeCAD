@@ -61,6 +61,7 @@ const App::PropertyQuantityConstraint::Constraints quantityRangeZero = { 0.0, FL
 PROPERTY_SOURCE_WITH_EXTENSIONS(PartDesign::FeaturePrimitive, PartDesign::FeatureAddSub)
 
 FeaturePrimitive::FeaturePrimitive()
+  :  primitiveType(Box)
 {
     Part::AttachExtension::initExtension(this);
 }

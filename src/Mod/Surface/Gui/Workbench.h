@@ -26,10 +26,9 @@
 
 #include <Gui/Workbench.h>
 
-namespace SurfaceGui
-{
+namespace SurfaceGui {
 
-class Workbench: public Gui::StdWorkbench
+class Workbench : public Gui::StdWorkbench
 {
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 
@@ -42,7 +41,7 @@ protected:
     Gui::ToolBarItem* setupToolBars() const override;
 };
 
-}  // namespace SurfaceGui
+} // namespace SurfaceGui
 
 
-#endif  // Surface_WORKBENCH_H
+#endif // Surface_WORKBENCH_H

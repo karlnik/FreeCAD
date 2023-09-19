@@ -40,7 +40,9 @@ SelectionObserverPython::SelectionObserverPython(const Py::Object& obj, ResolveM
     FC_PY_SEL_OBSERVER
 }
 
-SelectionObserverPython::~SelectionObserverPython() = default;
+SelectionObserverPython::~SelectionObserverPython()
+{
+}
 
 void SelectionObserverPython::addObserver(const Py::Object& obj, ResolveMode resolve)
 {

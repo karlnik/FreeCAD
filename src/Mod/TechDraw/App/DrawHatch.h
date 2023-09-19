@@ -72,8 +72,6 @@ public:
     bool isSvgHatch() const;
     bool isBitmapHatch() const;
 
-    void translateLabel(std::string context, std::string baseName, std::string uniqueName);
-
 protected:
     void onChanged(const App::Property* prop) override;
     void replaceFileIncluded(std::string newSvgFile);

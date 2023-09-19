@@ -43,6 +43,7 @@ namespace PartDesign {
 PROPERTY_SOURCE(PartDesign::FeatureAddSub, PartDesign::Feature)
 
 FeatureAddSub::FeatureAddSub()
+  :  addSubType(Additive)
 {
     ADD_PROPERTY(AddSubShape,(TopoDS_Shape()));
     ADD_PROPERTY_TYPE(Refine,(0),"Part Design",(App::PropertyType)(App::Prop_None),"Refine shape (clean up redundant edges) after adding/subtracting");
@@ -122,7 +123,9 @@ FeatureAdditivePython::FeatureAdditivePython()
     addSubType = Additive;
 }
 
-FeatureAdditivePython::~FeatureAdditivePython() = default;
+FeatureAdditivePython::~FeatureAdditivePython()
+{
+}
 
 
 PROPERTY_SOURCE(PartDesign::FeatureSubtractivePython, PartDesign::FeatureAddSubPython)
@@ -132,6 +135,8 @@ FeatureSubtractivePython::FeatureSubtractivePython()
     addSubType = Subtractive;
 }
 
-FeatureSubtractivePython::~FeatureSubtractivePython() = default;
+FeatureSubtractivePython::~FeatureSubtractivePython()
+{
+}
 
 }

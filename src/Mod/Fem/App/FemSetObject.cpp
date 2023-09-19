@@ -37,7 +37,9 @@ FemSetObject::FemSetObject()
     ADD_PROPERTY_TYPE(FemMesh,(nullptr), "MeshSet link",Prop_None,"MeshSet the set belongs to");
 }
 
-FemSetObject::~FemSetObject() = default;
+FemSetObject::~FemSetObject()
+{
+}
 
 short FemSetObject::mustExecute() const
 {

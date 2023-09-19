@@ -63,7 +63,7 @@ DocumentObjectExecReturn *DocumentObject::StdReturn = nullptr;
 //===========================================================================
 
 DocumentObject::DocumentObject()
-    : ExpressionEngine()
+    : ExpressionEngine(),_pDoc(nullptr),pcNameInDocument(nullptr),_Id(0)
 {
     // define Label of type 'Output' to avoid being marked as touched after relabeling
     ADD_PROPERTY_TYPE(Label,("Unnamed"),"Base",Prop_Output,"User name of the object (UTF8)");
@@ -312,7 +312,7 @@ int DocumentObject::isExporting() const {
 
 std::string DocumentObject::getExportName(bool forced) const {
     if(!pcNameInDocument)
-        return {};
+        return std::string();
 
     if(!forced && !isExporting())
         return *pcNameInDocument;

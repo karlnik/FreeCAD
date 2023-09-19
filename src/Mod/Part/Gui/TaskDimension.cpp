@@ -417,7 +417,10 @@ PartGui::DimensionLinear::DimensionLinear()
     SO_NODE_ADD_FIELD(dColor, (1.0, 0.0, 0.0));//dimension color.
 }
 
-PartGui::DimensionLinear::~DimensionLinear() = default;
+PartGui::DimensionLinear::~DimensionLinear()
+{
+
+}
 
 SbBool PartGui::DimensionLinear::affectsState() const
 {
@@ -1176,7 +1179,10 @@ PartGui::DimensionAngular::DimensionAngular()
                                0.0, 0.0, 0.0, 1.0));
 }
 
-PartGui::DimensionAngular::~DimensionAngular() = default;
+PartGui::DimensionAngular::~DimensionAngular()
+{
+
+}
 
 SbBool PartGui::DimensionAngular::affectsState() const
 {
@@ -1705,13 +1711,13 @@ PartGui::VectorAdapter PartGui::TaskMeasureAngular::buildAdapter(const PartGui::
     {
       TopoDS_Shape edgeShape;
       if (!getShapeFromStrings(edgeShape, current.documentName, current.objectName, current.subObjectName,&mat))
-        return {};
+        return VectorAdapter();
       TopoDS_Edge edge = TopoDS::Edge(edgeShape);
       // make edge orientation so that end of edge closest to pick is head of vector.
       TopoDS_Vertex firstVertex = TopExp::FirstVertex(edge, Standard_True);
       TopoDS_Vertex lastVertex = TopExp::LastVertex(edge, Standard_True);
       if (firstVertex.IsNull() || lastVertex.IsNull())
-        return {};
+        return VectorAdapter();
       gp_Vec firstPoint = PartGui::convert(firstVertex);
       gp_Vec lastPoint = PartGui::convert(lastVertex);
       Base::Vector3d v(current.x,current.y,current.z);
@@ -1732,7 +1738,7 @@ PartGui::VectorAdapter PartGui::TaskMeasureAngular::buildAdapter(const PartGui::
     {
       TopoDS_Shape faceShape;
       if (!getShapeFromStrings(faceShape, current.documentName, current.objectName, current.subObjectName,&mat))
-        return {};
+        return VectorAdapter();
 
       TopoDS_Face face = TopoDS::Face(faceShape);
       Base::Vector3d v(current.x,current.y,current.z);
@@ -1748,9 +1754,9 @@ PartGui::VectorAdapter PartGui::TaskMeasureAngular::buildAdapter(const PartGui::
   assert(current2.shapeType == DimSelections::Vertex);
   TopoDS_Shape vertexShape1, vertexShape2;
   if(!getShapeFromStrings(vertexShape1, current1.documentName, current1.objectName, current1.subObjectName))
-    return {};
+    return VectorAdapter();
   if(!getShapeFromStrings(vertexShape2, current2.documentName, current2.objectName, current2.subObjectName))
-    return {};
+    return VectorAdapter();
 
   TopoDS_Vertex vertex1 = TopoDS::Vertex(vertexShape1);
   TopoDS_Vertex vertex2 = TopoDS::Vertex(vertexShape2);

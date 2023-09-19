@@ -23,20 +23,19 @@
 #ifndef LINEEDIT_H
 #define LINEEDIT_H
 
-#include <Gui/ExpressionCompleter.h>
 #include <QWidget>
+#include <Gui/ExpressionCompleter.h>
 
 
-namespace SpreadsheetGui
-{
+namespace SpreadsheetGui {
 
-class LineEdit: public Gui::ExpressionLineEdit
+class LineEdit : public Gui::ExpressionLineEdit
 {
     Q_OBJECT
 public:
-    explicit LineEdit(QWidget* parent = nullptr);
+    explicit LineEdit(QWidget *parent = nullptr);
 
-    bool event(QEvent* event) override;
+    bool event(QEvent *event) override;
 
 Q_SIGNALS:
     void finishedWithKey(int key, Qt::KeyboardModifiers modifiers);
@@ -50,6 +49,6 @@ private:
     Qt::KeyboardModifiers lastModifiers;
 };
 
-}  // namespace SpreadsheetGui
+}
 
-#endif  // LINEEDIT_H
+#endif // LINEEDIT_H

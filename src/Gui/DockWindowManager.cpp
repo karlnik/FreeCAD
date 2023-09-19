@@ -37,9 +37,13 @@
 
 using namespace Gui;
 
-DockWindowItems::DockWindowItems() = default;
+DockWindowItems::DockWindowItems()
+{
+}
 
-DockWindowItems::~DockWindowItems() = default;
+DockWindowItems::~DockWindowItems()
+{
+}
 
 void DockWindowItems::addDockWidget(const char* name, Qt::DockWidgetArea pos, bool visibility, bool tabbed)
 {
@@ -170,20 +174,6 @@ QWidget* DockWindowManager::getDockWindow(const char* name) const
     for (QList<QDockWidget*>::Iterator it = d->_dockedWindows.begin(); it != d->_dockedWindows.end(); ++it) {
         if ((*it)->objectName() == QLatin1String(name))
             return (*it)->widget();
-    }
-
-    return nullptr;
-}
-
-/**
- * Returns the dock widget by name.
- * If it does not exist 0 is returned.
- */
-QDockWidget* DockWindowManager::getDockContainer(const char* name) const
-{
-    for (QList<QDockWidget*>::Iterator it = d->_dockedWindows.begin(); it != d->_dockedWindows.end(); ++it) {
-        if ((*it)->objectName() == QLatin1String(name))
-            return (*it);
     }
 
     return nullptr;

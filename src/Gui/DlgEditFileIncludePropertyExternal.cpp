@@ -49,7 +49,11 @@ DlgEditFileIncludePropertyExternal(App::PropertyFileIncluded& Prop,
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgEditFileIncludePropertyExternal::~DlgEditFileIncludePropertyExternal() = default;
+DlgEditFileIncludePropertyExternal::~DlgEditFileIncludePropertyExternal()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
+
 
 int DlgEditFileIncludePropertyExternal::processFile()
 {

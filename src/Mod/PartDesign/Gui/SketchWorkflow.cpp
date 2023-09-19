@@ -634,6 +634,7 @@ private:
 
 SketchWorkflow::SketchWorkflow(Gui::Document* document)
     : guidocument(document)
+    , activeBody(nullptr)
 {
     appdocument = guidocument->getDocument();
 }

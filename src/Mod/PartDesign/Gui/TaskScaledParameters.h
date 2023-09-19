@@ -83,7 +83,7 @@ class TaskDlgScaledParameters : public TaskDlgTransformedParameters
 
 public:
     explicit TaskDlgScaledParameters(ViewProviderScaled *ScaledView);
-    ~TaskDlgScaledParameters() override = default;
+    ~TaskDlgScaledParameters() override {}
 
 public:
     /// is called by the framework if the dialog is accepted (Ok)

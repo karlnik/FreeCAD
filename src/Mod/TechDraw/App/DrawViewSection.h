@@ -102,10 +102,6 @@ public:
 
     App::PropertyBool FuseBeforeCut;
     App::PropertyBool TrimAfterCut;//new v021
-    App::PropertyBool UsePreviousCut;   // new v022
-
-    App::PropertyFloat SectionLineStretch;  // new v022
-
 
     bool isReallyInBox(const Base::Vector3d v, const Base::BoundBox3d bb) const;
     bool isReallyInBox(const gp_Pnt p, const Bnd_Box& bb) const;
@@ -157,7 +153,6 @@ public:
     std::vector<PATLineSpec> getDecodedSpecsFromFile(std::string fileSpec, std::string myPattern);
 
     TopoDS_Shape getCutShape() const { return m_cutShape; }
-    TopoDS_Shape getCutShapeRaw() const { return m_cutShapeRaw; }
 
     TopoDS_Shape getShapeForDetail() const override;
 
@@ -187,8 +182,7 @@ protected:
     int prefCutSurface() const;
     bool trimAfterCut() const;
 
-    TopoDS_Shape m_cutShape;        // centered, scaled, rotated result of cut
-    TopoDS_Shape m_cutShapeRaw;     // raw result of cut w/o center/scale/rotate
+    TopoDS_Shape m_cutShape;
 
     void onDocumentRestored() override;
     void setupObject() override;

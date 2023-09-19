@@ -210,7 +210,9 @@ PrefPageUiProducer::PrefPageUiProducer (const char* filename, const char* group)
     Gui::Dialog::DlgPreferencesImp::addPage(filename, group);
 }
 
-PrefPageUiProducer::~PrefPageUiProducer() = default;
+PrefPageUiProducer::~PrefPageUiProducer()
+{
+}
 
 void* PrefPageUiProducer::Produce () const
 {
@@ -380,7 +382,9 @@ ContainerDialog::ContainerDialog( QWidget* templChild )
 }
 
 /** Destroys the object and frees any allocated resources */
-ContainerDialog::~ContainerDialog() = default;
+ContainerDialog::~ContainerDialog()
+{
+}
 
 // ----------------------------------------------------
 

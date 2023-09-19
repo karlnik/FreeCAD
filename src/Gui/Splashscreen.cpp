@@ -254,7 +254,9 @@ void SplashScreen::drawContents ( QPainter * painter )
 
 AboutDialogFactory* AboutDialogFactory::factory = nullptr;
 
-AboutDialogFactory::~AboutDialogFactory() = default;
+AboutDialogFactory::~AboutDialogFactory()
+{
+}
 
 QDialog *AboutDialogFactory::create(QWidget *parent) const
 {
@@ -899,7 +901,9 @@ LicenseView::LicenseView(QWidget* parent)
     setCentralWidget(browser);
 }
 
-LicenseView::~LicenseView() = default;
+LicenseView::~LicenseView()
+{
+}
 
 void LicenseView::setSource(const QUrl& url)
 {

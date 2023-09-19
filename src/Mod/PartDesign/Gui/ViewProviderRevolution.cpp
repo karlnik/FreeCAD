@@ -39,7 +39,9 @@ ViewProviderRevolution::ViewProviderRevolution()
     sPixmap = "Tree_PartDesign_Revolution.svg";
 }
 
-ViewProviderRevolution::~ViewProviderRevolution() = default;
+ViewProviderRevolution::~ViewProviderRevolution()
+{
+}
 
 void ViewProviderRevolution::setupContextMenu(QMenu* menu, QObject* receiver, const char* member)
 {

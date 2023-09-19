@@ -1805,7 +1805,9 @@ DlgPrimitives::DlgPrimitives(QWidget* parent, Part::Primitive* feature)
 /*
  *  Destroys the object and frees any allocated resources
  */
-DlgPrimitives::~DlgPrimitives() = default;
+DlgPrimitives::~DlgPrimitives()
+{
+}
 
 void DlgPrimitives::activatePage()
 {
@@ -2197,6 +2199,11 @@ TaskPrimitives::TaskPrimitives()
     Content.push_back(taskbox);
 }
 
+TaskPrimitives::~TaskPrimitives()
+{
+    // automatically deleted in the sub-class
+}
+
 QDialogButtonBox::StandardButtons TaskPrimitives::getStandardButtons() const
 {
     return QDialogButtonBox::Close|
@@ -2238,6 +2245,11 @@ TaskPrimitivesEdit::TaskPrimitivesEdit(Part::Primitive* feature)
     taskbox = new Gui::TaskView::TaskBox(QPixmap(), location->windowTitle(), true, nullptr);
     taskbox->groupLayout()->addWidget(location);
     Content.push_back(taskbox);
+}
+
+TaskPrimitivesEdit::~TaskPrimitivesEdit()
+{
+    // automatically deleted in the sub-class
 }
 
 QDialogButtonBox::StandardButtons TaskPrimitivesEdit::getStandardButtons() const

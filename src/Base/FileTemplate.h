@@ -101,8 +101,8 @@ public:
         TVal2, /**< enum value TVal2. */
         TVal3  /**< enum value TVal3. */
     }
-    *enumPtr{nullptr}, /**< enum pointer. Details. */
-    enumVar{TVal1};  /**< enum variable. Details. */
+    *enumPtr, /**< enum pointer. Details. */
+    enumVar;  /**< enum variable. Details. */
 
     /**
      * A pure virtual member.
@@ -127,13 +127,13 @@ public:
     * a public variable.
     * Details.
     */
-    int publicVar{0};
+    int publicVar;
 
     /**
      * a function variable.
      * Details.
      */
-    int (*handler)(int a,int b){nullptr};
+    int (*handler)(int a,int b);
 
     std::string something;
 };

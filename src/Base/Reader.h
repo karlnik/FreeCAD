@@ -214,11 +214,11 @@ public:
     //@}
 
     /// Schema Version of the document
-    int DocumentSchema{0};
+    int DocumentSchema;
     /// Version of FreeCAD that wrote this document
     std::string ProgramVersion;
     /// Version of the file format
-    int FileVersion{0};
+    int FileVersion;
 
     /// sets simultaneously the global and local PartialRestore bits
     void setPartialRestore(bool on);
@@ -278,10 +278,10 @@ protected:
     //@}
 
 
-    int Level{0};
+    int Level;
     std::string LocalName;
     std::string Characters;
-    unsigned int CharacterCount{0};
+    unsigned int CharacterCount;
     std::streamsize CharacterOffset{-1};
 
     std::map<std::string,std::string> AttrMap;
@@ -297,14 +297,14 @@ protected:
         EndElement,
         StartCDATA,
         EndCDATA
-    }   ReadType{None};
+    }   ReadType;
 
 
     FileInfo _File;
     XERCES_CPP_NAMESPACE_QUALIFIER SAX2XMLReader* parser;
     XERCES_CPP_NAMESPACE_QUALIFIER XMLPScanToken token;
-    bool _valid{false};
-    bool _verbose{true};
+    bool _valid;
+    bool _verbose;
 
     std::vector<std::string> FileNames;
 

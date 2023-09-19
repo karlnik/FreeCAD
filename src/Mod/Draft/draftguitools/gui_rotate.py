@@ -64,7 +64,7 @@ class Rotate(gui_base_original.Modifier):
 
     def Activated(self):
         """Execute when the command is called."""
-        super().Activated(name="Rotate")
+        super(Rotate, self).Activated(name="Rotate")
         if not self.ui:
             return
         self.ghosts = []
@@ -120,13 +120,15 @@ class Rotate(gui_base_original.Modifier):
 
     def handle_mouse_move_event(self, arg):
         """Handle the mouse when moving."""
+        plane = App.DraftWorkingPlane
+
         for ghost in self.ghosts:
             ghost.off()
         self.point, ctrlPoint, info = gui_tool_utils.getPoint(self, arg)
         # this is to make sure radius is what you see on screen
         if self.center and DraftVecUtils.dist(self.point, self.center):
             viewdelta = DraftVecUtils.project(self.point.sub(self.center),
-                                              self.wp.axis)
+                                              plane.axis)
             if not DraftVecUtils.isNull(viewdelta):
                 self.point = self.point.add(viewdelta.negative())
         if self.extendedCopy:
@@ -138,9 +140,9 @@ class Rotate(gui_base_original.Modifier):
         elif self.step == 1:
             currentrad = DraftVecUtils.dist(self.point, self.center)
             if currentrad != 0:
-                angle = DraftVecUtils.angle(self.wp.u,
+                angle = DraftVecUtils.angle(plane.u,
                                             self.point.sub(self.center),
-                                            self.wp.axis)
+                                            plane.axis)
             else:
                 angle = 0
             self.ui.setRadiusValue(math.degrees(angle), unit="Angle")
@@ -150,9 +152,9 @@ class Rotate(gui_base_original.Modifier):
         elif self.step == 2:
             currentrad = DraftVecUtils.dist(self.point, self.center)
             if currentrad != 0:
-                angle = DraftVecUtils.angle(self.wp.u,
+                angle = DraftVecUtils.angle(plane.u,
                                             self.point.sub(self.center),
-                                            self.wp.axis)
+                                            plane.axis)
             else:
                 angle = 0
             if angle < self.firstangle:
@@ -161,7 +163,7 @@ class Rotate(gui_base_original.Modifier):
                 sweep = angle - self.firstangle
             self.arctrack.setApertureAngle(sweep)
             for ghost in self.ghosts:
-                ghost.rotate(self.wp.axis, sweep)
+                ghost.rotate(plane.axis, sweep)
                 ghost.on()
             self.ui.setRadiusValue(math.degrees(sweep), 'Angle')
             self.ui.radiusValue.setFocus()
@@ -212,11 +214,12 @@ class Rotate(gui_base_original.Modifier):
 
     def set_rotation_angle(self, arg):
         """Set the rotation angle."""
+        plane = App.DraftWorkingPlane
 
         # currentrad = DraftVecUtils.dist(self.point, self.center)
-        angle = self.point.sub(self.center).getAngle(self.wp.u)
-        _v = DraftVecUtils.project(self.point.sub(self.center), self.wp.v)
-        if _v.getAngle(self.wp.v) > 1:
+        angle = self.point.sub(self.center).getAngle(plane.u)
+        _v = DraftVecUtils.project(self.point.sub(self.center), plane.v)
+        if _v.getAngle(plane.v) > 1:
             angle = -angle
         if angle < self.firstangle:
             self.angle = (2 * math.pi - self.firstangle) + angle
@@ -268,7 +271,7 @@ class Rotate(gui_base_original.Modifier):
             ghost.finalize()
         if cont or (cont is None and self.ui and self.ui.continueMode):
             todo.ToDo.delayAfter(self.Activated, [])
-        super().finish()
+        super(Rotate, self).finish()
         if self.doc:
             self.doc.recompute()
 
@@ -295,6 +298,7 @@ class Rotate(gui_base_original.Modifier):
     def build_copy_subelements_command(self):
         """Build the string to commit to copy the subelements."""
         import Part
+        plane = App.DraftWorkingPlane
 
         command = []
         arguments = []
@@ -310,7 +314,7 @@ class Rotate(gui_base_original.Modifier):
                 _cmd += str(_edge_index) + ', '
                 _cmd += str(math.degrees(self.angle)) + ', '
                 _cmd += DraftVecUtils.toString(self.center) + ', '
-                _cmd += DraftVecUtils.toString(self.wp.axis)
+                _cmd += DraftVecUtils.toString(plane.axis)
                 _cmd += ']'
                 arguments.append(_cmd)
 
@@ -322,6 +326,7 @@ class Rotate(gui_base_original.Modifier):
     def build_rotate_subelements_command(self):
         """Build the string to commit to rotate the subelements."""
         import Part
+        plane = App.DraftWorkingPlane
 
         command = []
         V = len("Vertex")
@@ -337,7 +342,7 @@ class Rotate(gui_base_original.Modifier):
                     _cmd += str(_vertex_index) + ', '
                     _cmd += str(math.degrees(self.angle)) + ', '
                     _cmd += DraftVecUtils.toString(self.center) + ', '
-                    _cmd += DraftVecUtils.toString(self.wp.axis)
+                    _cmd += DraftVecUtils.toString(plane.axis)
                     _cmd += ')'
                     command.append(_cmd)
                 elif isinstance(subelement, Part.Edge):
@@ -349,7 +354,7 @@ class Rotate(gui_base_original.Modifier):
                     _cmd += str(_edge_index) + ', '
                     _cmd += str(math.degrees(self.angle)) + ', '
                     _cmd += DraftVecUtils.toString(self.center) + ', '
-                    _cmd += DraftVecUtils.toString(self.wp.axis)
+                    _cmd += DraftVecUtils.toString(plane.axis)
                     _cmd += ')'
                     command.append(_cmd)
         command.append('FreeCAD.ActiveDocument.recompute()')
@@ -357,6 +362,8 @@ class Rotate(gui_base_original.Modifier):
 
     def rotate_object(self, is_copy):
         """Move the object."""
+        plane = App.DraftWorkingPlane
+
         _doc = 'FreeCAD.ActiveDocument.'
         _selected = self.selected_objects
 
@@ -369,7 +376,7 @@ class Rotate(gui_base_original.Modifier):
         _cmd += objects + ', '
         _cmd += str(math.degrees(self.angle)) + ', '
         _cmd += DraftVecUtils.toString(self.center) + ', '
-        _cmd += 'axis=' + DraftVecUtils.toString(self.wp.axis) + ', '
+        _cmd += 'axis=' + DraftVecUtils.toString(plane.axis) + ', '
         _cmd += 'copy=' + str(is_copy)
         _cmd += ')'
         _cmd_list = [_cmd,

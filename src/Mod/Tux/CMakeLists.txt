@@ -30,3 +30,4 @@ INSTALL(
     DESTINATION
         Mod/Tux
 )
+

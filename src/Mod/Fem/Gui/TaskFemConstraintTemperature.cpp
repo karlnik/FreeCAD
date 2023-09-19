@@ -115,7 +115,8 @@ TaskFemConstraintTemperature::TaskFemConstraintTemperature(
     updateUI();
 }
 
-TaskFemConstraintTemperature::~TaskFemConstraintTemperature() = default;
+TaskFemConstraintTemperature::~TaskFemConstraintTemperature()
+{}
 
 void TaskFemConstraintTemperature::updateUI()
 {
@@ -330,7 +331,7 @@ void TaskDlgFemConstraintTemperature::open()
 {
     // a transaction is already open at creation time of the panel
     if (!Gui::Command::hasPendingCommand()) {
-        QString msg = QObject::tr("Temperature boundary condition");
+        QString msg = QObject::tr("Constraint temperature");
         Gui::Command::openCommand((const char*)msg.toUtf8());
         ConstraintView->setVisible(true);
         Gui::Command::doCommand(

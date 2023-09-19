@@ -49,7 +49,9 @@ PropertyItemDelegate::PropertyItemDelegate(QObject* parent)
 {
 }
 
-PropertyItemDelegate::~PropertyItemDelegate() = default;
+PropertyItemDelegate::~PropertyItemDelegate()
+{
+}
 
 QSize PropertyItemDelegate::sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
 {

@@ -51,7 +51,6 @@ public:
 
 protected:
     void changeEvent(QEvent* e) override;
-    void dimensioningModeChanged(int index);
 
 private:
     std::unique_ptr<Ui_SketcherSettings> ui;
@@ -125,6 +124,6 @@ private:
     std::unique_ptr<Ui_SketcherSettingsColors> ui;
 };
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
-#endif  // SKETCHERGUI_SKETCHERSETTINGS_H
+#endif// SKETCHERGUI_SKETCHERSETTINGS_H

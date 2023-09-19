@@ -6,7 +6,7 @@
     <message>
       <location filename="../../Command.cpp" line="74"/>
       <source>Inspection</source>
-      <translation>Праверка</translation>
+      <translation>Даўгаваты</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="75"/>
@@ -24,7 +24,7 @@
     <message>
       <location filename="../../Command.cpp" line="48"/>
       <source>Inspection</source>
-      <translation>Праверка</translation>
+      <translation>Даўгаваты</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="49"/>
@@ -41,7 +41,7 @@
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../VisualInspection.cpp" line="237"/>
+      <location filename="../../VisualInspection.cpp" line="230"/>
       <source>Visual Inspection</source>
       <translation>Візуальная праверка</translation>
     </message>
@@ -94,38 +94,38 @@
   <context>
     <name>QObject</name>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="483"/>
+      <location filename="../../ViewProviderInspection.cpp" line="455"/>
       <source>Remove annotations</source>
       <translation>Выдаліць заметкі</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="484"/>
+      <location filename="../../ViewProviderInspection.cpp" line="456"/>
       <source>Do you want to remove all annotations?</source>
       <translation>Ці жадаеце вы выдаліць усе заметкі?</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="542"/>
+      <location filename="../../ViewProviderInspection.cpp" line="508"/>
       <source>Annotation</source>
       <translation>Заметка</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="545"/>
+      <location filename="../../ViewProviderInspection.cpp" line="511"/>
       <source>Leave info mode</source>
       <translation>Выйсці з інфармацыйнага рэжыму</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="680"/>
+      <location filename="../../ViewProviderInspection.cpp" line="632"/>
       <source>Distance: &gt; %1</source>
       <translation>Адлегласць: &gt; %1</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="684"/>
+      <location filename="../../ViewProviderInspection.cpp" line="635"/>
       <source>Distance: &lt; %1</source>
       <translation>Адлегласць: &lt; %1</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="704"/>
-      <location filename="../../ViewProviderInspection.cpp" line="721"/>
+      <location filename="../../ViewProviderInspection.cpp" line="654"/>
+      <location filename="../../ViewProviderInspection.cpp" line="670"/>
       <source>Distance: %1</source>
       <translation>Адлегласць: %1</translation>
     </message>

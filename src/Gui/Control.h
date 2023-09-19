@@ -32,8 +32,7 @@
 
 #include <Gui/TaskView/TaskDialog.h>
 
-class QDockWidget;
-class QTabBar;
+class QTabWidget;
 
 namespace App
 {
@@ -76,6 +75,8 @@ public:
     Gui::TaskView::TaskView* taskPanel() const;
     /// raising the model view
     void showModelView();
+    /// get the tab panel
+    QTabWidget* tabPanel() const;
     //@}
 
     /*!
@@ -106,6 +107,9 @@ private Q_SLOTS:
     void closedDialog();
 
 private:
+    Gui::TaskView::TaskView *getTaskPanel();
+
+private:
     struct status {
         std::bitset<32> StatusBits;
     } CurrentStatus;
@@ -113,17 +117,12 @@ private:
     std::stack<status> StatusStack;
 
     Gui::TaskView::TaskDialog *ActiveDialog;
-    int oldTabIndex;
 
 private:
     /// Construction
     ControlSingleton();
     /// Destruction
     ~ControlSingleton() override;
-    void showDockWidget(QWidget*);
-    QTabBar* findTabBar(QDockWidget*) const;
-    void aboutToShowDialog(QDockWidget* widget);
-    void aboutToHideDialog(QDockWidget* widget);
 
     static ControlSingleton* _pcSingleton;
 };

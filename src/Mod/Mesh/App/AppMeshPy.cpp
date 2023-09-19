@@ -33,7 +33,6 @@
 #include <Base/GeometryPyCXX.h>
 #include <Base/Interpreter.h>
 #include <Base/PlacementPy.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 #include "Core/Approximation.h"
 #include "Core/Evaluation.h"
@@ -130,6 +129,8 @@ public:
                    "\n");
     }
 
+    ~Module() override {}
+
 private:
     Py::Object invoke_method_varargs(void *method_def, const Py::Tuple &args) override
     {
@@ -211,15 +212,14 @@ private:
         auto fTolerance( hGrp->GetFloat("MaxDeviationExport", 0.1f) );
 
         int exportAmfCompressed( hGrp->GetBool("ExportAmfCompressed", true) );
-        bool export3mfModel( hGrp->GetBool("Export3mfModel", true) );
 
-        static const std::array<const char *, 5> kwList{"objectList", "filename", "tolerance",
-                                                        "exportAmfCompressed", nullptr};
+        static char *kwList[] = {"objectList", "filename", "tolerance",
+                                 "exportAmfCompressed", nullptr};
 
-        if (!Base::Wrapped_ParseTupleAndKeywords(args.ptr(), keywds.ptr(),
-                                                "Oet|dp",
-                                                kwList, &objects, "utf-8", &fileNamePy,
-                                                &fTolerance, &exportAmfCompressed)) {
+        if (!PyArg_ParseTupleAndKeywords( args.ptr(), keywds.ptr(),
+                                          "Oet|dp",
+                                          kwList, &objects, "utf-8", &fileNamePy,
+                                          &fTolerance, &exportAmfCompressed )) {
             throw Py::Exception();
         }
 
@@ -262,7 +262,6 @@ private:
         else if (exportFormat == MeshIO::ThreeMF) {
             Extension3MFFactory::initialize();
             exporter = std::make_unique<Exporter3MF>(outputFileName, Extension3MFFactory::createExtensions());
-            dynamic_cast<Exporter3MF*>(exporter.get())->setForceModel(export3mfModel);
         }
         else if (exportFormat != MeshIO::Undefined) {
             exporter = std::make_unique<MergeExporter>(outputFileName, exportFormat);

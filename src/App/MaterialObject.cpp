@@ -37,6 +37,10 @@ MaterialObject::MaterialObject()
 
 }
 
+MaterialObject::~MaterialObject()
+{
+}
+
 // Python feature ---------------------------------------------------------
 
 namespace App {

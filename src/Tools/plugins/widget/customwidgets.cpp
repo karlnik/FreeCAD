@@ -53,9 +53,8 @@ UrlLabel::~UrlLabel()
 
 void UrlLabel::mouseReleaseEvent(QMouseEvent*)
 {
-    QMessageBox::information(this,
-                             "Browser",
-                             QString("This starts your browser with url %1").arg(_url));
+    QMessageBox::information(
+        this, "Browser", QString("This starts your browser with url %1").arg(_url));
 }
 
 QString UrlLabel::url() const
@@ -132,9 +131,9 @@ void LocationWidget::retranslateUi()
 }
 
 FileChooser::FileChooser(QWidget* parent)
-    : QWidget(parent)
-    , md(File)
-    , _filter(QString())
+    : QWidget(parent),
+      md(File),
+      _filter(QString())
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
@@ -176,19 +175,13 @@ void FileChooser::chooseFile()
     QFileDialog::Options dlgOpt = QFileDialog::DontUseNativeDialog;
     QString fn;
     if (mode() == File) {
-        fn = QFileDialog::getOpenFileName(this,
-                                          tr("Select a file"),
-                                          lineEdit->text(),
-                                          _filter,
-                                          0,
-                                          dlgOpt);
+        fn = QFileDialog::getOpenFileName(
+            this, tr("Select a file"), lineEdit->text(), _filter, 0, dlgOpt);
     }
     else {
         QFileDialog::Options option = QFileDialog::ShowDirsOnly | dlgOpt;
-        fn = QFileDialog::getExistingDirectory(this,
-                                               tr("Select a directory"),
-                                               lineEdit->text(),
-                                               option);
+        fn = QFileDialog::getExistingDirectory(
+            this, tr("Select a directory"), lineEdit->text(), option);
     }
 
     if (!fn.isEmpty()) {
@@ -280,18 +273,14 @@ void AccelLineEdit::keyPressEvent(QKeyEvent* e)
     int key = e->key();
     Qt::KeyboardModifiers state = e->modifiers();
 
-    if (key == Qt::Key_Control) {
+    if (key == Qt::Key_Control)
         return;
-    }
-    else if (key == Qt::Key_Shift) {
+    else if (key == Qt::Key_Shift)
         return;
-    }
-    else if (key == Qt::Key_Alt) {
+    else if (key == Qt::Key_Alt)
         return;
-    }
-    else if (state == Qt::NoModifier && key == Qt::Key_Backspace) {
-        return;  // clears the edit field
-    }
+    else if (state == Qt::NoModifier && key == Qt::Key_Backspace)
+        return;// clears the edit field
 
     switch (state) {
         case Qt::ControlModifier: {
@@ -427,12 +416,12 @@ ActionSelector::~ActionSelector()
 // --------------------------------------------------------------------
 
 InputField::InputField(QWidget* parent)
-    : QLineEdit(parent)
-    , Value(0)
-    , Maximum(INT_MAX)
-    , Minimum(-INT_MAX)
-    , StepSize(1.0)
-    , HistorySize(5)
+    : QLineEdit(parent),
+      Value(0),
+      Maximum(INT_MAX),
+      Minimum(-INT_MAX),
+      StepSize(1.0),
+      HistorySize(5)
 {}
 
 InputField::~InputField()
@@ -554,24 +543,24 @@ const QString& Unit::getString() const
     return unit;
 }
 
-int QuantityFormat::defaultDenominator = 8;  // for 1/8"
+int QuantityFormat::defaultDenominator = 8;// for 1/8"
 
 
 QuantityFormat::QuantityFormat()
-    : option(OmitGroupSeparator | RejectGroupSeparator)
-    , format(Fixed)
-    , precision(4)
-    , denominator(defaultDenominator)
+    : option(OmitGroupSeparator | RejectGroupSeparator),
+      format(Fixed),
+      precision(4),
+      denominator(defaultDenominator)
 {}
 
 Quantity::Quantity()
-    : value(0)
-    , unit()
+    : value(0),
+      unit()
 {}
 
 Quantity::Quantity(double v, const Unit& u)
-    : value(v)
-    , unit(u)
+    : value(v),
+      unit(u)
 {}
 
 Quantity Quantity::parse(const QString& str)
@@ -639,7 +628,7 @@ QString Quantity::getUserString(double& factor, QString& unitString) const
     return QString::fromUtf8("%1 %2").arg(Ln, unit.getString());
 }
 
-}  // namespace Base
+}// namespace Base
 
 namespace Gui
 {
@@ -648,12 +637,12 @@ class QuantitySpinBoxPrivate
 {
 public:
     QuantitySpinBoxPrivate()
-        : validInput(true)
-        , pendingEmit(false)
-        , unitValue(0)
-        , maximum(INT_MAX)
-        , minimum(-INT_MAX)
-        , singleStep(1.0)
+        : validInput(true),
+          pendingEmit(false),
+          unitValue(0),
+          maximum(INT_MAX),
+          minimum(-INT_MAX),
+          singleStep(1.0)
     {}
     ~QuantitySpinBoxPrivate()
     {}
@@ -663,9 +652,8 @@ public:
         QString text = t;
         const int s = text.size();
         text = text.trimmed();
-        if (pos) {
+        if (pos)
             (*pos) -= (s - text.size());
-        }
         return text;
     }
 
@@ -728,12 +716,10 @@ public:
                     goto end;
                 }
                 else if (copy.at(0) == QLatin1Char('-')) {
-                    if (minus) {
+                    if (minus)
                         state = QValidator::Intermediate;
-                    }
-                    else {
+                    else
                         state = QValidator::Invalid;
-                    }
                     goto end;
                 }
                 break;
@@ -782,12 +768,10 @@ public:
             bool ok = false;
             double value = min;
 
-            if (locale.negativeSign() != QLatin1Char('-')) {
+            if (locale.negativeSign() != QLatin1Char('-'))
                 copy.replace(locale.negativeSign(), QLatin1Char('-'));
-            }
-            if (locale.positiveSign() != QLatin1Char('+')) {
+            if (locale.positiveSign() != QLatin1Char('+'))
                 copy.replace(locale.positiveSign(), QLatin1Char('+'));
-            }
 
             try {
                 QString copy2 = copy;
@@ -820,8 +804,8 @@ public:
                     state = QValidator::Acceptable;
                 }
             }
-            else if (max == min) {  // when max and min is the same the only non-Invalid input is
-                                    // max (or min)
+            else if (max == min) {// when max and min is the same the only non-Invalid input is max
+                                  // (or min)
                 state = QValidator::Invalid;
             }
             else {
@@ -855,11 +839,11 @@ public:
     double minimum;
     double singleStep;
 };
-}  // namespace Gui
+}// namespace Gui
 
 QuantitySpinBox::QuantitySpinBox(QWidget* parent)
-    : QAbstractSpinBox(parent)
-    , d_ptr(new QuantitySpinBoxPrivate())
+    : QAbstractSpinBox(parent),
+      d_ptr(new QuantitySpinBoxPrivate())
 {
     d_ptr->locale = locale();
     this->setContextMenuPolicy(Qt::DefaultContextMenu);
@@ -909,12 +893,10 @@ void QuantitySpinBox::setValue(const Base::Quantity& value)
     Q_D(QuantitySpinBox);
     d->quantity = value;
     // check limits
-    if (d->quantity.getValue() > d->maximum) {
+    if (d->quantity.getValue() > d->maximum)
         d->quantity.setValue(d->maximum);
-    }
-    if (d->quantity.getValue() < d->minimum) {
+    if (d->quantity.getValue() < d->minimum)
         d->quantity.setValue(d->minimum);
-    }
 
     d->unit = value.getUnit();
 
@@ -1083,8 +1065,8 @@ void QuantitySpinBox::clearSchema()
     updateText(d->quantity);
 }
 
-QString
-QuantitySpinBox::getUserString(const Base::Quantity& val, double& factor, QString& unitString) const
+QString QuantitySpinBox::getUserString(const Base::Quantity& val, double& factor,
+                                       QString& unitString) const
 {
     return val.getUserString(factor, unitString);
 }
@@ -1097,12 +1079,10 @@ QString QuantitySpinBox::getUserString(const Base::Quantity& val) const
 QAbstractSpinBox::StepEnabled QuantitySpinBox::stepEnabled() const
 {
     Q_D(const QuantitySpinBox);
-    if (isReadOnly() /* || !d->validInput*/) {
+    if (isReadOnly() /* || !d->validInput*/)
         return StepNone;
-    }
-    if (wrapping()) {
+    if (wrapping())
         return StepEnabled(StepUpEnabled | StepDownEnabled);
-    }
     StepEnabled ret = StepNone;
     if (d->quantity.getValue() < d->maximum) {
         ret |= StepUpEnabled;
@@ -1120,12 +1100,10 @@ void QuantitySpinBox::stepBy(int steps)
 
     double step = d->singleStep * steps;
     double val = d->unitValue + step;
-    if (val > d->maximum) {
+    if (val > d->maximum)
         val = d->maximum;
-    }
-    else if (val < d->minimum) {
+    else if (val < d->minimum)
         val = d->minimum;
-    }
 
     lineEdit()->setText(QString::fromUtf8("%L1 %2").arg(val).arg(d->unitStr));
     updateFromCache(true);
@@ -1153,7 +1131,7 @@ QSize QuantitySpinBox::sizeHint() const
     w = fm.width(s);
 #endif
 
-    w += 2;  // cursor blinking space
+    w += 2;// cursor blinking space
     w += iconHeight;
 
     QStyleOptionSpinBox opt;
@@ -1183,7 +1161,7 @@ QSize QuantitySpinBox::minimumSizeHint() const
     w = fm.width(s);
 #endif
 
-    w += 2;  // cursor blinking space
+    w += 2;// cursor blinking space
     w += iconHeight;
 
     QStyleOptionSpinBox opt;
@@ -1201,9 +1179,8 @@ void QuantitySpinBox::showEvent(QShowEvent* event)
 
     bool selected = lineEdit()->hasSelectedText();
     updateText(d->quantity);
-    if (selected) {
+    if (selected)
         selectNumber();
-    }
 }
 
 void QuantitySpinBox::hideEvent(QHideEvent* event)
@@ -1252,9 +1229,8 @@ void QuantitySpinBox::focusInEvent(QFocusEvent* event)
     if (event->reason() == Qt::TabFocusReason || event->reason() == Qt::BacktabFocusReason
         || event->reason() == Qt::ShortcutFocusReason) {
 
-        if (!hasSel) {
+        if (!hasSel)
             selectNumber();
-        }
     }
 }
 
@@ -1414,9 +1390,8 @@ void CommandIconView::startDrag(Qt::DropActions /*supportedActions*/)
     QPixmap pixmap;
     dataStream << items.count();
     for (QList<QListWidgetItem*>::ConstIterator it = items.begin(); it != items.end(); ++it) {
-        if (it == items.begin()) {
+        if (it == items.begin())
             pixmap = ((*it)->data(Qt::UserRole)).value<QPixmap>();
-        }
         dataStream << (*it)->text();
     }
 
@@ -1432,9 +1407,8 @@ void CommandIconView::startDrag(Qt::DropActions /*supportedActions*/)
 
 void CommandIconView::onSelectionChanged(QListWidgetItem* item, QListWidgetItem*)
 {
-    if (item) {
+    if (item)
         emitSelectionChanged(item->toolTip());
-    }
 }
 
 // ------------------------------------------------------------------------------
@@ -1487,26 +1461,21 @@ UnsignedValidator::~UnsignedValidator()
 
 QValidator::State UnsignedValidator::validate(QString& input, int&) const
 {
-    QString stripped;  // = input.stripWhiteSpace();
-    if (stripped.isEmpty()) {
+    QString stripped;// = input.stripWhiteSpace();
+    if (stripped.isEmpty())
         return Intermediate;
-    }
     bool ok;
     uint entered = input.toUInt(&ok);
-    if (!ok) {
+    if (!ok)
         return Invalid;
-    }
-    else if (entered < b) {
+    else if (entered < b)
         return Intermediate;
-    }
-    else if (entered > t) {
+    else if (entered > t)
         return Invalid;
-    }
     //  else if ( entered < b || entered > t )
     //	  return Invalid;
-    else {
+    else
         return Acceptable;
-    }
 }
 
 void UnsignedValidator::setRange(uint minimum, uint maximum)
@@ -1573,7 +1542,7 @@ public:
     }
 };
 
-}  // namespace Gui
+}// namespace Gui
 
 // -------------------------------------------------------------
 
@@ -1631,9 +1600,8 @@ uint UIntSpinBox::minimum() const
 void UIntSpinBox::setMinimum(uint minVal)
 {
     uint maxVal = maximum();
-    if (maxVal < minVal) {
+    if (maxVal < minVal)
         maxVal = minVal;
-    }
     setRange(minVal, maxVal);
 }
 
@@ -1645,9 +1613,8 @@ uint UIntSpinBox::maximum() const
 void UIntSpinBox::setMaximum(uint maxVal)
 {
     uint minVal = minimum();
-    if (minVal > maxVal) {
+    if (minVal > maxVal)
         minVal = maxVal;
-    }
     setRange(minVal, maxVal);
 }
 
@@ -1756,10 +1723,10 @@ void PrefDoubleSpinBox::setParamGrpPath(const QByteArray& name)
 // -------------------------------------------------------------
 
 ColorButton::ColorButton(QWidget* parent)
-    : QPushButton(parent)
-    , _allowChange(true)
-    , _allowTransparency(false)
-    , _drawFrame(true)
+    : QPushButton(parent),
+      _allowChange(true),
+      _allowTransparency(false),
+      _drawFrame(true)
 {
     _col = palette().color(QPalette::Active, QPalette::Midlight);
     connect(this, &ColorButton::clicked, this, &ColorButton::onChooseColor);
@@ -1844,9 +1811,8 @@ void ColorButton::paintEvent(QPaintEvent* e)
 
 void ColorButton::onChooseColor()
 {
-    if (!_allowChange) {
+    if (!_allowChange)
         return;
-    }
     QColor c = QColorDialog::getColor(_col, this);
     if (c.isValid()) {
         setColor(c);

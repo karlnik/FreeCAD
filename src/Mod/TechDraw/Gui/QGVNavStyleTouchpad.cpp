@@ -48,18 +48,16 @@ void QGVNavStyleTouchpad::handleKeyPressEvent(QKeyEvent *event)
 {
 //    Q_UNUSED(event)
     if (event->key() == Qt::Key_PageUp) {
-        zoomIn();
+        zoom(1.0 + zoomStep);
         event->accept();
         return;
     }
 
     if (event->key() == Qt::Key_PageDown) {
-        zoomOut();
+        zoom(1.0 - zoomStep);
         event->accept();
         return;
     }
-
-    QGVNavStyle::handleKeyPressEvent(event);
 }
 
 void QGVNavStyleTouchpad::handleKeyReleaseEvent(QKeyEvent *event)
@@ -96,7 +94,6 @@ void QGVNavStyleTouchpad::handleMouseMoveEvent(QMouseEvent *event)
             startPan(event->pos());
         }
         event->accept();
-        return;
     }
 
     if (QGuiApplication::keyboardModifiers().testFlag(Qt::ControlModifier) &&
@@ -108,13 +105,7 @@ void QGVNavStyleTouchpad::handleMouseMoveEvent(QMouseEvent *event)
             startZoom(event->pos());
         }
         event->accept();
-        return;
     }
-
-    // if the mouse moves, but we are not zooming or panning, then we should make
-    // sure that zoom and pan are turned off.
-    stopPan();
-    stopZoom();
 }
 
 void QGVNavStyleTouchpad::setAnchor()

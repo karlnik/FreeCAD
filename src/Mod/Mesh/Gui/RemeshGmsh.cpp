@@ -295,7 +295,9 @@ RemeshGmsh::RemeshGmsh(Mesh::Feature* mesh, QWidget* parent, Qt::WindowFlags fl)
     d->geoFile = App::Application::getTempFileName() + "mesh.geo";
 }
 
-RemeshGmsh::~RemeshGmsh() = default;
+RemeshGmsh::~RemeshGmsh()
+{
+}
 
 bool RemeshGmsh::writeProject(QString& inpFile, QString& outFile)
 {
@@ -398,6 +400,11 @@ TaskRemeshGmsh::TaskRemeshGmsh(Mesh::Feature* mesh)
         QPixmap(), widget->windowTitle(), false, nullptr);
     taskbox->groupLayout()->addWidget(widget);
     Content.push_back(taskbox);
+}
+
+TaskRemeshGmsh::~TaskRemeshGmsh()
+{
+    // automatically deleted in the sub-class
 }
 
 void TaskRemeshGmsh::clicked(int id)

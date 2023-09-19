@@ -46,7 +46,9 @@ DlgRevertToBackupConfigImp::DlgRevertToBackupConfigImp(QWidget* parent)
     connect(ui->listWidget, &QListWidget::itemSelectionChanged, this, &DlgRevertToBackupConfigImp::onItemSelectionChanged);
 }
 
-DlgRevertToBackupConfigImp::~DlgRevertToBackupConfigImp() = default;
+DlgRevertToBackupConfigImp::~DlgRevertToBackupConfigImp()
+{
+}
 
 void Gui::Dialog::DlgRevertToBackupConfigImp::onItemSelectionChanged()
 {

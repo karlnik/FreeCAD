@@ -58,7 +58,7 @@ MeshSegment MeshSurfaceSegment::FindSegment(FacetIndex index) const
             return segment;
     }
 
-    return {};
+    return MeshSegment();
 }
 
 // --------------------------------------------------------
@@ -513,6 +513,10 @@ bool MeshCurvatureFreeformSegment::TestFacet (const MeshFacet &rclFacet) const
 
 MeshSurfaceVisitor::MeshSurfaceVisitor (MeshSurfaceSegment& segm, std::vector<FacetIndex> &indices)
   : indices(indices), segm(segm)
+{
+}
+
+MeshSurfaceVisitor::~MeshSurfaceVisitor ()
 {
 }
 

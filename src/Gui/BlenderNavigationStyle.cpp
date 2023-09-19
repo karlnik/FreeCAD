@@ -43,7 +43,9 @@ BlenderNavigationStyle::BlenderNavigationStyle() : lockButton1(false)
 {
 }
 
-BlenderNavigationStyle::~BlenderNavigationStyle() = default;
+BlenderNavigationStyle::~BlenderNavigationStyle()
+{
+}
 
 const char* BlenderNavigationStyle::mouseButtons(ViewerMode mode)
 {

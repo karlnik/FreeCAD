@@ -43,12 +43,14 @@ using namespace Gui;
 
 EXTENSION_PROPERTY_SOURCE(Gui::ViewProviderGroupExtension, Gui::ViewProviderExtension)
 
-ViewProviderGroupExtension::ViewProviderGroupExtension()
+ViewProviderGroupExtension::ViewProviderGroupExtension()  : guard(false)
 {
     initExtensionType(ViewProviderGroupExtension::getExtensionClassTypeId());
 }
 
-ViewProviderGroupExtension::~ViewProviderGroupExtension() = default;
+ViewProviderGroupExtension::~ViewProviderGroupExtension()
+{
+}
 
 bool ViewProviderGroupExtension::extensionCanDragObjects() const {
     return true;
@@ -109,7 +111,7 @@ void ViewProviderGroupExtension::extensionDropObject(App::DocumentObject* obj) {
 std::vector< App::DocumentObject* > ViewProviderGroupExtension::extensionClaimChildren() const {
 
     auto* group = getExtendedViewProvider()->getObject()->getExtensionByType<App::GroupExtension>();
-    return group->Group.getValues();
+    return std::vector<App::DocumentObject*>(group->Group.getValues());
 }
 
 void ViewProviderGroupExtension::extensionShow() {

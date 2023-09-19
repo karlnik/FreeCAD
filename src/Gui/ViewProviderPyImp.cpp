@@ -32,7 +32,6 @@
 #endif
 
 #include <Base/BoundBoxPy.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 #include "PythonWrapper.h"
 #include "SoFCDB.h"
@@ -186,11 +185,10 @@ PyObject*  ViewProviderPy::canDropObject(PyObject *args, PyObject *kw)
     PyObject *owner = Py_None;
     PyObject *pyElements = Py_None;
     const char *subname = nullptr;
-    static const std::array<const char *, 5> kwlist{"obj", "owner", "subname", "elem", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kw, "|OOsO", kwlist,
-                                            &obj, &owner, &subname, &pyElements)) {
+    static char* kwlist[] = {"obj","owner","subname","elem",nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kw, "|OOsO", kwlist,
+            &obj, &owner, &subname, &pyElements))
         return nullptr;
-    }
 
     PY_TRY {
         Base::PyTypeCheck(&obj, &App::DocumentObjectPy::Type, "expecting 'obj' to be of type App.DocumentObject or None");
@@ -247,11 +245,10 @@ PyObject*  ViewProviderPy::dropObject(PyObject *args, PyObject *kw)
     PyObject *owner = Py_None;
     PyObject *pyElements = Py_None;
     const char *subname = nullptr;
-    static const std::array<const char *, 5> kwlist{"obj", "owner", "subname", "elem", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kw, "O!|OsO", kwlist,
-                                             &App::DocumentObjectPy::Type, &obj, &owner, &subname, &pyElements)) {
+    static char* kwlist[] = {"obj","owner","subname","elem",nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kw, "O!|OsO", kwlist,
+            &App::DocumentObjectPy::Type, &obj, &owner, &subname, &pyElements))
         return nullptr;
-    }
 
     PY_TRY {
         Base::PyTypeCheck(&owner, &App::DocumentObjectPy::Type, "expecting 'owner' to be of type App.DocumentObject or None");
@@ -645,7 +642,7 @@ void  ViewProviderPy::setSwitchNode(Py::Object)
 Py::String ViewProviderPy::getIV() const
 {
     std::string buf = Gui::SoFCDB::writeNodesToString(getViewProviderPtr()->getRoot());
-    return {buf};
+    return Py::String(buf);
 }
 
 Py::Object ViewProviderPy::getIcon() const
@@ -669,12 +666,12 @@ void ViewProviderPy::setDefaultMode(Py::Int arg)
 
 Py::Boolean ViewProviderPy::getCanRemoveChildrenFromRoot() const
 {
-    return {getViewProviderPtr()->canRemoveChildrenFromRoot()};
+    return Py::Boolean(getViewProviderPtr()->canRemoveChildrenFromRoot());
 }
 
 Py::Boolean ViewProviderPy::getLinkVisibility() const
 {
-    return {getViewProviderPtr()->isLinkVisible()};
+    return Py::Boolean(getViewProviderPtr()->isLinkVisible());
 }
 
 void ViewProviderPy::setLinkVisibility(Py::Boolean arg)
@@ -684,5 +681,5 @@ void ViewProviderPy::setLinkVisibility(Py::Boolean arg)
 
 Py::String ViewProviderPy::getDropPrefix() const
 {
-    return {getViewProviderPtr()->getDropPrefix()};
+    return Py::String(getViewProviderPtr()->getDropPrefix());
 }

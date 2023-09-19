@@ -51,7 +51,8 @@ DlgSettingsNotificationArea::DlgSettingsNotificationArea(QWidget* parent)
     });
 }
 
-DlgSettingsNotificationArea::~DlgSettingsNotificationArea() = default;
+DlgSettingsNotificationArea::~DlgSettingsNotificationArea()
+{}
 
 void DlgSettingsNotificationArea::saveSettings()
 {

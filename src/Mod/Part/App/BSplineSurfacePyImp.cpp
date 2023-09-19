@@ -35,7 +35,6 @@
 # include <GeomFill_NSections.hxx>
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include "BSplineSurfacePy.h"
@@ -1167,15 +1166,10 @@ PyObject* BSplineSurfacePy::approximate(PyObject *args, PyObject *kwds)
     Standard_Real Y0=0;
     Standard_Real dY=0;
 
-    static const std::array<const char *, 14> kwds_interp{"Points", "DegMin", "DegMax", "Continuity", "Tolerance", "X0",
-                                                          "dX", "Y0", "dY", "ParamType", "LengthWeight",
-                                                          "CurvatureWeight", "TorsionWeight", nullptr};
+    static char* kwds_interp[] = {"Points", "DegMin", "DegMax", "Continuity", "Tolerance", "X0", "dX", "Y0", "dY", "ParamType", "LengthWeight", "CurvatureWeight", "TorsionWeight", nullptr};
 
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O|iiidddddsddd", kwds_interp, &obj, &degMin, &degMax,
-                                             &continuity, &tol3d, &X0, &dX, &Y0, &dY, &parType, &weight1, &weight2,
-                                             &weight3)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O|iiidddddsddd", kwds_interp, &obj, &degMin, &degMax, &continuity, &tol3d, &X0, &dX, &Y0, &dY, &parType, &weight1, &weight2, &weight3))
         return nullptr;
-    }
     try {
         Py::Sequence list(obj);
         Standard_Integer lu = list.size();
@@ -1334,10 +1328,10 @@ PyObject* BSplineSurfacePy::interpolate(PyObject *args)
 
 PyObject* BSplineSurfacePy::buildFromPolesMultsKnots(PyObject *args, PyObject *keywds)
 {
-    static const std::array<const char *, 11> kwlist{"poles", "umults", "vmults", "uknots", "vknots", "uperiodic",
-                                                     "vperiodic", "udegree", "vdegree", "weights", nullptr};
-    PyObject* uperiodic = Py_False; // NOLINT
-    PyObject* vperiodic = Py_False; // NOLINT
+    static char *kwlist[] = {"poles", "umults", "vmults",
+        "uknots", "vknots", "uperiodic", "vperiodic", "udegree", "vdegree", "weights", nullptr};
+    PyObject* uperiodic = Py_False;
+    PyObject* vperiodic = Py_False;
     PyObject* poles = Py_None;
     PyObject* umults = Py_None;
     PyObject* vmults = Py_None;
@@ -1351,13 +1345,12 @@ PyObject* BSplineSurfacePy::buildFromPolesMultsKnots(PyObject *args, PyObject *k
     int sum_of_umults = 0;
     int sum_of_vmults = 0;
 
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, keywds, "OOO|OOO!O!iiO", kwlist,
-                                             &poles, &umults, &vmults, //required
-                                             &uknots, &vknots, //optional
-                                             &PyBool_Type, &uperiodic, &PyBool_Type, &vperiodic, //optional
-                                             &udegree, &vdegree, &weights)) {
+    if (!PyArg_ParseTupleAndKeywords(args, keywds, "OOO|OOO!O!iiO", kwlist,
+        &poles, &umults, &vmults, //required
+        &uknots, &vknots, //optional
+        &PyBool_Type, &uperiodic, &PyBool_Type, &vperiodic, //optinoal
+        &udegree, &vdegree, &weights)) //optional
         return nullptr;
-    }
     try {
         Py::Sequence list(poles);
         Standard_Integer lu = list.size();

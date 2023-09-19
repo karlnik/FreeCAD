@@ -4,17 +4,17 @@
   <context>
     <name>CmdMeshPartCrossSections</name>
     <message>
-      <location filename="../../Command.cpp" line="280"/>
+      <location filename="../../Command.cpp" line="269"/>
       <source>MeshPart</source>
       <translation>Netz-Formteil</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="281"/>
+      <location filename="../../Command.cpp" line="270"/>
       <source>Cross-sections...</source>
       <translation>Schnitte...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="282"/>
+      <location filename="../../Command.cpp" line="271"/>
       <source>Cross-sections</source>
       <translation>Schnitte</translation>
     </message>
@@ -22,17 +22,17 @@
   <context>
     <name>CmdMeshPartCurveOnMesh</name>
     <message>
-      <location filename="../../Command.cpp" line="316"/>
+      <location filename="../../Command.cpp" line="305"/>
       <source>Mesh</source>
       <translation>Netz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="317"/>
+      <location filename="../../Command.cpp" line="306"/>
       <source>Curve on mesh...</source>
       <translation>Kurve auf Netz...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="318"/>
+      <location filename="../../Command.cpp" line="307"/>
       <source>Creates an approximated curve on top of a mesh.
 This command only works with a 'mesh' object.</source>
       <translation>Erstellt eine angenäherte Kurve auf einem Netz.
@@ -60,19 +60,19 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
   <context>
     <name>CmdMeshPartSection</name>
     <message>
-      <location filename="../../Command.cpp" line="192"/>
+      <location filename="../../Command.cpp" line="185"/>
       <source>Mesh</source>
       <translation>Netz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="193"/>
+      <location filename="../../Command.cpp" line="186"/>
       <source>Create section from mesh and plane</source>
-      <translation>Schnitt aus Netz und Fläche erstellen</translation>
+      <translation>Schnitt aus Netz und Ebene erstellen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="194"/>
+      <location filename="../../Command.cpp" line="187"/>
       <source>Section</source>
-      <translation>Schnitt</translation>
+      <translation>Schnittkurve</translation>
     </message>
   </context>
   <context>
@@ -85,24 +85,24 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
     <message>
       <location filename="../../Command.cpp" line="84"/>
       <source>Trim mesh with a plane</source>
-      <translation>Netz mit Fläche zuschneiden</translation>
+      <translation>Netz mit Ebene trimmen</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="85"/>
       <location filename="../../Command.cpp" line="86"/>
       <source>Trims a mesh with a plane</source>
-      <translation>Schneidet ein Netz mit einer Fläche zu</translation>
+      <translation>Ein Netz mit einer Ebene trimmen</translation>
     </message>
   </context>
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="134"/>
+      <location filename="../../Command.cpp" line="129"/>
       <source>Trim with plane</source>
       <translation>An Ebene trimmen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="217"/>
+      <location filename="../../Command.cpp" line="208"/>
       <source>Section with plane</source>
       <translation>Mit Ebene schneiden</translation>
     </message>
@@ -117,7 +117,7 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
     <message>
       <location filename="../../CrossSections.ui" line="20"/>
       <source>Guiding plane</source>
-      <translation>Bezugsebene</translation>
+      <translation>Führungsebene</translation>
     </message>
     <message>
       <location filename="../../CrossSections.ui" line="26"/>
@@ -147,7 +147,7 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
     <message>
       <location filename="../../CrossSections.ui" line="83"/>
       <source>On both sides</source>
-      <translation>Auf beiden Seiten</translation>
+      <translation>Beidseitig</translation>
     </message>
     <message>
       <location filename="../../CrossSections.ui" line="92"/>
@@ -157,7 +157,7 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
     <message>
       <location filename="../../CrossSections.ui" line="109"/>
       <source>Distance:</source>
-      <translation>Abstand:</translation>
+      <translation>Entfernung:</translation>
     </message>
     <message>
       <location filename="../../CrossSections.ui" line="128"/>
@@ -167,10 +167,10 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
     <message>
       <location filename="../../CrossSections.ui" line="134"/>
       <source>Connect edges if distance less than</source>
-      <translation>Kanten verbinden, wenn der Abstand kleiner ist als</translation>
+      <translation>Kanten verbinden, wenn die Distanz kleiner ist als</translation>
     </message>
     <message>
-      <location filename="../../CrossSections.cpp" line="384"/>
+      <location filename="../../CrossSections.cpp" line="366"/>
       <source>Failure</source>
       <translation>Ein Fehler ist aufgetreten</translation>
     </message>
@@ -178,32 +178,32 @@ Dieser Befehl funktioniert nur mit einem 'mesh'-Objekt.</translation>
   <context>
     <name>MeshPartGui::CurveOnMeshHandler</name>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="362"/>
+      <location filename="../../CurveOnMesh.cpp" line="364"/>
       <source>Create</source>
       <translation>Erstellen</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="364"/>
+      <location filename="../../CurveOnMesh.cpp" line="366"/>
       <source>Close wire</source>
       <translation>Kantenzug schließen</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="366"/>
+      <location filename="../../CurveOnMesh.cpp" line="368"/>
       <source>Clear</source>
-      <translation>Leeren</translation>
+      <translation>Löschen</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="367"/>
+      <location filename="../../CurveOnMesh.cpp" line="369"/>
       <source>Cancel</source>
       <translation>Abbrechen</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="626"/>
+      <location filename="../../CurveOnMesh.cpp" line="615"/>
       <source>Wrong mesh picked</source>
       <translation>Falsches Netz ausgewählt</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="667"/>
+      <location filename="../../CurveOnMesh.cpp" line="655"/>
       <source>No point was picked</source>
       <translation>Es wurde kein Punkt ausgewählt</translation>
     </message>
@@ -401,7 +401,7 @@ Der kleinste Wert ist 0.</translation>
     <message>
       <location filename="../../Tessellation.ui" line="244"/>
       <source>Moderate</source>
-      <translation>Moderat</translation>
+      <translation>Mittel</translation>
     </message>
     <message>
       <location filename="../../Tessellation.ui" line="249"/>
@@ -484,32 +484,32 @@ Ein Wert im Bereich von 0.2-10.</translation>
       <translation>Fenster geöffnet lassen</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="62"/>
+      <location filename="../../Tessellation.cpp" line="61"/>
       <source>Gmsh</source>
       <translation>Gmsh</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="235"/>
-      <location filename="../../Tessellation.cpp" line="241"/>
+      <location filename="../../Tessellation.cpp" line="225"/>
+      <location filename="../../Tessellation.cpp" line="231"/>
       <source>No active document</source>
       <translation>Kein aktives Dokument</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="272"/>
+      <location filename="../../Tessellation.cpp" line="259"/>
       <source>You have selected a body without tip.
 Either set the tip of the body or select a different shape, please.</source>
       <translation>Es wurde ein Körper ohne TIP ausgewählt.
 Bitte TIP des Körpers festlegen oder eine andere Form auswählen.</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="278"/>
+      <location filename="../../Tessellation.cpp" line="263"/>
       <source>You have selected a shape without faces.
 Select a different shape, please.</source>
       <translation>Du hast eine Form ohne Flächen ausgewählt.
 Wähle bitte eine andere Form aus.</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="282"/>
+      <location filename="../../Tessellation.cpp" line="267"/>
       <source>Select a shape for meshing, first.</source>
       <translation>Wählen Sie zuerst eine Form für die Vernetzung.</translation>
     </message>
@@ -517,12 +517,12 @@ Wähle bitte eine andere Form aus.</translation>
   <context>
     <name>MeshPart_Section</name>
     <message>
-      <location filename="../../Command.cpp" line="206"/>
+      <location filename="../../Command.cpp" line="198"/>
       <source>Select plane</source>
       <translation>Ebene auswählen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="207"/>
+      <location filename="../../Command.cpp" line="199"/>
       <source>Please select a plane at which you section the mesh.</source>
       <translation>Bitte wählen Sie eine Ebene, bei der Sie das Netz unterteilen.</translation>
     </message>
@@ -540,27 +540,27 @@ Wähle bitte eine andere Form aus.</translation>
       <translation>Bitte wählen Sie eine Ebene, mit welcher Sie das Netz trimmen.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="103"/>
+      <location filename="../../Command.cpp" line="102"/>
       <source>Trim by plane</source>
       <translation>Beschneiden mit einer Ebene</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="104"/>
+      <location filename="../../Command.cpp" line="103"/>
       <source>Select the side you want to keep.</source>
       <translation>Wählen Sie die Seite, die Sie behalten möchten.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="106"/>
+      <location filename="../../Command.cpp" line="104"/>
       <source>Below</source>
       <translation>Unter</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="108"/>
+      <location filename="../../Command.cpp" line="105"/>
       <source>Above</source>
       <translation>Über</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="110"/>
+      <location filename="../../Command.cpp" line="106"/>
       <source>Split</source>
       <translation>Teilen</translation>
     </message>
@@ -576,27 +576,27 @@ Wähle bitte eine andere Form aus.</translation>
   <context>
     <name>MeshPart_CreateFlatMesh</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="49"/>
+      <location filename="../../MeshFlatteningCommand.py" line="47"/>
       <source>Unwrap Mesh</source>
-      <translation>Netz abwickeln</translation>
+      <translation>Netz entpacken</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="52"/>
+      <location filename="../../MeshFlatteningCommand.py" line="50"/>
       <source>Find a flat representation of a mesh.</source>
-      <translation>Ermittelt eine ebene Darstellung eines Netzes.</translation>
+      <translation>Eine ebene Darstellung eines Netzes finden.</translation>
     </message>
   </context>
   <context>
     <name>MeshPart_CreateFlatFace</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="88"/>
+      <location filename="../../MeshFlatteningCommand.py" line="79"/>
       <source>Unwrap Face</source>
-      <translation>Fläche abwickeln</translation>
+      <translation>Fläche entpacken</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="91"/>
+      <location filename="../../MeshFlatteningCommand.py" line="82"/>
       <source>Find a flat representation of a face.</source>
-      <translation>Ermittelt eine ebene Darstellung einer Fläche.</translation>
+      <translation>Eine ebene Darstellung der Fläche finden.</translation>
     </message>
   </context>
 </TS>

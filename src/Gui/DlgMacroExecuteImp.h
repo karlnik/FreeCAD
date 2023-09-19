@@ -26,7 +26,6 @@
 
 #include <QDialog>
 #include <memory>
-#include "PythonTracing.h"
 #include "Window.h"
 
 class QTreeWidgetItem;
@@ -64,18 +63,14 @@ private:
     void onUserMacroListBoxCurrentItemChanged(QTreeWidgetItem*);
     void onSystemMacroListBoxCurrentItemChanged(QTreeWidgetItem*);
     void onTabMacroWidgetCurrentChanged(int index);
-    void onLineEditFindTextChanged(const QString&);
-    void onLineEditFindInFilesTextChanged(const QString&);
 
 protected:
     void fillUpList();
-    QStringList filterFiles(const QString&);
 
 protected:
     QString macroPath;
 
 private:
-    std::unique_ptr<PythonTracingWatcher> watcher;
     std::unique_ptr<Ui_DlgMacroExecute> ui;
 };
 

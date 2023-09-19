@@ -41,7 +41,9 @@ TaskEditControl::TaskEditControl(QWidget *parent)
     hboxLayout->addWidget(buttonBox);
 }
 
-TaskEditControl::~TaskEditControl() = default;
+TaskEditControl::~TaskEditControl()
+{
+}
 
 QDialogButtonBox* TaskEditControl::standardButtons() const
 {

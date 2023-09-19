@@ -1306,9 +1306,6 @@ void CmdTechDrawLandmarkDimension::activated(int iMsg)
     doCommand(Doc,
               "App.activeDocument().addObject('TechDraw::LandmarkDimension', '%s')",
               FeatName.c_str());
-    doCommand(Doc, "App.activeDocument().%s.translateLabel('LandmarkDimension', 'LandmarkDim', '%s')",
-              FeatName.c_str(), FeatName.c_str());
-
     if (objects.size() == 2) {
         //what about distanceX and distanceY??
         doCommand(Doc, "App.activeDocument().%s.Type = '%s'", FeatName.c_str(), "Distance");
@@ -1389,9 +1386,6 @@ DrawViewDimension* dimensionMaker(TechDraw::DrawViewPart* dvp, std::string dimTy
     Gui::Command::doCommand(Gui::Command::Doc,
                             "App.activeDocument().addObject('TechDraw::DrawViewDimension', '%s')",
                             dimName.c_str());
-    Gui::Command::doCommand(Gui::Command::Doc, "App.activeDocument().%s.translateLabel('DrawViewDimension', 'Dimension', '%s')",
-              dimName.c_str(), dimName.c_str());
-
     Gui::Command::doCommand(
         Gui::Command::Doc, "App.activeDocument().%s.Type = '%s'", dimName.c_str(), dimType.c_str());
 

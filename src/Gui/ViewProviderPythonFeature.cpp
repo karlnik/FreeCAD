@@ -57,8 +57,7 @@ namespace sp = std::placeholders;
 
 ViewProviderPythonFeatureImp::ViewProviderPythonFeatureImp(
         ViewProviderDocumentObject* vp, App::PropertyPythonObject &proxy)
-  : object(vp)
-  , Proxy(proxy)
+  : object(vp), Proxy(proxy), has__object__(false)
 {
 }
 
@@ -97,7 +96,7 @@ QIcon ViewProviderPythonFeatureImp::getIcon() const
     try {
         Py::Object ret(Base::pyCall(py_getIcon.ptr()));
         if(ret.isNone())
-            return {};
+            return QIcon();
 
         if(ret.isString()) {
             std::string content = Py::String(ret).as_std_string("utf-8");
@@ -149,7 +148,7 @@ QIcon ViewProviderPythonFeatureImp::getIcon() const
         }
     }
 
-    return {};
+    return QIcon();
 }
 
 bool ViewProviderPythonFeatureImp::claimChildren(std::vector<App::DocumentObject*> &children) const
@@ -344,7 +343,7 @@ ViewProviderPythonFeatureImp::ValueT ViewProviderPythonFeatureImp::getDetailPath
 
 std::vector<Base::Vector3d> ViewProviderPythonFeatureImp::getSelectionShape(const char* /*Element*/) const
 {
-    return {};
+    return std::vector<Base::Vector3d>();
 }
 
 ViewProviderPythonFeatureImp::ValueT

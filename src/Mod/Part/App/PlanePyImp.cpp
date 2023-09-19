@@ -32,7 +32,6 @@
 #endif
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include "PlanePy.h"
@@ -62,8 +61,8 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
     // plane and distance for offset
     PyObject *pPlane;
     double dist;
-    static const std::array<const char *, 3> keywords_pd {"Plane", "Distance", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!d", keywords_pd, &(PlanePy::Type), &pPlane, &dist)) {
+    static char* keywords_pd[] = {"Plane","Distance",nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!d", keywords_pd, &(PlanePy::Type), &pPlane, &dist)) {
         PlanePy* pcPlane = static_cast<PlanePy*>(pPlane);
         Handle(Geom_Plane) plane = Handle(Geom_Plane)::DownCast
             (pcPlane->getGeometryPtr()->handle());
@@ -80,10 +79,10 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
 
     // plane from equation
     double a,b,c,d;
-    static const std::array<const char *, 5> keywords_abcd{"A", "B", "C", "D", nullptr};
+    static char* keywords_abcd[] = {"A","B","C","D",nullptr};
     PyErr_Clear();
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "dddd", keywords_abcd,
-                                            &a,&b,&c,&d)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "dddd", keywords_abcd,
+                                        &a,&b,&c,&d)) {
         GC_MakePlane mc(a,b,c,d);
         if (!mc.IsDone()) {
             PyErr_SetString(PartExceptionOCCError, gce_ErrorStatusText(mc.Status()));
@@ -96,12 +95,12 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
     }
 
     PyObject *pV1, *pV2, *pV3;
-    static const std::array<const char *, 4> keywords_ppp{"Point1", "Point2", "Point3", nullptr};
+    static char* keywords_ppp[] = {"Point1","Point2","Point3",nullptr};
     PyErr_Clear();
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!O!", keywords_ppp,
-                                            &(Base::VectorPy::Type), &pV1,
-                                            &(Base::VectorPy::Type), &pV2,
-                                            &(Base::VectorPy::Type), &pV3)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!O!O!", keywords_ppp,
+                                         &(Base::VectorPy::Type), &pV1,
+                                         &(Base::VectorPy::Type), &pV2,
+                                         &(Base::VectorPy::Type), &pV3)) {
         Base::Vector3d v1 = static_cast<Base::VectorPy*>(pV1)->value();
         Base::Vector3d v2 = static_cast<Base::VectorPy*>(pV2)->value();
         Base::Vector3d v3 = static_cast<Base::VectorPy*>(pV3)->value();
@@ -119,11 +118,11 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
     }
 
     // location and normal
-    static const std::array<const char *, 3> keywords_cnr {"Location", "Normal", nullptr};
+    static char* keywords_cnr[] = {"Location","Normal",nullptr};
     PyErr_Clear();
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!", keywords_cnr,
-                                            &(Base::VectorPy::Type), &pV1,
-                                            &(Base::VectorPy::Type), &pV2)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!O!", keywords_cnr,
+                                        &(Base::VectorPy::Type), &pV1,
+                                        &(Base::VectorPy::Type), &pV2)) {
         Base::Vector3d v1 = static_cast<Base::VectorPy*>(pV1)->value();
         Base::Vector3d v2 = static_cast<Base::VectorPy*>(pV2)->value();
         GC_MakePlane mc(gp_Pnt(v1.x,v1.y,v1.z),
@@ -138,9 +137,9 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
         return 0;
     }
 
-    static const std::array<const char *, 2> keywords_p {"Plane", nullptr};
+    static char* keywords_p[] = {"Plane",nullptr};
     PyErr_Clear();
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!", keywords_p, &(PlanePy::Type), &pPlane)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!", keywords_p, &(PlanePy::Type), &pPlane)) {
         PlanePy* pcPlane = static_cast<PlanePy*>(pPlane);
         Handle(Geom_Plane) plane1 = Handle(Geom_Plane)::DownCast
             (pcPlane->getGeometryPtr()->handle());
@@ -150,9 +149,9 @@ int PlanePy::PyInit(PyObject* args, PyObject* kwds)
         return 0;
     }
 
-    static const std::array<const char *, 1> keywords_n {nullptr};
+    static char* keywords_n[] = {nullptr};
     PyErr_Clear();
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "", keywords_n)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "", keywords_n)) {
         // do nothing
         return 0;
     }

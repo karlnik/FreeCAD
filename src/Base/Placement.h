@@ -40,8 +40,7 @@ class BaseExport Placement
 public:
     /// default constructor
     Placement();
-    Placement(const Placement&) = default;
-    Placement(Placement&&) = default;
+    Placement(const Placement&);
     Placement(const Base::Matrix4D& matrix);
     Placement(const Vector3d& Pos, const Rotation &Rot);
     Placement(const Vector3d& Pos, const Rotation &Rot, const Vector3d& Cnt);
@@ -77,8 +76,7 @@ public:
     Placement operator *(const Placement & p) const;
     bool operator == (const Placement&) const;
     bool operator != (const Placement&) const;
-    Placement& operator = (const Placement&) = default;
-    Placement& operator = (Placement&&) = default;
+    Placement& operator = (const Placement&);
     Placement pow(double t, bool shorten = true) const;
 
     Placement& multRight(const Base::Placement& p);
@@ -91,7 +89,7 @@ public:
     static Placement slerp(const Placement & p0, const Placement & p1, double t);
     static Placement sclerp(const Placement & p0, const Placement & p1, double t, bool shorten = true);
 
-private:
+protected:
     Vector3<double> _pos;
     Base::Rotation  _rot;
 };

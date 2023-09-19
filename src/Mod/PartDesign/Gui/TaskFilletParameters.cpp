@@ -68,8 +68,9 @@ TaskFilletParameters::TaskFilletParameters(ViewProviderDressUp *DressUpView, QWi
     ui->filletRadius->bind(pcFillet->Radius);
     QMetaObject::invokeMethod(ui->filletRadius, "setFocus", Qt::QueuedConnection);
     std::vector<std::string> strings = pcFillet->Base.getSubValues();
-    for (const auto & string : strings) {
-        ui->listWidgetReferences->addItem(QString::fromStdString(string));
+    for (std::vector<std::string>::const_iterator i = strings.begin(); i != strings.end(); i++)
+    {
+        ui->listWidgetReferences->addItem(QString::fromStdString(*i));
     }
 
     QMetaObject::connectSlotsByName(this);
@@ -206,7 +207,10 @@ TaskDlgFilletParameters::TaskDlgFilletParameters(ViewProviderFillet *DressUpView
     Content.push_back(parameter);
 }
 
-TaskDlgFilletParameters::~TaskDlgFilletParameters() = default;
+TaskDlgFilletParameters::~TaskDlgFilletParameters()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

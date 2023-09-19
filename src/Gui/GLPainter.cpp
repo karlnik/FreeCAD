@@ -34,6 +34,11 @@ using namespace Gui;
 TYPESYSTEM_SOURCE_ABSTRACT(Gui::GLGraphicsItem, Base::BaseClass)
 
 GLPainter::GLPainter()
+  : viewer(nullptr)
+  , width(0)
+  , height(0)
+  , logicOp(false)
+  , lineStipple(false)
 {
     depthrange[0] = 0;
     depthrange[1] = 0;
@@ -229,7 +234,9 @@ Rubberband::Rubberband() : viewer(nullptr)
     rgb_a = 1.0f;
 }
 
-Rubberband::~Rubberband() = default;
+Rubberband::~Rubberband()
+{
+}
 
 void Rubberband::setWorking(bool on)
 {
@@ -333,7 +340,9 @@ Polyline::Polyline() : viewer(nullptr)
     rgb_a = 1.0f;
 }
 
-Polyline::~Polyline() = default;
+Polyline::~Polyline()
+{
+}
 
 void Polyline::setWorking(bool on)
 {

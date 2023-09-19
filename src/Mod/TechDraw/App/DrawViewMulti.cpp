@@ -108,15 +108,15 @@ App::DocumentObjectExecReturn *DrawViewMulti::execute()
 
     gp_Pnt inputCenter;
     try {
-        inputCenter = ShapeUtils::findCentroid(comp,
+        inputCenter = TechDraw::findCentroid(comp,
                                                      Direction.getValue());
         shapeCentroid = Base::Vector3d(inputCenter.X(), inputCenter.Y(), inputCenter.Z());
-        TopoDS_Shape mirroredShape = ShapeUtils::mirrorShape(comp,
+        TopoDS_Shape mirroredShape = TechDraw::mirrorShape(comp,
                                                     inputCenter,
                                                     getScale());
         gp_Ax2 viewAxis = getViewAxis(Base::Vector3d(inputCenter.X(), inputCenter.Y(), inputCenter.Z()), Direction.getValue());
         if (!DrawUtil::fpCompare(Rotation.getValue(), 0.0)) {
-            mirroredShape = ShapeUtils::rotateShape(mirroredShape,
+            mirroredShape = TechDraw::rotateShape(mirroredShape,
                                                           viewAxis,
                                                           Rotation.getValue());
         }

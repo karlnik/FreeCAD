@@ -39,7 +39,9 @@ Part::Polygon::Polygon()
     ADD_PROPERTY(Close,(false));
 }
 
-Part::Polygon::~Polygon() = default;
+Part::Polygon::~Polygon()
+{
+}
 
 short Part::Polygon::mustExecute() const
 {
@@ -53,8 +55,8 @@ App::DocumentObjectExecReturn *Part::Polygon::execute()
     BRepBuilderAPI_MakePolygon poly;
     const std::vector<Base::Vector3d> nodes = Nodes.getValues();
 
-    for (const auto & node : nodes) {
-        gp_Pnt pnt(node.x, node.y, node.z);
+    for (std::vector<Base::Vector3d>::const_iterator it = nodes.begin(); it != nodes.end(); ++it) {
+        gp_Pnt pnt(it->x, it->y, it->z);
         poly.Add(pnt);
     }
 

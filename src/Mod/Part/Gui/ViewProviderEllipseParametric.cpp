@@ -39,7 +39,10 @@ ViewProviderEllipseParametric::ViewProviderEllipseParametric()
   sPixmap = "Part_Ellipse_Parametric";
 }
 
-ViewProviderEllipseParametric::~ViewProviderEllipseParametric() = default;
+ViewProviderEllipseParametric::~ViewProviderEllipseParametric()
+{
+
+}
 
 
 

@@ -61,10 +61,10 @@ class Ellipse(gui_base_original.Creator):
 
     def Activated(self):
         """Execute when the command is called."""
-        super().Activated(name="Ellipse")
+        super(Ellipse, self).Activated(name="Ellipse")
         if self.ui:
             self.refpoint = None
-            self.ui.pointUi(title=translate("draft", "Ellipse"), icon="Draft_Ellipse")
+            self.ui.pointUi(title=translate("draft", self.featureName), icon="Draft_Ellipse")
             self.ui.extUi()
             self.call = self.view.addEventCallback("SoEvent", self.action)
             self.rect = trackers.rectangleTracker()
@@ -79,7 +79,7 @@ class Ellipse(gui_base_original.Creator):
             Restart (continue) the command if `True`, or if `None` and
             `ui.continueMode` is `True`.
         """
-        super().finish(self)
+        super(Ellipse, self).finish(self)
         if self.ui:
             self.rect.off()
             self.rect.finalize()
@@ -88,13 +88,14 @@ class Ellipse(gui_base_original.Creator):
 
     def createObject(self):
         """Create the actual object in the current document."""
+        plane = App.DraftWorkingPlane
         p1 = self.node[0]
         p3 = self.node[-1]
         diagonal = p3.sub(p1)
         halfdiag = App.Vector(diagonal).multiply(0.5)
         center = p1.add(halfdiag)
-        p2 = p1.add(DraftVecUtils.project(diagonal, self.wp.v))
-        p4 = p1.add(DraftVecUtils.project(diagonal, self.wp.u))
+        p2 = p1.add(DraftVecUtils.project(diagonal, plane.v))
+        p4 = p1.add(DraftVecUtils.project(diagonal, plane.u))
         r1 = (p4.sub(p1).Length)/2
         r2 = (p2.sub(p1).Length)/2
         try:
@@ -162,7 +163,10 @@ class Ellipse(gui_base_original.Creator):
             if arg["Key"] == "ESCAPE":
                 self.finish()
         elif arg["Type"] == "SoLocation2Event":  # mouse movement detection
-            self.point, ctrlPoint, info = gui_tool_utils.getPoint(self, arg, noTracker=True)
+            (self.point,
+             ctrlPoint, info) = gui_tool_utils.getPoint(self, arg,
+                                                        mobile=True,
+                                                        noTracker=True)
             self.rect.update(self.point)
             gui_tool_utils.redraw3DView()
         elif arg["Type"] == "SoMouseButtonEvent":
@@ -174,7 +178,10 @@ class Ellipse(gui_base_original.Creator):
 
                 if (not self.node) and (not self.support):
                     gui_tool_utils.getSupport(arg)
-                    self.point, ctrlPoint, info = gui_tool_utils.getPoint(self, arg, noTracker=True)
+                    (self.point,
+                     ctrlPoint, info) = gui_tool_utils.getPoint(self, arg,
+                                                                mobile=True,
+                                                                noTracker=True)
                 if self.point:
                     self.ui.redraw()
                     self.pos = arg["Position"]

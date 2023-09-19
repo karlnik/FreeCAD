@@ -73,9 +73,9 @@ TaskThicknessParameters::TaskThicknessParameters(ViewProviderDressUp *DressUpVie
     ui->checkIntersection->setChecked(i);
 
     std::vector<std::string> strings = pcThickness->Base.getSubValues();
-    for (const auto & string : strings)
+    for (std::vector<std::string>::const_iterator i = strings.begin(); i != strings.end(); i++)
     {
-        ui->listWidgetReferences->addItem(QString::fromStdString(string));
+        ui->listWidgetReferences->addItem(QString::fromStdString(*i));
     }
 
     QMetaObject::connectSlotsByName(this);
@@ -261,7 +261,10 @@ TaskDlgThicknessParameters::TaskDlgThicknessParameters(ViewProviderThickness *Dr
     Content.push_back(parameter);
 }
 
-TaskDlgThicknessParameters::~TaskDlgThicknessParameters() = default;
+TaskDlgThicknessParameters::~TaskDlgThicknessParameters()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

@@ -352,36 +352,36 @@
       <translation>Editatu gelaxka</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="326"/>
-      <location filename="../../SheetTableView.cpp" line="358"/>
+      <location filename="../../SheetTableView.cpp" line="325"/>
+      <location filename="../../SheetTableView.cpp" line="357"/>
       <source>Insert rows</source>
       <translation>Txertatu errenkadak</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="378"/>
-      <location filename="../../SheetTableView.cpp" line="453"/>
+      <location filename="../../SheetTableView.cpp" line="376"/>
+      <location filename="../../SheetTableView.cpp" line="449"/>
       <source>Remove rows</source>
       <translation>Kendu errenkadak</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="400"/>
-      <location filename="../../SheetTableView.cpp" line="433"/>
+      <location filename="../../SheetTableView.cpp" line="397"/>
+      <location filename="../../SheetTableView.cpp" line="430"/>
       <source>Insert columns</source>
       <translation>Txertatu zutabeak</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="634"/>
-      <location filename="../../SpreadsheetView.cpp" line="161"/>
+      <location filename="../../SheetTableView.cpp" line="632"/>
+      <location filename="../../SpreadsheetView.cpp" line="159"/>
       <source>Clear cell(s)</source>
       <translation>Garbitu gelaxka(k)</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="130"/>
+      <location filename="../../Workbench.cpp" line="132"/>
       <source>Set foreground color</source>
       <translation>Ezarri aurreko planoaren kolorea</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="157"/>
+      <location filename="../../Workbench.cpp" line="159"/>
       <source>Set background color</source>
       <translation>Ezarri atzeko planoaren kolorea</translation>
     </message>
@@ -701,46 +701,46 @@ eta propietate-izena zehazteko. Propietatea sortu egingo da lehendik ez badago.<
       <translation>Erakutsi kalkulu-orria</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="89"/>
       <location filename="../../Workbench.cpp" line="91"/>
+      <location filename="../../Workbench.cpp" line="93"/>
       <source>Set cell(s) foreground color</source>
       <translation>Ezarri gelaxk(ar)en aurreko planoaren kolorea</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="90"/>
+      <location filename="../../Workbench.cpp" line="92"/>
       <source>Sets the Spreadsheet cell(s) foreground color</source>
       <translation>Kalkulu-orriko gelaxk(ar)en aurreko planoaren kolorea ezartzen du</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="104"/>
       <location filename="../../Workbench.cpp" line="106"/>
+      <location filename="../../Workbench.cpp" line="108"/>
       <source>Set cell(s) background color</source>
       <translation>Ezarri gelaxk(ar)en atzeko planoaren kolorea</translation>
     </message>
     <message>
-      <location filename="../../Workbench.cpp" line="105"/>
+      <location filename="../../Workbench.cpp" line="107"/>
       <source>Sets the Spreadsheet cell(s) background color</source>
       <translation>Kalkulu-orriko gelaxk(ar)en atzeko planoaren kolorea ezartzen du</translation>
     </message>
     <message>
-      <location filename="../../SheetTableView.cpp" line="754"/>
+      <location filename="../../SheetTableView.cpp" line="752"/>
       <source>Copy &amp; Paste failed</source>
       <translation>Kopiatu eta itsasteak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="430"/>
+      <location filename="../../SpreadsheetView.cpp" line="426"/>
       <source>Alias contains invalid characters!</source>
       <translation>Aliasak karaktere baliogabeak ditu!</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="436"/>
+      <location filename="../../SpreadsheetView.cpp" line="432"/>
       <source>Refer to cell by alias, for example
 Spreadsheet.my_alias_name instead of Spreadsheet.B1</source>
       <translation>Egin erreferentzia gelaxkei aliasa erabilita, adibidez
 'KalkuluOrria.nire_aliasa' erabili 'KalkuluOrria.B1' erabili ordez</translation>
     </message>
     <message>
-      <location filename="../../AppSpreadsheetGui.cpp" line="119"/>
+      <location filename="../../AppSpreadsheetGui.cpp" line="121"/>
       <source>Spreadsheet</source>
       <translation>Kalkulu-orria</translation>
     </message>
@@ -859,6 +859,11 @@ Spreadsheet.my_alias_name instead of Spreadsheet.B1</source>
   <context>
     <name>Sheet</name>
     <message>
+      <location filename="../../Sheet.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../Sheet.ui" line="22"/>
       <source>&amp;Content:</source>
       <translation>&amp;Edukia:</translation>
@@ -899,9 +904,9 @@ Jarraitu?</translation>
     </message>
     <message>
       <location filename="../../DlgBindSheet.cpp" line="225"/>
-      <source>Error:
+      <source>Error: 
 </source>
-      <translation>Errorea:
+      <translation>Errorea: 
 </translation>
     </message>
     <message>
@@ -1067,61 +1072,61 @@ Lehenespenak: %V = %A
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="169"/>
-      <location filename="../../SheetTableView.cpp" line="615"/>
+      <location filename="../../SheetTableView.cpp" line="613"/>
       <source>Properties...</source>
       <translation>Propietateak...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="181"/>
-      <location filename="../../SheetTableView.cpp" line="616"/>
+      <location filename="../../SheetTableView.cpp" line="614"/>
       <source>Recompute</source>
       <translation>Birkalkulatu</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="185"/>
-      <location filename="../../SheetTableView.cpp" line="624"/>
+      <location filename="../../SheetTableView.cpp" line="622"/>
       <source>Bind...</source>
       <translation>Lotu...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="189"/>
-      <location filename="../../SheetTableView.cpp" line="617"/>
+      <location filename="../../SheetTableView.cpp" line="615"/>
       <source>Configuration table...</source>
       <translation>Konfigurazio-taula...</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="197"/>
-      <location filename="../../SheetTableView.cpp" line="618"/>
+      <location filename="../../SheetTableView.cpp" line="616"/>
       <source>Merge cells</source>
       <translation>Fusionatu gelaxkak</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="199"/>
-      <location filename="../../SheetTableView.cpp" line="619"/>
+      <location filename="../../SheetTableView.cpp" line="617"/>
       <source>Split cells</source>
       <translation>Zatitu gelaxkak</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="203"/>
-      <location filename="../../SheetTableView.cpp" line="622"/>
+      <location filename="../../SheetTableView.cpp" line="620"/>
       <source>Cut</source>
       <translation>Moztu</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="205"/>
-      <location filename="../../SheetTableView.cpp" line="620"/>
+      <location filename="../../SheetTableView.cpp" line="618"/>
       <source>Copy</source>
       <translation>Kopiatu</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="207"/>
-      <location filename="../../SheetTableView.cpp" line="621"/>
+      <location filename="../../SheetTableView.cpp" line="619"/>
       <source>Paste</source>
       <translation>Itsatsi</translation>
     </message>
     <message>
       <location filename="../../SheetTableView.cpp" line="209"/>
-      <location filename="../../SheetTableView.cpp" line="623"/>
+      <location filename="../../SheetTableView.cpp" line="621"/>
       <source>Delete</source>
       <translation>Ezabatu</translation>
     </message>
@@ -1129,12 +1134,12 @@ Lehenespenak: %V = %A
   <context>
     <name>SpreadsheetGui::SheetView</name>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="256"/>
+      <location filename="../../SpreadsheetView.cpp" line="254"/>
       <source>Export PDF</source>
       <translation>Esportatu PDFa</translation>
     </message>
     <message>
-      <location filename="../../SpreadsheetView.cpp" line="257"/>
+      <location filename="../../SpreadsheetView.cpp" line="255"/>
       <source>PDF file</source>
       <translation>PDF fitxategia</translation>
     </message>
@@ -1165,7 +1170,7 @@ Lehenespenak: %V = %A
   <context>
     <name>Py</name>
     <message>
-      <location filename="../../AppSpreadsheetGui.cpp" line="78"/>
+      <location filename="../../AppSpreadsheetGui.cpp" line="80"/>
       <source>Unnamed</source>
       <translation>Izenik gabea</translation>
     </message>

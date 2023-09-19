@@ -200,7 +200,9 @@ DocumentRecovery::DocumentRecovery(const QList<QFileInfo>& dirs, QWidget* parent
     this->adjustSize();
 }
 
-DocumentRecovery::~DocumentRecovery() = default;
+DocumentRecovery::~DocumentRecovery()
+{
+}
 
 bool DocumentRecovery::foundDocuments() const
 {

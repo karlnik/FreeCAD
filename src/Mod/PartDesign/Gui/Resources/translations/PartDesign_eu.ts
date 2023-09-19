@@ -882,8 +882,8 @@ so that self intersection is avoided.</source>
       <translation>Sortu klona</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="890"/>
       <location filename="../../SketchWorkflow.cpp" line="297"/>
+      <location filename="../../Command.cpp" line="890"/>
       <source>Make copy</source>
       <translation>Egin kopia</translation>
     </message>
@@ -908,8 +908,8 @@ so that self intersection is avoided.</source>
       <translation>Sortu boolearra</translation>
     </message>
     <message>
+      <location filename="../../DlgActiveBody.cpp" line="104"/>
       <location filename="../../CommandBody.cpp" line="189"/>
-      <location filename="../../DlgActiveBody.cpp" line="102"/>
       <source>Add a Body</source>
       <translation>Gehitu gorputz bat</translation>
     </message>
@@ -939,22 +939,22 @@ so that self intersection is avoided.</source>
       <translation>Aldatu objektu bat lekuz zuhaitzaren barruan</translation>
     </message>
     <message>
-      <location filename="../../TaskMultiTransformParameters.cpp" line="294"/>
+      <location filename="../../TaskMultiTransformParameters.cpp" line="295"/>
       <source>Mirrored</source>
       <translation>Ispilatua</translation>
     </message>
     <message>
-      <location filename="../../TaskMultiTransformParameters.cpp" line="322"/>
+      <location filename="../../TaskMultiTransformParameters.cpp" line="323"/>
       <source>Make LinearPattern</source>
       <translation>Sortu eredu lineala</translation>
     </message>
     <message>
-      <location filename="../../TaskMultiTransformParameters.cpp" line="360"/>
+      <location filename="../../TaskMultiTransformParameters.cpp" line="361"/>
       <source>PolarPattern</source>
       <translation>Eredu polarra</translation>
     </message>
     <message>
-      <location filename="../../TaskMultiTransformParameters.cpp" line="388"/>
+      <location filename="../../TaskMultiTransformParameters.cpp" line="389"/>
       <source>Scaled</source>
       <translation>Eskalatua</translation>
     </message>
@@ -1412,6 +1412,11 @@ Zero bada, 2. erradioaren berdina da</translation>
   <context>
     <name>PartDesignGui::TaskBooleanParameters</name>
     <message>
+      <location filename="../../TaskBooleanParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskBooleanParameters.ui" line="22"/>
       <source>Add body</source>
       <translation>Gehitu gorputza</translation>
@@ -1495,6 +1500,11 @@ Zero bada, 2. erradioaren berdina da</translation>
   <context>
     <name>PartDesignGui::TaskChamferParameters</name>
     <message>
+      <location filename="../../TaskChamferParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskChamferParameters.ui" line="20"/>
       <source>Click button to enter selection mode,
 click again to end selection</source>
@@ -1559,7 +1569,7 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Angelua</translation>
     </message>
     <message>
-      <location filename="../../TaskChamferParameters.cpp" line="323"/>
+      <location filename="../../TaskChamferParameters.cpp" line="324"/>
       <source>Empty chamfer created !
 </source>
       <translation>Hutsik dagoen biribilketa sortu da
@@ -1569,17 +1579,17 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskDlgBooleanParameters</name>
     <message>
-      <location filename="../../TaskBooleanParameters.cpp" line="347"/>
+      <location filename="../../TaskBooleanParameters.cpp" line="352"/>
       <source>Empty body list</source>
       <translation>Gorputzen zerrenda hutsik</translation>
     </message>
     <message>
-      <location filename="../../TaskBooleanParameters.cpp" line="348"/>
+      <location filename="../../TaskBooleanParameters.cpp" line="353"/>
       <source>The body list cannot be empty</source>
       <translation>Gorputzen zerrenda ezin da hutsik egon</translation>
     </message>
     <message>
-      <location filename="../../TaskBooleanParameters.cpp" line="360"/>
+      <location filename="../../TaskBooleanParameters.cpp" line="364"/>
       <source>Boolean: Accept: Input error</source>
       <translation>Boolearra: Onartu: Sarrera-errorea</translation>
     </message>
@@ -1587,12 +1597,12 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskDlgDatumParameters</name>
     <message>
-      <location filename="../../TaskDatumParameters.cpp" line="101"/>
+      <location filename="../../TaskDatumParameters.cpp" line="104"/>
       <source>Incompatible reference set</source>
       <translation>Bateragarria ez den erreferentzia multzoa</translation>
     </message>
     <message>
-      <location filename="../../TaskDatumParameters.cpp" line="102"/>
+      <location filename="../../TaskDatumParameters.cpp" line="105"/>
       <source>There is no attachment mode that fits the current set of references. If you choose to continue, the feature will remain where it is now, and will not be moved as the references change. Continue?</source>
       <translation>Ez dago uneko erreferentzia multzoari doitzen zaion eranste modurik. Jarraitzea aukeratzen baduzu, elementuak orain dagoen tokian jarraituko du, eta ez da mugituko erreferentziak aldatzen diren arte. Jarraitu?</translation>
     </message>
@@ -1600,7 +1610,7 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskDlgFeatureParameters</name>
     <message>
-      <location filename="../../TaskFeatureParameters.cpp" line="130"/>
+      <location filename="../../TaskFeatureParameters.cpp" line="133"/>
       <source>Input error</source>
       <translation>Sarrera-errorea</translation>
     </message>
@@ -1608,13 +1618,18 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskDlgShapeBinder</name>
     <message>
-      <location filename="../../TaskShapeBinder.cpp" line="408"/>
+      <location filename="../../TaskShapeBinder.cpp" line="413"/>
       <source>Input error</source>
       <translation>Sarrera-errorea</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskDraftParameters</name>
+    <message>
+      <location filename="../../TaskDraftParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskDraftParameters.ui" line="20"/>
       <source>Click button to enter selection mode,
@@ -1655,7 +1670,7 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Alderantzizko tiratze-norabidea</translation>
     </message>
     <message>
-      <location filename="../../TaskDraftParameters.cpp" line="281"/>
+      <location filename="../../TaskDraftParameters.cpp" line="282"/>
       <source>Empty draft created !
 </source>
       <translation>Hutsik dagoen zirriborroa sortu da
@@ -1693,45 +1708,50 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskExtrudeParameters</name>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="897"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="899"/>
       <source>No face selected</source>
       <translation>Ez da aurpegirik hautatu</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="153"/>
-      <location filename="../../TaskExtrudeParameters.cpp" line="735"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="155"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="737"/>
       <source>Face</source>
       <translation>Aurpegia</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="357"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="359"/>
       <source>Sketch normal</source>
       <translation>Krokisaren normala</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="359"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="361"/>
       <source>Face normal</source>
       <translation>Aurpegiaren normala</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="362"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="364"/>
       <source>Select reference...</source>
       <translation>Hautatu erreferentzia...</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="366"/>
       <location filename="../../TaskExtrudeParameters.cpp" line="368"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="370"/>
       <source>Custom direction</source>
       <translation>Norabide pertsonalizatua</translation>
     </message>
     <message>
-      <location filename="../../TaskExtrudeParameters.cpp" line="892"/>
+      <location filename="../../TaskExtrudeParameters.cpp" line="894"/>
       <source>Click on a face in the model</source>
       <translation>Egin klik ereduaren aurpegietako batean</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskFeaturePick</name>
+    <message>
+      <location filename="../../TaskFeaturePick.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskFeaturePick.ui" line="23"/>
       <source>Allow used features</source>
@@ -1821,6 +1841,11 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskFilletParameters</name>
     <message>
+      <location filename="../../TaskFilletParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskFilletParameters.ui" line="20"/>
       <source>Click button to enter selection mode,
 click again to end selection</source>
@@ -1850,7 +1875,7 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Erabili ertz guztiak</translation>
     </message>
     <message>
-      <location filename="../../TaskFilletParameters.cpp" line="193"/>
+      <location filename="../../TaskFilletParameters.cpp" line="194"/>
       <source>Empty fillet created !
 </source>
       <translation>Hutsik dagoen alaka sortu da
@@ -1859,6 +1884,11 @@ sakatu berriro hautapena amaitzeko</translation>
   </context>
   <context>
     <name>PartDesignGui::TaskHelixParameters</name>
+    <message>
+      <location filename="../../TaskHelixParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskHelixParameters.ui" line="22"/>
       <source>Status:</source>
@@ -2068,6 +2098,11 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskLinearPatternParameters</name>
     <message>
+      <location filename="../../TaskLinearPatternParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskLinearPatternParameters.ui" line="22"/>
       <source>Add feature</source>
       <translation>Gehitu elementua</translation>
@@ -2094,37 +2129,21 @@ sakatu berriro hautapena amaitzeko</translation>
     </message>
     <message>
       <location filename="../../TaskLinearPatternParameters.ui" line="77"/>
-      <source>Mode</source>
-      <translation>Modua</translation>
-    </message>
-    <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="85"/>
-      <source>Overall Length</source>
-      <translation>Luzera osoa</translation>
-    </message>
-    <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="90"/>
-      <location filename="../../TaskLinearPatternParameters.ui" line="153"/>
-      <source>Offset</source>
-      <translation>Desplazamendua</translation>
-    </message>
-    <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="115"/>
       <source>Length</source>
       <translation>Luzera</translation>
     </message>
     <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="178"/>
+      <location filename="../../TaskLinearPatternParameters.ui" line="101"/>
       <source>Occurrences</source>
       <translation>Gertaldiak</translation>
     </message>
     <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="192"/>
+      <location filename="../../TaskLinearPatternParameters.ui" line="115"/>
       <source>OK</source>
       <translation>Ados</translation>
     </message>
     <message>
-      <location filename="../../TaskLinearPatternParameters.ui" line="201"/>
+      <location filename="../../TaskLinearPatternParameters.ui" line="124"/>
       <source>Update view</source>
       <translation>Eguneratu bista</translation>
     </message>
@@ -2134,13 +2153,18 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Kendu</translation>
     </message>
     <message>
-      <location filename="../../TaskLinearPatternParameters.cpp" line="382"/>
+      <location filename="../../TaskLinearPatternParameters.cpp" line="336"/>
       <source>Error</source>
       <translation>Errorea</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskLoftParameters</name>
+    <message>
+      <location filename="../../TaskLoftParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskLoftParameters.ui" line="20"/>
       <source>Ruled surface</source>
@@ -2195,6 +2219,11 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::TaskMirroredParameters</name>
     <message>
+      <location filename="../../TaskMirroredParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskMirroredParameters.ui" line="22"/>
       <source>Add feature</source>
       <translation>Gehitu elementua</translation>
@@ -2230,13 +2259,18 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Kendu</translation>
     </message>
     <message>
-      <location filename="../../TaskMirroredParameters.cpp" line="244"/>
+      <location filename="../../TaskMirroredParameters.cpp" line="245"/>
       <source>Error</source>
       <translation>Errorea</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskMultiTransformParameters</name>
+    <message>
+      <location filename="../../TaskMultiTransformParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskMultiTransformParameters.ui" line="22"/>
       <source>Add feature</source>
@@ -2331,33 +2365,38 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Estrusioaren norabidea alderantzikatzen du</translation>
     </message>
     <message>
-      <location filename="../../TaskPadParameters.cpp" line="70"/>
+      <location filename="../../TaskPadParameters.cpp" line="72"/>
       <source>Dimension</source>
       <translation>Kota</translation>
     </message>
     <message>
-      <location filename="../../TaskPadParameters.cpp" line="71"/>
+      <location filename="../../TaskPadParameters.cpp" line="73"/>
       <source>To last</source>
       <translation>Azkenera</translation>
     </message>
     <message>
-      <location filename="../../TaskPadParameters.cpp" line="72"/>
+      <location filename="../../TaskPadParameters.cpp" line="74"/>
       <source>To first</source>
       <translation>Lehenera</translation>
     </message>
     <message>
-      <location filename="../../TaskPadParameters.cpp" line="73"/>
+      <location filename="../../TaskPadParameters.cpp" line="75"/>
       <source>Up to face</source>
       <translation>Aurpegira</translation>
     </message>
     <message>
-      <location filename="../../TaskPadParameters.cpp" line="74"/>
+      <location filename="../../TaskPadParameters.cpp" line="76"/>
       <source>Two dimensions</source>
       <translation>Bi kota</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskPadPocketParameters</name>
+    <message>
+      <location filename="../../TaskPadPocketParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskPadPocketParameters.ui" line="22"/>
       <source>Type</source>
@@ -2374,145 +2413,150 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Luzera</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="75"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="58"/>
       <source>Offset to face</source>
       <translation>Desplazamendua aurpegiarekiko</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="141"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="77"/>
       <source>Direction</source>
       <translation>Norabidea</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="149"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="85"/>
       <source>Direction/edge:</source>
       <translation>Norabidea/ertza:</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="156"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="92"/>
       <source>Set a direction or select an edge
 from the model as reference</source>
       <translation>Ezarri norabide bat edo hautatu
 ereduaren ertz bat erreferentzia gisa</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="161"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="97"/>
       <source>Sketch normal</source>
       <translation>Krokisaren normala</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="166"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="102"/>
       <source>Select reference...</source>
       <translation>Hautatu erreferentzia...</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="171"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="107"/>
       <source>Custom direction</source>
       <translation>Norabide pertsonalizatua</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="181"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="117"/>
       <source>Show direction</source>
       <translation>Erakutsi norabidea</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="191"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="127"/>
       <source>Use custom vector for pad direction, otherwise
 the sketch plane's normal vector will be used</source>
       <translation>Erabili bektore pertsonalizatua estrusioaren norabiderako,
 bestela krokisaren planoaren bektore normala erabiliko da</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="204"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="140"/>
       <source>x</source>
       <translation>x</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="211"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="147"/>
       <source>x-component of direction vector</source>
       <translation>Norabide-bektorearen X osagaia</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="233"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="169"/>
       <source>y</source>
       <translation>y</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="240"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="176"/>
       <source>y-component of direction vector</source>
       <translation>Norabide-bektorearen Y osagaia</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="262"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="198"/>
       <source>z</source>
       <translation>z</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="269"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="205"/>
       <source>z-component of direction vector</source>
       <translation>Norabide-bektorearen Z osagaia</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="300"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="236"/>
       <source>If unchecked, the length will be
 measured along the specified direction</source>
       <translation>Markatu ez bada, luzera neurtuko da
 zehaztutako norabidean</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="304"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="240"/>
       <source>Length along sketch normal</source>
       <translation>Luzera krokisaren normalaren luzeran</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="124"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="253"/>
       <source>Applies length symmetrically to sketch plane</source>
       <translation>Luzera simetrikoki aplikatzen dio krokisaren planoari</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="127"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="256"/>
       <source>Symmetric to plane</source>
       <translation>Planoarekiko simetrikoa</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="134"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="263"/>
       <source>Reversed</source>
       <translation>Alderantzikatua</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="316"/>
-      <location filename="../../TaskPadPocketParameters.ui" line="340"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="272"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="317"/>
       <source>Angle to taper the extrusion</source>
       <translation>Estrusioari kono forma emateko angelua</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="319"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="275"/>
       <source>Taper angle</source>
       <translation>Kono-angelua</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="58"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="296"/>
       <source>2nd length</source>
       <translation>2. luzera</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="343"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="320"/>
       <source>2nd taper angle</source>
       <translation>2. kono-angelua</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="102"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="347"/>
       <source>Select face</source>
       <translation>Hautatu aurpegia</translation>
     </message>
     <message>
-      <location filename="../../TaskPadPocketParameters.ui" line="369"/>
+      <location filename="../../TaskPadPocketParameters.ui" line="373"/>
       <source>Update view</source>
       <translation>Eguneratu bista</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskPipeOrientation</name>
+    <message>
+      <location filename="../../TaskPipeOrientation.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskPipeOrientation.ui" line="22"/>
       <source>Orientation mode</source>
@@ -2602,6 +2646,11 @@ zehaztutako norabidean</translation>
   <context>
     <name>PartDesignGui::TaskPipeParameters</name>
     <message>
+      <location filename="../../TaskPipeParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskPipeParameters.ui" line="20"/>
       <source>Profile</source>
       <translation>Profila</translation>
@@ -2672,6 +2721,11 @@ zehaztutako norabidean</translation>
   <context>
     <name>PartDesignGui::TaskPipeScaling</name>
     <message>
+      <location filename="../../TaskPipeScaling.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskPipeScaling.ui" line="22"/>
       <source>Transform mode</source>
       <translation>Transformazio modua</translation>
@@ -2730,33 +2784,38 @@ zehaztutako norabidean</translation>
       <translation>Poltsaren norabidea alderantzikatzen du</translation>
     </message>
     <message>
-      <location filename="../../TaskPocketParameters.cpp" line="71"/>
+      <location filename="../../TaskPocketParameters.cpp" line="73"/>
       <source>Dimension</source>
       <translation>Kota</translation>
     </message>
     <message>
-      <location filename="../../TaskPocketParameters.cpp" line="72"/>
+      <location filename="../../TaskPocketParameters.cpp" line="74"/>
       <source>Through all</source>
       <translation>Guztien zehar</translation>
     </message>
     <message>
-      <location filename="../../TaskPocketParameters.cpp" line="73"/>
+      <location filename="../../TaskPocketParameters.cpp" line="75"/>
       <source>To first</source>
       <translation>Lehenera</translation>
     </message>
     <message>
-      <location filename="../../TaskPocketParameters.cpp" line="74"/>
+      <location filename="../../TaskPocketParameters.cpp" line="76"/>
       <source>Up to face</source>
       <translation>Aurpegira</translation>
     </message>
     <message>
-      <location filename="../../TaskPocketParameters.cpp" line="75"/>
+      <location filename="../../TaskPocketParameters.cpp" line="77"/>
       <source>Two dimensions</source>
       <translation>Bi kota</translation>
     </message>
   </context>
   <context>
     <name>PartDesignGui::TaskPolarPatternParameters</name>
+    <message>
+      <location filename="../../TaskPolarPatternParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskPolarPatternParameters.ui" line="22"/>
       <source>Add feature</source>
@@ -2784,41 +2843,21 @@ zehaztutako norabidean</translation>
     </message>
     <message>
       <location filename="../../TaskPolarPatternParameters.ui" line="77"/>
-      <source>Mode</source>
-      <translation>Modua</translation>
-    </message>
-    <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="85"/>
-      <source>Overall Angle</source>
-      <translation>Angelu osoa</translation>
-    </message>
-    <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="90"/>
-      <source>Offset Angle</source>
-      <translation>Desplazamendu-angelua</translation>
-    </message>
-    <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="115"/>
       <source>Angle</source>
       <translation>Angelua</translation>
     </message>
     <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="159"/>
-      <source>Offset</source>
-      <translation>Desplazamendua</translation>
-    </message>
-    <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="190"/>
+      <location filename="../../TaskPolarPatternParameters.ui" line="107"/>
       <source>Occurrences</source>
       <translation>Gertaldiak</translation>
     </message>
     <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="204"/>
+      <location filename="../../TaskPolarPatternParameters.ui" line="121"/>
       <source>OK</source>
       <translation>Ados</translation>
     </message>
     <message>
-      <location filename="../../TaskPolarPatternParameters.ui" line="213"/>
+      <location filename="../../TaskPolarPatternParameters.ui" line="130"/>
       <source>Update view</source>
       <translation>Eguneratu bista</translation>
     </message>
@@ -2828,7 +2867,7 @@ zehaztutako norabidean</translation>
       <translation>Kendu</translation>
     </message>
     <message>
-      <location filename="../../TaskPolarPatternParameters.cpp" line="377"/>
+      <location filename="../../TaskPolarPatternParameters.cpp" line="335"/>
       <source>Error</source>
       <translation>Errorea</translation>
     </message>
@@ -2843,6 +2882,11 @@ zehaztutako norabidean</translation>
   </context>
   <context>
     <name>PartDesignGui::TaskRevolutionParameters</name>
+    <message>
+      <location filename="../../TaskRevolutionParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskRevolutionParameters.ui" line="22"/>
       <source>Axis:</source>
@@ -2911,6 +2955,11 @@ zehaztutako norabidean</translation>
   <context>
     <name>PartDesignGui::TaskScaledParameters</name>
     <message>
+      <location filename="../../TaskScaledParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskScaledParameters.ui" line="22"/>
       <source>Add feature</source>
       <translation>Gehitu elementua</translation>
@@ -2949,6 +2998,11 @@ zehaztutako norabidean</translation>
   <context>
     <name>PartDesignGui::TaskShapeBinder</name>
     <message>
+      <location filename="../../TaskShapeBinder.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskShapeBinder.ui" line="22"/>
       <source>Object</source>
       <translation>Objektua</translation>
@@ -2969,7 +3023,7 @@ zehaztutako norabidean</translation>
       <translation>Zero puntuaren formaren parametroak</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBinder.cpp" line="130"/>
+      <location filename="../../TaskShapeBinder.cpp" line="132"/>
       <source>Remove</source>
       <translation>Kendu</translation>
     </message>
@@ -2984,6 +3038,11 @@ zehaztutako norabidean</translation>
   </context>
   <context>
     <name>PartDesignGui::TaskThicknessParameters</name>
+    <message>
+      <location filename="../../TaskThicknessParameters.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../TaskThicknessParameters.ui" line="20"/>
       <source>Click button to enter selection mode,
@@ -3128,7 +3187,7 @@ sakatu berriro hautapena amaitzeko</translation>
   <context>
     <name>PartDesignGui::ViewProviderBody</name>
     <message>
-      <location filename="../../ViewProviderBody.cpp" line="135"/>
+      <location filename="../../ViewProviderBody.cpp" line="133"/>
       <source>Toggle active body</source>
       <translation>Txandakatu gorputz aktiboa</translation>
     </message>
@@ -3385,68 +3444,68 @@ sakatu berriro hautapena amaitzeko</translation>
       <translation>Azpiformaren zorroa</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="650"/>
+      <location filename="../../SketchWorkflow.cpp" line="651"/>
       <source>Several sub-elements selected</source>
       <translation>Azpielementu bat baino gehiago hautatu da</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="651"/>
+      <location filename="../../SketchWorkflow.cpp" line="652"/>
       <source>You have to select a single face as support for a sketch!</source>
       <translation>Aurpegi bakarra hautatu behar duzu krokis baten euskarri izateko!</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="654"/>
+      <location filename="../../SketchWorkflow.cpp" line="655"/>
       <source>No support face selected</source>
       <translation>Ez da euskarri-aurpegirik hautatu</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="655"/>
+      <location filename="../../SketchWorkflow.cpp" line="656"/>
       <source>You have to select a face as support for a sketch!</source>
       <translation>Aurpegi bat hautatu behar duzu krokis baten euskarri izateko!</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="658"/>
+      <location filename="../../SketchWorkflow.cpp" line="659"/>
       <source>No planar support</source>
       <translation>Ez dago euskarri planarrik</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="659"/>
+      <location filename="../../SketchWorkflow.cpp" line="660"/>
       <source>You need a planar face as support for a sketch!</source>
       <translation>Aurpegi planarra behar duzu krokisaren euskarri izateko!</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="662"/>
+      <location filename="../../SketchWorkflow.cpp" line="663"/>
       <source>No valid planes in this document</source>
       <translation>Ez dago baliozko planorik dokumentu honetan</translation>
     </message>
     <message>
-      <location filename="../../SketchWorkflow.cpp" line="663"/>
+      <location filename="../../SketchWorkflow.cpp" line="664"/>
       <source>Please create a plane first or select a face to sketch on</source>
       <translation>Krokisa sortzeko, lehenengo sortu plano bat edo hautatu aurpegi bat</translation>
     </message>
     <message>
+      <location filename="../../ViewProviderHole.cpp" line="79"/>
+      <location filename="../../ViewProviderDatum.cpp" line="246"/>
+      <location filename="../../ViewProviderPrimitive.cpp" line="73"/>
+      <location filename="../../SketchWorkflow.cpp" line="591"/>
+      <location filename="../../ViewProvider.cpp" line="98"/>
+      <location filename="../../ViewProviderBoolean.cpp" line="80"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="98"/>
       <location filename="../../Command.cpp" line="911"/>
       <location filename="../../Command.cpp" line="1930"/>
-      <location filename="../../SketchWorkflow.cpp" line="591"/>
-      <location filename="../../ViewProvider.cpp" line="95"/>
-      <location filename="../../ViewProviderBoolean.cpp" line="78"/>
-      <location filename="../../ViewProviderDatum.cpp" line="246"/>
-      <location filename="../../ViewProviderHole.cpp" line="77"/>
-      <location filename="../../ViewProviderPrimitive.cpp" line="68"/>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="95"/>
       <source>A dialog is already open in the task panel</source>
       <translation>Elkarrizketa-koadro bat irekita dago ataza-panelean</translation>
     </message>
     <message>
+      <location filename="../../ViewProviderHole.cpp" line="80"/>
+      <location filename="../../ViewProviderDatum.cpp" line="247"/>
+      <location filename="../../ViewProviderPrimitive.cpp" line="74"/>
+      <location filename="../../SketchWorkflow.cpp" line="592"/>
+      <location filename="../../ViewProvider.cpp" line="99"/>
+      <location filename="../../ViewProviderBoolean.cpp" line="81"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="99"/>
       <location filename="../../Command.cpp" line="912"/>
       <location filename="../../Command.cpp" line="1931"/>
-      <location filename="../../SketchWorkflow.cpp" line="592"/>
-      <location filename="../../ViewProvider.cpp" line="96"/>
-      <location filename="../../ViewProviderBoolean.cpp" line="79"/>
-      <location filename="../../ViewProviderDatum.cpp" line="247"/>
-      <location filename="../../ViewProviderHole.cpp" line="78"/>
-      <location filename="../../ViewProviderPrimitive.cpp" line="69"/>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="96"/>
       <source>Do you want to close this dialog?</source>
       <translation>Elkarrizketa-koadro hau itxi nahi duzu?</translation>
     </message>
@@ -3712,14 +3771,14 @@ Espero ez diren emaitzak gerta daitezke.</translation>
       <translation>Ezin da elementu kentzaile bat sortu oinarri-elementu bat erabilgarri ez badago</translation>
     </message>
     <message>
-      <location filename="../../TaskRevolutionParameters.cpp" line="123"/>
       <location filename="../../TaskTransformedParameters.cpp" line="287"/>
+      <location filename="../../TaskRevolutionParameters.cpp" line="123"/>
       <source>Vertical sketch axis</source>
       <translation>Krokisaren ardatz bertikala</translation>
     </message>
     <message>
-      <location filename="../../TaskRevolutionParameters.cpp" line="124"/>
       <location filename="../../TaskTransformedParameters.cpp" line="288"/>
+      <location filename="../../TaskRevolutionParameters.cpp" line="124"/>
       <source>Horizontal sketch axis</source>
       <translation>Krokisaren ardatz horizontala</translation>
     </message>
@@ -3773,20 +3832,20 @@ Bertsio zaharragoan dagoen dokumentu bat baduzu eta gorputzik gabeko PartDesign 
       <translation>Ezaugarri hau erabili ahal izateko, dokumentuko pieza-objektu batekoa izan behar du.</translation>
     </message>
     <message>
-      <location filename="../../ViewProvider.cpp" line="62"/>
       <location filename="../../ViewProviderDressUp.cpp" line="50"/>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="201"/>
       <location filename="../../ViewProviderTransformed.cpp" line="76"/>
+      <location filename="../../ViewProvider.cpp" line="65"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="204"/>
       <source>Edit %1</source>
       <translation>Editatu %1</translation>
     </message>
     <message>
-      <location filename="../../ViewProvider.cpp" line="75"/>
+      <location filename="../../ViewProvider.cpp" line="78"/>
       <source>Set colors...</source>
       <translation>Ezarri koloreak...</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderBoolean.cpp" line="62"/>
+      <location filename="../../ViewProviderBoolean.cpp" line="64"/>
       <source>Edit boolean</source>
       <translation>Editatu boolearra</translation>
     </message>
@@ -3831,57 +3890,57 @@ This feature is broken and can't be edited.</source>
 Elementu hau hautsita dago eta ezin da editatu.</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderGroove.cpp" line="46"/>
+      <location filename="../../ViewProviderGroove.cpp" line="48"/>
       <source>Edit groove</source>
       <translation>Editatu arteka</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderHole.cpp" line="61"/>
+      <location filename="../../ViewProviderHole.cpp" line="63"/>
       <source>Edit hole</source>
       <translation>Editatu zuloa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderLoft.cpp" line="66"/>
+      <location filename="../../ViewProviderLoft.cpp" line="70"/>
       <source>Edit loft</source>
       <translation>Editatu jaurtitzea</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderPad.cpp" line="46"/>
+      <location filename="../../ViewProviderPad.cpp" line="48"/>
       <source>Edit pad</source>
       <translation>Editatu estrusioa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderPipe.cpp" line="74"/>
+      <location filename="../../ViewProviderPipe.cpp" line="78"/>
       <source>Edit pipe</source>
       <translation>Editatu hodia</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderPocket.cpp" line="48"/>
+      <location filename="../../ViewProviderPocket.cpp" line="50"/>
       <source>Edit pocket</source>
       <translation>Editatu poltsa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderPrimitive.cpp" line="54"/>
+      <location filename="../../ViewProviderPrimitive.cpp" line="59"/>
       <source>Edit primitive</source>
       <translation>Editatu jatorrizkoa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderRevolution.cpp" line="46"/>
+      <location filename="../../ViewProviderRevolution.cpp" line="48"/>
       <source>Edit revolution</source>
       <translation>Editatu erreboluzioa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="196"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="199"/>
       <source>Edit shape binder</source>
       <translation>Editatu forma-zorroa</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="305"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="308"/>
       <source>Synchronize</source>
       <translation>Sinkronizatu</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderShapeBinder.cpp" line="307"/>
+      <location filename="../../ViewProviderShapeBinder.cpp" line="310"/>
       <source>Select bound object</source>
       <translation>Hautatu muga-objektua</translation>
     </message>
@@ -3901,27 +3960,27 @@ Elementu hau hautsita dago eta ezin da editatu.</translation>
       <translation>Transformazioa ongi burutu da</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="140"/>
+      <location filename="../../WorkflowManager.cpp" line="138"/>
       <source>The document "%1" you are editing was designed with an old version of PartDesign workbench.</source>
       <translation>Editatzen ari zaren "%1" dokumentua PartDesign lan-mahaiaren bertsio zaharrago batekin diseinatu zen.</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="143"/>
+      <location filename="../../WorkflowManager.cpp" line="141"/>
       <source>Do you want to migrate in order to use modern PartDesign features?</source>
       <translation>Bertsioa berritu nahi al duzu PartDesign elementu modernoak erabiltzeko?</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="146"/>
+      <location filename="../../WorkflowManager.cpp" line="144"/>
       <source>The document "%1" seems to be either in the middle of the migration process from legacy PartDesign or have a slightly broken structure.</source>
       <translation>Badirudi "%1" dokumentua PartDesign zaharretik bertsioz berritzeko prozesuaren erdian dagoela edo pixka bat hautsita dagoen egitura duela.</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="150"/>
+      <location filename="../../WorkflowManager.cpp" line="148"/>
       <source>Do you want to make the migration automatically?</source>
       <translation>Migrazioa automatikoki egin nahi duzu?</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="152"/>
+      <location filename="../../WorkflowManager.cpp" line="150"/>
       <source>Note: If you choose to migrate you won't be able to edit the file with an older FreeCAD version.
 If you refuse to migrate you won't be able to use new PartDesign features like Bodies and Parts. As a result you also won't be able to use your parts in the assembly workbench.
 Although you will be able to migrate any moment later with 'Part Design -&gt; Migrate'.</source>
@@ -3930,12 +3989,12 @@ Migratzen ez baduzu, ezin izango dituzu PartDesign ezaugarri berriak erabili, es
 Geroago ere egin dezakezu migrazioa, 'Part Design -&gt; Migratu' erabilita.</translation>
     </message>
     <message>
-      <location filename="../../WorkflowManager.cpp" line="161"/>
+      <location filename="../../WorkflowManager.cpp" line="159"/>
       <source>Migrate manually</source>
       <translation>Berritu bertsioa eskuz</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderHelix.cpp" line="51"/>
+      <location filename="../../ViewProviderHelix.cpp" line="55"/>
       <source>Edit helix</source>
       <translation>Editatu helizea</translation>
     </message>
@@ -4175,6 +4234,11 @@ Geroago ere egin dezakezu migrazioa, 'Part Design -&gt; Migratu' erabilita.</tra
   </context>
   <context>
     <name>TaskHole</name>
+    <message>
+      <location filename="../../../FeatureHole/TaskHole.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
     <message>
       <location filename="../../../FeatureHole/TaskHole.ui" line="24"/>
       <source>Position</source>
@@ -4576,6 +4640,11 @@ over 90: larger hole radius at the bottom</source>
   <context>
     <name>TaskTransformedMessages</name>
     <message>
+      <location filename="../../TaskTransformedMessages.ui" line="14"/>
+      <source>Form</source>
+      <translation>Inprimakia</translation>
+    </message>
+    <message>
       <location filename="../../TaskTransformedMessages.ui" line="25"/>
       <source>No message</source>
       <translation>Mezurik ez</translation>
@@ -4861,17 +4930,17 @@ over 90: larger hole radius at the bottom</source>
       <translation>Tresnen fusioak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureBoolean.cpp" line="132"/>
-      <location filename="../../../App/FeatureGroove.cpp" line="161"/>
-      <location filename="../../../App/FeatureHole.cpp" line="1900"/>
-      <location filename="../../../App/FeatureLoft.cpp" line="293"/>
-      <location filename="../../../App/FeatureLoft.cpp" line="311"/>
       <location filename="../../../App/FeaturePad.cpp" line="217"/>
+      <location filename="../../../App/FeaturePocket.cpp" line="222"/>
       <location filename="../../../App/FeaturePipe.cpp" line="394"/>
       <location filename="../../../App/FeaturePipe.cpp" line="414"/>
-      <location filename="../../../App/FeaturePocket.cpp" line="222"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="103"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="123"/>
+      <location filename="../../../App/FeatureBoolean.cpp" line="132"/>
+      <location filename="../../../App/FeatureLoft.cpp" line="293"/>
+      <location filename="../../../App/FeatureLoft.cpp" line="311"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="104"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="124"/>
+      <location filename="../../../App/FeatureHole.cpp" line="1900"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="161"/>
       <source>Resulting shape is not a solid</source>
       <translation>Emaitza gisa sortutako forma ez da solidoa</translation>
     </message>
@@ -4886,22 +4955,22 @@ over 90: larger hole radius at the bottom</source>
       <translation>Eragiketa arrunt batek huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureBoolean.cpp" line="152"/>
       <location filename="../../../App/FeatureChamfer.cpp" line="223"/>
-      <location filename="../../../App/FeatureDraft.cpp" line="323"/>
-      <location filename="../../../App/FeatureFillet.cpp" line="137"/>
-      <location filename="../../../App/FeatureGroove.cpp" line="168"/>
-      <location filename="../../../App/FeatureHole.cpp" line="1908"/>
-      <location filename="../../../App/FeatureLoft.cpp" line="296"/>
-      <location filename="../../../App/FeatureLoft.cpp" line="314"/>
       <location filename="../../../App/FeaturePad.cpp" line="221"/>
       <location filename="../../../App/FeaturePad.cpp" line="230"/>
-      <location filename="../../../App/FeaturePipe.cpp" line="398"/>
-      <location filename="../../../App/FeaturePipe.cpp" line="418"/>
       <location filename="../../../App/FeaturePocket.cpp" line="191"/>
       <location filename="../../../App/FeaturePocket.cpp" line="226"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="107"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="127"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="398"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="418"/>
+      <location filename="../../../App/FeatureDraft.cpp" line="323"/>
+      <location filename="../../../App/FeatureBoolean.cpp" line="152"/>
+      <location filename="../../../App/FeatureFillet.cpp" line="137"/>
+      <location filename="../../../App/FeatureLoft.cpp" line="296"/>
+      <location filename="../../../App/FeatureLoft.cpp" line="314"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="108"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="128"/>
+      <location filename="../../../App/FeatureHole.cpp" line="1908"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="168"/>
       <source>Result has multiple solids: that is not currently supported.</source>
       <translation>Emaitzak solido anitz ditu: hori ez da onartzen momentuz.</translation>
     </message>
@@ -4964,8 +5033,8 @@ over 90: larger hole radius at the bottom</source>
       <translation>Artekaren angelua txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureGroove.cpp" line="101"/>
       <location filename="../../../App/FeatureHole.cpp" line="1669"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="101"/>
       <source>The requested feature cannot be created. The reason may be that:
   - the active Body does not contain a base shape, so there is no
   material to be removed;
@@ -4976,14 +5045,14 @@ over 90: larger hole radius at the bottom</source>
    - hautatutako krokisa ez da gorputz aktiboarena.</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureGroove.cpp" line="118"/>
       <location filename="../../../App/FeatureRevolution.cpp" line="118"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="118"/>
       <source>Creating a face from sketch failed</source>
       <translation>Huts egin du aurpegia krokis batetik sortzeak</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureGroove.cpp" line="140"/>
       <location filename="../../../App/FeatureRevolution.cpp" line="140"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="140"/>
       <source>Revolve axis intersects the sketch</source>
       <translation>Erreboluzio-ardatzak krokisa ebakitzen du</translation>
     </message>
@@ -4993,14 +5062,14 @@ over 90: larger hole radius at the bottom</source>
       <translation>Oinarri-elementuaren inausketak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureGroove.cpp" line="173"/>
       <location filename="../../../App/FeatureRevolution.cpp" line="165"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="173"/>
       <source>Could not revolve the sketch!</source>
       <translation>Ezin da krokisa erreboluzionatu</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureGroove.cpp" line="180"/>
       <location filename="../../../App/FeatureRevolution.cpp" line="172"/>
+      <location filename="../../../App/FeatureGroove.cpp" line="180"/>
       <source>Could not create face from sketch.
 Intersecting sketch entities in a sketch are not allowed.</source>
       <translation>Ezin da aurpegia sortu krokisetik abiatuta.
@@ -5055,10 +5124,10 @@ Ez da onartzen krokis bateko entitateak ebakitzea.</translation>
       <translation>Errorea: Ezin da eraiki</translation>
     </message>
     <message>
+      <location filename="../../../App/FeatureHole.cpp" line="2145"/>
       <location filename="../../../App/FeatureHelix.cpp" line="296"/>
       <location filename="../../../App/FeatureHelix.cpp" line="330"/>
       <location filename="../../../App/FeatureHelix.cpp" line="360"/>
-      <location filename="../../../App/FeatureHole.cpp" line="2145"/>
       <source>Error: Result is not a solid</source>
       <translation>Errorea: Emaitza ez da solidoa</translation>
     </message>
@@ -5160,15 +5229,15 @@ Ez da onartzen krokis bateko entitateak ebakitzea.</translation>
       <translation>Errorea: Haria gehitzeak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureHole.cpp" line="1892"/>
       <location filename="../../../App/FeatureTransformed.cpp" line="283"/>
       <location filename="../../../App/FeatureTransformed.cpp" line="298"/>
+      <location filename="../../../App/FeatureHole.cpp" line="1892"/>
       <source>Boolean operation failed</source>
       <translation>Eragiketa boolearrak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeatureHole.cpp" line="1919"/>
       <location filename="../../../App/FeaturePocket.cpp" line="242"/>
+      <location filename="../../../App/FeatureHole.cpp" line="1919"/>
       <source>Could not create face from sketch.
 Intersecting sketch entities or multiple faces in a sketch are not allowed for making a pocket up to a face.</source>
       <translation>Ezin da aurpegia sortu krokisetik abiatuta.
@@ -5372,27 +5441,27 @@ Ez da onartzen krokis bateko entitateak edo aurpegi anitz ebakitzea.</translatio
       <translation>Errore larria gertatu da hodia egitean</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePipe.cpp" line="556"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="558"/>
       <source>Invalid element in spine.</source>
       <translation>Elementu baliogabea hegian.</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePipe.cpp" line="559"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="561"/>
       <source>Element in spine is neither an edge nor a wire.</source>
       <translation>Hegiko elementua ez da ez ertza ez alanbrea.</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePipe.cpp" line="572"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="574"/>
       <source>Spine is not connected.</source>
       <translation>Hegia ez dago konektatuta.</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePipe.cpp" line="576"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="578"/>
       <source>Spine is neither an edge nor a wire.</source>
       <translation>Hegia ez da ez ertza ez alanbrea.</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePipe.cpp" line="580"/>
+      <location filename="../../../App/FeaturePipe.cpp" line="582"/>
       <source>Invalid spine.</source>
       <translation>Hegi baliogabea.</translation>
     </message>
@@ -5427,120 +5496,120 @@ Ez da onartzen krokis bateko entitateak edo aurpegi anitz ebakitzea.</translatio
       <translation>Poltsa: Oinarri-elementuaren inausketak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="89"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="90"/>
       <source>Cannot subtract primitive feature without base feature</source>
       <translation>Ezin da jatorrizko elementuaren kenketa egin oinarri-elementurik gabe</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="98"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="99"/>
       <source>Adding the primitive failed</source>
       <translation>Jatorrizkoa gehitzeak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="118"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="119"/>
       <source>Subtracting the primitive failed</source>
       <translation>Jatorrizkoaren kenketa egiteak huts egin du</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="198"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="199"/>
       <source>Length of box too small</source>
       <translation>Kutxaren luzera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="200"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="201"/>
       <source>Width of box too small</source>
       <translation>Kutxaren zabalera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="202"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="203"/>
       <source>Height of box too small</source>
       <translation>Kutxaren altuera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="248"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="249"/>
       <source>Radius of cylinder too small</source>
       <translation>Zilindroaren erradioa txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="250"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="251"/>
       <source>Height of cylinder too small</source>
       <translation>Zilindroaren altuera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="252"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="253"/>
       <source>Rotation angle of cylinder too small</source>
       <translation>Zilindroaren biraketa-angelua txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="305"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="306"/>
       <source>Radius of sphere too small</source>
       <translation>Esferaren erradioa txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="354"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="356"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="355"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="357"/>
       <source>Radius of cone cannot be negative</source>
       <translation>Konoaren erradioak ezin du negatiboa izan</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="358"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="359"/>
       <source>The radii for cones must not be equal</source>
       <translation>Konoen erradioek ezin dute berdinak izan</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="360"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="361"/>
       <source>Height of cone too small</source>
       <translation>Konoaren altuera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="417"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="419"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="418"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="420"/>
       <source>Radius of ellipsoid too small</source>
       <translation>Elipsoidearen erradioa txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="501"/>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="503"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="502"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="504"/>
       <source>Radius of torus too small</source>
       <translation>Toruaren erradioa txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="566"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="567"/>
       <source>Polygon of prism is invalid, must have 3 or more sides</source>
       <translation>Prismaren poligonoa baliogabea da, hiru alde edo gehiago eduki behar ditu</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="568"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="569"/>
       <source>Circumradius of the polygon, of the prism, is too small</source>
       <translation>Poligonoaren, prismaren, zirkunerradioa txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="570"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="571"/>
       <source>Height of prism is too small</source>
       <translation>Prismaren altuera txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="651"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="652"/>
       <source>delta x of wedge too small</source>
       <translation>Falkaren X delta txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="654"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="655"/>
       <source>delta y of wedge too small</source>
       <translation>Falkaren Y delta txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="657"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="658"/>
       <source>delta z of wedge too small</source>
       <translation>Falkaren Z delta txikiegia da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="660"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="661"/>
       <source>delta z2 of wedge is negative</source>
       <translation>Falkaren Z2 delta negatiboa da</translation>
     </message>
     <message>
-      <location filename="../../../App/FeaturePrimitive.cpp" line="663"/>
+      <location filename="../../../App/FeaturePrimitive.cpp" line="664"/>
       <source>delta x2 of wedge is negative</source>
       <translation>Falkaren X2 delta negatiboa da</translation>
     </message>

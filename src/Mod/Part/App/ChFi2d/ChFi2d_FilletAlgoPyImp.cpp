@@ -85,7 +85,7 @@ int ChFi2d_FilletAlgoPy::PyInit(PyObject* args, PyObject* /*kwd*/)
 // returns a string which represents the object e.g. when printed in python
 std::string ChFi2d_FilletAlgoPy::representation() const
 {
-    return {"<FilletAlgo object>"};
+    return std::string("<FilletAlgo object>");
 }
 
 PyObject* ChFi2d_FilletAlgoPy::init(PyObject *args)

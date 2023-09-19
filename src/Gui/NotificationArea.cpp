@@ -353,7 +353,7 @@ public:
             return font;
         }
 
-        return {};
+        return QVariant();
     }
 
     Base::LogStyle notificationType;
@@ -382,7 +382,7 @@ public:
 
     ~NotificationsAction() override
     {
-        for (auto* item : qAsConst(pushedItems)) {
+        for (auto* item : pushedItems) {
             if (item) {
                 delete item;
             }
@@ -572,7 +572,7 @@ protected:
                 QMenu menu;
 
                 QAction* del = menu.addAction(tr("Delete"), this, [&]() {
-                    for (auto it : qAsConst(selectedItems)) {
+                    for (auto it : selectedItems) {
                         delete it;
                     }
                 });

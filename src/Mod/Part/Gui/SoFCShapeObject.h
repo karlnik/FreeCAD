@@ -47,7 +47,7 @@ public:
     SoSFColor  lineColor;
 
 protected:
-    ~SoFCControlPoints() override = default;;
+    ~SoFCControlPoints() override {};
     void GLRender(SoGLRenderAction *action) override;
     void computeBBox(SoAction *action, SbBox3f &box, SbVec3f &center) override;
     void generatePrimitives(SoAction *action) override;

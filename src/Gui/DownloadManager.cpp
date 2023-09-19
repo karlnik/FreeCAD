@@ -310,11 +310,11 @@ DownloadModel::DownloadModel(DownloadManager *downloadManager, QObject *parent)
 QVariant DownloadModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= rowCount(index.parent()))
-        return {};
+        return QVariant();
     if (role == Qt::ToolTipRole)
         if (!m_downloadManager->m_downloads.at(index.row())->downloadedSuccessfully())
             return m_downloadManager->m_downloads.at(index.row())->downloadInfoLabel->text();
-    return {};
+    return QVariant();
 }
 
 int DownloadModel::rowCount(const QModelIndex &parent) const

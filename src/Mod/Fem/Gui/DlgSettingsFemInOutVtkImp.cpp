@@ -42,7 +42,8 @@ DlgSettingsFemInOutVtkImp::DlgSettingsFemInOutVtkImp(QWidget* parent)
 /*
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsFemInOutVtkImp::~DlgSettingsFemInOutVtkImp() = default;
+DlgSettingsFemInOutVtkImp::~DlgSettingsFemInOutVtkImp()
+{}
 
 void DlgSettingsFemInOutVtkImp::saveSettings()
 {

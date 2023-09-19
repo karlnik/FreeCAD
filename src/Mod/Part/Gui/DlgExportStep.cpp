@@ -69,7 +69,10 @@ DlgExportStep::DlgExportStep(QWidget* parent)
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgExportStep::~DlgExportStep() = default;
+DlgExportStep::~DlgExportStep()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgExportStep::saveSettings()
 {
@@ -155,7 +158,9 @@ DlgExportHeaderStep::DlgExportHeaderStep(QWidget* parent)
     ui->lineEditAuthor->setValidator(authorValidator);
 }
 
-DlgExportHeaderStep::~DlgExportHeaderStep() = default;
+DlgExportHeaderStep::~DlgExportHeaderStep()
+{
+}
 
 void DlgExportHeaderStep::saveSettings()
 {

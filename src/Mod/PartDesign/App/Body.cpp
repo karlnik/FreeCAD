@@ -541,8 +541,8 @@ void Body::onDocumentRestored()
 bool Body::isSolid()
 {
     std::vector<App::DocumentObject *> features = getFullModel();
-    for (auto feature : features){
-        if (isSolidFeature(feature))
+    for (auto it = features.begin(); it!=features.end(); ++it){
+        if (isSolidFeature((*it)))
             return true;
     }
     return false;

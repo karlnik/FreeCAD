@@ -38,9 +38,11 @@ class PartDesignGuiExport ViewProviderDressUp : public ViewProvider
 
 public:
     /// constructor
-    ViewProviderDressUp()  = default;
+    ViewProviderDressUp()
+        {}
     /// destructor
-    ~ViewProviderDressUp() override         = default;
+    ~ViewProviderDressUp() override
+        {}
 
     /// grouping handling
     void setupContextMenu(QMenu*, QObject*, const char*) override;

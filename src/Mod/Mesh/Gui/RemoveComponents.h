@@ -102,6 +102,7 @@ class TaskRemoveComponents : public Gui::TaskView::TaskDialog
 
 public:
     TaskRemoveComponents();
+    ~TaskRemoveComponents() override;
 
 public:
     bool accept() override;

@@ -78,21 +78,18 @@ const std::vector<FacetIndex>& Segment::getIndices() const
     return _indices;
 }
 
-Segment::Segment(const Segment& s) = default;
-
-Segment::Segment(Segment&& s) = default;
-
-Segment& Segment::operator = (const Segment& s)
+Segment::Segment(const Segment& s)
+  : _mesh(s._mesh)
+  , _indices(s._indices)
+  , _name(s._name)
+  , _color(s._color)
+  , _save(s._save)
+  , _modifykernel(s._modifykernel)
 {
-    // Do not copy the MeshObject pointer
-    if (this != &s)
-        this->_indices = s._indices;
-    if (_modifykernel)
-        _mesh->updateMesh();
-    return *this;
+
 }
 
-Segment& Segment::operator = (Segment&& s)
+const Segment& Segment::operator = (const Segment& s)
 {
     // Do not copy the MeshObject pointer
     if (this != &s)
@@ -109,8 +106,7 @@ bool Segment::operator == (const Segment& s) const
 
 // ----------------------------------------------------------------------------
 
-Segment::const_facet_iterator::const_facet_iterator
-(const Segment* segm, std::vector<FacetIndex>::const_iterator it)
+Segment::const_facet_iterator::const_facet_iterator(const Segment* segm, std::vector<FacetIndex>::const_iterator it)
   : _segment(segm), _f_it(segm->_mesh->getKernel()), _it(it)
 {
     this->_f_it.Set(0);
@@ -118,19 +114,23 @@ Segment::const_facet_iterator::const_facet_iterator
     this->_facet.Mesh = _segment->_mesh;
 }
 
-Segment::const_facet_iterator::const_facet_iterator
-(const Segment::const_facet_iterator& fi) = default;
+Segment::const_facet_iterator::const_facet_iterator(const Segment::const_facet_iterator& fi)
+  : _segment(fi._segment), _facet(fi._facet), _f_it(fi._f_it), _it(fi._it)
+{
+}
 
-Segment::const_facet_iterator::const_facet_iterator
-(Segment::const_facet_iterator&& fi) = default;
+Segment::const_facet_iterator::~const_facet_iterator()
+{
+}
 
-Segment::const_facet_iterator::~const_facet_iterator() = default;
-
-Segment::const_facet_iterator& Segment::const_facet_iterator::operator=
-(const Segment::const_facet_iterator& fi) = default;
-
-Segment::const_facet_iterator& Segment::const_facet_iterator::operator=
-(Segment::const_facet_iterator&& fi) = default;
+Segment::const_facet_iterator& Segment::const_facet_iterator::operator=(const Segment::const_facet_iterator& fi)
+{
+    this->_segment = fi._segment;
+    this->_facet   = fi._facet;
+    this->_f_it    = fi._f_it;
+    this->_it      = fi._it;
+    return *this;
+}
 
 void Segment::const_facet_iterator::dereference() const
 {

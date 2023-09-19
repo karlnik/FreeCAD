@@ -242,7 +242,7 @@ class TaskDlgTransformedParameters : public PartDesignGui::TaskDlgFeatureParamet
 
 public:
     explicit TaskDlgTransformedParameters(ViewProviderTransformed *TransformedView);
-    ~TaskDlgTransformedParameters() override = default;
+    ~TaskDlgTransformedParameters() override {}
 
     ViewProviderTransformed* getTransformedView() const
     { return static_cast<ViewProviderTransformed*>(vp); }

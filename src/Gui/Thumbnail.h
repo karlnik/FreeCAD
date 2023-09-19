@@ -57,7 +57,7 @@ public:
 
 private:
     QUrl uri;
-    View3DInventorViewer* viewer{nullptr};
+    View3DInventorViewer* viewer;
     int size;
 };
 

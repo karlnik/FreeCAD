@@ -55,27 +55,24 @@ using namespace Data;
 
 // NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
-ComplexGeoData::ComplexGeoData() = default;
+ComplexGeoData::ComplexGeoData()
+    :Tag(0)
+{
+}
 
-std::pair<std::string, unsigned long> ComplexGeoData::getTypeAndIndex(const char* Name)
+Data::Segment* ComplexGeoData::getSubElementByName(const char* name) const
 {
     int index = 0;
     std::string element;
     boost::regex ex("^([^0-9]*)([0-9]*)$");
     boost::cmatch what;
 
-    if (Name && boost::regex_match(Name, what, ex)) {
+    if (boost::regex_match(name, what, ex)) {
         element = what[1].str();
         index = std::atoi(what[2].str().c_str());
     }
 
-    return std::make_pair(element, index);
-}
-
-Data::Segment* ComplexGeoData::getSubElementByName(const char* name) const
-{
-    auto type = getTypeAndIndex(name);
-    return getSubElement(type.first.c_str(),type.second);
+    return getSubElement(element.c_str(), static_cast<unsigned long>(index));
 }
 
 void ComplexGeoData::applyTransform(const Base::Matrix4D& rclTrf)

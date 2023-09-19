@@ -51,7 +51,7 @@
     <message>
       <location filename="../../UnitTest.ui" line="154"/>
       <source>&amp;Close</source>
-      <translation>&amp;დახურვა</translation>
+      <translation>დახურვა (&amp;c)</translation>
     </message>
     <message>
       <location filename="../../UnitTest.ui" line="157"/>
@@ -102,7 +102,7 @@
   <context>
     <name>TestGui::UnitTestDialog</name>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="165"/>
+      <location filename="../../UnitTestImp.cpp" line="166"/>
       <source>Help</source>
       <translation>დახმარება</translation>
     </message>
@@ -118,12 +118,12 @@ Double click on an error in the tree view to see more information about it, incl
 შეცდომაზე ორჯერ დაწკაპუნებით თქვენ მიიღებთ მეტ ინფორმაციას, stack trace-ის ჩათვლით.</translation>
     </message>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="179"/>
+      <location filename="../../UnitTestImp.cpp" line="178"/>
       <source>About FreeCAD UnitTest</source>
       <translation>FreeCAD UnitTest-ის შესახებ</translation>
     </message>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="180"/>
+      <location filename="../../UnitTestImp.cpp" line="178"/>
       <source>Copyright (c) Werner Mayer
 
 FreeCAD UnitTest is part of FreeCAD and supports writing Unit Tests for ones own modules.</source>

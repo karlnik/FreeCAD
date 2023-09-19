@@ -141,6 +141,7 @@ class Stretch(gui_base_original.Modifier):
             if arg["Key"] == "ESCAPE":
                 self.finish()
         elif arg["Type"] == "SoLocation2Event":  # mouse movement detection
+            # ,mobile=True) #,noTracker=(self.step < 3))
             point, ctrlPoint, info = gui_tool_utils.getPoint(self, arg)
             if self.step == 2:
                 self.rectracker.update(point)
@@ -151,6 +152,7 @@ class Stretch(gui_base_original.Modifier):
                     # clicked twice on the same point
                     self.finish()
                 else:
+                    # ,mobile=True) #,noTracker=(self.step < 3))
                     point, ctrlPoint, info = gui_tool_utils.getPoint(self, arg)
                     self.addPoint(point)
 

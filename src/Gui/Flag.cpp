@@ -49,7 +49,9 @@ Flag::Flag(QWidget* parent)
     setAutoFillBackground(true);
 }
 
-Flag::~Flag() = default;
+Flag::~Flag()
+{
+}
 
 void Flag::initializeGL()
 {
@@ -181,7 +183,7 @@ QSize Flag::sizeHint() const
     QRect r = metric.boundingRect(text);
     w = std::max<int>(w, r.width()+20);
     h = std::max<int>(h, r.height());
-    return {w, h};
+    return QSize(w, h);
 }
 
 // ------------------------------------------------------------------------

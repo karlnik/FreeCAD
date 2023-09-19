@@ -296,8 +296,8 @@ private:
     void syncType(unsigned type);
 
 private:
-    PropertyContainer *father{nullptr};
-    const char *myName{nullptr};
+    PropertyContainer *father;
+    const char *myName;
     int64_t _id;
 
 public:
@@ -334,7 +334,7 @@ public:
  */
 template<class P> class AtomicPropertyChangeInterface {
 protected:
-    AtomicPropertyChangeInterface() = default;
+    AtomicPropertyChangeInterface() : signalCounter(0), hasChanged(false) { }
 
 public:
     class AtomicPropertyChange {
@@ -409,8 +409,8 @@ public:
     };
 
 protected:
-    int signalCounter{0}; /**< Counter for invoking transaction start/stop */
-    bool hasChanged{false};
+    int signalCounter; /**< Counter for invoking transaction start/stop */
+    bool hasChanged;
 };
 
 

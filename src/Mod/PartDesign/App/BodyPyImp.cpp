@@ -35,7 +35,7 @@ using namespace PartDesign;
 // returns a string which represents the object e.g. when printed in python
 std::string BodyPy::representation() const
 {
-    return {"<body object>"};
+    return std::string("<body object>");
 }
 
 

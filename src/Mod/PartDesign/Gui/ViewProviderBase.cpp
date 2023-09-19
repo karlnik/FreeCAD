@@ -39,7 +39,10 @@ ViewProviderBase::ViewProviderBase()
     sPixmap = "PartDesign_BaseFeature.svg";
 }
 
-ViewProviderBase::~ViewProviderBase() = default;
+ViewProviderBase::~ViewProviderBase()
+{
+
+}
 
 bool ViewProviderBase::doubleClicked()
 {

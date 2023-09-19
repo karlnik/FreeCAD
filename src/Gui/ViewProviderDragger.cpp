@@ -49,9 +49,13 @@ using namespace Gui;
 
 PROPERTY_SOURCE(Gui::ViewProviderDragger, Gui::ViewProviderDocumentObject)
 
-ViewProviderDragger::ViewProviderDragger() = default;
+ViewProviderDragger::ViewProviderDragger()
+{
+}
 
-ViewProviderDragger::~ViewProviderDragger() = default;
+ViewProviderDragger::~ViewProviderDragger()
+{
+}
 
 void ViewProviderDragger::updateData(const App::Property* prop)
 {
@@ -146,6 +150,7 @@ bool ViewProviderDragger::setEdit(int ModNum)
     pcTransform->translation.connectFrom(&csysDragger->translation);
     pcTransform->rotation.connectFrom(&csysDragger->rotation);
 
+    csysDragger->addStartCallback(dragStartCallback, this);
     csysDragger->addFinishCallback(dragFinishCallback, this);
 
     // dragger node is added to viewer's editing root in setEditViewer
@@ -211,6 +216,12 @@ void ViewProviderDragger::unsetEditViewer(Gui::View3DInventorViewer* viewer)
     }
 }
 
+void ViewProviderDragger::dragStartCallback(void *, SoDragger *)
+{
+    // This is called when a manipulator is about to manipulating
+    Gui::Application::Instance->activeDocument()->openCommand(QT_TRANSLATE_NOOP("Command", "Transform"));
+}
+
 void ViewProviderDragger::dragFinishCallback(void *data, SoDragger *d)
 {
     // This is called when a manipulator has done manipulating
@@ -219,7 +230,7 @@ void ViewProviderDragger::dragFinishCallback(void *data, SoDragger *d)
     auto dragger = static_cast<SoFCCSysDragger *>(d);
     updatePlacementFromDragger(sudoThis, dragger);
 
-    //Gui::Application::Instance->activeDocument()->commitCommand();
+    Gui::Application::Instance->activeDocument()->commitCommand();
 }
 
 void ViewProviderDragger::updatePlacementFromDragger(ViewProviderDragger* sudoThis, SoFCCSysDragger* draggerIn)
@@ -243,7 +254,7 @@ void ViewProviderDragger::updatePlacementFromDragger(ViewProviderDragger* sudoTh
   int rCountY = draggerIn->rotationIncrementCountY.getValue();
   int rCountZ = draggerIn->rotationIncrementCountZ.getValue();
 
-  //just as a little sanity check make sure only 1 or 2 fields has changed.
+  //just as a little sanity check make sure only 1 field has changed.
   int numberOfFieldChanged = 0;
   if (tCountX) numberOfFieldChanged++;
   if (tCountY) numberOfFieldChanged++;
@@ -253,7 +264,7 @@ void ViewProviderDragger::updatePlacementFromDragger(ViewProviderDragger* sudoTh
   if (rCountZ) numberOfFieldChanged++;
   if (numberOfFieldChanged == 0)
     return;
-  assert(numberOfFieldChanged == 1 || numberOfFieldChanged == 2);
+  assert(numberOfFieldChanged == 1);
 
   //helper lambdas.
   auto getVectorX = [&pMatrix]() {return Base::Vector3d(pMatrix[0], pMatrix[4], pMatrix[8]);};
@@ -267,35 +278,35 @@ void ViewProviderDragger::updatePlacementFromDragger(ViewProviderDragger* sudoTh
     freshPlacement.move(movementVector);
     geoFeature->Placement.setValue(freshPlacement);
   }
-  if (tCountY)
+  else if (tCountY)
   {
     Base::Vector3d movementVector(getVectorY());
     movementVector *= (tCountY * translationIncrement);
     freshPlacement.move(movementVector);
     geoFeature->Placement.setValue(freshPlacement);
   }
-  if (tCountZ)
+  else if (tCountZ)
   {
     Base::Vector3d movementVector(getVectorZ());
     movementVector *= (tCountZ * translationIncrement);
     freshPlacement.move(movementVector);
     geoFeature->Placement.setValue(freshPlacement);
   }
-  if (rCountX)
+  else if (rCountX)
   {
     Base::Vector3d rotationVector(getVectorX());
     Base::Rotation rotation(rotationVector, rCountX * rotationIncrement);
     freshPlacement.setRotation(rotation * freshPlacement.getRotation());
     geoFeature->Placement.setValue(freshPlacement);
   }
-  if (rCountY)
+  else if (rCountY)
   {
     Base::Vector3d rotationVector(getVectorY());
     Base::Rotation rotation(rotationVector, rCountY * rotationIncrement);
     freshPlacement.setRotation(rotation * freshPlacement.getRotation());
     geoFeature->Placement.setValue(freshPlacement);
   }
-  if (rCountZ)
+  else if (rCountZ)
   {
     Base::Vector3d rotationVector(getVectorZ());
     Base::Rotation rotation(rotationVector, rCountZ * rotationIncrement);

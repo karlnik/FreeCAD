@@ -36,7 +36,10 @@ DlgPartCylinderImp::DlgPartCylinderImp(QWidget* parent, Qt::WindowFlags fl)
 /*
  *  Destroys the object and frees any allocated resources
  */
-DlgPartCylinderImp::~DlgPartCylinderImp() = default;
+DlgPartCylinderImp::~DlgPartCylinderImp()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 Ui_DlgPartCylinderPtr DlgPartCylinderImp::getUi() const
 {

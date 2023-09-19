@@ -35,4 +35,6 @@ ViewProviderOriginGroup::ViewProviderOriginGroup ()
     initExtension(this);
 }
 
-ViewProviderOriginGroup::~ViewProviderOriginGroup () = default;
+ViewProviderOriginGroup::~ViewProviderOriginGroup ()
+{
+}

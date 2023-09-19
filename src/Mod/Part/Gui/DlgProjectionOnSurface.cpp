@@ -70,7 +70,7 @@ public:
   {
     canSelect = false;
   }
-  ~EdgeSelection() override = default;
+  ~EdgeSelection() override {}
 
   bool allow(App::Document* /*pDoc*/, App::DocumentObject* iPObj, const char* sSubName) override
   {
@@ -104,7 +104,7 @@ public:
   {
     canSelect = false;
   }
-  ~FaceSelection() override = default;
+  ~FaceSelection() override {}
 
   bool allow(App::Document* /*pDoc*/, App::DocumentObject* iPObj, const char* sSubName) override
   {
@@ -407,16 +407,16 @@ void PartGui::DlgProjectionOnSurface::store_current_selected_parts(std::vector<S
         if (!it->getSubNames().empty() )
         {
           auto parentShape = currentShapeStore.inputShape;
-          for (const auto & itName : selObj.front().getSubNames())
+          for (auto itName = selObj.front().getSubNames().begin(); itName != selObj.front().getSubNames().end(); ++itName)
           {
-            auto currentShape =  aPart->Shape.getShape().getSubShape(itName.c_str());
+            auto currentShape =  aPart->Shape.getShape().getSubShape(itName->c_str());
 
             transform_shape_to_global_position(currentShape, aPart);
 
             currentShapeStore.inputShape = currentShape;
-            currentShapeStore.partName = itName;
+            currentShapeStore.partName = *itName;
             auto store = store_part_in_vector(currentShapeStore, iStoreVec);
-            higlight_object(aPart, itName, store, iColor);
+            higlight_object(aPart, *itName, store, iColor);
             store_wire_in_vector(currentShapeStore, parentShape, iStoreVec, iColor);
           }
         }
@@ -549,7 +549,7 @@ void PartGui::DlgProjectionOnSurface::create_projection_wire(std::vector<SShapeS
 TopoDS_Shape PartGui::DlgProjectionOnSurface::create_compound(const std::vector<SShapeStore>& iShapeVec)
 {
   if (iShapeVec.empty())
-      return {};
+      return TopoDS_Shape();
 
   TopoDS_Compound aCompound;
   TopoDS_Builder aBuilder;
@@ -856,7 +856,7 @@ TopoDS_Wire PartGui::DlgProjectionOnSurface::sort_and_heal_wire(const std::vecto
   shapeAnalyzer.ConnectEdgesToWires(shapeList, 0.0001, false, aWireHandle);
   shapeAnalyzer.ConnectWiresToWires(aWireHandle, 0.0001, false, aWireWireHandle);
   if (!aWireWireHandle)
-      return {};
+      return TopoDS_Wire();
   for (auto it = 1; it <= aWireWireHandle->Length(); ++it)
   {
     auto aShape = TopoDS::Wire(aWireWireHandle->Value(it));
@@ -871,7 +871,7 @@ TopoDS_Wire PartGui::DlgProjectionOnSurface::sort_and_heal_wire(const std::vecto
     Q_UNUSED(retVal);
     return TopoDS::Wire(aWireFramFix.Shape());
   }
-  return {};
+  return TopoDS_Wire();
 }
 
 void PartGui::DlgProjectionOnSurface::create_face_extrude(std::vector<SShapeStore>& iCurrentShape)
@@ -1105,6 +1105,11 @@ TaskProjectionOnSurface::TaskProjectionOnSurface()
     widget->windowTitle(), true, nullptr);
   taskbox->groupLayout()->addWidget(widget);
   Content.push_back(taskbox);
+}
+
+TaskProjectionOnSurface::~TaskProjectionOnSurface()
+{
+  // automatically deleted in the sub-class
 }
 
 bool TaskProjectionOnSurface::accept()

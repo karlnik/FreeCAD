@@ -23,13 +23,15 @@
 #include "PreCompiled.h"
 #ifndef _PreComp_
 # include <QEvent>
-# include <QGridLayout>
 # include <QSplitter>
 #endif
 
 #include "ComboView.h"
+#include "BitmapFactory.h"
+#include "Document.h"
 #include "PropertyView.h"
 #include "Tree.h"
+#include "TaskView/TaskView.h"
 
 
 using namespace Gui;
@@ -38,8 +40,11 @@ using namespace Gui::DockWnd;
 
 /* TRANSLATOR Gui::DockWnd::ComboView */
 
-ComboView::ComboView(Gui::Document* pcDocument, QWidget *parent)
-  : DockWindow(pcDocument, parent)
+ComboView::ComboView(bool showModel, Gui::Document* pcDocument, QWidget *parent)
+  : DockWindow(pcDocument,parent)
+  , oldTabIndex(0)
+  , modelIndex(-1)
+  , taskIndex(-1)
 {
     setWindowTitle(tr("Combo View"));
 
@@ -48,20 +53,104 @@ ComboView::ComboView(Gui::Document* pcDocument, QWidget *parent)
     pLayout->setContentsMargins ( 0, 0, 0, 0 );
 
     // tabs to switch between Tree/Properties and TaskPanel
-    auto splitter = new QSplitter();
-    pLayout->addWidget( splitter, 0, 0 );
+    tabs = new QTabWidget ();
+    tabs->setObjectName(QString::fromUtf8("combiTab"));
+    tabs->setTabPosition(QTabWidget::North);
+    pLayout->addWidget( tabs, 0, 0 );
 
-    // splitter between tree and property view
-    splitter->setOrientation(Qt::Vertical);
+    connect(tabs, qOverload<int>(&QTabWidget::currentChanged),
+            this, &ComboView::onCurrentTabChanged);
+    if (showModel) {
+        // splitter between tree and property view
+        auto splitter = new QSplitter();
+        splitter->setOrientation(Qt::Vertical);
 
-    tree =  new TreePanel("ComboView", this);
-    splitter->addWidget(tree);
+        tree =  new TreePanel("ComboView", this);
+        splitter->addWidget(tree);
 
-    // property view
-    prop = new PropertyView(this);
-    splitter->addWidget(prop);
+        // property view
+        prop = new PropertyView(this);
+        splitter->addWidget(prop);
+        modelIndex = tabs->addTab(splitter,tr("Model"));
+    }
+    else {
+        tree = nullptr;
+        prop = nullptr;
+    }
+
+    // task panel
+    taskPanel = new Gui::TaskView::TaskView(this);
+    taskIndex = tabs->addTab(taskPanel, tr("Tasks"));
+
+    // task panel
+    //projectView = new Gui::ProjectWidget(this);
+    //tabs->addTab(projectView, tr("Project"));
 }
 
-ComboView::~ComboView() = default;
+ComboView::~ComboView()
+{
+}
+
+void ComboView::showDialog(Gui::TaskView::TaskDialog *dlg)
+{
+    static QIcon icon = Gui::BitmapFactory().pixmap("edit-edit.svg");
+
+    // switch to the TaskView tab
+    oldTabIndex = tabs->currentIndex();
+    tabs->setCurrentIndex(taskIndex);
+    tabs->setTabIcon(taskIndex, icon);
+    // set the dialog
+    taskPanel->showDialog(dlg);
+
+    // force to show the combo view
+    if (modelIndex < 0) {
+        if (parentWidget())
+            parentWidget()->raise();
+    }
+}
+
+void ComboView::closeDialog()
+{
+    // close the dialog
+    taskPanel->removeDialog();
+}
+
+void ComboView::closedDialog()
+{
+    static QIcon icon = QIcon();
+
+    // dialog has been closed
+    tabs->setCurrentIndex(oldTabIndex);
+    tabs->setTabIcon(taskIndex, icon);
+}
+
+void ComboView::showTreeView()
+{
+    // switch to the tree view
+    tabs->setCurrentIndex(modelIndex);
+}
+
+void ComboView::showTaskView()
+{
+    // switch to the task view
+    tabs->setCurrentIndex(taskIndex);
+}
+
+void ComboView::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange) {
+        tabs->setTabText(modelIndex, tr("Model"));
+        tabs->setTabText(taskIndex, tr("Tasks"));
+        //tabs->setTabText(2, tr("Project"));
+    }
+
+    DockWindow::changeEvent(e);
+}
+
+void ComboView::onCurrentTabChanged(int index)
+{
+    if (index != taskIndex)
+        oldTabIndex = index;
+}
 
 #include "moc_ComboView.cpp"

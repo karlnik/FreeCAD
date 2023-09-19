@@ -25,6 +25,7 @@
 
 #ifndef _PreComp_
 # include <sstream>
+# include <QDomDocument>
 # include <QFile>
 #endif
 
@@ -41,6 +42,7 @@
 #include "DrawSVGTemplatePy.h"
 #include "DrawUtil.h"
 #include "XMLQuery.h"
+
 
 using namespace TechDraw;
 
@@ -85,10 +87,6 @@ void DrawSVGTemplate::onChanged(const App::Property* prop)
         //the old template, but there is no guarantee that the same fields will be present.
         replaceFileIncluded(Template.getValue());
         EditableTexts.setValues(getEditableTextsFromTemplate());
-        QDomDocument templateDocument;
-        if (getTemplateDocument(Template.getValue(), templateDocument)) {
-            extractTemplateAttributes(templateDocument);
-        }
     } else if (prop == &EditableTexts) {
         //handled by ViewProvider
     }
@@ -106,23 +104,19 @@ QString DrawSVGTemplate::processTemplate()
         //can't do anything
         return QString();
     }
-    QDomDocument templateDocument;
-    if (!getTemplateDocument(PageResult.getValue(), templateDocument)) {
+
+    QFile templateFile(Base::Tools::fromStdString(PageResult.getValue()));
+    if (!templateFile.open(QIODevice::ReadOnly)) {
+        Base::Console().Error("DrawSVGTemplate::processTemplate can't read embedded template %s!\n", PageResult.getValue());
         return QString();
     }
 
-//    QFile templateFile(Base::Tools::fromStdString(PageResult.getValue()));
-//    if (!templateFile.open(QIODevice::ReadOnly)) {
-//        Base::Console().Error("DrawSVGTemplate::processTemplate can't read embedded template %s!\n", PageResult.getValue());
-//        return QString();
-//    }
-
-//    QDomDocument templateDocument;
-//    if (!templateDocument.setContent(&templateFile)) {
-//        Base::Console().Error("DrawSVGTemplate::processTemplate - failed to parse file: %s\n",
-//            PageResult.getValue());
-//        return QString();
-//    }
+    QDomDocument templateDocument;
+    if (!templateDocument.setContent(&templateFile)) {
+        Base::Console().Error("DrawSVGTemplate::processTemplate - failed to parse file: %s\n",
+            PageResult.getValue());
+        return QString();
+    }
 
     XMLQuery query(templateDocument);
     std::map<std::string, std::string> substitutions = EditableTexts.getValues();
@@ -151,36 +145,8 @@ QString DrawSVGTemplate::processTemplate()
         return true;
     });
 
-    extractTemplateAttributes(templateDocument);
-//    // Calculate the dimensions of the page and store for retrieval
-//    // Obtain the size of the SVG document by reading the document attributes
-//    QDomElement docElement = templateDocument.documentElement();
-//    Base::Quantity quantity;
-
-//    // Obtain the width
-//    QString str = docElement.attribute(QString::fromLatin1("width"));
-//    quantity = Base::Quantity::parse(str);
-//    quantity.setUnit(Base::Unit::Length);
-
-//    Width.setValue(quantity.getValue());
-
-//    str = docElement.attribute(QString::fromLatin1("height"));
-//    quantity = Base::Quantity::parse(str);
-//    quantity.setUnit(Base::Unit::Length);
-
-//    Height.setValue(quantity.getValue());
-
-//    bool isLandscape = getWidth() / getHeight() >= 1.;
-
-//    Orientation.setValue(isLandscape ? 1 : 0);
-
-    //all Qt holds on files should be released on exit #4085
-    return templateDocument.toString();
-}
-
-// find the width, height and orientation of the template and update the properties
-void DrawSVGTemplate::extractTemplateAttributes(QDomDocument& templateDocument)
-{
+    // Calculate the dimensions of the page and store for retrieval
+    // Obtain the size of the SVG document by reading the document attributes
     QDomElement docElement = templateDocument.documentElement();
     Base::Quantity quantity;
 
@@ -200,27 +166,9 @@ void DrawSVGTemplate::extractTemplateAttributes(QDomDocument& templateDocument)
     bool isLandscape = getWidth() / getHeight() >= 1.;
 
     Orientation.setValue(isLandscape ? 1 : 0);
-}
 
-// load the included template file as a QDomDocument
-bool DrawSVGTemplate::getTemplateDocument(std::string sourceFile, QDomDocument& templateDocument) const
-{
-    if (sourceFile.empty()) {
-        return false;
-    }
-    QFile templateFile(Base::Tools::fromStdString(sourceFile));
-    if (!templateFile.open(QIODevice::ReadOnly)) {
-        Base::Console().Error("DrawSVGTemplate::processTemplate can't read embedded template %s!\n", PageResult.getValue());
-        return false;
-    }
-
-    if (!templateDocument.setContent(&templateFile)) {
-        Base::Console().Error("DrawSVGTemplate::processTemplate - failed to parse file: %s\n",
-            PageResult.getValue());
-        return false;
-    }
-    // no errors templateDocument is loaded
-    return true;
+    //all Qt holds on files should be released on exit #4085
+    return templateDocument.toString();
 }
 
 double DrawSVGTemplate::getWidth() const
@@ -253,41 +201,34 @@ std::map<std::string, std::string> DrawSVGTemplate::getEditableTextsFromTemplate
 //    Base::Console().Message("DSVGT::getEditableTextsFromTemplate()\n");
     std::map<std::string, std::string> editables;
 
-//    std::string templateFilename = Template.getValue();
-//    if (templateFilename.empty()) {
-//        return editables;
-//    }
-
-// if we pass the filename we can reuse getTemplateDocument here
-    QDomDocument templateDocument;
-    if (!getTemplateDocument(Template.getValue(), templateDocument)) {
+    std::string templateFilename = Template.getValue();
+    if (templateFilename.empty()) {
         return editables;
     }
 
+    Base::FileInfo tfi(templateFilename);
+    if (!tfi.isReadable()) {
+        // if there is an old absolute template file set use a redirect
+        tfi.setFile(App::Application::getResourceDir() + "Mod/Drawing/Templates/" + tfi.fileName());
+        // try the redirect
+        if (!tfi.isReadable()) {
+            Base::Console().Error("DrawSVGTemplate::getEditableTextsFromTemplate() not able to open %s!\n", Template.getValue());
+            return editables;
+        }
+    }
 
-//    Base::FileInfo tfi(templateFilename);
-//    if (!tfi.isReadable()) {
-//        // if there is an old absolute template file set use a redirect
-//        tfi.setFile(App::Application::getResourceDir() + "Mod/Drawing/Templates/" + tfi.fileName());
-//        // try the redirect
-//        if (!tfi.isReadable()) {
-//            Base::Console().Error("DrawSVGTemplate::getEditableTextsFromTemplate() not able to open %s!\n", Template.getValue());
-//            return editables;
-//        }
-//    }
+    QFile templateFile(QString::fromUtf8(tfi.filePath().c_str()));
+    if (!templateFile.open(QIODevice::ReadOnly)) {
+        Base::Console().Error("DrawSVGTemplate::getEditableTextsFromTemplate() can't read template %s!\n", Template.getValue());
+        return editables;
+    }
 
-//    QFile templateFile(QString::fromUtf8(tfi.filePath().c_str()));
-//    if (!templateFile.open(QIODevice::ReadOnly)) {
-//        Base::Console().Error("DrawSVGTemplate::getEditableTextsFromTemplate() can't read template %s!\n", Template.getValue());
-//        return editables;
-//    }
-
-//    QDomDocument templateDocument;
-//    if (!templateDocument.setContent(&templateFile)) {
-//        Base::Console().Message("DrawSVGTemplate::getEditableTextsFromTemplate() - failed to parse file: %s\n",
-//                                Template.getValue());
-//        return editables;
-//    }
+    QDomDocument templateDocument;
+    if (!templateDocument.setContent(&templateFile)) {
+        Base::Console().Message("DrawSVGTemplate::getEditableTextsFromTemplate() - failed to parse file: %s\n",
+                                Template.getValue());
+        return editables;
+    }
 
     XMLQuery query(templateDocument);
 
@@ -309,12 +250,6 @@ std::map<std::string, std::string> DrawSVGTemplate::getEditableTextsFromTemplate
     return editables;
 }
 
-//! get a translated label string from the context (ex TaskActiveView), the base name (ex ActiveView) and
-//! the unique name within the document (ex ActiveView001), and use it to update the Label property.
-void DrawSVGTemplate::translateLabel(std::string context, std::string baseName, std::string uniqueName)
-{
-    Label.setValue(DrawUtil::translateArbitrary(context, baseName, uniqueName));
-}
 
 // Python Template feature ---------------------------------------------------------
 namespace App {

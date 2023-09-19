@@ -49,7 +49,9 @@ ViewProviderDatumPoint::ViewProviderDatumPoint()
     Transparency.setStatus(App::Property::Hidden, true); //< make transparency hidden
 }
 
-ViewProviderDatumPoint::~ViewProviderDatumPoint() = default;
+ViewProviderDatumPoint::~ViewProviderDatumPoint()
+{
+}
 
 void ViewProviderDatumPoint::attach ( App::DocumentObject *obj ) {
     ViewProviderDatum::attach ( obj );

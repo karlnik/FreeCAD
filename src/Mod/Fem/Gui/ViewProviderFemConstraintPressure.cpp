@@ -47,7 +47,9 @@ ViewProviderFemConstraintPressure::ViewProviderFemConstraintPressure()
     ADD_PROPERTY(FaceColor, (0.0f, 0.2f, 0.8f));
 }
 
-ViewProviderFemConstraintPressure::~ViewProviderFemConstraintPressure() = default;
+ViewProviderFemConstraintPressure::~ViewProviderFemConstraintPressure()
+{
+}
 
 //FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintPressure::setEdit(int ModNum)

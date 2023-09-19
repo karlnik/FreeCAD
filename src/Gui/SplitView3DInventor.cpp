@@ -291,7 +291,9 @@ AbstractSplitViewPy::AbstractSplitViewPy(AbstractSplitView *vi)
 {
 }
 
-AbstractSplitViewPy::~AbstractSplitViewPy() = default;
+AbstractSplitViewPy::~AbstractSplitViewPy()
+{
+}
 
 Py::Object AbstractSplitViewPy::cast_to_base(const Py::Tuple&)
 {
@@ -639,6 +641,8 @@ SplitView3DInventor::SplitView3DInventor(int views, Gui::Document* pcDocument, Q
     setupSettings();
 }
 
-SplitView3DInventor::~SplitView3DInventor() = default;
+SplitView3DInventor::~SplitView3DInventor()
+{
+}
 
 #include "moc_SplitView3DInventor.cpp"

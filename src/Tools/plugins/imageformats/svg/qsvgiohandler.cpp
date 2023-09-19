@@ -61,10 +61,10 @@ class QSvgIOHandlerPrivate
 {
 public:
     QSvgIOHandlerPrivate(QSvgIOHandler* qq)
-        : q(qq)
-        , loaded(false)
-        , readDone(false)
-        , backColor(Qt::transparent)
+        : q(qq),
+          loaded(false),
+          readDone(false),
+          backColor(Qt::transparent)
     {
         QPalette pal = webView.palette();
         pal.setColor(QPalette::Background, backColor);
@@ -88,12 +88,10 @@ public:
 
 bool QSvgIOHandlerPrivate::load(QIODevice* device)
 {
-    if (loaded) {
+    if (loaded)
         return true;
-    }
-    if (q->format().isEmpty()) {
+    if (q->format().isEmpty())
         q->canRead();
-    }
 
     // # The SVG renderer doesn't handle trailing, unrelated data, so we must
     // assume that all available data in the device is to be read.
@@ -149,12 +147,10 @@ QSvgIOHandler::~QSvgIOHandler()
 
 bool QSvgIOHandler::canRead() const
 {
-    if (!device()) {
+    if (!device())
         return false;
-    }
-    if (d->loaded && !d->readDone) {
-        return true;  // Will happen if we have been asked for the size
-    }
+    if (d->loaded && !d->readDone)
+        return true;// Will happen if we have been asked for the size
 
     QByteArray buf = device()->peek(8);
     if (buf.startsWith("\x1f\x8b")) {
@@ -220,7 +216,7 @@ bool QSvgIOHandler::read(QImage* image)
             p.setRenderHint(QPainter::Antialiasing);
             p.setRenderHint(QPainter::TextAntialiasing);
             p.setRenderHint(QPainter::SmoothPixmapTransform);
-            p.setOpacity(0);  // important to keep transparent background
+            p.setOpacity(0);// important to keep transparent background
             d->webView.page()->mainFrame()->render(&p);
 #endif
             p.end();
@@ -308,4 +304,4 @@ bool QSvgIOHandler::canRead(QIODevice* device)
 
 QT_END_NAMESPACE
 
-#endif  // QT_NO_SVGRENDERER
+#endif// QT_NO_SVGRENDERER

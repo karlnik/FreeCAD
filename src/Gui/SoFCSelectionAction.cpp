@@ -138,7 +138,9 @@ SoFCHighlightAction::SoFCHighlightAction (const SelectionChanges &SelCh)
 }
 
 
-SoFCHighlightAction::~SoFCHighlightAction() = default;
+SoFCHighlightAction::~SoFCHighlightAction()
+{
+}
 
 
 void SoFCHighlightAction::beginTraversal(SoNode *node)
@@ -222,7 +224,9 @@ SoFCSelectionAction::SoFCSelectionAction (const SelectionChanges &SelCh)
 }
 
 
-SoFCSelectionAction::~SoFCSelectionAction() = default;
+SoFCSelectionAction::~SoFCSelectionAction()
+{
+}
 
 
 void SoFCSelectionAction::beginTraversal(SoNode *node)
@@ -302,7 +306,9 @@ SoFCEnableSelectionAction::SoFCEnableSelectionAction (const SbBool& sel)
 }
 
 
-SoFCEnableSelectionAction::~SoFCEnableSelectionAction() = default;
+SoFCEnableSelectionAction::~SoFCEnableSelectionAction()
+{
+}
 
 
 void SoFCEnableSelectionAction::beginTraversal(SoNode *node)
@@ -382,7 +388,9 @@ SoFCEnableHighlightAction::SoFCEnableHighlightAction (const SbBool& sel)
 }
 
 
-SoFCEnableHighlightAction::~SoFCEnableHighlightAction() = default;
+SoFCEnableHighlightAction::~SoFCEnableHighlightAction()
+{
+}
 
 
 void SoFCEnableHighlightAction::beginTraversal(SoNode *node)
@@ -462,7 +470,9 @@ SoFCSelectionColorAction::SoFCSelectionColorAction (const SoSFColor& col)
 }
 
 
-SoFCSelectionColorAction::~SoFCSelectionColorAction() = default;
+SoFCSelectionColorAction::~SoFCSelectionColorAction()
+{
+}
 
 
 void SoFCSelectionColorAction::beginTraversal(SoNode *node)
@@ -542,7 +552,9 @@ SoFCHighlightColorAction::SoFCHighlightColorAction (const SoSFColor& col)
 }
 
 
-SoFCHighlightColorAction::~SoFCHighlightColorAction() = default;
+SoFCHighlightColorAction::~SoFCHighlightColorAction()
+{
+}
 
 
 void SoFCHighlightColorAction::beginTraversal(SoNode *node)
@@ -622,7 +634,9 @@ SoFCDocumentAction::SoFCDocumentAction (const SoSFString& docName)
 }
 
 
-SoFCDocumentAction::~SoFCDocumentAction() = default;
+SoFCDocumentAction::~SoFCDocumentAction()
+{
+}
 
 
 void SoFCDocumentAction::beginTraversal(SoNode *node)
@@ -692,12 +706,14 @@ void SoFCDocumentObjectAction::finish()
   atexit_cleanup();
 }
 
-SoFCDocumentObjectAction::SoFCDocumentObjectAction()
+SoFCDocumentObjectAction::SoFCDocumentObjectAction () : _handled(false)
 {
   SO_ACTION_CONSTRUCTOR(SoFCDocumentObjectAction);
 }
 
-SoFCDocumentObjectAction::~SoFCDocumentObjectAction() = default;
+SoFCDocumentObjectAction::~SoFCDocumentObjectAction()
+{
+}
 
 void SoFCDocumentObjectAction::beginTraversal(SoNode *node)
 {
@@ -760,12 +776,14 @@ void SoGLSelectAction::initClass()
 
 SoGLSelectAction::SoGLSelectAction (const SbViewportRegion& region,
                                     const SbViewportRegion& select)
-  : vpregion(region), vpselect(select)
+  : vpregion(region), vpselect(select), _handled(false)
 {
   SO_ACTION_CONSTRUCTOR(SoGLSelectAction);
 }
 
-SoGLSelectAction::~SoGLSelectAction() = default;
+SoGLSelectAction::~SoGLSelectAction()
+{
+}
 
 const SbViewportRegion& SoGLSelectAction::getViewportRegion () const
 {
@@ -833,12 +851,14 @@ void SoVisibleFaceAction::initClass()
   SO_ACTION_ADD_METHOD(SoFCSelection,callDoAction);
 }
 
-SoVisibleFaceAction::SoVisibleFaceAction ()
+SoVisibleFaceAction::SoVisibleFaceAction () : _handled(false)
 {
   SO_ACTION_CONSTRUCTOR(SoVisibleFaceAction);
 }
 
-SoVisibleFaceAction::~SoVisibleFaceAction() = default;
+SoVisibleFaceAction::~SoVisibleFaceAction()
+{
+}
 
 void SoVisibleFaceAction::beginTraversal(SoNode *node)
 {
@@ -906,7 +926,9 @@ SoUpdateVBOAction::SoUpdateVBOAction ()
   SO_ACTION_CONSTRUCTOR(SoUpdateVBOAction);
 }
 
-SoUpdateVBOAction::~SoUpdateVBOAction() = default;
+SoUpdateVBOAction::~SoUpdateVBOAction()
+{
+}
 
 void SoUpdateVBOAction::finish()
 {
@@ -930,21 +952,33 @@ class SoBoxSelectionRenderActionP {
 public:
     SoBoxSelectionRenderActionP(SoBoxSelectionRenderAction * master)
       : master(master)
+      , searchaction(nullptr)
+      , selectsearch(nullptr)
+      , camerasearch(nullptr)
+      , bboxaction(nullptr)
+      , basecolor(nullptr)
+      , postprocpath(nullptr)
+      , highlightPath(nullptr)
+      , localRoot(nullptr)
+      , xform(nullptr)
+      , cube(nullptr)
+      , drawstyle(nullptr)
     {
+
     }
 
     SoBoxSelectionRenderAction * master;
-    SoSearchAction * searchaction{nullptr};
-    SoSearchAction * selectsearch{nullptr};
-    SoSearchAction * camerasearch{nullptr};
-    SoGetBoundingBoxAction * bboxaction{nullptr};
-    SoBaseColor * basecolor{nullptr};
-    SoTempPath * postprocpath{nullptr};
-    SoPath * highlightPath{nullptr};
-    SoSeparator * localRoot{nullptr};
-    SoMatrixTransform * xform{nullptr};
-    SoCube * cube{nullptr};
-    SoDrawStyle * drawstyle{nullptr};
+    SoSearchAction * searchaction;
+    SoSearchAction * selectsearch;
+    SoSearchAction * camerasearch;
+    SoGetBoundingBoxAction * bboxaction;
+    SoBaseColor * basecolor;
+    SoTempPath * postprocpath;
+    SoPath * highlightPath;
+    SoSeparator * localRoot;
+    SoMatrixTransform * xform;
+    SoCube * cube;
+    SoDrawStyle * drawstyle;
     SoColorPacker colorpacker;
 
     void initBoxGraph();

@@ -33,6 +33,13 @@
 # include <Inventor/events/SoButtonEvent.h>
 # include <Inventor/events/SoMouseButtonEvent.h>
 # include <Inventor/events/SoKeyboardEvent.h>
+# include <Inventor/sensors/SoNodeSensor.h>
+# include <Inventor/nodes/SoOrthographicCamera.h>
+# include <Inventor/nodes/SoBaseColor.h>
+# include <Inventor/nodes/SoCoordinate3.h>
+# include <Inventor/nodes/SoLineSet.h>
+# include <Inventor/nodes/SoAnnotation.h>
+# include <Inventor/nodes/SoTransform.h>
 #endif
 
 #include <Base/Console.h>
@@ -44,7 +51,7 @@
 #include <Gui/BitmapFactory.h>
 #include <Gui/Camera.h>
 #include <Gui/Document.h>
-#include <Gui/EditableDatumLabel.h>
+#include <Gui/SoDatumLabel.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/ViewProviderDocumentObject.h>
@@ -69,7 +76,6 @@ TaskImage::TaskImage(Image::ImagePlane* obj, QWidget* parent)
 
     initialiseTransparency();
 
-    // NOLINTNEXTLINE
     aspectRatio = obj->XSize.getValue() / obj->YSize.getValue();
 
     connectSignals();
@@ -122,7 +128,6 @@ void TaskImage::connectSignals()
 
 void TaskImage::initialiseTransparency()
 {
-    // NOLINTBEGIN
     auto vp = Application::Instance->getViewProvider(feature.get());
     App::Property* prop = vp->getPropertyByName("Transparency");
     if (prop && prop->getTypeId().isDerivedFrom(App::PropertyInteger::getClassTypeId())) {
@@ -130,18 +135,17 @@ void TaskImage::initialiseTransparency()
         ui->spinBoxTransparency->setValue(Transparency->getValue());
         ui->sliderTransparency->setValue(Transparency->getValue());
     }
-    // NOLINTEND
 }
 
 void TaskImage::changeTransparency(int val)
 {
-    if (feature.expired()) {
+    if (feature.expired())
         return;
-    }
 
     auto vp = Application::Instance->getViewProvider(feature.get());
     App::Property* prop = vp->getPropertyByName("Transparency");
-    if (auto Transparency = dynamic_cast<App::PropertyInteger*>(prop)) {
+    if (prop && prop->getTypeId().isDerivedFrom(App::PropertyInteger::getClassTypeId())) {
+        auto Transparency = static_cast<App::PropertyInteger*>(prop);
         Transparency->setValue(val);
 
         QSignalBlocker block(ui->spinBoxTransparency);
@@ -179,7 +183,7 @@ View3DInventorViewer* TaskImage::getViewer() const
 {
     if (!feature.expired()) {
         auto vp = Application::Instance->getViewProvider(feature.get());
-        auto doc = static_cast<ViewProviderDocumentObject*>(vp)->getDocument(); // NOLINT
+        auto doc = static_cast<ViewProviderDocumentObject*>(vp)->getDocument();
         auto view = dynamic_cast<View3DInventor*>(doc->getViewOfViewProvider(vp));
         if (view) {
             return view->getViewer();
@@ -280,45 +284,47 @@ void TaskImage::onPreview()
     updatePlacement();
 }
 
-// NOLINTNEXTLINE
-void TaskImage::restoreAngles(const Base::Rotation& rot)
+void TaskImage::restore(const Base::Placement& plm)
 {
-    double yaw{};
-    double pitch{};
-    double roll{};
+    if (feature.expired())
+        return;
+
+    QSignalBlocker blockW(ui->spinBoxWidth);
+    QSignalBlocker blockH(ui->spinBoxHeight);
+    ui->spinBoxWidth->setValue(feature->XSize.getValue());
+    ui->spinBoxHeight->setValue(feature->YSize.getValue());
+
+    Base::Rotation rot = plm.getRotation();
+    Base::Vector3d pos = plm.getPosition();
+
+    double yaw, pitch, roll;
     rot.getYawPitchRoll(yaw, pitch, roll);
 
+    double tol = 1.0e-5;
     bool reverse = false;
 
-    const double tol = 1.0e-5;
-    const double angle1 = 90.0;
-    const double angle2 = 180.0;
-
     auto isTopOrBottom = [=](bool& reverse) {
-        if (fabs(pitch) < tol && (fabs(roll) < tol || fabs(roll - angle2) < tol)) {
-            if (fabs(roll - angle2) < tol) {
+        if (fabs(pitch) < tol && (fabs(roll) < tol || fabs(roll - 180.) < tol)) {
+            if (fabs(roll - 180.) < tol)
                 reverse = true;
-            }
             return true;
         }
 
         return false;
     };
     auto isFrontOrRear = [=](bool& reverse) {
-        if (fabs(roll - angle1) < tol && (fabs(yaw) < tol || fabs(yaw - angle2) < tol)) {
-            if (fabs(yaw - angle2) < tol) {
+        if (fabs(roll - 90.) < tol && (fabs(yaw) < tol || fabs(yaw - 180.) < tol)) {
+            if (fabs(yaw - 180.) < tol)
                 reverse = true;
-            }
             return true;
         }
 
         return false;
     };
     auto isRightOrLeft = [=](bool& reverse) {
-        if (fabs(roll - angle1) < tol && (fabs(yaw - angle1) < tol || fabs(yaw + angle1) < tol)) {
-            if (fabs(yaw + angle1) < tol) {
+        if (fabs(roll - 90.) < tol && (fabs(yaw - 90.) < tol || fabs(yaw + 90.) < tol)) {
+            if (fabs(yaw + 90.) < tol)
                 reverse = true;
-            }
             return true;
         }
 
@@ -339,27 +345,8 @@ void TaskImage::restoreAngles(const Base::Rotation& rot)
         ui->spinBoxRotation->setValue(-pitch);
     }
     ui->Reverse_checkBox->setChecked(reverse);
-}
 
-void TaskImage::restore(const Base::Placement& plm)
-{
-    if (feature.expired()) {
-        return;
-    }
-
-    QSignalBlocker blockW(ui->spinBoxWidth);
-    QSignalBlocker blockH(ui->spinBoxHeight);
-    ui->spinBoxWidth->setValue(feature->XSize.getValue());
-    ui->spinBoxHeight->setValue(feature->YSize.getValue());
-
-    Base::Rotation rot = plm.getRotation(); // NOLINT
-    Base::Vector3d pos = plm.getPosition();
-
-    restoreAngles(rot);
-
-    Base::Vector3d R0(0, 0, 0);
-    Base::Vector3d RX(1, 0, 0);
-    Base::Vector3d RY(0, 1, 0);
+    Base::Vector3d R0(0, 0, 0), RX(1, 0, 0), RY(0, 1, 0);
 
     RX = rot.multVec(RX);
     RY = rot.multVec(RY);
@@ -376,7 +363,6 @@ void TaskImage::updatePlacement()
     double angle = ui->spinBoxRotation->value().getValue();
     bool reverse = ui->Reverse_checkBox->isChecked();
 
-    // NOLINTBEGIN
     Base::Placement Pos;
     Base::Rotation rot;
     double dir = reverse ? 180. : 0.;
@@ -391,7 +377,6 @@ void TaskImage::updatePlacement()
     else if (ui->YZ_radioButton->isChecked()) {
         rot.setYawPitchRoll(90. - dir, -angle, 90.);
     }
-    // NOLINTEND
 
     Base::Vector3d offset = Base::Vector3d(ui->spinBoxX->value().getValue(), ui->spinBoxY->value().getValue(), ui->spinBoxZ->value().getValue());
     offset = rot.multVec(offset);
@@ -399,9 +384,8 @@ void TaskImage::updatePlacement()
 
     if (!feature.expired()) {
         feature->Placement.setValue(Pos);
-        if (scale) {
+        if(scale)
             scale->setPlacement(feature->globalPlacement());
-        }
     }
 }
 
@@ -426,26 +410,69 @@ void TaskImage::updateIcon()
 
 // ----------------------------------------------------------------------------
 
-InteractiveScale::InteractiveScale(View3DInventorViewer* view,
-                                   ViewProvider* vp,
-                                   const Base::Placement& plc) // NOLINT
+
+struct NodeData {
+    InteractiveScale* scale;
+};
+
+InteractiveScale::InteractiveScale(View3DInventorViewer* view, ViewProvider* vp, Base::Placement plc)
     : active(false)
     , placement(plc)
     , viewer(view)
     , viewProv(vp)
     , midPoint(SbVec3f(0,0,0))
 {
-    measureLabel = new EditableDatumLabel(viewer, placement, SbColor(1.0F, 0.149F, 0.0F)); //NOLINT
+    root = new SoAnnotation;
+    root->ref();
+    root->renderCaching = SoSeparator::OFF;
+
+    measureLabel = new SoDatumLabel();
+    measureLabel->ref();
+    measureLabel->string = "";
+    measureLabel->textColor = SbColor(1.0f, 0.149f, 0.0f);
+    measureLabel->size.setValue(17);
+    measureLabel->lineWidth = 2.0;
+    measureLabel->useAntialiasing = false;
+    measureLabel->param1 = 0.;
+    measureLabel->param2 = 0.;
+
+    transform = new SoTransform();
+    root->addChild(transform);
+    setPlacement(placement);
+
+    QWidget* mdi = view->parentWidget();
+
+    distanceBox = new QuantitySpinBox(mdi);
+    distanceBox->setUnit(Base::Unit::Length);
+    distanceBox->setMinimum(0.0);
+    distanceBox->setMaximum(INT_MAX);
+    distanceBox->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    distanceBox->setToolTip(tr("Enter desired distance between the points"));
+    distanceBox->setKeyboardTracking(false);
+    distanceBox->installEventFilter(this);
+
+    //track camera movements to update spinbox position.
+    NodeData* info = new NodeData{ this };
+    cameraSensor = new SoNodeSensor([](void* data, SoSensor* sensor) {
+        Q_UNUSED(sensor)
+        NodeData* info = static_cast<NodeData*>(data);
+        info->scale->positionWidget();
+    }, info);
+    cameraSensor->attach(viewer->getCamera());
 }
 
 InteractiveScale::~InteractiveScale()
 {
-    delete measureLabel;
+    root->unref();
+    measureLabel->unref();
+    distanceBox->deleteLater();
+    cameraSensor->detach();
 }
 
 void InteractiveScale::activate()
 {
     if (viewer) {
+        static_cast<SoSeparator*>(viewer->getSceneGraph())->addChild(root);
         viewer->setEditing(true);
         viewer->addEventCallback(SoLocation2Event::getClassTypeId(), InteractiveScale::getMousePosition, this);
         viewer->addEventCallback(SoButtonEvent::getClassTypeId(), InteractiveScale::soEventFilter, this);
@@ -458,8 +485,10 @@ void InteractiveScale::activate()
 void InteractiveScale::deactivate()
 {
     if (viewer) {
+        distanceBox->hide();
         points.clear();
-        measureLabel->deactivate();
+        root->removeChild(measureLabel);
+        static_cast<SoSeparator*>(viewer->getSceneGraph())->removeChild(root);
         viewer->setEditing(false);
         viewer->removeEventCallback(SoLocation2Event::getClassTypeId(), InteractiveScale::getMousePosition, this);
         viewer->removeEventCallback(SoButtonEvent::getClassTypeId(), InteractiveScale::soEventFilter, this);
@@ -471,18 +500,16 @@ void InteractiveScale::deactivate()
 
 double InteractiveScale::getScaleFactor() const
 {
-    if ((points[0] - points[1]).length() == 0.) {
+    if ((points[0] - points[1]).length() == 0.)
         return 1.0;
-    }
 
-    return measureLabel->getValue() / (points[0] - points[1]).length();
+    return distanceBox->value().getValue() / (points[0] - points[1]).length();
 }
 
 double InteractiveScale::getDistance(const SbVec3f& pt) const
 {
-    if (points.empty()) {
+    if (points.empty())
         return 0.0;
-    }
 
     return (points[0] - pt).length();
 }
@@ -494,20 +521,19 @@ void InteractiveScale::setDistance(const SbVec3f& pos3d)
     quantity.setUnit(Base::Unit::Length);
 
     //Update the displayed distance
-    double factor{};
-    QString unitStr;
-    QString valueStr;
+    double factor;
+    QString unitStr, valueStr;
     valueStr = quantity.getUserString(factor, unitStr);
-    measureLabel->label->string = SbString(valueStr.toUtf8().constData());
-    measureLabel->label->setPoints(getCoordsOnImagePlane(points[0]), getCoordsOnImagePlane(pos3d));
+    measureLabel->string = SbString(valueStr.toUtf8().constData());
+    measureLabel->setPoints(getCoordsOnImagePlane(points[0]), getCoordsOnImagePlane(pos3d));
 }
 
 void InteractiveScale::findPointOnImagePlane(SoEventCallback * ecb)
 {
-    const SoEvent * mbe = ecb->getEvent();
-    auto view  = static_cast<Gui::View3DInventorViewer*>(ecb->getUserData());
+    const SoMouseButtonEvent * mbe = static_cast<const SoMouseButtonEvent *>(ecb->getEvent());
+    Gui::View3DInventorViewer* view  = static_cast<Gui::View3DInventorViewer*>(ecb->getUserData());
     std::unique_ptr<SoPickedPoint> pp(view->getPointOnRay(mbe->getPosition(), viewProv));
-    if (pp) {
+    if (pp.get()) {
         auto pos3d = pp->getPoint();
 
         collectPoint(pos3d);
@@ -519,8 +545,8 @@ void InteractiveScale::collectPoint(const SbVec3f& pos3d)
     if (points.empty()) {
         points.push_back(pos3d);
 
-        measureLabel->label->setPoints(getCoordsOnImagePlane(pos3d), getCoordsOnImagePlane(pos3d));
-        measureLabel->activate();
+        measureLabel->setPoints(getCoordsOnImagePlane(pos3d), getCoordsOnImagePlane(pos3d));
+        root->addChild(measureLabel);
     }
     else if (points.size() == 1) {
         double distance = getDistance(pos3d);
@@ -529,7 +555,8 @@ void InteractiveScale::collectPoint(const SbVec3f& pos3d)
 
             midPoint = (points[0] + points[1]) / 2;
 
-            measureLabel->startEdit(getDistance(points[1]), this);
+            measureLabel->string = "";
+            showDistanceField();
 
             Q_EMIT enableApplyBtn();
         }
@@ -539,17 +566,37 @@ void InteractiveScale::collectPoint(const SbVec3f& pos3d)
     }
 }
 
+void InteractiveScale::showDistanceField()
+{
+    distanceBox->show();
+    QSignalBlocker block(distanceBox);
+    distanceBox->setValue(getDistance(points[1]));
+    distanceBox->adjustSize();
+    positionWidget();
+    distanceBox->selectNumber();
+    distanceBox->setFocus();
+}
+
+void InteractiveScale::positionWidget()
+{
+    QSize wSize = distanceBox->size();
+    QPoint pxCoord = viewer->toQPoint(viewer->getPointOnViewport(midPoint));
+    pxCoord.setX(std::max(pxCoord.x() - wSize.width() / 2, 0));
+    pxCoord.setY(std::max(pxCoord.y() - wSize.height() / 2, 0));
+    distanceBox->move(pxCoord);
+}
+
 void InteractiveScale::getMousePosition(void * ud, SoEventCallback * ecb)
 {
-    auto scale = static_cast<InteractiveScale*>(ud);
-    const SoEvent* l2e = ecb->getEvent();
-    auto view  = static_cast<Gui::View3DInventorViewer*>(ecb->getUserData());
+    InteractiveScale* scale = static_cast<InteractiveScale*>(ud);
+    const SoLocation2Event * l2e = static_cast<const SoLocation2Event *>(ecb->getEvent());
+    Gui::View3DInventorViewer* view  = static_cast<Gui::View3DInventorViewer*>(ecb->getUserData());
 
     if (scale->points.size() == 1) {
         ecb->setHandled();
 
         std::unique_ptr<SoPickedPoint> pp(view->getPointOnRay(l2e->getPosition(), scale->viewProv));
-        if (pp) {
+        if (pp.get()) {
             SbVec3f pos3d = pp->getPoint();
             scale->setDistance(pos3d);
         }
@@ -558,12 +605,12 @@ void InteractiveScale::getMousePosition(void * ud, SoEventCallback * ecb)
 
 void InteractiveScale::soEventFilter(void* ud, SoEventCallback* ecb)
 {
-    auto scale = static_cast<InteractiveScale*>(ud);
+    InteractiveScale* scale = static_cast<InteractiveScale*>(ud);
 
     const SoEvent* soEvent = ecb->getEvent();
     if (soEvent->isOfType(SoKeyboardEvent::getClassTypeId())) {
         /* If user presses escape, then we cancel the tool.*/
-        const auto kbe = static_cast<const SoKeyboardEvent*>(soEvent); // NOLINT
+        const auto kbe = static_cast<const SoKeyboardEvent*>(soEvent);
 
         if (kbe->getKey() == SoKeyboardEvent::ESCAPE && kbe->getState() == SoButtonEvent::UP) {
             ecb->setHandled();
@@ -571,7 +618,7 @@ void InteractiveScale::soEventFilter(void* ud, SoEventCallback* ecb)
         }
     }
     else if (soEvent->isOfType(SoMouseButtonEvent::getClassTypeId())) {
-        const auto mbe = static_cast<const SoMouseButtonEvent*>(soEvent); // NOLINT
+        const auto mbe = static_cast<const SoMouseButtonEvent*>(soEvent);
 
         if (mbe->getButton() == SoMouseButtonEvent::BUTTON1 && mbe->getState() == SoButtonEvent::DOWN)
         {
@@ -589,7 +636,7 @@ void InteractiveScale::soEventFilter(void* ud, SoEventCallback* ecb)
 bool InteractiveScale::eventFilter(QObject* object, QEvent* event)
 {
     if (event->type() == QEvent::KeyRelease) {
-        auto keyEvent = static_cast<QKeyEvent*>(event); // NOLINT
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
 
         /* If user press enter in the spinbox, then we validate the tool.*/
         if ((keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return)
@@ -605,17 +652,24 @@ bool InteractiveScale::eventFilter(QObject* object, QEvent* event)
     return false;
 }
 
-void InteractiveScale::setPlacement(const Base::Placement& plc)
+void InteractiveScale::setPlacement(Base::Placement plc)
 {
     placement = plc;
-    measureLabel->setPlacement(plc);
+    double x, y, z, w;
+    placement.getRotation().getValue(x, y, z, w);
+    transform->rotation.setValue(x, y, z, w);
+    Base::Vector3d pos = placement.getPosition();
+    transform->translation.setValue(pos.x, pos.y, pos.z);
+
+    Base::Vector3d RN(0, 0, 1);
+    RN = placement.getRotation().multVec(RN);
+    measureLabel->norm.setValue(SbVec3f(RN.x, RN.y, RN.z));
 }
 
 SbVec3f InteractiveScale::getCoordsOnImagePlane(const SbVec3f& point)
 {
     // Plane form
-    Base::Vector3d RX(1, 0, 0);
-    Base::Vector3d RY(0, 1, 0);
+    Base::Vector3d RX(1, 0, 0), RY(0, 1, 0);
 
     // move to position of Sketch
     Base::Rotation tmp(placement.getRotation());
@@ -625,10 +679,10 @@ SbVec3f InteractiveScale::getCoordsOnImagePlane(const SbVec3f& point)
 
     // we use pos as the Base because in setPlacement we set transform->translation using
     // placement.getPosition() to fix the Zoffset. But this applies the X & Y translation too.
-    Base::Vector3d pnt(point[0], point[1], point[2]);
-    pnt.TransformToCoordinateSystem(pos, RX, RY);
+    Base::Vector3d S(point[0], point[1], point[2]);
+    S.TransformToCoordinateSystem(pos, RX, RY);
 
-    return {float(pnt.x), float(pnt.y), 0.0F};
+    return SbVec3f(S.x, S.y, 0.);
 }
 
 // ----------------------------------------------------------------------------
@@ -636,7 +690,7 @@ SbVec3f InteractiveScale::getCoordsOnImagePlane(const SbVec3f& point)
 TaskImageDialog::TaskImageDialog(Image::ImagePlane* obj)
 {
     widget = new TaskImage(obj);
-    auto taskbox = new Gui::TaskView::TaskBox(
+    Gui::TaskView::TaskBox* taskbox = new Gui::TaskView::TaskBox(
         Gui::BitmapFactory().pixmap("image-plane"), widget->windowTitle(), true, nullptr);
     taskbox->groupLayout()->addWidget(widget);
     Content.push_back(taskbox);

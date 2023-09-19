@@ -79,7 +79,8 @@ TaskTetParameter::TaskTetParameter(Fem::FemMeshShapeNetgenObject* pcObject, QWid
     setInfo();
 }
 
-TaskTetParameter::~TaskTetParameter() = default;
+TaskTetParameter::~TaskTetParameter()
+{}
 
 void TaskTetParameter::SwitchMethod(int Value)
 {

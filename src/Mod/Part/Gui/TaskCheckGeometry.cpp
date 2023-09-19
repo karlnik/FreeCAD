@@ -275,10 +275,10 @@ ResultModel::~ResultModel()
 QModelIndex ResultModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!root)
-        return {};
+        return QModelIndex();
     ResultEntry *parentNode = nodeFromIndex(parent);
     if (!parentNode)
-        return {};
+        return QModelIndex();
     return createIndex(row, column, parentNode->children.at(row));
 }
 
@@ -286,13 +286,13 @@ QModelIndex ResultModel::parent(const QModelIndex &child) const
 {
     ResultEntry *childNode = nodeFromIndex(child);
     if (!childNode)
-        return {};
+        return QModelIndex();
     ResultEntry *parentNode = childNode->parent;
     if (!parentNode)
-        return {};
+        return QModelIndex();
     ResultEntry *grandParentNode = parentNode->parent;
     if (!grandParentNode)
-        return {};
+        return QModelIndex();
     int row = grandParentNode->children.indexOf(parentNode);
     return createIndex(row, 0, parentNode);
 }
@@ -314,10 +314,10 @@ int ResultModel::columnCount(const QModelIndex &parent) const
 QVariant ResultModel::data(const QModelIndex &index, int role) const
 {
     if (role != Qt::DisplayRole)
-        return {};
+        return QVariant();
     ResultEntry *node = nodeFromIndex(index);
     if (!node)
-        return {};
+        return QVariant();
     switch (index.column())
     {
     case 0:
@@ -327,13 +327,13 @@ QVariant ResultModel::data(const QModelIndex &index, int role) const
     case 2:
         return QVariant(node->error);
     }
-    return {};
+    return QVariant();
 }
 
 QVariant ResultModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (orientation != Qt::Horizontal || role != Qt::DisplayRole)
-        return {};
+        return QVariant();
     switch (section)
     {
     case 0:
@@ -343,7 +343,7 @@ QVariant ResultModel::headerData(int section, Qt::Orientation orientation, int r
     case 2:
         return QVariant(QString(tr("Error")));
     }
-    return {};
+    return QVariant();
 }
 
 void ResultModel::setResults(ResultEntry *resultsIn)
@@ -1363,7 +1363,7 @@ Standard_Boolean BOPProgressIndicator::Show (const Standard_Boolean theForce)
     else {
         Handle(TCollection_HAsciiString) aName = GetScope(1).GetName(); //current step
         if (!aName.IsNull())
-            myProgress->setLabelText (QString::fromUtf8(aName->ToCString()));
+            myProgress->setLabelText (QString::fromLatin1(aName->ToCString()));
     }
 
     return Standard_True;
@@ -1373,7 +1373,7 @@ void BOPProgressIndicator::Show (const Message_ProgressScope& theScope,
                                  const Standard_Boolean isForce)
 {
     Standard_CString aName = theScope.Name(); //current step
-    myProgress->setLabelText (QString::fromUtf8(aName));
+    myProgress->setLabelText (QString::fromLatin1(aName));
 
     if (isForce) {
         myProgress->show();

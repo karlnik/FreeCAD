@@ -66,6 +66,7 @@ void SoBrepEdgeSet::initClass()
 SoBrepEdgeSet::SoBrepEdgeSet()
     : selContext(std::make_shared<SelContext>())
     , selContext2(std::make_shared<SelContext>())
+    , packedColor(0)
 {
     SO_NODE_CONSTRUCTOR(SoBrepEdgeSet);
 }
@@ -303,8 +304,8 @@ void SoBrepEdgeSet::renderSelection(SoGLRenderAction *action, SelContextPtr ctx,
 
 bool SoBrepEdgeSet::validIndexes(const SoCoordinateElement* coords, const std::vector<int32_t>& pts) const
 {
-    for (int32_t it : pts) {
-        if (it >= coords->getNum()) {
+    for (std::vector<int32_t>::const_iterator it = pts.begin(); it != pts.end(); ++it) {
+        if (*it >= coords->getNum()) {
             return false;
         }
     }

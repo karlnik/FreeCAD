@@ -31,7 +31,7 @@
 #include <Inventor/nodes/SoSwitch.h>
 #include <Inventor/nodes/SoText2.h>
 #include <Inventor/nodes/SoTranslation.h>
-#endif  // #ifndef _PreComp_
+#endif// #ifndef _PreComp_
 
 #include <Base/Console.h>
 #include <Base/Exception.h>
@@ -45,9 +45,7 @@
 using namespace SketcherGui;
 
 EditModeInformationOverlayCoinConverter::EditModeInformationOverlayCoinConverter(
-    ViewProviderSketch& vp,
-    SoGroup* infogroup,
-    OverlayParameters& overlayparameters,
+    ViewProviderSketch& vp, SoGroup* infogroup, OverlayParameters& overlayparameters,
     DrawingParameters& drawingparameters)
     : viewProvider(vp)
     , infoGroup(infogroup)
@@ -125,9 +123,8 @@ void EditModeInformationOverlayCoinConverter::calculate(const Part::Geometry* ge
 
             Base::Vector3d midp = Base::Vector3d(0, 0, 0);
 
-            for (auto val : poles) {
+            for (auto val : poles)
                 midp += val;
-            }
 
             midp /= poles.size();
 
@@ -145,25 +142,21 @@ void EditModeInformationOverlayCoinConverter::calculate(const Part::Geometry* ge
 
             size_t nvertices;
 
-            if (spline->isPeriodic()) {
+            if (spline->isPeriodic())
                 nvertices = poles.size() + 1;
-            }
-            else {
+            else
                 nvertices = poles.size();
-            }
 
             controlPolygon.coordinates.reserve(nvertices);
 
-            for (auto& v : poles) {
+            for (auto& v : poles)
                 controlPolygon.coordinates.emplace_back(v);
-            }
 
-            if (spline->isPeriodic()) {
+            if (spline->isPeriodic())
                 controlPolygon.coordinates.emplace_back(poles[0]);
-            }
 
             controlPolygon.indices.push_back(
-                nvertices);  // single continuous polygon starting at index 0
+                nvertices);// single continuous polygon starting at index 0
         }
         else if constexpr (calculation == CalculationType::BSplineCurvatureComb) {
 
@@ -178,7 +171,7 @@ void EditModeInformationOverlayCoinConverter::calculate(const Part::Geometry* ge
             auto knots = spline->getKnots();
             auto mults = spline->getMultiplicities();
 
-            const int ndivPerPiece = 64;  // heuristic of number of division to fill in
+            const int ndivPerPiece = 64;// heuristic of number of division to fill in
             const int ndiv = ndivPerPiece * (knots.size() - 1);
 
             std::vector<Base::Vector3d> pointatcurvelist;
@@ -241,33 +234,31 @@ void EditModeInformationOverlayCoinConverter::calculate(const Part::Geometry* ge
                         * normallist[i]);
             }
 
-            curvatureComb.coordinates.reserve(3 * ndiv);  // 2*ndiv +1 points of ndiv separate
-                                                          // segments + ndiv points for last segment
+            curvatureComb.coordinates.reserve(
+                3
+                * ndiv);// 2*ndiv +1 points of ndiv separate segments + ndiv points for last segment
             curvatureComb.indices.reserve(
-                ndiv + 1);  // ndiv separate segments of radials + 1 segment connecting at comb end
+                ndiv + 1);// ndiv separate segments of radials + 1 segment connecting at comb end
 
             auto zInfoH = ViewProviderSketchCoinAttorney::getViewOrientationFactor(viewProvider)
                 * drawingParameters.zInfo;
 
             for (int i = 0; i < ndiv; i++) {
                 // note emplace emplaces on the position BEFORE the iterator given.
-                curvatureComb.coordinates.emplace_back(pointatcurvelist[i].x,
-                                                       pointatcurvelist[i].y,
-                                                       zInfoH);  // radials
-                curvatureComb.coordinates.emplace_back(pointatcomblist[i].x,
-                                                       pointatcomblist[i].y,
-                                                       zInfoH);  // radials
+                curvatureComb.coordinates.emplace_back(
+                    pointatcurvelist[i].x, pointatcurvelist[i].y, zInfoH);// radials
+                curvatureComb.coordinates.emplace_back(
+                    pointatcomblist[i].x, pointatcomblist[i].y, zInfoH);// radials
 
-                curvatureComb.indices.emplace_back(2);  // line
+                curvatureComb.indices.emplace_back(2);// line
             }
 
-            for (int i = 0; i < ndiv; i++) {
+            for (int i = 0; i < ndiv; i++)
                 curvatureComb.coordinates.emplace_back(pointatcomblist[i].x,
                                                        pointatcomblist[i].y,
-                                                       zInfoH);  // // comb endpoint closing segment
-            }
+                                                       zInfoH);// // comb endpoint closing segment
 
-            curvatureComb.indices.emplace_back(ndiv);  // Comb line
+            curvatureComb.indices.emplace_back(ndiv);// Comb line
         }
         else if constexpr (calculation == CalculationType::BSplineKnotMultiplicity) {
 
@@ -293,11 +284,8 @@ void EditModeInformationOverlayCoinConverter::calculate(const Part::Geometry* ge
             for (size_t i = 0; i < poles.size(); i++) {
                 poleWeights.positions.emplace_back(poles[i]);
 
-                QString WeightString =
-                    QString::fromLatin1("[%1]").arg(weights[i],
-                                                    0,
-                                                    'f',
-                                                    Base::UnitsApi::getDecimals());
+                QString WeightString = QString::fromLatin1("[%1]").arg(
+                    weights[i], 0, 'f', Base::UnitsApi::getDecimals());
 
                 poleWeights.strings.emplace_back(WeightString.toStdString());
             }
@@ -309,12 +297,10 @@ template<typename Result>
 void EditModeInformationOverlayCoinConverter::addUpdateNode(const Result& result)
 {
 
-    if (overlayParameters.rebuildInformationLayer) {
+    if (overlayParameters.rebuildInformationLayer)
         addNode(result);
-    }
-    else {
+    else
         updateNode(result);
-    }
 }
 
 template<EditModeInformationOverlayCoinConverter::CalculationType calculation>
@@ -352,16 +338,14 @@ void EditModeInformationOverlayCoinConverter::setPolygon(const Result& result,
     int32_t* index = polygonlineset->numVertices.startEditing();
     SbVec3f* vts = polygoncoords->point.startEditing();
 
-    for (size_t i = 0; i < result.coordinates.size(); i++) {
+    for (size_t i = 0; i < result.coordinates.size(); i++)
         vts[i].setValue(result.coordinates[i].x,
                         result.coordinates[i].y,
                         ViewProviderSketchCoinAttorney::getViewOrientationFactor(viewProvider)
                             * drawingParameters.zInfo);
-    }
 
-    for (size_t i = 0; i < result.indices.size(); i++) {
+    for (size_t i = 0; i < result.indices.size(); i++)
         index[i] = result.indices[i];
-    }
 
     polygoncoords->point.finishEditing();
     polygonlineset->numVertices.finishEditing();
@@ -377,9 +361,8 @@ void EditModeInformationOverlayCoinConverter::setText(const std::string& string,
     else {
         assert(line > 1);
         SoMFString label;
-        for (int l = 0; l < (line - 1); l++) {
+        for (int l = 0; l < (line - 1); l++)
             label.set1Value(l, SbString(""));
-        }
 
         label.set1Value(line - 1, SbString(string.c_str()));
         text->string = label;
@@ -443,12 +426,10 @@ void EditModeInformationOverlayCoinConverter::addNode(const Result& result)
             //
             // This could be made into a more generic form, but it is probably not worth the effort
             // at this time.
-            if constexpr (Result::calculationType == CalculationType::BSplinePoleWeight) {
+            if constexpr (Result::calculationType == CalculationType::BSplinePoleWeight)
                 setText<2>(result.strings[i], text);
-            }
-            else {
+            else
                 setText(result.strings[i], text);
-            }
 
             sep->addChild(mat);
             sep->addChild(font);
@@ -506,10 +487,9 @@ void EditModeInformationOverlayCoinConverter::updateNode(const Result& result)
         for (size_t i = 0; i < result.strings.size(); i++) {
             SoSwitch* sw = static_cast<SoSwitch*>(infoGroup->getChild(nodeId));
 
-            if (overlayParameters.visibleInformationChanged) {
+            if (overlayParameters.visibleInformationChanged)
                 sw->whichChild =
                     isVisible<Result::calculationType>() ? SO_SWITCH_ALL : SO_SWITCH_NONE;
-            }
 
             SoSeparator* sep = static_cast<SoSeparator*>(sw->getChild(0));
 
@@ -527,16 +507,14 @@ void EditModeInformationOverlayCoinConverter::updateNode(const Result& result)
             //
             // This could be made into a more generic form, but it is probably not worth the effort
             // at this time.
-            if constexpr (Result::calculationType == CalculationType::BSplinePoleWeight) {
+            if constexpr (Result::calculationType == CalculationType::BSplinePoleWeight)
                 setText<2>(result.strings[i],
                            static_cast<SoText2*>(
                                sep->getChild(static_cast<int>(TextNodePosition::TextInformation))));
-            }
-            else {
+            else
                 setText(result.strings[i],
                         static_cast<SoText2*>(
                             sep->getChild(static_cast<int>(TextNodePosition::TextInformation))));
-            }
 
             nodeId++;
         }
@@ -545,9 +523,8 @@ void EditModeInformationOverlayCoinConverter::updateNode(const Result& result)
 
         SoSwitch* sw = static_cast<SoSwitch*>(infoGroup->getChild(nodeId));
 
-        if (overlayParameters.visibleInformationChanged) {
+        if (overlayParameters.visibleInformationChanged)
             sw->whichChild = isVisible<Result::calculationType>() ? SO_SWITCH_ALL : SO_SWITCH_NONE;
-        }
 
         SoSeparator* sep = static_cast<SoSeparator*>(sw->getChild(0));
 

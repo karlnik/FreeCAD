@@ -57,7 +57,9 @@ public:
         : Gui::SelectionFilterGate()
     {
     }
-    ~FaceSelectionGate() override = default;
+    ~FaceSelectionGate() override
+    {
+    }
     bool allow(App::Document*, App::DocumentObject*, const char*sSubName) override
     {
         if (!sSubName || sSubName[0] == '\0')
@@ -67,9 +69,17 @@ public:
     }
 };
 
-BoxSelection::BoxSelection() = default;
+BoxSelection::BoxSelection()
+    : autodelete(false)
+    , shapeEnum(TopAbs_SHAPE)
+{
 
-BoxSelection::~BoxSelection() = default;
+}
+
+BoxSelection::~BoxSelection()
+{
+
+}
 
 void BoxSelection::setAutoDelete(bool on)
 {
@@ -101,8 +111,8 @@ void BoxSelection::selectionCallback(void * ud, SoEventCallback * cb)
         polygon.Add(Base::Vector2d(pt2[0], pt1[1]));
     }
     else {
-        for (const auto& it : picked)
-            polygon.Add(Base::Vector2d(it[0],it[1]));
+        for (std::vector<SbVec2f>::const_iterator it = picked.begin(); it != picked.end(); ++it)
+            polygon.Add(Base::Vector2d((*it)[0],(*it)[1]));
     }
 
     BoxSelection* self = static_cast<BoxSelection*>(ud);

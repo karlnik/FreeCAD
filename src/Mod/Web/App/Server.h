@@ -26,12 +26,11 @@
 #include <QByteArray>
 #include <QEvent>
 #include <QObject>
-#include <QTcpServer>
 #include <QTcpSocket>
+#include <QTcpServer>
 
 
-namespace Web
-{
+namespace Web {
 
 class Firewall
 {
@@ -48,7 +47,7 @@ private:
     static Firewall* instance;
 };
 
-class FirewallPython: public Firewall
+class FirewallPython : public Firewall
 {
 public:
     explicit FirewallPython(const Py::Object&);
@@ -59,7 +58,7 @@ private:
     Py::Object obj;
 };
 
-class ServerEvent: public QEvent
+class ServerEvent : public QEvent
 {
 public:
     ServerEvent(QTcpSocket* socket, const QByteArray&);
@@ -76,7 +75,7 @@ private:
 /**
  * The Server class implements a simple TCP server.
  */
-class AppServer: public QTcpServer
+class AppServer : public QTcpServer
 {
     Q_OBJECT
 
@@ -101,6 +100,6 @@ private:
     Py::Object module;
 };
 
-}  // namespace Web
+}
 
-#endif  // Web_SERVER_H
+#endif //Web_SERVER_H

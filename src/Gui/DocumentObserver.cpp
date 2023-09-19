@@ -40,7 +40,9 @@ using namespace Gui;
 namespace sp = std::placeholders;
 
 
-DocumentT::DocumentT() = default;
+DocumentT::DocumentT()
+{
+}
 
 DocumentT::DocumentT(Document* doc)
 {
@@ -57,7 +59,9 @@ DocumentT::DocumentT(const DocumentT& doc)
     document = doc.document;
 }
 
-DocumentT::~DocumentT() = default;
+DocumentT::~DocumentT()
+{
+}
 
 void DocumentT::operator=(const DocumentT& doc)
 {
@@ -118,7 +122,9 @@ std::string DocumentT::getAppDocumentPython() const
 
 // -----------------------------------------------------------------------------
 
-ViewProviderT::ViewProviderT() = default;
+ViewProviderT::ViewProviderT()
+{
+}
 
 ViewProviderT::ViewProviderT(const ViewProviderT& other)
 {
@@ -135,7 +141,9 @@ ViewProviderT::ViewProviderT(const ViewProviderDocumentObject* obj)
     *this = obj;
 }
 
-ViewProviderT::~ViewProviderT() = default;
+ViewProviderT::~ViewProviderT()
+{
+}
 
 ViewProviderT & ViewProviderT::operator=(const ViewProviderT& obj)
 {
@@ -258,7 +266,9 @@ DocumentWeakPtrT::DocumentWeakPtrT(Gui::Document* doc) noexcept
 {
 }
 
-DocumentWeakPtrT::~DocumentWeakPtrT() = default;
+DocumentWeakPtrT::~DocumentWeakPtrT()
+{
+}
 
 void DocumentWeakPtrT::reset() noexcept
 {
@@ -284,7 +294,7 @@ Gui::Document* DocumentWeakPtrT::operator->() const noexcept
 
 class ViewProviderWeakPtrT::Private {
 public:
-    Private(ViewProviderDocumentObject* obj) : object(obj) {
+    Private(ViewProviderDocumentObject* obj) : object(obj), indocument(false) {
         set(obj);
     }
     void deletedDocument(const Gui::Document& doc) {
@@ -338,7 +348,7 @@ public:
     }
 
     Gui::ViewProviderDocumentObject* object;
-    bool indocument{false};
+    bool indocument;
     using Connection = boost::signals2::scoped_connection;
     Connection connectApplicationDeletedDocument;
     Connection connectDocumentCreatedObject;
@@ -350,7 +360,10 @@ ViewProviderWeakPtrT::ViewProviderWeakPtrT(ViewProviderDocumentObject* obj)
 {
 }
 
-ViewProviderWeakPtrT::~ViewProviderWeakPtrT() = default;
+ViewProviderWeakPtrT::~ViewProviderWeakPtrT()
+{
+
+}
 
 ViewProviderDocumentObject* ViewProviderWeakPtrT::_get() const noexcept
 {
@@ -396,14 +409,18 @@ bool ViewProviderWeakPtrT::operator!= (const ViewProviderWeakPtrT& p) const noex
 
 // -----------------------------------------------------------------------------
 
-DocumentObserver::DocumentObserver() = default;
+DocumentObserver::DocumentObserver()
+{
+}
 
 DocumentObserver::DocumentObserver(Document* doc)
 {
     attachDocument(doc);
 }
 
-DocumentObserver::~DocumentObserver() = default;
+DocumentObserver::~DocumentObserver()
+{
+}
 
 void DocumentObserver::attachDocument(Document* doc)
 {

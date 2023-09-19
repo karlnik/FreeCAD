@@ -39,7 +39,11 @@ ViewProviderRegularPolygon::ViewProviderRegularPolygon()
   sPixmap = "Part_Polygon_Parametric";
 }
 
-ViewProviderRegularPolygon::~ViewProviderRegularPolygon() = default;
+ViewProviderRegularPolygon::~ViewProviderRegularPolygon()
+{
+
+}
+
 
 
 // **********************************************************************************

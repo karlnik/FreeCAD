@@ -38,7 +38,6 @@
 #include <Base/Interpreter.h>
 #include <Base/Tools.h>
 #include <Base/UnitsApi.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 #include "Selection.h"
 #include "SelectionObject.h"
@@ -519,7 +518,7 @@ std::vector<App::DocumentObject*> SelectionSingleton::getObjectsOfType(const cha
 {
     Base::Type typeId = Base::Type::fromName(typeName);
     if (typeId == Base::Type::badType())
-        return {};
+        return std::vector<App::DocumentObject*>();
     return getObjectsOfType(typeId, pDocName, resolve);
 }
 
@@ -1599,15 +1598,6 @@ void SelectionSingleton::slotDeletedObject(const App::DocumentObject& Obj)
     }
 }
 
-void SelectionSingleton::setSelectionStyle(SelectionStyle selStyle)
-{
-    selectionStyle = selStyle;
-}
-
-SelectionSingleton::SelectionStyle SelectionSingleton::getSelectionStyle()
-{
-    return selectionStyle;
-}
 
 //**************************************************************************
 // Construction/Destruction
@@ -1616,9 +1606,9 @@ SelectionSingleton::SelectionStyle SelectionSingleton::getSelectionStyle()
  * A constructor.
  * A more elaborate description of the constructor.
  */
-SelectionSingleton::SelectionSingleton() :
-    CurrentPreselection(SelectionChanges::ClrSelection),
-    selectionStyle(SelectionStyle::NormalSelection)
+SelectionSingleton::SelectionSingleton()
+    :CurrentPreselection(SelectionChanges::ClrSelection)
+    ,_needPickedList(false)
 {
     hx = 0;
     hy = 0;
@@ -1635,7 +1625,9 @@ SelectionSingleton::SelectionSingleton() :
  * A destructor.
  * A more elaborate description of the destructor.
  */
-SelectionSingleton::~SelectionSingleton() = default;
+SelectionSingleton::~SelectionSingleton()
+{
+}
 
 SelectionSingleton* SelectionSingleton::_pcSingleton = nullptr;
 
@@ -1788,12 +1780,6 @@ PyMethodDef SelectionSingleton::Methods[] = {
      "objName : str\n    Name of the `App.DocumentObject` to select.\n"
      "subName : str\n    Subelement name.\n"
      "point : tuple\n    Coordinates of the point to pick."},
-    {"setSelectionStyle",         (PyCFunction) SelectionSingleton::sSetSelectionStyle, METH_VARARGS,
-     "setSelectionStyle(selectionStyle) -> None\n"
-     "\n"
-     "Change the selection style. 0 for normal selection, 1 for greedy selection\n"
-     "\n"
-     "selectionStyle : int"},
     {"addObserver",         (PyCFunction) SelectionSingleton::sAddSelObserver, METH_VARARGS,
      "addObserver(object, resolve=ResolveMode.OldStyleElement) -> None\n"
      "\n"
@@ -2119,9 +2105,9 @@ PyObject *SelectionSingleton::sSetPreselection(PyObject * /*self*/, PyObject *ar
     char* subname = nullptr;
     float x = 0, y = 0, z = 0;
     int type = 1;
-    static const std::array<const char *, 7> kwlist{"obj", "subname", "x", "y", "z", "tp", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwd, "O!|sfffi", kwlist, &(App::DocumentObjectPy::Type), &object,
-                                            &subname, &x, &y, &z, &type)) {
+    static char *kwlist[] = {"obj","subname","x","y","z","tp",nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwd, "O!|sfffi", kwlist,
+                &(App::DocumentObjectPy::Type),&object,&subname,&x,&y,&z,&type)) {
         auto docObjPy = static_cast<App::DocumentObjectPy*>(object);
         App::DocumentObject* docObj = docObjPy->getDocumentObjectPtr();
         if (!docObj || !docObj->getNameInDocument()) {
@@ -2275,19 +2261,6 @@ PyObject *SelectionSingleton::sGetSelectionObject(PyObject * /*self*/, PyObject 
     }
 }
 
-PyObject *SelectionSingleton::sSetSelectionStyle(PyObject * /*self*/, PyObject *args)
-{
-    int selStyle = 0;
-    if (!PyArg_ParseTuple(args, "i", &selStyle))
-        return nullptr;
-
-    PY_TRY {
-        Selection().setSelectionStyle(selStyle == 0 ? SelectionStyle::NormalSelection : SelectionStyle::GreedySelection);
-        Py_Return;
-    }
-    PY_CATCH;
-}
-
 PyObject *SelectionSingleton::sAddSelObserver(PyObject * /*self*/, PyObject *args)
 {
     PyObject* o;
@@ -2332,7 +2305,7 @@ PyObject *SelectionSingleton::sAddSelectionGate(PyObject * /*self*/, PyObject *a
     if (PyArg_ParseTuple(args, "O!|i",SelectionFilterPy::type_object(),&filterPy,resolve)) {
         PY_TRY {
             Selection().addSelectionGate(new SelectionFilterGatePython(
-                        SelectionFilterPy::cast(filterPy)), toEnum(resolve));
+                        static_cast<SelectionFilterPy*>(filterPy)), toEnum(resolve));
             Py_Return;
         }
         PY_CATCH;

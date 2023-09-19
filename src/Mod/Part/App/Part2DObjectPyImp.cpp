@@ -35,8 +35,10 @@ using namespace Part;
 // returns a string which represents the object e.g. when printed in python
 std::string Part2DObjectPy::representation() const
 {
-    return {"<Part::Part2DObject>"};
+    return std::string("<Part::Part2DObject>");
 }
+
+
 
 PyObject *Part2DObjectPy::getCustomAttributes(const char* /*attr*/) const
 {

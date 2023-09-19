@@ -196,7 +196,7 @@ By using ";;" to separate paths, you can add several folders here</source>
     <message>
       <location filename="../../DlgStartPreferences.ui" line="500"/>
       <source>Font family</source>
-      <translation>Семейство шрифтов</translation>
+      <translation>Шрифт</translation>
     </message>
     <message>
       <location filename="../../DlgStartPreferences.ui" line="509"/>
@@ -293,7 +293,7 @@ By using ";;" to separate paths, you can add several folders here</source>
     <message>
       <location filename="../../../StartPage/TranslationTexts.py" line="38"/>
       <source>Start</source>
-      <translation>Начало</translation>
+      <translation>Запустить</translation>
     </message>
     <message>
       <location filename="../../../StartPage/TranslationTexts.py" line="39"/>
@@ -303,7 +303,7 @@ By using ";;" to separate paths, you can add several folders here</source>
     <message>
       <location filename="../../../StartPage/TranslationTexts.py" line="40"/>
       <source>Help</source>
-      <translation>Помощь</translation>
+      <translation>Справка</translation>
     </message>
     <message>
       <location filename="../../../StartPage/TranslationTexts.py" line="41"/>
@@ -506,7 +506,7 @@ By using ";;" to separate paths, you can add several folders here</source>
     <message>
       <location filename="../../AppStartGui.cpp" line="103"/>
       <source>Start</source>
-      <translation>Запуск</translation>
+      <translation>Запустить</translation>
     </message>
   </context>
 </TS>

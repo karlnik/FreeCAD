@@ -43,7 +43,9 @@ void SoFCInteractiveElement::init(SoState * /*state*/)
   this->interactiveMode = false;
 }
 
-SoFCInteractiveElement::~SoFCInteractiveElement() = default;
+SoFCInteractiveElement::~SoFCInteractiveElement()
+{
+}
 
 void SoFCInteractiveElement::set(SoState * const state, SoNode * const node, SbBool mode)
 {
@@ -84,7 +86,9 @@ void SoGLWidgetElement::init(SoState * state)
   this->window = nullptr;
 }
 
-SoGLWidgetElement::~SoGLWidgetElement() = default;
+SoGLWidgetElement::~SoGLWidgetElement()
+{
+}
 
 void SoGLWidgetElement::set(SoState * state, QtGLWidget * window)
 {
@@ -137,7 +141,9 @@ void SoGLRenderActionElement::init(SoState * state)
   this->glRenderAction = nullptr;
 }
 
-SoGLRenderActionElement::~SoGLRenderActionElement() = default;
+SoGLRenderActionElement::~SoGLRenderActionElement()
+{
+}
 
 void SoGLRenderActionElement::set(SoState * state, SoGLRenderAction * action)
 {
@@ -180,7 +186,7 @@ SO_NODE_SOURCE(SoGLWidgetNode)
 /*!
   Constructor.
 */
-SoGLWidgetNode::SoGLWidgetNode()
+SoGLWidgetNode::SoGLWidgetNode() : window(nullptr)
 {
     SO_NODE_CONSTRUCTOR(SoGLWidgetNode);
 }
@@ -188,7 +194,9 @@ SoGLWidgetNode::SoGLWidgetNode()
 /*!
   Destructor.
 */
-SoGLWidgetNode::~SoGLWidgetNode() = default;
+SoGLWidgetNode::~SoGLWidgetNode()
+{
+}
 
 // Doc from superclass.
 void SoGLWidgetNode::initClass()
@@ -227,7 +235,9 @@ void SoGLVBOActivatedElement::init(SoState * state)
   this->active = false;
 }
 
-SoGLVBOActivatedElement::~SoGLVBOActivatedElement() = default;
+SoGLVBOActivatedElement::~SoGLVBOActivatedElement()
+{
+}
 
 void SoGLVBOActivatedElement::set(SoState * state, SbBool active)
 {

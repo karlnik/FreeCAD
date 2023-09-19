@@ -27,7 +27,6 @@
 
 #include <Base/Exception.h>
 #include <Base/PlacementPy.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 // files generated out of CommandPy.xml
 #include "CommandPy.h"
@@ -70,8 +69,8 @@ int CommandPy::PyInit(PyObject* args, PyObject* kwd)
 {
     PyObject *parameters = nullptr;
     char *name = "";
-    static const std::array<const char *, 3> kwlist {"name", "parameters", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwd, "|sO!", kwlist, &name, &PyDict_Type, &parameters)) {
+    static char *kwlist[] = {"name", "parameters", nullptr};
+    if ( PyArg_ParseTupleAndKeywords(args, kwd, "|sO!", kwlist, &name, &PyDict_Type, &parameters) ) {
         std::string sname(name);
         boost::to_upper(sname);
         try {
@@ -114,8 +113,7 @@ int CommandPy::PyInit(PyObject* args, PyObject* kwd)
     }
     PyErr_Clear(); // set by PyArg_ParseTuple()
 
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwd, "|sO!", kwlist, &name, &(Base::PlacementPy::Type),
-                                            &parameters)) {
+    if ( PyArg_ParseTupleAndKeywords(args, kwd, "|sO!", kwlist, &name, &(Base::PlacementPy::Type), &parameters) ) {
         std::string sname(name);
         boost::to_upper(sname);
         try {

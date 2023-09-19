@@ -81,7 +81,8 @@ expandSubObjectNames(const App::DocumentObject *obj,
     return res;
 }
 
-Exporter::Exporter() = default;
+Exporter::Exporter()
+{ }
 
 //static
 std::string Exporter::xmlEscape(const std::string &input)
@@ -300,11 +301,6 @@ bool Exporter3MF::addMesh(const char *name, const MeshObject & mesh)
     return ok;
 }
 
-void Exporter3MF::setForceModel(bool model)
-{
-    d->writer3mf.SetForceModel(model);
-}
-
 void Exporter3MF::write()
 {
     d->writer3mf.Save();
@@ -314,7 +310,8 @@ void Exporter3MF::write()
 
 ExporterAMF::ExporterAMF( std::string fileName,
                           const std::map<std::string, std::string> &meta,
-                          bool compress )
+                          bool compress ) :
+    outputStreamPtr(nullptr), nextObjectIndex(0)
 {
     // ask for write permission
     throwIfNoPermission(fileName);

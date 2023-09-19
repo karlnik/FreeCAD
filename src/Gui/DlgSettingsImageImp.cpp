@@ -63,7 +63,10 @@ DlgSettingsImageImp::DlgSettingsImageImp( QWidget* parent )
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsImageImp::~DlgSettingsImageImp() = default;
+DlgSettingsImageImp::~DlgSettingsImageImp()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsImageImp::setupConnections()
 {
@@ -128,7 +131,7 @@ void DlgSettingsImageImp::setImageSize( const QSize& s )
  */
 QSize DlgSettingsImageImp::imageSize() const
 {
-    return { ui->spinWidth->value(), ui->spinHeight->value() };
+    return QSize( ui->spinWidth->value(), ui->spinHeight->value() );
 }
 
 /**
@@ -154,7 +157,7 @@ int DlgSettingsImageImp::imageHeight() const
 QString DlgSettingsImageImp::comment() const
 {
     if ( !ui->textEditComment->isEnabled() )
-        return {};
+        return QString();
     else
         return ui->textEditComment->toPlainText();
 }

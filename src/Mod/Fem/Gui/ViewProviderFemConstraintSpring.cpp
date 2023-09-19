@@ -47,7 +47,9 @@ ViewProviderFemConstraintSpring::ViewProviderFemConstraintSpring()
     ADD_PROPERTY(FaceColor, (0.0f, 0.2f, 0.8f));
 }
 
-ViewProviderFemConstraintSpring::~ViewProviderFemConstraintSpring() = default;
+ViewProviderFemConstraintSpring::~ViewProviderFemConstraintSpring()
+{
+}
 
 //FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintSpring::setEdit(int ModNum)

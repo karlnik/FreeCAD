@@ -71,8 +71,7 @@ class BezCurve(gui_lines.Line):
         Activate the specific Bézier curve tracker.
         """
         super(BezCurve, self).Activated(name="BezCurve",
-                                        icon="Draft_BezCurve",
-                                        task_title=translate("draft","Bézier curve"))
+                                        icon="Draft_BezCurve")
         if self.doc:
             self.bezcurvetrack = trackers.bezcurveTracker()
 
@@ -262,8 +261,7 @@ class CubicBezCurve(gui_lines.Line):
         param.SetBool("EnableSelection", False)
 
         super(CubicBezCurve, self).Activated(name="CubicBezCurve",
-                                             icon="Draft_CubicBezCurve",
-                                             task_title=translate("draft","Cubic Bézier curve"))
+                                             icon="Draft_CubicBezCurve")
         if self.doc:
             self.bezcurvetrack = trackers.bezcurveTracker()
 

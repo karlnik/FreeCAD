@@ -75,7 +75,9 @@ Primitive::Primitive()
     touch();
 }
 
-Primitive::~Primitive() = default;
+Primitive::~Primitive()
+{
+}
 
 short Primitive::mustExecute() const
 {
@@ -168,7 +170,9 @@ Vertex::Vertex()
     ADD_PROPERTY(Z,(0.0f));
 }
 
-Vertex::~Vertex() = default;
+Vertex::~Vertex()
+{
+}
 
 short Vertex::mustExecute() const
 {
@@ -221,7 +225,9 @@ Line::Line()
     ADD_PROPERTY_TYPE(Z2,(1.0),"Vertex 2 - Finish",App::Prop_None,"Z value of the finish vertex");
 }
 
-Line::~Line() = default;
+Line::~Line()
+{
+}
 
 short Line::mustExecute() const
 {
@@ -982,7 +988,9 @@ Ellipse::Ellipse()
     Angle2.setConstraints(&angleRange);
 }
 
-Ellipse::~Ellipse() = default;
+Ellipse::~Ellipse()
+{
+}
 
 short Ellipse::mustExecute() const
 {

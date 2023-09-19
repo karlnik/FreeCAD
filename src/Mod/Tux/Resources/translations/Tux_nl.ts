@@ -66,7 +66,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="332"/>
       <source>Orbit style</source>
-      <translation>Rotatiebaan stijl</translation>
+      <translation>Orbit stijl</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="333"/>
@@ -86,7 +86,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="336"/>
       <source>Free Turntable</source>
-      <translation>Vrije draaitafel</translation>
+      <translation type="unfinished">Free Turntable</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="337"/>

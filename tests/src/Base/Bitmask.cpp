@@ -4,8 +4,7 @@
 
 #include <Base/Bitmask.h>
 
-enum class TestFlagEnum
-{
+enum class TestFlagEnum {
     Flag1,
     Flag2,
     Flag3

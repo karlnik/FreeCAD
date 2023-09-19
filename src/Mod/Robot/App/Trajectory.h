@@ -31,10 +31,7 @@
 #include "Waypoint.h"
 
 
-namespace KDL
-{
-class Trajectory_Composite;
-}
+namespace KDL {class Trajectory_Composite;}
 
 namespace Robot
 {
@@ -42,7 +39,7 @@ namespace Robot
 
 /** The representation of a Trajectory
  */
-class RobotExport Trajectory: public Base::Persistence
+class RobotExport Trajectory : public Base::Persistence
 {
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 
@@ -51,47 +48,39 @@ public:
     Trajectory(const Trajectory&);
     ~Trajectory() override;
 
-    Trajectory& operator=(const Trajectory&);
+    Trajectory &operator=(const Trajectory&);
 
-    // from base class
-    unsigned int getMemSize() const override;
-    void Save(Base::Writer& /*writer*/) const override;
-    void Restore(Base::XMLReader& /*reader*/) override;
+	// from base class
+    unsigned int getMemSize () const override;
+    void Save (Base::Writer &/*writer*/) const override;
+    void Restore(Base::XMLReader &/*reader*/) override;
 
-    // interface
+	// interface
     void generateTrajectory();
-    void addWaypoint(const Waypoint& WPnt);
-    unsigned int getSize() const
-    {
-        return vpcWaypoints.size();
-    }
-    const Waypoint& getWaypoint(unsigned int pos) const
-    {
-        return *vpcWaypoints[pos];
-    }
-    std::string getUniqueWaypointName(const char* Name) const;
-    const std::vector<Waypoint*>& getWaypoints() const
-    {
-        return vpcWaypoints;
-    }
+    void addWaypoint(const Waypoint &WPnt);
+    unsigned int getSize() const{return vpcWaypoints.size();}
+    const Waypoint &getWaypoint(unsigned int pos)const {return *vpcWaypoints[pos];}
+    std::string getUniqueWaypointName(const char *Name) const;
+    const std::vector<Waypoint*> &getWaypoints()const{return vpcWaypoints;}
 
     /// delete the last n waypoints
-    void deleteLast(unsigned int n = 1);
+    void deleteLast(unsigned int n=1);
     /// return the Length (mm) of the Trajectory if -1 or of the Waypoint with the given number
-    double getLength(int n = -1) const;
+    double getLength(int n=-1) const;
     /// return the duration (s) of the Trajectory if -1 or of the Waypoint with the given number
-    double getDuration(int n = -1) const;
-    Base::Placement getPosition(double time) const;
-    double getVelocity(double time) const;
+    double getDuration (int n=-1) const;
+    Base::Placement getPosition(double time)const;
+    double getVelocity(double time)const;
 
 
 protected:
+
     std::vector<Waypoint*> vpcWaypoints;
 
-    KDL::Trajectory_Composite* pcTrajectory {nullptr};
+    KDL::Trajectory_Composite *pcTrajectory;
 };
 
-}  // namespace Robot
+} //namespace Part
 
 
-#endif  // PART_TOPOSHAPE_H
+#endif // PART_TOPOSHAPE_H

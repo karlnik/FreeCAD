@@ -120,11 +120,6 @@ ViewProviderMeasureDistance::~ViewProviderMeasureDistance()
     pLines->unref();
 }
 
-bool ViewProviderMeasureDistance::isPartOfPhysicalObject() const
-{
-    return false;
-}
-
 void ViewProviderMeasureDistance::onChanged(const App::Property* prop)
 {
     if (prop == &Mirror || prop == &DistFactor) {
@@ -316,11 +311,6 @@ ViewProviderPointMarker::~ViewProviderPointMarker()
 {
     pCoords->unref();
     pMarker->unref();
-}
-
-bool ViewProviderPointMarker::isPartOfPhysicalObject() const
-{
-    return false;
 }
 
 void ViewProviderMeasureDistance::measureDistanceCallback(void * ud, SoEventCallback * n)

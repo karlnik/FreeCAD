@@ -67,8 +67,9 @@ TaskChamferParameters::TaskChamferParameters(ViewProviderDressUp *DressUpView, Q
     QMetaObject::invokeMethod(ui->chamferSize, "setFocus", Qt::QueuedConnection);
 
     std::vector<std::string> strings = pcChamfer->Base.getSubValues();
-    for (const auto & string : strings) {
-        ui->listWidgetReferences->addItem(QString::fromStdString(string));
+    for (std::vector<std::string>::const_iterator i = strings.begin(); i != strings.end(); i++)
+    {
+        ui->listWidgetReferences->addItem(QString::fromStdString(*i));
     }
 
     QMetaObject::connectSlotsByName(this);
@@ -336,7 +337,10 @@ TaskDlgChamferParameters::TaskDlgChamferParameters(ViewProviderChamfer *DressUpV
     Content.push_back(parameter);
 }
 
-TaskDlgChamferParameters::~TaskDlgChamferParameters() = default;
+TaskDlgChamferParameters::~TaskDlgChamferParameters()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

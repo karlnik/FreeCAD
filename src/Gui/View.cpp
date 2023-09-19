@@ -37,7 +37,7 @@ TYPESYSTEM_SOURCE_ABSTRACT(Gui::BaseView,Base::BaseClass)
 
 
 BaseView::BaseView( Gui::Document* pcDocument)
-  :_pcDocument(pcDocument)
+  :_pcDocument(pcDocument), bIsDetached(false)
 {
     if (pcDocument){
         pcDocument->attachView(this);

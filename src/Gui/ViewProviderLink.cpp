@@ -209,7 +209,8 @@ public:
         transformSensor.setData(this);
     }
 
-    ~LinkInfo() = default;
+    ~LinkInfo() {
+    }
 
     bool checkName(const char *name) const {
         return isLinked() && strcmp(name,getLinkedName())==0;

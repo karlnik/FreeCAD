@@ -4,17 +4,17 @@
   <context>
     <name>CmdApproxCylinder</name>
     <message>
-      <location filename="../../Command.cpp" line="214"/>
+      <location filename="../../Command.cpp" line="205"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="215"/>
+      <location filename="../../Command.cpp" line="206"/>
       <source>Cylinder</source>
       <translation>Zylinder</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="216"/>
+      <location filename="../../Command.cpp" line="207"/>
       <source>Approximate a cylinder</source>
       <translation>Einen Zylinder annähern</translation>
     </message>
@@ -22,17 +22,17 @@
   <context>
     <name>CmdApproxPlane</name>
     <message>
-      <location filename="../../Command.cpp" line="106"/>
+      <location filename="../../Command.cpp" line="104"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="107"/>
+      <location filename="../../Command.cpp" line="105"/>
       <source>Plane...</source>
       <translation>Ebene...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="108"/>
+      <location filename="../../Command.cpp" line="106"/>
       <source>Approximate a plane</source>
       <translation>Approximieren einer Ebene</translation>
     </message>
@@ -40,17 +40,17 @@
   <context>
     <name>CmdApproxPolynomial</name>
     <message>
-      <location filename="../../Command.cpp" line="330"/>
+      <location filename="../../Command.cpp" line="318"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="331"/>
+      <location filename="../../Command.cpp" line="319"/>
       <source>Polynomial surface</source>
       <translation>Polynomfläche</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="332"/>
+      <location filename="../../Command.cpp" line="320"/>
       <source>Approximate a polynomial surface</source>
       <translation>Eine Polynomfläche annähern</translation>
     </message>
@@ -58,17 +58,17 @@
   <context>
     <name>CmdApproxSphere</name>
     <message>
-      <location filename="../../Command.cpp" line="282"/>
+      <location filename="../../Command.cpp" line="271"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="283"/>
+      <location filename="../../Command.cpp" line="272"/>
       <source>Sphere</source>
       <translation>Kugel</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="284"/>
+      <location filename="../../Command.cpp" line="273"/>
       <source>Approximate a sphere</source>
       <translation>Eine Kugel annähern</translation>
     </message>
@@ -94,17 +94,17 @@
   <context>
     <name>CmdMeshBoundary</name>
     <message>
-      <location filename="../../Command.cpp" line="502"/>
+      <location filename="../../Command.cpp" line="484"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="503"/>
+      <location filename="../../Command.cpp" line="485"/>
       <source>Wire from mesh boundary...</source>
       <translation>Draht von Netzgrenze...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="504"/>
+      <location filename="../../Command.cpp" line="486"/>
       <source>Create wire from mesh boundaries</source>
       <translation>Erstelle Kantenzug aus Netzbegrenzungen</translation>
     </message>
@@ -112,17 +112,17 @@
   <context>
     <name>CmdPoissonReconstruction</name>
     <message>
-      <location filename="../../Command.cpp" line="569"/>
+      <location filename="../../Command.cpp" line="550"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="570"/>
+      <location filename="../../Command.cpp" line="551"/>
       <source>Poisson...</source>
       <translation>Poisson...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="571"/>
+      <location filename="../../Command.cpp" line="552"/>
       <source>Poisson surface reconstruction</source>
       <translation>Poisson-Oberflächenrekonstruktion</translation>
     </message>
@@ -130,17 +130,17 @@
   <context>
     <name>CmdSegmentation</name>
     <message>
-      <location filename="../../Command.cpp" line="388"/>
+      <location filename="../../Command.cpp" line="373"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="389"/>
+      <location filename="../../Command.cpp" line="374"/>
       <source>Mesh segmentation...</source>
       <translation>Netz-Segmentierung...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="390"/>
+      <location filename="../../Command.cpp" line="375"/>
       <source>Create mesh segments</source>
       <translation>Netz-Segmente erstellen</translation>
     </message>
@@ -148,17 +148,17 @@
   <context>
     <name>CmdSegmentationFromComponents</name>
     <message>
-      <location filename="../../Command.cpp" line="450"/>
+      <location filename="../../Command.cpp" line="434"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="451"/>
+      <location filename="../../Command.cpp" line="435"/>
       <source>From components</source>
       <translation>Aus Komponenten</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="452"/>
+      <location filename="../../Command.cpp" line="436"/>
       <source>Create mesh segments from components</source>
       <translation>Erstelle Netzsegmente aus Komponenten</translation>
     </message>
@@ -166,17 +166,17 @@
   <context>
     <name>CmdSegmentationManual</name>
     <message>
-      <location filename="../../Command.cpp" line="420"/>
+      <location filename="../../Command.cpp" line="405"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="421"/>
+      <location filename="../../Command.cpp" line="406"/>
       <source>Manual segmentation...</source>
       <translation>Manuelle Segmentierung...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="422"/>
+      <location filename="../../Command.cpp" line="407"/>
       <source>Create mesh segments manually</source>
       <translation>Netzsegmente manuell erstellen</translation>
     </message>
@@ -184,18 +184,18 @@
   <context>
     <name>CmdViewTriangulation</name>
     <message>
-      <location filename="../../Command.cpp" line="604"/>
+      <location filename="../../Command.cpp" line="584"/>
       <source>Reverse Engineering</source>
       <translation>Rückführung</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="605"/>
+      <location filename="../../Command.cpp" line="585"/>
       <source>Structured point clouds</source>
       <translation>Geordnete Punktwolken</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="606"/>
-      <location filename="../../Command.cpp" line="607"/>
+      <location filename="../../Command.cpp" line="586"/>
+      <location filename="../../Command.cpp" line="587"/>
       <source>Triangulation of structured point clouds</source>
       <translation>Triangulation von geordneten Punktwolken</translation>
     </message>
@@ -203,47 +203,47 @@
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="192"/>
+      <location filename="../../Command.cpp" line="184"/>
       <source>Fit plane</source>
       <translation>Ebene einpassen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="224"/>
+      <location filename="../../Command.cpp" line="215"/>
       <source>Fit cylinder</source>
       <translation>Zylinder einpassen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="292"/>
+      <location filename="../../Command.cpp" line="281"/>
       <source>Fit sphere</source>
       <translation>Kugel einpassen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="341"/>
+      <location filename="../../Command.cpp" line="329"/>
       <source>Fit polynomial surface</source>
       <translation>Polynomfläche einpassen</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="616"/>
+      <location filename="../../Command.cpp" line="595"/>
       <source>View triangulation</source>
       <translation>Triangulation anzeigen</translation>
     </message>
     <message>
-      <location filename="../../FitBSplineSurface.cpp" line="154"/>
+      <location filename="../../FitBSplineSurface.cpp" line="150"/>
       <source>Placement</source>
       <translation>Positionierung</translation>
     </message>
     <message>
-      <location filename="../../FitBSplineSurface.cpp" line="231"/>
+      <location filename="../../FitBSplineSurface.cpp" line="222"/>
       <source>Fit B-Spline</source>
       <translation>B-Spline einpassen</translation>
     </message>
     <message>
-      <location filename="../../Poisson.cpp" line="83"/>
+      <location filename="../../Poisson.cpp" line="91"/>
       <source>Poisson reconstruction</source>
       <translation>Poisson-Rekonstruktion</translation>
     </message>
     <message>
-      <location filename="../../SegmentationManual.cpp" line="281"/>
+      <location filename="../../SegmentationManual.cpp" line="257"/>
       <source>Segmentation</source>
       <translation>Segmentierung</translation>
     </message>
@@ -331,18 +331,18 @@
   <context>
     <name>ReenGui::FitBSplineSurfaceWidget</name>
     <message>
-      <location filename="../../FitBSplineSurface.cpp" line="165"/>
-      <location filename="../../FitBSplineSurface.cpp" line="238"/>
+      <location filename="../../FitBSplineSurface.cpp" line="161"/>
+      <location filename="../../FitBSplineSurface.cpp" line="229"/>
       <source>Input error</source>
       <translation>Eingabefehler</translation>
     </message>
     <message>
-      <location filename="../../FitBSplineSurface.cpp" line="206"/>
+      <location filename="../../FitBSplineSurface.cpp" line="201"/>
       <source>Wrong selection</source>
       <translation>Falsche Auswahl</translation>
     </message>
     <message>
-      <location filename="../../FitBSplineSurface.cpp" line="207"/>
+      <location filename="../../FitBSplineSurface.cpp" line="202"/>
       <source>Please select a single placement object to get local orientation.</source>
       <translation>Bitte ein einzelnes Placement-Objekt zur lokalen Orientierung wählen.</translation>
     </message>
@@ -375,7 +375,7 @@
       <translation>Samples pro Knoten</translation>
     </message>
     <message>
-      <location filename="../../Poisson.cpp" line="90"/>
+      <location filename="../../Poisson.cpp" line="98"/>
       <source>Input error</source>
       <translation>Eingabefehler</translation>
     </message>
@@ -383,18 +383,18 @@
   <context>
     <name>Reen_ApproxSurface</name>
     <message>
-      <location filename="../../Command.cpp" line="86"/>
-      <location filename="../../Command.cpp" line="584"/>
+      <location filename="../../Command.cpp" line="83"/>
+      <location filename="../../Command.cpp" line="563"/>
       <source>Wrong selection</source>
       <translation>Falsche Auswahl</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="87"/>
+      <location filename="../../Command.cpp" line="84"/>
       <source>Please select a point cloud or mesh.</source>
       <translation>Bitte wählen Sie eine Punktwolke oder ein Netz.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="585"/>
+      <location filename="../../Command.cpp" line="564"/>
       <source>Please select a single point cloud.</source>
       <translation>Bitte eine einzelne Punktewolke auswählen.</translation>
     </message>
@@ -402,7 +402,7 @@
   <context>
     <name>Reen_ViewTriangulation</name>
     <message>
-      <location filename="../../Command.cpp" line="638"/>
+      <location filename="../../Command.cpp" line="617"/>
       <source>View triangulation failed</source>
       <translation>Ansichts-Triangulation fehlgeschlagen</translation>
     </message>
@@ -422,7 +422,7 @@
     <message>
       <location filename="../../Segmentation.ui" line="37"/>
       <source>Plane</source>
-      <translation>Fläche</translation>
+      <translation>Ebene</translation>
     </message>
     <message>
       <location filename="../../Segmentation.ui" line="46"/>
@@ -437,7 +437,7 @@
     <message>
       <location filename="../../Segmentation.ui" line="80"/>
       <source>Minimum number of faces</source>
-      <translation>Minimale Anzahl von Flächen</translation>
+      <translation>Minimale Anzahl von Dreiecken</translation>
     </message>
     <message>
       <location filename="../../Segmentation.ui" line="100"/>
@@ -460,7 +460,7 @@
     <message>
       <location filename="../../SegmentationManual.ui" line="20"/>
       <source>Select</source>
-      <translation>Auswählen</translation>
+      <translation>Wähle</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="41"/>
@@ -480,12 +480,12 @@
     <message>
       <location filename="../../SegmentationManual.ui" line="88"/>
       <source>&lt; faces than</source>
-      <translation>&lt; Flächen als</translation>
+      <translation>&lt; Dreiecke als</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="98"/>
       <source>Pick triangle</source>
-      <translation>Dreieck auswählen</translation>
+      <translation>Dreieck aufnehmen</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="105"/>
@@ -495,7 +495,7 @@
     <message>
       <location filename="../../SegmentationManual.ui" line="112"/>
       <source>Clear</source>
-      <translation>Leeren</translation>
+      <translation>Löschen</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="122"/>
@@ -536,7 +536,7 @@
     <message>
       <location filename="../../SegmentationManual.ui" line="281"/>
       <source>Region options</source>
-      <translation>Bereich Einstellungen</translation>
+      <translation>Einstellungen</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="287"/>
@@ -546,7 +546,7 @@
     <message>
       <location filename="../../SegmentationManual.ui" line="297"/>
       <source>Respect only triangles with normals facing screen</source>
-      <translation>Nur Dreiecke beachten deren Normals zum Bildschirm zeigen</translation>
+      <translation>Nur Dreiecke mit Normalen beachten, die zum Bildschirm zeigen</translation>
     </message>
     <message>
       <location filename="../../SegmentationManual.ui" line="310"/>
@@ -567,7 +567,7 @@
   <context>
     <name>ReverseEngineeringGui::TaskSegmentationManual</name>
     <message>
-      <location filename="../../SegmentationManual.cpp" line="354"/>
+      <location filename="../../SegmentationManual.cpp" line="333"/>
       <source>Create</source>
       <translation>Erstellen</translation>
     </message>

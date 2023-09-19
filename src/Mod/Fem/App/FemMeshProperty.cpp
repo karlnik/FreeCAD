@@ -42,7 +42,9 @@ PropertyFemMesh::PropertyFemMesh() : _FemMesh(new FemMesh)
 {
 }
 
-PropertyFemMesh::~PropertyFemMesh() = default;
+PropertyFemMesh::~PropertyFemMesh()
+{
+}
 
 void PropertyFemMesh::setValuePtr(FemMesh* mesh)
 {

@@ -61,7 +61,7 @@ QPixmap getStandardIcon(QWidget* widget, QStyle::StandardPixmap standardPixmap)
 #endif
     }
 
-    return {};
+    return QPixmap();
 }
 
 void DlgCheckableMessageBox::showMessage(const QString& header, const QString& message, bool check, const QString& checkText)
@@ -105,10 +105,10 @@ void DlgCheckableMessageBox::showMessage(const QString& header, const QString& m
 }
 
 struct DlgCheckableMessageBoxPrivate {
-    DlgCheckableMessageBoxPrivate() = default;
+    DlgCheckableMessageBoxPrivate() : clickedButton(nullptr) {}
 
     Ui::DlgCheckableMessageBox ui;
-    QAbstractButton *clickedButton{nullptr};
+    QAbstractButton *clickedButton;
 };
 
 DlgCheckableMessageBox::DlgCheckableMessageBox(QWidget *parent) :

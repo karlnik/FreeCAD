@@ -4,17 +4,17 @@
   <context>
     <name>CmdMeshPartCrossSections</name>
     <message>
-      <location filename="../../Command.cpp" line="280"/>
+      <location filename="../../Command.cpp" line="269"/>
       <source>MeshPart</source>
       <translation>Паліганальная сетка Дэталяў</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="281"/>
+      <location filename="../../Command.cpp" line="270"/>
       <source>Cross-sections...</source>
       <translation>Папярочныя перасекі...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="282"/>
+      <location filename="../../Command.cpp" line="271"/>
       <source>Cross-sections</source>
       <translation>Папярочныя перасекі</translation>
     </message>
@@ -22,17 +22,17 @@
   <context>
     <name>CmdMeshPartCurveOnMesh</name>
     <message>
-      <location filename="../../Command.cpp" line="316"/>
+      <location filename="../../Command.cpp" line="305"/>
       <source>Mesh</source>
-      <translation>Паліганальная сетка</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="317"/>
+      <location filename="../../Command.cpp" line="306"/>
       <source>Curve on mesh...</source>
       <translation>Крывая на паліганальнай сетцы...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="318"/>
+      <location filename="../../Command.cpp" line="307"/>
       <source>Creates an approximated curve on top of a mesh.
 This command only works with a 'mesh' object.</source>
       <translation>Стварае набліжаную крывую - над паліганальнай сеткай.
@@ -44,7 +44,7 @@ This command only works with a 'mesh' object.</source>
     <message>
       <location filename="../../Command.cpp" line="58"/>
       <source>Mesh</source>
-      <translation>Паліганальная сетка</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="59"/>
@@ -60,17 +60,17 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>CmdMeshPartSection</name>
     <message>
-      <location filename="../../Command.cpp" line="192"/>
+      <location filename="../../Command.cpp" line="185"/>
       <source>Mesh</source>
-      <translation>Паліганальная сетка</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="193"/>
+      <location filename="../../Command.cpp" line="186"/>
       <source>Create section from mesh and plane</source>
       <translation>Стварыць перасек з паліганальнай сеткі і плоскасці</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="194"/>
+      <location filename="../../Command.cpp" line="187"/>
       <source>Section</source>
       <translation>Перасек</translation>
     </message>
@@ -80,7 +80,7 @@ This command only works with a 'mesh' object.</source>
     <message>
       <location filename="../../Command.cpp" line="83"/>
       <source>Mesh</source>
-      <translation>Паліганальная сетка</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="84"/>
@@ -97,12 +97,12 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="134"/>
+      <location filename="../../Command.cpp" line="129"/>
       <source>Trim with plane</source>
       <translation>Абрэзаць плоскасцю</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="217"/>
+      <location filename="../../Command.cpp" line="208"/>
       <source>Section with plane</source>
       <translation>Перасек плоскасцю</translation>
     </message>
@@ -170,7 +170,7 @@ This command only works with a 'mesh' object.</source>
       <translation>Злучыць рэбры, калі адлегласць меней, чым</translation>
     </message>
     <message>
-      <location filename="../../CrossSections.cpp" line="384"/>
+      <location filename="../../CrossSections.cpp" line="366"/>
       <source>Failure</source>
       <translation>Няўдача</translation>
     </message>
@@ -178,32 +178,32 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>MeshPartGui::CurveOnMeshHandler</name>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="362"/>
+      <location filename="../../CurveOnMesh.cpp" line="364"/>
       <source>Create</source>
       <translation>Стварыць</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="364"/>
+      <location filename="../../CurveOnMesh.cpp" line="366"/>
       <source>Close wire</source>
       <translation>Замкнуць ломаную лінію</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="366"/>
+      <location filename="../../CurveOnMesh.cpp" line="368"/>
       <source>Clear</source>
       <translation>Ачысціць</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="367"/>
+      <location filename="../../CurveOnMesh.cpp" line="369"/>
       <source>Cancel</source>
       <translation>Скасаваць</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="626"/>
+      <location filename="../../CurveOnMesh.cpp" line="615"/>
       <source>Wrong mesh picked</source>
       <translation>Абрана няправільная паліганальная сетка</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="667"/>
+      <location filename="../../CurveOnMesh.cpp" line="655"/>
       <source>No point was picked</source>
       <translation>Не абрана ніводнай кропкі</translation>
     </message>
@@ -227,7 +227,7 @@ This command only works with a 'mesh' object, not a regular face or surface. To 
     <message>
       <location filename="../../TaskCurveOnMesh.ui" line="38"/>
       <source>Wire</source>
-      <translation>Ломаная лінія</translation>
+      <translation>Ломаная</translation>
     </message>
     <message>
       <location filename="../../TaskCurveOnMesh.ui" line="44"/>
@@ -285,7 +285,7 @@ This command only works with a 'mesh' object, not a regular face or surface. To 
     <message>
       <location filename="../../Tessellation.ui" line="30"/>
       <source>Standard</source>
-      <translation>Звычайны</translation>
+      <translation>Стандартны</translation>
     </message>
     <message>
       <location filename="../../Tessellation.ui" line="33"/>
@@ -485,32 +485,32 @@ A value in the range of 0.2-10.</source>
       <translation>Пакінуць панэль адчыненай</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="62"/>
+      <location filename="../../Tessellation.cpp" line="61"/>
       <source>Gmsh</source>
       <translation>Gmsh</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="235"/>
-      <location filename="../../Tessellation.cpp" line="241"/>
+      <location filename="../../Tessellation.cpp" line="225"/>
+      <location filename="../../Tessellation.cpp" line="231"/>
       <source>No active document</source>
       <translation>Без бягучага дакумента</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="272"/>
+      <location filename="../../Tessellation.cpp" line="259"/>
       <source>You have selected a body without tip.
 Either set the tip of the body or select a different shape, please.</source>
       <translation>Вы абралі цела без наканечніка.
 Калі ласка, усталюйце наканечнік цела, альбо абярыце іншую фігуру.</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="278"/>
+      <location filename="../../Tessellation.cpp" line="263"/>
       <source>You have selected a shape without faces.
 Select a different shape, please.</source>
       <translation>Вы абралі фігуру без граняў.
 Калі ласка, абярыце іншую фігуру.</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="282"/>
+      <location filename="../../Tessellation.cpp" line="267"/>
       <source>Select a shape for meshing, first.</source>
       <translation>Спачатку абярыце фігуру для стварэння паліганальнай сеткі.</translation>
     </message>
@@ -518,12 +518,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_Section</name>
     <message>
-      <location filename="../../Command.cpp" line="206"/>
+      <location filename="../../Command.cpp" line="198"/>
       <source>Select plane</source>
       <translation>Абраць плоскасць</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="207"/>
+      <location filename="../../Command.cpp" line="199"/>
       <source>Please select a plane at which you section the mesh.</source>
       <translation>Калі ласка, абярыце плоскасць, якой вы будзеце разразаць паліганальную сетку.</translation>
     </message>
@@ -541,27 +541,27 @@ Select a different shape, please.</source>
       <translation>Калі ласка, абярыце плоскасць, якой вы будзеце абразаць паліганальную сетку.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="103"/>
+      <location filename="../../Command.cpp" line="102"/>
       <source>Trim by plane</source>
       <translation>Абрэзаць плоскасцю</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="104"/>
+      <location filename="../../Command.cpp" line="103"/>
       <source>Select the side you want to keep.</source>
       <translation>Абярыце бок, які вы жадаеце пакінуць.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="106"/>
+      <location filename="../../Command.cpp" line="104"/>
       <source>Below</source>
       <translation>Ніжэй</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="108"/>
+      <location filename="../../Command.cpp" line="105"/>
       <source>Above</source>
       <translation>Вышэй</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="110"/>
+      <location filename="../../Command.cpp" line="106"/>
       <source>Split</source>
       <translation>Падзяліць</translation>
     </message>
@@ -577,12 +577,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_CreateFlatMesh</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="49"/>
+      <location filename="../../MeshFlatteningCommand.py" line="47"/>
       <source>Unwrap Mesh</source>
       <translation>Разгарнуць паліганальную сетку</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="52"/>
+      <location filename="../../MeshFlatteningCommand.py" line="50"/>
       <source>Find a flat representation of a mesh.</source>
       <translation>Знайсці плоскае ўяўленне паліганальнай сеткі.</translation>
     </message>
@@ -590,12 +590,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_CreateFlatFace</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="88"/>
+      <location filename="../../MeshFlatteningCommand.py" line="79"/>
       <source>Unwrap Face</source>
       <translation>Разгарнуць грань</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="91"/>
+      <location filename="../../MeshFlatteningCommand.py" line="82"/>
       <source>Find a flat representation of a face.</source>
       <translation>Знайсці плоскае ўяўленне грані.</translation>
     </message>

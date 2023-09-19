@@ -36,9 +36,10 @@
 using namespace MeshCore;
 using namespace Wm4;
 
-MeshPointArray::MeshPointArray(const MeshPointArray& ary) = default;
-
-MeshPointArray::MeshPointArray(MeshPointArray&& ary) = default;
+MeshPointArray::MeshPointArray(const MeshPointArray& ary)
+  : TMeshPointArray(ary)
+{
+}
 
 PointIndex MeshPointArray::Get (const MeshPoint &rclPoint)
 {
@@ -84,9 +85,13 @@ void MeshPointArray::ResetInvalid () const
   for (const auto & pP : *this) pP.ResetInvalid();
 }
 
-MeshPointArray& MeshPointArray::operator = (const MeshPointArray &rclPAry) = default;
+MeshPointArray& MeshPointArray::operator = (const MeshPointArray &rclPAry)
+{
+//  std::vector<MeshPoint>::operator=(rclPAry);
+  TMeshPointArray::operator=(rclPAry);
 
-MeshPointArray& MeshPointArray::operator = (MeshPointArray &&rclPAry) = default;
+  return *this;
+}
 
 void MeshPointArray::Transform(const Base::Matrix4D& mat)
 {
@@ -94,9 +99,11 @@ void MeshPointArray::Transform(const Base::Matrix4D& mat)
     mat.multVec(pP,pP);
 }
 
-MeshFacetArray::MeshFacetArray(const MeshFacetArray& ary) = default;
+MeshFacetArray::MeshFacetArray(const MeshFacetArray& ary)
+  : TMeshFacetArray(ary)
+{
+}
 
-MeshFacetArray::MeshFacetArray(MeshFacetArray&& ary) = default;
 
 void MeshFacetArray::Erase (_TIterator pIter)
 {
@@ -160,9 +167,11 @@ void MeshFacetArray::ResetInvalid () const
   for (const auto & pF : *this) pF.ResetInvalid();
 }
 
-MeshFacetArray& MeshFacetArray::operator = (const MeshFacetArray &rclFAry) = default;
-
-MeshFacetArray& MeshFacetArray::operator = (MeshFacetArray &&rclFAry) = default;
+MeshFacetArray& MeshFacetArray::operator = (const MeshFacetArray &rclFAry)
+{
+  TMeshFacetArray::operator=(rclFAry);
+  return *this;
+}
 
 // -----------------------------------------------------------------
 
@@ -192,7 +201,7 @@ bool MeshGeomEdge::ContainedByOrIntersectBoundingBox ( const Base::BoundBox3f &r
 
 Base::BoundBox3f MeshGeomEdge::GetBoundBox () const
 {
-  return {_aclPoints,2};
+  return Base::BoundBox3f(_aclPoints,2);
 }
 
 bool MeshGeomEdge::IntersectBoundingBox (const Base::BoundBox3f &rclBB) const

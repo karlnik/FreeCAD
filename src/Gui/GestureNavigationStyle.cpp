@@ -93,8 +93,8 @@ namespace Gui {
 class NS::Event : public sc::event<NS::Event>
 {
 public:
-    Event() : flags(new Flags){}
-    virtual ~Event() = default;
+    Event():inventor_event(nullptr), modifiers{}, flags(new Flags){}
+    virtual ~Event(){}
 
     void log() const {
         if (isPress(1))
@@ -197,8 +197,8 @@ public:
     };
 
 public:
-    const SoEvent* inventor_event{nullptr};
-    unsigned int modifiers{0};
+    const SoEvent* inventor_event;
+    unsigned int modifiers;
     unsigned int mbstate() const {return modifiers & MASKBUTTONS;}
     unsigned int kbdstate() const {return modifiers & MASKMODIFIERS;}
 
@@ -245,7 +245,7 @@ public:
         if (ns.logging)
             Base::Console().Log(" -> IdleState\n");
     }
-    virtual ~IdleState() = default;
+    virtual ~IdleState(){}
 
     sc::result react(const NS::Event& ev){
         auto &ns = this->outermost_context().ns;
@@ -494,7 +494,7 @@ public:
         if (ns.logging)
             Base::Console().Log(" -> RotateState\n");
     }
-    virtual ~RotateState() = default;
+    virtual ~RotateState(){}
 
     sc::result react(const NS::Event& ev){
         if(ev.isMouseButtonEvent()){
@@ -539,7 +539,7 @@ public:
         this->ratio = ns.viewer->getSoRenderManager()->getViewportRegion().getViewportAspectRatio();
         ns.pan(ns.viewer->getSoRenderManager()->getCamera());//set up panningplane
     }
-    virtual ~PanState() = default;
+    virtual ~PanState(){}
 
     sc::result react(const NS::Event& ev){
         if(ev.isMouseButtonEvent()){
@@ -631,7 +631,7 @@ public:
             Base::Console().Log(" -> TiltState\n");
         ns.pan(ns.viewer->getSoRenderManager()->getCamera());//set up panningplane
     }
-    virtual ~TiltState() = default;
+    virtual ~TiltState(){}
 
     sc::result react(const NS::Event& ev){
         if(ev.isMouseButtonEvent()){
@@ -759,7 +759,7 @@ public:
         if (ns.logging)
             Base::Console().Log(" -> AwaitingReleaseState\n");
     }
-    virtual ~AwaitingReleaseState() = default;
+    virtual ~AwaitingReleaseState(){}
 
     sc::result react(const NS::Event& ev){
         auto &ns = this->outermost_context().ns;
@@ -810,7 +810,7 @@ public:
         if (ns.logging)
             Base::Console().Log(" -> InteractState\n");
     }
-    virtual ~InteractState() = default;
+    virtual ~InteractState(){}
 
     sc::result react(const NS::Event& ev){
         if(ev.isMouseButtonEvent()){
@@ -842,7 +842,10 @@ GestureNavigationStyle::GestureNavigationStyle()
 
 }
 
-GestureNavigationStyle::~GestureNavigationStyle() = default;
+GestureNavigationStyle::~GestureNavigationStyle()
+{
+
+}
 
 const char* GestureNavigationStyle::mouseButtons(ViewerMode mode)
 {

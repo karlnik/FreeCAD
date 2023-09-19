@@ -245,7 +245,7 @@ public:
   /// standard construction
   FileException();
   /// Construction
-  FileException(const FileException&) = default;
+  FileException(const FileException &inst);
   /// Destruction
   ~FileException() noexcept override = default;
   /// Assignment operator

@@ -16,9 +16,6 @@ Addon Manager:
 WB Arch:
 - 'src/Mod/Arch/**/*'
 
-WB Assembly:
-- 'src/Mod/Assembly/**/*'
-
 WB Draft:
 - 'src/Mod/Draft/**/*'
 

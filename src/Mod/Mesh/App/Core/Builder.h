@@ -102,12 +102,12 @@ private:
 
     MeshKernel& _meshKernel;
     std::set<MeshPoint> _points;
-    Base::SequencerLauncher* _seq{nullptr};
+    Base::SequencerLauncher* _seq;
 
     // keep an array of iterators pointing to the vertex inside the set to save memory
     using MeshPointIterator = std::pair<std::set<MeshPoint>::iterator, bool>;
     std::vector<MeshPointIterator> _pointsIterator;
-    size_t _ptIdx{0};
+    size_t _ptIdx;
 
     void SetNeighbourhood  ();
     // As it's forbidden to insert a degenerated facet but insert its vertices anyway we must remove them

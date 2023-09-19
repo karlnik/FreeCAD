@@ -25,7 +25,7 @@
 #define SANDBOX_DOCUMENTTHREAD_H
 
 #include <QThread>
-#include <Base/Mutex.h>
+#include <QMutex>
 #include <Base/Handle.h>
 #include <App/DocumentObject.h>
 
@@ -63,7 +63,7 @@ public:
 
 protected:
     void run();
-    static QRecursiveMutex mutex;
+    static QMutex mutex;
 };
 
 class SandboxAppExport MeshLoaderThread : public QThread

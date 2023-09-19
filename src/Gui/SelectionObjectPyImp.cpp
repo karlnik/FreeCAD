@@ -70,7 +70,7 @@ PyObject* SelectionObjectPy::isObjectTypeOf(PyObject * args)
 
 Py::String SelectionObjectPy::getObjectName() const
 {
-    return {getSelectionObjectPtr()->getFeatName()};
+    return Py::String(getSelectionObjectPtr()->getFeatName());
 }
 
 Py::Tuple SelectionObjectPy::getSubElementNames() const
@@ -87,17 +87,17 @@ Py::Tuple SelectionObjectPy::getSubElementNames() const
 
 Py::String SelectionObjectPy::getFullName() const
 {
-    return {getSelectionObjectPtr()->getAsPropertyLinkSubString()};
+    return Py::String(getSelectionObjectPtr()->getAsPropertyLinkSubString());
 }
 
 Py::String SelectionObjectPy::getTypeName() const
 {
-    return {getSelectionObjectPtr()->getTypeName()};
+    return Py::String(getSelectionObjectPtr()->getTypeName());
 }
 
 Py::String SelectionObjectPy::getDocumentName() const
 {
-    return {getSelectionObjectPtr()->getDocName()};
+    return Py::String(getSelectionObjectPtr()->getDocName());
 }
 
 Py::Object SelectionObjectPy::getDocument() const
@@ -142,7 +142,7 @@ Py::Tuple SelectionObjectPy::getSubObjects() const
 
 Py::Boolean SelectionObjectPy::getHasSubObjects() const
 {
-    return {getSelectionObjectPtr()->hasSubNames()};
+    return Py::Boolean(getSelectionObjectPtr()->hasSubNames());
 }
 
 Py::Tuple SelectionObjectPy::getPickedPoints() const

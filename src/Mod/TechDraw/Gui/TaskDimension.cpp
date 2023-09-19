@@ -254,17 +254,8 @@ void TaskDimension::onArbitraryChanged()
 
 void TaskDimension::onFormatSpecifierOverToleranceChanged()
 {
-//    Base::Console().Message("TD::onFormatSpecifierOverToleranceChanged()\n");
-    // if (m_blockToleranceLoop) { return; }
     m_parent->getDimFeat()->FormatSpecOverTolerance.setValue(ui->leFormatSpecifierOverTolerance->text().toUtf8().constData());
-    if (ui->cbArbitraryTolerances->isChecked() ) {
-        // Don't do anything else if tolerance is Arbitrary
-        recomputeFeature();
-        return;
-    }
-
-    if (ui->cbEqualTolerance->isChecked()) {
-        // the under tolerance has to match this one
+    if (!ui->cbArbitraryTolerances->isChecked()) {
         ui->leFormatSpecifierUnderTolerance->setText(ui->leFormatSpecifierOverTolerance->text());
         m_parent->getDimFeat()->FormatSpecUnderTolerance.setValue(ui->leFormatSpecifierUnderTolerance->text().toUtf8().constData());
     }
@@ -273,16 +264,8 @@ void TaskDimension::onFormatSpecifierOverToleranceChanged()
 
 void TaskDimension::onFormatSpecifierUnderToleranceChanged()
 {
-//    Base::Console().Message("TD::onFormatSpecifierUnderToleranceChanged()\n");
     m_parent->getDimFeat()->FormatSpecUnderTolerance.setValue(ui->leFormatSpecifierUnderTolerance->text().toUtf8().constData());
-    if (ui->cbArbitraryTolerances->isChecked() ) {
-        // Don't do anything else if tolerance is Arbitrary
-        recomputeFeature();
-        return;
-    }
-    if (ui->cbEqualTolerance->isChecked()) {
-        // if EqualTolerance is checked, then underTolerance is disabled, so this shouldn't happen!
-        // the over tolerance has to match this one
+    if (!ui->cbArbitraryTolerances->isChecked()) {
         ui->leFormatSpecifierOverTolerance->setText(ui->leFormatSpecifierUnderTolerance->text());
         m_parent->getDimFeat()->FormatSpecOverTolerance.setValue(ui->leFormatSpecifierOverTolerance->text().toUtf8().constData());
     }

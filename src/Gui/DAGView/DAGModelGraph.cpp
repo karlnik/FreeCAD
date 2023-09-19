@@ -34,7 +34,13 @@ VertexProperty::VertexProperty() :
   visibleIcon(new QGraphicsPixmapItem()),
   stateIcon(new QGraphicsPixmapItem()),
   icon(new QGraphicsPixmapItem()),
-  text(new QGraphicsTextItem())
+  text(new QGraphicsTextItem()),
+  row(0),
+  column(0),
+  topoSortIndex(0),
+  lastVisibleState(VisibilityState::None),
+  lastFeatureState(FeatureState::None),
+  dagVisible(true)
 {
   //set z values.
   this->rectangle->setZValue(-1000.0);
@@ -45,7 +51,10 @@ VertexProperty::VertexProperty() :
   this->text->setZValue(0.0);
 }
 
-EdgeProperty::EdgeProperty() = default;
+EdgeProperty::EdgeProperty() : relation(BranchTag::None)
+{
+
+}
 
 bool Gui::DAG::hasRecord(const App::DocumentObject* dObjectIn, const GraphLinkContainer &containerIn)
 {

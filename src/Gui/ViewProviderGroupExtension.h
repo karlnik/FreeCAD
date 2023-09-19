@@ -52,7 +52,7 @@ public:
     bool extensionOnDelete(const std::vector<std::string> &) override;
 
 private:
-    bool guard{false};
+    bool guard;
     std::vector<ViewProvider*> nodes;
 };
 

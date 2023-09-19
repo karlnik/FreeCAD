@@ -151,6 +151,11 @@ TaskSegmentation::TaskSegmentation(Mesh::Feature* mesh)
     Content.push_back(taskbox);
 }
 
+TaskSegmentation::~TaskSegmentation()
+{
+    // automatically deleted in the sub-class
+}
+
 bool TaskSegmentation::accept()
 {
     widget->accept();

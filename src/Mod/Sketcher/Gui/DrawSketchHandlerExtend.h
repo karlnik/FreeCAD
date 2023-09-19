@@ -31,7 +31,7 @@
 namespace SketcherGui
 {
 
-extern GeometryCreationMode geometryCreationMode;  // defined in CommandCreateGeo.cpp
+extern GeometryCreationMode geometryCreationMode;// defined in CommandCreateGeo.cpp
 
 class ExtendSelection: public Gui::SelectionFilterGate
 {
@@ -46,24 +46,20 @@ public:
 
     bool allow(App::Document* /*pDoc*/, App::DocumentObject* pObj, const char* sSubName) override
     {
-        if (pObj != this->object) {
+        if (pObj != this->object)
             return false;
-        }
-        if (!sSubName || sSubName[0] == '\0') {
+        if (!sSubName || sSubName[0] == '\0')
             return false;
-        }
-        if (disabled) {
+        if (disabled)
             return true;
-        }
         std::string element(sSubName);
         if (element.substr(0, 4) == "Edge") {
             int GeoId = std::atoi(element.substr(4, 4000).c_str()) - 1;
             Sketcher::SketchObject* Sketch = static_cast<Sketcher::SketchObject*>(object);
             const Part::Geometry* geom = Sketch->getGeometry(GeoId);
             if (geom->getTypeId() == Part::GeomLineSegment::getClassTypeId()
-                || geom->getTypeId() == Part::GeomArcOfCircle::getClassTypeId()) {
+                || geom->getTypeId() == Part::GeomArcOfCircle::getClassTypeId())
                 return true;
-            }
         }
         return false;
     }
@@ -135,8 +131,8 @@ public:
                  */
                 bool inCurve = (projection.Length() < recenteredLine.Length()
                                 && projection.GetAngle(recenteredLine)
-                                    < 0.1);  // Two possible values here, M_PI and 0, but 0.1 is to
-                                             // avoid floating point problems.
+                                    < 0.1);// Two possible values here, M_PI and 0, but 0.1 is to
+                                           // avoid floating point problems.
                 if (inCurve) {
                     Increment = SavedExtendFromStart
                         ? -1 * projection.Length()
@@ -271,7 +267,7 @@ public:
                     double angleToEnd = angle.GetAngle(Base::Vector2d(cos(end), sin(end)));
                     ExtendFromStart =
                         (angleToStart
-                         < angleToEnd);  // move start point if closer to angle than end point
+                         < angleToEnd);// move start point if closer to angle than end point
                     EditCurve.resize(31);
                     Mode = STATUS_SEEK_Second;
                 }
@@ -282,7 +278,7 @@ public:
             try {
                 Gui::Command::openCommand(QT_TRANSLATE_NOOP("Command", "Extend edge"));
                 Gui::cmdAppObjectArgs(sketchgui->getObject(),
-                                      "extend(%d, %f, %d)\n",  // GeoId, increment, PointPos
+                                      "extend(%d, %f, %d)\n",// GeoId, increment, PointPos
                                       BaseGeoId,
                                       Increment,
                                       ExtendFromStart ? static_cast<int>(Sketcher::PointPos::start)
@@ -292,9 +288,8 @@ public:
                 ParameterGrp::handle hGrp = App::GetApplication().GetParameterGroupByPath(
                     "User parameter:BaseApp/Preferences/Mod/Sketcher");
                 bool autoRecompute = hGrp->GetBool("AutoRecompute", false);
-                if (autoRecompute) {
+                if (autoRecompute)
                     Gui::Command::updateActive();
-                }
 
                 // constrain chosen point
                 if (!SugConstr.empty()) {
@@ -320,8 +315,8 @@ public:
                      * right button of the mouse */
                 }
                 else {
-                    sketchgui->purgeHandler();  // no code after this line, Handler get deleted in
-                                                // ViewProvider
+                    sketchgui->purgeHandler();// no code after this line, Handler get deleted in
+                                              // ViewProvider
                 }
             }
             catch (const Base::Exception&) {
@@ -331,10 +326,10 @@ public:
                 Gui::Command::abortCommand();
             }
         }
-        else {  // exit extension tool if user clicked on empty space
+        else {// exit extension tool if user clicked on empty space
             BaseGeoId = -1;
             sketchgui
-                ->purgeHandler();  // no code after this line, Handler get deleted in ViewProvider
+                ->purgeHandler();// no code after this line, Handler get deleted in ViewProvider
         }
         return true;
     }
@@ -358,7 +353,7 @@ protected:
     std::vector<Base::Vector2d> EditCurve;
     int BaseGeoId;
     ExtendSelection* filterGate = nullptr;
-    bool ExtendFromStart;  // if true, extend from start, else extend from end (circle only)
+    bool ExtendFromStart;// if true, extend from start, else extend from end (circle only)
     bool SavedExtendFromStart;
     double Increment;
     std::vector<AutoConstraint> SugConstr;
@@ -371,7 +366,7 @@ private:
 };
 
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_DrawSketchHandlerExtend_H
+#endif// SKETCHERGUI_DrawSketchHandlerExtend_H

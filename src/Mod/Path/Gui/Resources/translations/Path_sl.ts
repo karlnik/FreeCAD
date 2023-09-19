@@ -295,7 +295,7 @@ Pri surovcih z očrtnim kvadrom izhodiščnega predmeta to pomeni dodaten materi
     <message>
       <location filename="../panels/DlgJobTemplateExport.ui" line="248"/>
       <source>Export</source>
-      <translation>Izvoz</translation>
+      <translation type="unfinished">Export</translation>
     </message>
     <message>
       <location filename="../panels/DlgSelectPostProcessor.ui" line="14"/>
@@ -547,6 +547,35 @@ Pri surovcih z očrtnim kvadrom izhodiščnega predmeta to pomeni dodaten materi
   <context>
     <name>Form</name>
     <message>
+      <location filename="../preferences/PathDressupHoldingTags.ui" line="14"/>
+      <location filename="../panels/PageOpProbeEdit.ui" line="14"/>
+      <location filename="../panels/PageHeightsEdit.ui" line="14"/>
+      <location filename="../panels/PageDiametersEdit.ui" line="14"/>
+      <location filename="../panels/PageBaseHoleGeometryEdit.ui" line="14"/>
+      <location filename="../panels/ToolEditor.ui" line="14"/>
+      <location filename="../panels/PageOpWaterlineEdit.ui" line="14"/>
+      <location filename="../panels/PageOpThreadMillingEdit.ui" line="14"/>
+      <location filename="../panels/PageOpCustomEdit.ui" line="14"/>
+      <location filename="../panels/PageOpEngraveEdit.ui" line="14"/>
+      <location filename="../panels/PageOpSlotEdit.ui" line="14"/>
+      <location filename="../panels/PageOpHelixEdit.ui" line="14"/>
+      <location filename="../panels/DressupPathBoundary.ui" line="14"/>
+      <location filename="../panels/SetupOp.ui" line="14"/>
+      <location filename="../panels/PageOpProfileFullEdit.ui" line="14"/>
+      <location filename="../panels/PageOpDrillingEdit.ui" line="14"/>
+      <location filename="../panels/PageBaseGeometryEdit.ui" line="20"/>
+      <location filename="../panels/PageOpPocketExtEdit.ui" line="14"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="14"/>
+      <location filename="../panels/PageBaseLocationEdit.ui" line="14"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="14"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="14"/>
+      <location filename="../panels/PageOpVcarveEdit.ui" line="14"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="17"/>
+      <location filename="../panels/PageOpAdaptiveEdit.ui" line="14"/>
+      <source>Form</source>
+      <translation>Oblika</translation>
+    </message>
+    <message>
       <location filename="../panels/DressupPathBoundary.ui" line="20"/>
       <source>Boundary Body</source>
       <translation>Telo meje</translation>
@@ -713,17 +742,17 @@ Pri surovcih z očrtnim kvadrom izhodiščnega predmeta to pomeni dodaten materi
       <translation>Počisti seznam izhodiščnih geometrij</translation>
     </message>
     <message>
-      <location filename="../panels/PageBaseGeometryEdit.ui" line="72"/>
       <location filename="../panels/PageBaseHoleGeometryEdit.ui" line="49"/>
+      <location filename="../panels/PageBaseGeometryEdit.ui" line="72"/>
       <location filename="../panels/PageBaseLocationEdit.ui" line="43"/>
       <source>Add</source>
       <translation>Dodaj</translation>
     </message>
     <message>
-      <location filename="../panels/PageBaseGeometryEdit.ui" line="82"/>
       <location filename="../panels/PageBaseHoleGeometryEdit.ui" line="59"/>
-      <location filename="../panels/PageBaseLocationEdit.ui" line="53"/>
       <location filename="../panels/PropertyBag.ui" line="48"/>
+      <location filename="../panels/PageBaseGeometryEdit.ui" line="82"/>
+      <location filename="../panels/PageBaseLocationEdit.ui" line="53"/>
       <source>Remove</source>
       <translation>Odstrani</translation>
     </message>
@@ -778,8 +807,8 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Ponastavi</translation>
     </message>
     <message>
-      <location filename="../panels/PageBaseGeometryEdit.ui" line="99"/>
       <location filename="../panels/PageBaseHoleGeometryEdit.ui" line="76"/>
+      <location filename="../panels/PageBaseGeometryEdit.ui" line="99"/>
       <source>All objects will be processed using the same operation properties.</source>
       <translation>Vsi predmeti bodo obdelani z dejanji, ki imajo enake lastnosti.</translation>
     </message>
@@ -824,32 +853,32 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Vsa mesta bodo obdelana z dejanji, ki imajo enake lastnosti.</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="39"/>
       <location filename="../panels/SetupGlobal.ui" line="36"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="39"/>
       <source>Start Depth</source>
       <translation>Začetna globina</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="46"/>
       <location filename="../panels/PageDiametersEdit.ui" line="27"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="46"/>
       <source>Start Depth of the operation. The highest point in Z-axis the operation needs to process.</source>
       <translation>Začetna globina dejanja. Najvišja točka na osi Z, ki jo mora dejanje obdelati.</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="59"/>
       <location filename="../panels/PageDiametersEdit.ui" line="43"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="59"/>
       <source>Transfer the Z value of the selected feature as the Start Depth for the operation.</source>
       <translation>Prenesi vrednost Z izbrane značilnosti kot začetno globino dejanja.</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="92"/>
       <location filename="../panels/PageDiametersEdit.ui" line="64"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="92"/>
       <source>The depth of the operation which corresponds to the lowest value in Z-axis the operation needs to process.</source>
       <translation>Globina dejanja, ki odgovarja najnižji vrednosti na osi Z in jo mora dejanje obdelati.</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="105"/>
       <location filename="../panels/PageDiametersEdit.ui" line="80"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="105"/>
       <source>Transfer the Z value of the selected feature as the Final Depth for the operation.</source>
       <translation>Prenesi vrednost Z izbrane značilnosti kot končno globino dejanja.</translation>
     </message>
@@ -864,14 +893,14 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Globina zadnjega reza dejanja. Služi lahko doseganju gladkejše zaključne obdelave.</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="85"/>
       <location filename="../panels/SetupGlobal.ui" line="52"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="85"/>
       <source>Final Depth</source>
       <translation>Končna globina</translation>
     </message>
     <message>
-      <location filename="../panels/PageDepthsEdit.ui" line="131"/>
       <location filename="../panels/SetupGlobal.ui" line="68"/>
+      <location filename="../panels/PageDepthsEdit.ui" line="131"/>
       <source>Step Down</source>
       <translation>Poglobitveni korak</translation>
     </message>
@@ -911,34 +940,34 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Prosta višina</translation>
     </message>
     <message>
+      <location filename="../panels/PageOpWaterlineEdit.ui" line="36"/>
       <location filename="../panels/PageOpCustomEdit.ui" line="42"/>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="60"/>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="92"/>
-      <location filename="../panels/PageOpDrillingEdit.ui" line="42"/>
-      <location filename="../panels/PageOpDrillingEdit.ui" line="56"/>
       <location filename="../panels/PageOpEngraveEdit.ui" line="36"/>
       <location filename="../panels/PageOpEngraveEdit.ui" line="50"/>
       <location filename="../panels/PageOpHelixEdit.ui" line="36"/>
       <location filename="../panels/PageOpHelixEdit.ui" line="50"/>
+      <location filename="../panels/PageOpDrillingEdit.ui" line="42"/>
+      <location filename="../panels/PageOpDrillingEdit.ui" line="56"/>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="36"/>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="50"/>
-      <location filename="../panels/PageOpWaterlineEdit.ui" line="36"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="60"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="92"/>
       <source>The tool and its settings to be used for this operation.</source>
       <translation>Orodje in njegove nastavitve za to dejanje.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpCustomEdit.ui" line="49"/>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="85"/>
-      <location filename="../panels/PageOpDrillingEdit.ui" line="49"/>
-      <location filename="../panels/PageOpEngraveEdit.ui" line="43"/>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="43"/>
-      <location filename="../panels/PageOpProfileFullEdit.ui" line="43"/>
-      <location filename="../panels/PageOpSlotEdit.ui" line="52"/>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="43"/>
-      <location filename="../panels/PageOpVcarveEdit.ui" line="43"/>
-      <location filename="../panels/PageOpWaterlineEdit.ui" line="46"/>
       <location filename="../panels/SetupGlobal.ui" line="255"/>
       <location filename="../panels/SetupGlobal.ui" line="261"/>
+      <location filename="../panels/PageOpWaterlineEdit.ui" line="46"/>
+      <location filename="../panels/PageOpCustomEdit.ui" line="49"/>
+      <location filename="../panels/PageOpEngraveEdit.ui" line="43"/>
+      <location filename="../panels/PageOpSlotEdit.ui" line="52"/>
+      <location filename="../panels/PageOpProfileFullEdit.ui" line="43"/>
+      <location filename="../panels/PageOpDrillingEdit.ui" line="49"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="43"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="43"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="85"/>
+      <location filename="../panels/PageOpVcarveEdit.ui" line="43"/>
       <source>Coolant Mode</source>
       <translation>Hladilni način</translation>
     </message>
@@ -948,28 +977,28 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>G-koda</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpAdaptiveEdit.ui" line="23"/>
-      <location filename="../panels/PageOpCustomEdit.ui" line="35"/>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="53"/>
-      <location filename="../panels/PageOpDrillingEdit.ui" line="35"/>
-      <location filename="../panels/PageOpEngraveEdit.ui" line="29"/>
-      <location filename="../panels/PageOpHelixEdit.ui" line="29"/>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="29"/>
       <location filename="../panels/PageOpProbeEdit.ui" line="35"/>
-      <location filename="../panels/PageOpProfileFullEdit.ui" line="29"/>
-      <location filename="../panels/PageOpSlotEdit.ui" line="35"/>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="29"/>
-      <location filename="../panels/PageOpThreadMillingEdit.ui" line="20"/>
-      <location filename="../panels/PageOpVcarveEdit.ui" line="29"/>
-      <location filename="../panels/PageOpWaterlineEdit.ui" line="29"/>
       <location filename="../panels/SetupGlobal.ui" line="180"/>
+      <location filename="../panels/PageOpWaterlineEdit.ui" line="29"/>
+      <location filename="../panels/PageOpThreadMillingEdit.ui" line="20"/>
+      <location filename="../panels/PageOpCustomEdit.ui" line="35"/>
+      <location filename="../panels/PageOpEngraveEdit.ui" line="29"/>
+      <location filename="../panels/PageOpSlotEdit.ui" line="35"/>
+      <location filename="../panels/PageOpHelixEdit.ui" line="29"/>
+      <location filename="../panels/PageOpProfileFullEdit.ui" line="29"/>
+      <location filename="../panels/PageOpDrillingEdit.ui" line="35"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="29"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="29"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="53"/>
+      <location filename="../panels/PageOpVcarveEdit.ui" line="29"/>
+      <location filename="../panels/PageOpAdaptiveEdit.ui" line="23"/>
       <source>Tool Controller</source>
       <translation>Orodni krmilnik</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpAdaptiveEdit.ui" line="33"/>
-      <location filename="../panels/PageOpHelixEdit.ui" line="43"/>
       <location filename="../panels/SetupGlobal.ui" line="249"/>
+      <location filename="../panels/PageOpHelixEdit.ui" line="43"/>
+      <location filename="../panels/PageOpAdaptiveEdit.ui" line="33"/>
       <source>Coolant</source>
       <translation>Hladilo</translation>
     </message>
@@ -989,8 +1018,8 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Vrsta dejanja</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpAdaptiveEdit.ui" line="90"/>
       <location filename="../panels/PageOpPocketFullEdit.ui" line="178"/>
+      <location filename="../panels/PageOpAdaptiveEdit.ui" line="90"/>
       <source>Step Over Percent</source>
       <translation>Odstotek zmika</translation>
     </message>
@@ -1040,8 +1069,8 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Dokončevalni oris</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpAdaptiveEdit.ui" line="55"/>
       <location filename="../panels/PageOpPocketFullEdit.ui" line="237"/>
+      <location filename="../panels/PageOpAdaptiveEdit.ui" line="55"/>
       <source>Use Outline</source>
       <translation>Uporabi obris</translation>
     </message>
@@ -1096,10 +1125,10 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Ustavi</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="131"/>
+      <location filename="../panels/PageOpThreadMillingEdit.ui" line="167"/>
       <location filename="../panels/PageOpHelixEdit.ui" line="87"/>
       <location filename="../panels/PageOpProfileFullEdit.ui" line="82"/>
-      <location filename="../panels/PageOpThreadMillingEdit.ui" line="167"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="131"/>
       <source>Direction</source>
       <translation>Smer</translation>
     </message>
@@ -1109,15 +1138,15 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Smer izvajanje orisa; v smeri urinega kazalca ali v nasprotni smeri urinega kazalca.</translation>
     </message>
     <message>
+      <location filename="../panels/PageOpHelixEdit.ui" line="98"/>
       <location filename="../panels/PageOpDeburrEdit.ui" line="141"/>
       <location filename="../panels/PageOpDeburrEdit.ui" line="148"/>
-      <location filename="../panels/PageOpHelixEdit.ui" line="98"/>
       <source>CW</source>
       <translation>SUK, v smeri urinega kazalca</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="153"/>
       <location filename="../panels/PageOpHelixEdit.ui" line="103"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="153"/>
       <source>CCW</source>
       <translation>NSUK, v nasprotni smeri urinega kazalca</translation>
     </message>
@@ -1142,8 +1171,6 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Spoj na zajero</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="198"/>
-      <location filename="../panels/PageOpDeburrEdit.ui" line="225"/>
       <location filename="../panels/ToolEditor.ui" line="77"/>
       <location filename="../panels/ToolEditor.ui" line="134"/>
       <location filename="../panels/ToolEditor.ui" line="144"/>
@@ -1153,6 +1180,8 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <location filename="../panels/ToolEditor.ui" line="223"/>
       <location filename="../panels/ToolEditor.ui" line="240"/>
       <location filename="../panels/ToolEditor.ui" line="280"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="198"/>
+      <location filename="../panels/PageOpDeburrEdit.ui" line="225"/>
       <source>mm</source>
       <translation>mm</translation>
     </message>
@@ -1368,11 +1397,11 @@ Ponastavitev izbriše vse trenutne predmete s seznama in izpolni seznam z vsemi 
       <translation>Vzorec</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="36"/>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="50"/>
       <location filename="../panels/PageOpProbeEdit.ui" line="42"/>
       <location filename="../panels/PageOpProfileFullEdit.ui" line="36"/>
       <location filename="../panels/PageOpProfileFullEdit.ui" line="50"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="36"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="50"/>
       <location filename="../panels/PageOpVcarveEdit.ui" line="36"/>
       <location filename="../panels/PageOpVcarveEdit.ui" line="50"/>
       <source>The tool and its settings to be used for this operation</source>
@@ -1458,24 +1487,14 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <translation>Če je označeno, dejanje uporabi le zunanji obris izbrane izhodiščne geometrije ter prezre vse luknje in otoke</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="258"/>
-      <source>Check to skip machining regions that have already been cleared by previous operations</source>
-      <translation type="unfinished">Check to skip machining regions that have already been cleared by previous operations</translation>
-    </message>
-    <message>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="261"/>
-      <source>Use Rest Machining</source>
-      <translation type="unfinished">Use Rest Machining</translation>
-    </message>
-    <message>
       <location filename="../panels/PageOpPocketFullEdit.ui" line="204"/>
       <source>Material Allowance</source>
       <translation>Napuščeno gradivo</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpPocketFullEdit.ui" line="227"/>
       <location filename="../panels/PageOpProfileFullEdit.ui" line="130"/>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="257"/>
+      <location filename="../panels/PageOpPocketFullEdit.ui" line="227"/>
       <source>Use Start Point</source>
       <translation>Uporabi začetno točko</translation>
     </message>
@@ -1663,7 +1682,7 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <location filename="../panels/PageOpSlotEdit.ui" line="127"/>
       <location filename="../panels/PageOpSlotEdit.ui" line="189"/>
       <source>Vertex</source>
-      <translation>Oglišče</translation>
+      <translation type="unfinished">Vertex</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSlotEdit.ui" line="141"/>
@@ -1731,9 +1750,9 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <translation>Podaljšanje konca poti</translation>
     </message>
     <message>
+      <location filename="../panels/PageOpWaterlineEdit.ui" line="98"/>
       <location filename="../panels/PageOpSlotEdit.ui" line="345"/>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="91"/>
-      <location filename="../panels/PageOpWaterlineEdit.ui" line="98"/>
       <source>Layer Mode</source>
       <translation>Plastni način</translation>
     </message>
@@ -1773,8 +1792,8 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <translation>Vrsta odčitavanja</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="105"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="117"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="105"/>
       <source>Cut Pattern</source>
       <translation>Rezkalni vzorec</translation>
     </message>
@@ -1789,43 +1808,43 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <translation>Izogibanje zadnjim X ploskvam</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="63"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="79"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="63"/>
       <source>Bounding Box</source>
       <translation>Očrtni kvader</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="70"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="91"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="70"/>
       <source>Select the overall boundary for the operation.</source>
-      <translation>Izberite skupno mejo za dejanje.</translation>
+      <translation type="unfinished">Select the overall boundary for the operation.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="84"/>
       <source>Planar: Flat, 3D surface scan.  Rotational: 4th-axis rotational scan.</source>
-      <translation>Ravninsko: Plosko, 3D odčitavanje površja. Sukajoče: optično prebiranje z vrtenjem okrog 4. osi.</translation>
+      <translation type="unfinished">Planar: Flat, 3D surface scan.  Rotational: 4th-axis rotational scan.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="98"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="110"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="98"/>
       <source>Complete the operation in a single pass at depth, or multiple passes to final depth.</source>
-      <translation>Končaj dejanje v enem prehodu na globini ali postopno z večkratnim prehodom do končne globine.</translation>
+      <translation type="unfinished">Complete the operation in a single pass at depth, or multiple passes to final depth.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="112"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="129"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="112"/>
       <source>Set the geometric clearing pattern to use for the operation.</source>
-      <translation>Določi za opravilo geometrični vzorec čiščenja.</translation>
+      <translation type="unfinished">Set the geometric clearing pattern to use for the operation.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="126"/>
       <source>Profile the edges of the selection.</source>
-      <translation>Naredi iz robov izbora oris.</translation>
+      <translation type="unfinished">Profile the edges of the selection.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="140"/>
       <source>Avoid cutting the last 'N' faces in the Base Geometry list of selected faces.</source>
-      <translation>Izogni se rezanju zadnjih "n" ploskev v seznamu izhodiščnih geometrij izbranih ploskev.</translation>
+      <translation type="unfinished">Avoid cutting the last 'N' faces in the Base Geometry list of selected faces.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="147"/>
@@ -1835,30 +1854,30 @@ The latter can be used to face of the entire stock area to ensure uniform height
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="191"/>
       <source>Dropcutter lines are created parallel to this axis.</source>
-      <translation>Poteze spustnega rezkanja bodo vzporedne tej osi.</translation>
+      <translation type="unfinished">Dropcutter lines are created parallel to this axis.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="205"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="149"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="205"/>
       <source>Set the Z-axis depth offset from the target surface.</source>
-      <translation>Določite globinski odmik od tarčnega povšja po osi Z.</translation>
+      <translation type="unfinished">Set the Z-axis depth offset from the target surface.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="244"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="194"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="244"/>
       <source>Set the sampling resolution. Smaller values quickly increase processing time.</source>
-      <translation>Določite ločlivost vzorčenja. Z manjšanjem vrednosti se hitro povečuje obdelovalni čas.</translation>
+      <translation type="unfinished">Set the sampling resolution. Smaller values quickly increase processing time.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="254"/>
       <source>Make True, if specifying a Start Point</source>
-      <translation>Mastavite na Resnično, za določanje začetne točke</translation>
+      <translation type="unfinished">Make True, if specifying a Start Point</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="264"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="204"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="264"/>
       <source>Enable optimization of linear paths (co-linear points). Removes unnecessary co-linear points from G-code output.</source>
-      <translation>Omogoči optimiranje premih poti (sopreme točke). Odstrani iz izvoza G-Code nepotrebne sopreme točke.</translation>
+      <translation type="unfinished">Enable optimization of linear paths (co-linear points). Removes unnecessary co-linear points from G-code output.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="274"/>
@@ -1868,7 +1887,7 @@ The latter can be used to face of the entire stock area to ensure uniform height
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="287"/>
       <source>Enable separate optimization of transitions between, and breaks within, each step over path.</source>
-      <translation>Omogoči ločeno izboljševanje prehodov med vsako zmaknjeno potjo in prekinitvami znotraj nje.</translation>
+      <translation type="unfinished">Enable separate optimization of transitions between, and breaks within, each step over path.</translation>
     </message>
     <message>
       <location filename="../panels/PageOpSurfaceEdit.ui" line="184"/>
@@ -1891,14 +1910,14 @@ The latter can be used to face of the entire stock area to ensure uniform height
       <translation>Zamik globine</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="215"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="159"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="215"/>
       <source>Step over</source>
       <translation>Zmik</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="222"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="172"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="222"/>
       <source>The amount by which the tool is laterally displaced on each cycle of the pattern, specified in percent of the tool diameter.
 
 A step over of 100% results in no overlap between two different cycles.</source>
@@ -1907,14 +1926,14 @@ A step over of 100% results in no overlap between two different cycles.</source>
 Več kot stoodstotni zmik pomeni, da se pri ponovitvi vzorec ne prekriva.</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="237"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="187"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="237"/>
       <source>Sample interval</source>
       <translation>Vzorčni korak</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpSurfaceEdit.ui" line="267"/>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="207"/>
+      <location filename="../panels/PageOpSurfaceEdit.ui" line="267"/>
       <source>Optimize Linear Paths</source>
       <translation>Optimiraj preme poti</translation>
     </message>
@@ -2061,8 +2080,8 @@ Privzeto: 3 mm</translation>
       <translation>Usmerjenost</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpThreadMillingEdit.ui" line="52"/>
       <location filename="../panels/ToolEditor.ui" line="43"/>
+      <location filename="../panels/PageOpThreadMillingEdit.ui" line="52"/>
       <source>Type</source>
       <translation>Vrsta</translation>
     </message>
@@ -2092,8 +2111,8 @@ Privzeto: 3 mm</translation>
       <translation>NNP</translation>
     </message>
     <message>
-      <location filename="../panels/PageOpThreadMillingEdit.ui" line="144"/>
       <location filename="../panels/SetupGlobal.ui" line="24"/>
+      <location filename="../panels/PageOpThreadMillingEdit.ui" line="144"/>
       <source>Operation</source>
       <translation>Dejanje</translation>
     </message>
@@ -2135,7 +2154,7 @@ Privzeto: 3 mm</translation>
     <message>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="66"/>
       <source>Select the algorithm to use: OCL Dropcutter*, or Experimental (Not OCL based).</source>
-      <translation>Izberite algoritem, ki ga želite uporabiti: OCL spustno rezkanje (Dropcutter)* ali Delovna različica (ni na osnovi OCL).</translation>
+      <translation type="unfinished">Select the algorithm to use: OCL Dropcutter*, or Experimental (Not OCL based).</translation>
     </message>
     <message>
       <location filename="../panels/PageOpWaterlineEdit.ui" line="142"/>
@@ -2613,7 +2632,7 @@ To je lahko v veliko pomoč posebno, ko se večina opravil izvaja z istim orodje
     <message>
       <location filename="../preferences/PathJob.ui" line="603"/>
       <source>Position</source>
-      <translation>Položaj</translation>
+      <translation type="unfinished">Position</translation>
     </message>
     <message>
       <location filename="../preferences/PathJob.ui" line="647"/>
@@ -3014,8 +3033,8 @@ Navadno se priporoča uporabo odnosnih poti zaradi njihove prilagodljivosti in n
       <translation>Dodelava PreslikavaOsi</translation>
     </message>
     <message>
-      <location filename="../panels/AxisMapEdit.ui" line="20"/>
       <location filename="../panels/HoldingTagsEdit.ui" line="80"/>
+      <location filename="../panels/AxisMapEdit.ui" line="20"/>
       <source>Radius</source>
       <translation>Polmer</translation>
     </message>
@@ -3430,8 +3449,8 @@ Navadno se priporoča uporabo odnosnih poti zaradi njihove prilagodljivosti in n
   <context>
     <name>TaskPathSimulator</name>
     <message>
-      <location filename="../panels/TaskPathCamoticsSim.ui" line="14"/>
       <location filename="../panels/TaskPathSimulator.ui" line="14"/>
+      <location filename="../panels/TaskPathCamoticsSim.ui" line="14"/>
       <source>Path Simulator</source>
       <translation>Priustvarjalnik poti</translation>
     </message>
@@ -4322,9 +4341,10 @@ Na primer:
       <translation>Ne prikazuj več tega</translation>
     </message>
     <message>
-      <location filename="../../../Path/Base/Gui/IconViewProvider.py" line="97"/>
       <location filename="../../../Path/Tool/Gui/Controller.py" line="116"/>
+      <location filename="../../../Path/Base/Gui/IconViewProvider.py" line="97"/>
       <source>Edit</source>
+      <extracomment>int = field(default=None)</extracomment>
       <translation>Uredi</translation>
     </message>
     <message>
@@ -4455,19 +4475,19 @@ Na primer:
       <translation>NSUK, v nasprotni smeri urinega kazalca</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Pocket.py" line="334"/>
+      <location filename="../../../Path/Op/Pocket.py" line="333"/>
       <source>A planar adaptive start is unavailable. The non-planar will be attempted.</source>
       <translation>Ravninsko nastavljiv začetek ni na voljo. Sledi poskus z neravninskim.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Pocket.py" line="350"/>
-      <location filename="../../../Path/Op/Pocket.py" line="380"/>
+      <location filename="../../../Path/Op/Pocket.py" line="349"/>
+      <location filename="../../../Path/Op/Pocket.py" line="379"/>
       <source>The non-planar adaptive start is also unavailable.</source>
       <translation>Tudi neravninsko prilagodljiv začetek ni na voljo.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Gui/Engrave.py" line="76"/>
       <location filename="../../../Path/Op/Gui/Vcarve.py" line="65"/>
+      <location filename="../../../Path/Op/Gui/Engrave.py" line="76"/>
       <source>%s is not a Base Model object of the job %s</source>
       <translation>%s ni osnovno modelni predmet opravila %s</translation>
     </message>
@@ -4487,8 +4507,8 @@ Na primer:
       <translation>Oriši celoten oblikovanec, izbrane ploskve ali izbrane robove</translation>
     </message>
     <message>
-      <location filename="../../../Path/Post/Command.py" line="561"/>
       <location filename="../../../PathScripts/PathUtilsGui.py" line="91"/>
+      <location filename="../../../Path/Post/Command.py" line="561"/>
       <source>Choose a Path Job</source>
       <translation>Izberite opravilo poti</translation>
     </message>
@@ -4592,7 +4612,6 @@ Na primer:
     <message>
       <location filename="../../../Path/Base/PropertyBag.py" line="75"/>
       <source>List of custom property groups</source>
-      <extracomment>int = field(default=None)</extracomment>
       <translation>Seznam lastnostnih skupin po meri</translation>
     </message>
     <message>
@@ -4655,12 +4674,12 @@ Na primer:
     <message>
       <location filename="../../../Path/Dressup/Boundary.py" line="53"/>
       <location filename="../../../Path/Dressup/Tags.py" line="943"/>
-      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="54"/>
-      <location filename="../../../Path/Dressup/Gui/Dogbone.py" line="423"/>
       <location filename="../../../Path/Dressup/Gui/Dragknife.py" line="58"/>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="63"/>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="57"/>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="62"/>
+      <location filename="../../../Path/Dressup/Gui/Dogbone.py" line="423"/>
+      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="54"/>
       <source>The base path to modify</source>
       <translation>Osnovna pot za spreminjanje</translation>
     </message>
@@ -4772,12 +4791,12 @@ Na primer:
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="69"/>
       <source>Calculate roll-on to path</source>
-      <translation>Izračunaj nagibanje s potjo</translation>
+      <translation type="unfinished">Calculate roll-on to path</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="75"/>
       <source>Calculate roll-off from path</source>
-      <translation>Izračunaj nagibanje od poti</translation>
+      <translation type="unfinished">Calculate roll-off from path</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="81"/>
@@ -4812,37 +4831,37 @@ Na primer:
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="119"/>
       <source>Extends LeadOut distance</source>
-      <translation>Poveča razdaljo izstopanja</translation>
+      <translation type="unfinished">Extends LeadOut distance</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="125"/>
       <source>Perform plunges with G0</source>
-      <translation>Izvedi zarivanja z G0</translation>
+      <translation type="unfinished">Perform plunges with G0</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="133"/>
       <source>Apply LeadInOut to layers within an operation</source>
-      <translation>Uveljavi vstop/izstop na plasteh znotraj dejanja</translation>
+      <translation type="unfinished">Apply LeadInOut to layers within an operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="63"/>
       <source>Angle of ramp.</source>
-      <translation>Naklon klančine.</translation>
+      <translation type="unfinished">Angle of ramp.</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="69"/>
       <source>Ramping Method</source>
-      <translation>Klančinski način</translation>
+      <translation type="unfinished">Ramping Method</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="75"/>
       <source>Which feed rate to use for ramping</source>
-      <translation>Katero podajalno hitrost uporabiti za klančino</translation>
+      <translation type="unfinished">Which feed rate to use for ramping</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="81"/>
       <source>Custom feed rate</source>
-      <translation>Podjalna hitrost po meri</translation>
+      <translation type="unfinished">Custom feed rate</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/RampEntry.py" line="90"/>
@@ -4857,32 +4876,32 @@ Na primer:
     <message>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="70"/>
       <source>The point file from the surface probing.</source>
-      <translation>Datoteka s točkami površinskega preiskovanja.</translation>
+      <translation type="unfinished">The point file from the surface probing.</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="80"/>
       <source>Deflection distance for arc interpolation</source>
-      <translation>Višina krožnega odseka pri približku loka</translation>
+      <translation type="unfinished">Deflection distance for arc interpolation</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="89"/>
       <source>break segments into smaller segments of this length.</source>
-      <translation>razbij odseke v manjše kose s to dolžino.</translation>
+      <translation type="unfinished">break segments into smaller segments of this length.</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="115"/>
       <source>The G-code output file for this project</source>
-      <translation>Izhodna datoteka G-kode tega projekta</translation>
+      <translation type="unfinished">The G-code output file for this project</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="121"/>
       <source>Select the Post Processor</source>
-      <translation>Izberite poobdelovalnik</translation>
+      <translation type="unfinished">Select the Post Processor</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="130"/>
       <source>Arguments for the Post Processor (specific to the script)</source>
-      <translation>Spremenljivke za poopravilnik (značilne za skript)</translation>
+      <translation type="unfinished">Arguments for the Post Processor (specific to the script)</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="136"/>
@@ -4893,112 +4912,112 @@ Na primer:
     <message>
       <location filename="../../../Path/Main/Job.py" line="151"/>
       <source>An optional description for this job</source>
-      <translation>Neobvezen opis tega opravil</translation>
+      <translation type="unfinished">An optional description for this job</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="157"/>
       <source>Job Cycle Time Estimation</source>
-      <translation>Ocena časa cikla opravila</translation>
+      <translation type="unfinished">Job Cycle Time Estimation</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="167"/>
       <source>For computing Paths; smaller increases accuracy, but slows down computation</source>
-      <translation>Za izračunavanje Poti; manjši poveča natančnost, vendar upočasni izračun</translation>
+      <translation type="unfinished">For computing Paths; smaller increases accuracy, but slows down computation</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="174"/>
       <source>Solid object to be used as stock.</source>
-      <translation>Telo, ki bo uporabljeno kot surovec.</translation>
+      <translation type="unfinished">Solid object to be used as stock.</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="183"/>
       <source>Compound path of all operations in the order they are processed.</source>
-      <translation>Sestavljena pot vseh opravil v zaporedju obdelave.</translation>
+      <translation type="unfinished">Compound path of all operations in the order they are processed.</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="190"/>
       <source>Select the Type of Job</source>
-      <translation>Izberite vrsto opravila</translation>
+      <translation type="unfinished">Select the Type of Job</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="200"/>
       <location filename="../../../Path/Main/Job.py" line="534"/>
       <source>Split output into multiple G-code files</source>
-      <translation>Razdeli izhod na več datotek z G-kodo</translation>
+      <translation type="unfinished">Split output into multiple G-code files</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="208"/>
       <location filename="../../../Path/Main/Job.py" line="523"/>
       <source>If multiple WCS, order the output this way</source>
-      <translation>Če je več SKS-jev, določi izvoz na tak način</translation>
+      <translation type="unfinished">If multiple WCS, order the output this way</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="216"/>
       <location filename="../../../Path/Main/Job.py" line="512"/>
       <source>The Work Coordinate Systems for the Job</source>
-      <translation>Svetovni koordinatni sistem (SKS) za opravilo</translation>
+      <translation type="unfinished">The Work Coordinate Systems for the Job</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="304"/>
       <source>SetupSheet holding the settings for this job</source>
-      <translation>Nastavitvenik, ki vsebuje nastavitve za to opravilo</translation>
+      <translation type="unfinished">SetupSheet holding the settings for this job</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="327"/>
       <source>The base objects for all operations</source>
-      <translation>Osnovni predmet za vsa dejanja</translation>
+      <translation type="unfinished">The base objects for all operations</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="363"/>
       <source>Collection of all tool controllers for the job</source>
-      <translation>Nabor vseh orodnih krmilnikov za opravilo</translation>
+      <translation type="unfinished">Collection of all tool controllers for the job</translation>
     </message>
     <message>
-      <location filename="../../../Path/Main/Job.py" line="501"/>
       <location filename="../../../Path/Op/Base.py" line="192"/>
       <location filename="../../../Path/Op/Base.py" line="463"/>
+      <location filename="../../../Path/Main/Job.py" line="501"/>
       <source>Operations Cycle Time Estimation</source>
-      <translation>Ocena časa cikla dejanja</translation>
+      <translation type="unfinished">Operations Cycle Time Estimation</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Job.py" line="543"/>
       <source>Select the type of Job</source>
-      <translation>Izberite vrsto opravila</translation>
+      <translation type="unfinished">Select the type of Job</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="110"/>
       <source>The base object this stock is derived from</source>
-      <translation>Izhodiščni predmet iz katerega je izpeljan ta surovec</translation>
+      <translation type="unfinished">The base object this stock is derived from</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="119"/>
       <source>Extra allowance from part bound box in negative X direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v negativno X smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in negative X direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="128"/>
       <source>Extra allowance from part bound box in positive X direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v pozitivno X smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in positive X direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="137"/>
       <source>Extra allowance from part bound box in negative Y direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v negativno Y smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in negative Y direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="146"/>
       <source>Extra allowance from part bound box in positive Y direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v pozitivno Y smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in positive Y direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="155"/>
       <source>Extra allowance from part bound box in negative Z direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v negativno Z smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in negative Z direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="164"/>
       <source>Extra allowance from part bound box in positive Z direction</source>
-      <translation>Dodatno dovoljeno odstopanje od očrtanega okvirja dela v pozitivno Z smer</translation>
+      <translation type="unfinished">Extra allowance from part bound box in positive Z direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="170"/>
@@ -5008,48 +5027,48 @@ Na primer:
     <message>
       <location filename="../../../Path/Main/Stock.py" line="242"/>
       <source>Length of this stock box</source>
-      <translation>Dolžina kvadra tega surovca</translation>
+      <translation type="unfinished">Length of this stock box</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="248"/>
       <source>Width of this stock box</source>
-      <translation>Širina kvadra tega surovca</translation>
+      <translation type="unfinished">Width of this stock box</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="254"/>
       <source>Height of this stock box</source>
-      <translation>Višina kvadra tega surovca</translation>
+      <translation type="unfinished">Height of this stock box</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="294"/>
       <source>Radius of this stock cylinder</source>
-      <translation>Polmer valja tega surovca</translation>
+      <translation type="unfinished">Radius of this stock cylinder</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="300"/>
       <source>Height of this stock cylinder</source>
-      <translation>Višina valja tega surovca</translation>
+      <translation type="unfinished">Height of this stock cylinder</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Stock.py" line="336"/>
       <source>Internal representation of stock type</source>
-      <translation>Notranji prikaz vrste surovca</translation>
+      <translation type="unfinished">Internal representation of stock type</translation>
     </message>
     <message>
       <location filename="../../../Path/Main/Gui/Fixture.py" line="38"/>
       <source>Fixture Offset Number</source>
-      <translation>Število odmika pritrdila</translation>
+      <translation type="unfinished">Fixture Offset Number</translation>
     </message>
     <message>
-      <location filename="../../../Path/Main/Gui/Fixture.py" line="63"/>
       <location filename="../../../Path/Op/Base.py" line="172"/>
+      <location filename="../../../Path/Main/Gui/Fixture.py" line="63"/>
       <source>Make False, to prevent operation from generating code</source>
-      <translation>Spremeni v Napak, da se opravilu prepreči ustvarjanje kode</translation>
+      <translation type="unfinished">Make False, to prevent operation from generating code</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="946"/>
       <source>Side of selected faces that tool should cut</source>
-      <translation>Stran izbranih ploskev, ki naj jih orodje rezka</translation>
+      <translation type="unfinished">Side of selected faces that tool should cut</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="960"/>
@@ -5059,39 +5078,39 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="974"/>
       <source>Influences accuracy and performance</source>
-      <translation>Vpliva na natančnost in učinkovitost</translation>
+      <translation type="unfinished">Influences accuracy and performance</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Adaptive.py" line="983"/>
       <location filename="../../../Path/Op/Helix.py" line="127"/>
+      <location filename="../../../Path/Op/Adaptive.py" line="983"/>
       <location filename="../../../Path/Op/PocketBase.py" line="151"/>
       <source>Percent of cutter diameter to step over on each pass</source>
-      <translation>Zmik pri vsakem prehodu, izražen v deležu premera rezalnika</translation>
+      <translation type="unfinished">Percent of cutter diameter to step over on each pass</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="992"/>
       <source>Lift distance for rapid moves</source>
-      <translation>Dolžina dviga pri hitrih hodih</translation>
+      <translation type="unfinished">Lift distance for rapid moves</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="1001"/>
       <source>Max length of keep tool down path compared to direct distance between points</source>
-      <translation>Največja dolžina poti s spuščenim orodjem v primerjavi z ravno razdaljo med točkami</translation>
+      <translation type="unfinished">Max length of keep tool down path compared to direct distance between points</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="1010"/>
       <source>How much stock to leave (i.e. for finishing operation)</source>
-      <translation>Koliko surovca se pusti (tj. pri dokončevalnih dejanjih)</translation>
+      <translation type="unfinished">How much stock to leave (i.e. for finishing operation)</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="1019"/>
       <source>Force plunging into material inside and clearing towards the edges</source>
-      <translation>Prisilno sredinsko zarivanje v material in čiščenje proti robovom</translation>
+      <translation type="unfinished">Force plunging into material inside and clearing towards the edges</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="1028"/>
       <source>To take a finishing profile path at the end</source>
-      <translation>Da se gre po poti zaključevalnega orisa na koncu</translation>
+      <translation type="unfinished">To take a finishing profile path at the end</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Adaptive.py" line="1034"/>
@@ -5149,79 +5168,79 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Base.py" line="126"/>
       <source>Holds the calculated value for the StartDepth</source>
-      <translation>Obdrži izračunano vrednost za ZačetnoGlobino</translation>
+      <translation type="unfinished">Holds the calculated value for the StartDepth</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="136"/>
       <source>Holds the calculated value for the FinalDepth</source>
-      <translation>Obdrži izračunano vrednost za KončnoGlobino</translation>
+      <translation type="unfinished">Holds the calculated value for the FinalDepth</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="144"/>
       <source>Holds the diameter of the tool</source>
-      <translation>Obdrži premer orodja</translation>
+      <translation type="unfinished">Holds the diameter of the tool</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="152"/>
       <source>Holds the max Z value of Stock</source>
-      <translation>Obdrži največjo Z vrednost surovca</translation>
+      <translation type="unfinished">Holds the max Z value of Stock</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="159"/>
       <source>Holds the min Z value of Stock</source>
-      <translation>Obdrži najmanjšo Z vrednost surovca</translation>
+      <translation type="unfinished">Holds the min Z value of Stock</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="180"/>
       <source>An optional comment for this Operation</source>
-      <translation>Možnost opombe za to dejanje</translation>
+      <translation type="unfinished">An optional comment for this Operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="186"/>
       <source>User Assigned Label</source>
-      <translation>Uporabniško določena oznaka</translation>
+      <translation type="unfinished">User Assigned Label</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="206"/>
       <source>Base locations for this operation</source>
-      <translation>Osnovni položaji tega dejanja</translation>
+      <translation type="unfinished">Base locations for this operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="217"/>
       <location filename="../../../Path/Op/Gui/Array.py" line="134"/>
       <location filename="../../../Path/Op/Gui/Copy.py" line="50"/>
       <source>The tool controller that will be used to calculate the path</source>
-      <translation>Krmilnik orodja, ki bo uporabljen za izračun poti</translation>
+      <translation type="unfinished">The tool controller that will be used to calculate the path</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="226"/>
       <source>Coolant mode for this operation</source>
-      <translation>Hladilni način tega dejanja</translation>
+      <translation type="unfinished">Coolant mode for this operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="236"/>
       <source>Starting Depth of Tool- first cut depth in Z</source>
-      <translation>Začetna globina orodja - globina prvega reza v smeri Z</translation>
+      <translation type="unfinished">Starting Depth of Tool- first cut depth in Z</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="244"/>
       <source>Final Depth of Tool- lowest value in Z</source>
-      <translation>Končna globina orodja - najnižja vrednost v smeri Z</translation>
+      <translation type="unfinished">Final Depth of Tool- lowest value in Z</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="258"/>
       <source>Starting Depth internal use only for derived values</source>
-      <translation>Notranja uporaba Začetne globine le za izpeljane vrednosti</translation>
+      <translation type="unfinished">Starting Depth internal use only for derived values</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="269"/>
       <source>Incremental Step Down of Tool</source>
-      <translation>Korak spuščanja orodja</translation>
+      <translation type="unfinished">Incremental Step Down of Tool</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="279"/>
       <source>Maximum material removed on final pass.</source>
-      <translation>Največj odstranjenega gradiva pri zaključnem prehodu.</translation>
+      <translation type="unfinished">Maximum material removed on final pass.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="290"/>
@@ -5231,202 +5250,202 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Base.py" line="298"/>
       <source>Rapid Safety Height between locations.</source>
-      <translation>Varna višina hitrega prehoda med položaji.</translation>
+      <translation type="unfinished">Rapid Safety Height between locations.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="306"/>
       <source>The start point of this path</source>
-      <translation>Začetna točka te poti</translation>
+      <translation type="unfinished">The start point of this path</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Base.py" line="314"/>
-      <location filename="../../../Path/Op/Slot.py" line="236"/>
       <location filename="../../../Path/Op/Surface.py" line="431"/>
+      <location filename="../../../Path/Op/Slot.py" line="236"/>
       <location filename="../../../Path/Op/Waterline.py" line="460"/>
+      <location filename="../../../Path/Op/Base.py" line="314"/>
       <source>Make True, if specifying a Start Point</source>
-      <translation>Mastavite na Resnično za določanje začetne točke</translation>
+      <translation type="unfinished">Make True, if specifying a Start Point</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="324"/>
       <source>Lower limit of the turning diameter</source>
-      <translation>Spodnja meja obračalnega premera</translation>
+      <translation type="unfinished">Lower limit of the turning diameter</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="332"/>
       <source>Upper limit of the turning diameter.</source>
-      <translation>Zgornja meja obračalnega premera.</translation>
+      <translation type="unfinished">Upper limit of the turning diameter.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Base.py" line="443"/>
       <source>Coolant option for this operation</source>
-      <translation>Možnosti hlajenja tega dejanja</translation>
+      <translation type="unfinished">Coolant option for this operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/CircularHoleBase.py" line="80"/>
       <source>List of disabled features</source>
-      <translation>Seznam onemogočenih značilnosti</translation>
+      <translation type="unfinished">List of disabled features</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Custom.py" line="104"/>
       <source>The G-code to be inserted</source>
-      <translation>Vstavljanje G-kode</translation>
+      <translation type="unfinished">The G-code to be inserted</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="125"/>
       <source>The desired width of the chamfer</source>
-      <translation>Želena širina posnetja</translation>
+      <translation type="unfinished">The desired width of the chamfer</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="131"/>
       <source>The additional depth of the tool path</source>
-      <translation>Dodatna globina poti orodja</translation>
+      <translation type="unfinished">The additional depth of the tool path</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="137"/>
       <source>How to join chamfer segments</source>
-      <translation>Kako se združuje prisekane odseke</translation>
+      <translation type="unfinished">How to join chamfer segments</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="145"/>
       <source>Direction of operation</source>
-      <translation>Smer dejanja</translation>
+      <translation type="unfinished">Direction of operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="152"/>
       <source>Side of operation</source>
-      <translation>Stran dejanja</translation>
+      <translation type="unfinished">Side of operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Deburr.py" line="162"/>
       <source>The segment where the operation starts</source>
-      <translation>Odsek, na katerem se dejanje prične</translation>
+      <translation type="unfinished">The segment where the operation starts</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="105"/>
       <location filename="../../../Path/Op/Drilling.py" line="129"/>
       <source>Use chipbreaking</source>
-      <translation>Uporabi odlamljanje odrezkov</translation>
+      <translation type="unfinished">Use chipbreaking</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="117"/>
       <source>Incremental Drill depth before retracting to clear chips</source>
-      <translation>Korak globine vrtanja pred povratkom za čiščenje ostružkov</translation>
+      <translation type="unfinished">Incremental Drill depth before retracting to clear chips</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="123"/>
       <source>Enable pecking</source>
-      <translation>Omogoči kljuvanje</translation>
+      <translation type="unfinished">Enable pecking</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="135"/>
       <source>The time to dwell between peck cycles</source>
-      <translation>Čas zadrževanja med cikli kljuvanja</translation>
+      <translation type="unfinished">The time to dwell between peck cycles</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="141"/>
       <source>Enable dwell</source>
-      <translation>Omogoči mirovanje</translation>
+      <translation type="unfinished">Enable dwell</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="150"/>
       <source>Calculate the tip length and subtract from final depth</source>
-      <translation>Vračunaj dolžino konice in jo odštej od končne globine</translation>
+      <translation type="unfinished">Calculate the tip length and subtract from final depth</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="158"/>
       <location filename="../../../Path/Op/Drilling.py" line="222"/>
       <source>Controls tool retract height between holes in same op, Default=G98: safety height</source>
-      <translation>Upravlja višino vračanja orodja med izvrtinami v istem dejanje; Prrivzeto=G98: varna višina</translation>
+      <translation type="unfinished">Controls tool retract height between holes in same op, Default=G98: safety height</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="167"/>
       <source>The height where cutting feed rate starts and retract height for peck operation</source>
-      <translation>Višina, na kateri se prične podajanje rezkanja in na katero se orodje vrača pri kljuvanju</translation>
+      <translation type="unfinished">The height where cutting feed rate starts and retract height for peck operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="173"/>
       <source>How far the drilling depth is extended</source>
-      <translation>Koliko je povečana globina vrtanja</translation>
+      <translation type="unfinished">How far the drilling depth is extended</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Drilling.py" line="180"/>
       <location filename="../../../Path/Op/Drilling.py" line="212"/>
       <location filename="../../../Path/Op/Gui/Drilling.py" line="134"/>
       <source>Apply G99 retraction: only retract to RetractHeight between holes in this operation</source>
-      <translation>Uveljavi vračanje G99: vračanje na višino vračanje med izvrtinami le v tem dejanju</translation>
+      <translation type="unfinished">Apply G99 retraction: only retract to RetractHeight between holes in this operation</translation>
     </message>
     <message>
+      <location filename="../../../Path/Op/Vcarve.py" line="214"/>
       <location filename="../../../Path/Op/Engrave.py" line="71"/>
       <location filename="../../../Path/Op/Engrave.py" line="81"/>
-      <location filename="../../../Path/Op/Vcarve.py" line="214"/>
       <source>Additional base objects to be engraved</source>
-      <translation>Dodatni osnovni predmet, ki naj bo vrezan</translation>
+      <translation type="unfinished">Additional base objects to be engraved</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Engrave.py" line="93"/>
       <source>The vertex index to start the path from</source>
-      <translation>Kazalno oglišče, pri katerem se začne pot</translation>
+      <translation type="unfinished">The vertex index to start the path from</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/FeatureExtension.py" line="483"/>
       <source>Default length of extensions.</source>
-      <translation>Privzeta dolžina podaljškov.</translation>
+      <translation type="unfinished">Default length of extensions.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/FeatureExtension.py" line="490"/>
       <source>List of features to extend.</source>
-      <translation>Seznam značilnosti za podaljšanje.</translation>
+      <translation type="unfinished">List of features to extend.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/FeatureExtension.py" line="500"/>
       <source>When enabled connected extension edges are combined to wires.</source>
-      <translation>Ko je omogočeno, se staknjeni podaljšani robovi združijo v črtovja.</translation>
+      <translation type="unfinished">When enabled connected extension edges are combined to wires.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Helix.py" line="109"/>
       <source>The direction of the circular cuts, ClockWise (CW), or CounterClockWise (CCW)</source>
-      <translation>Smer krožnih rezov, v smeri urinega kazalca (SUK), ali v nasprotni smeri urinega kazalca (NSUK)</translation>
+      <translation type="unfinished">The direction of the circular cuts, ClockWise (CW), or CounterClockWise (CCW)</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Helix.py" line="118"/>
       <source>Start cutting from the inside or outside</source>
-      <translation>Pričetek rezanja od znotraj ali od zunaj</translation>
+      <translation type="unfinished">Start cutting from the inside or outside</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Helix.py" line="133"/>
       <location filename="../../../Path/Op/Helix.py" line="156"/>
       <source>Starting Radius</source>
-      <translation>Začetni polmer</translation>
+      <translation type="unfinished">Starting Radius</translation>
     </message>
     <message>
+      <location filename="../../../Path/Op/Profile.py" line="143"/>
       <location filename="../../../Path/Op/Helix.py" line="142"/>
       <location filename="../../../Path/Op/Helix.py" line="167"/>
-      <location filename="../../../Path/Op/Profile.py" line="143"/>
       <source>Extra value to stay away from final profile- good for roughing toolpath</source>
-      <translation>Dodatna vrednost za izogibanje končnemu profilu - primerno za pot orodja grobe obdelave</translation>
+      <translation type="unfinished">Extra value to stay away from final profile- good for roughing toolpath</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/MillFace.py" line="96"/>
       <source>Shape to use for calculating Boundary</source>
-      <translation>Oblika, ki se uporabi za izračun Meje</translation>
+      <translation type="unfinished">Shape to use for calculating Boundary</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/MillFace.py" line="104"/>
       <source>Clear edges of surface (Only applicable to BoundBox)</source>
-      <translation>Očisti robove površja (izvedljivo le za BoundBox)</translation>
+      <translation type="unfinished">Clear edges of surface (Only applicable to BoundBox)</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/MillFace.py" line="113"/>
       <source>Exclude milling raised areas inside the face.</source>
-      <translation>Izvzemi rezkanje dvignjenih površin znotraj ploskve.</translation>
+      <translation type="unfinished">Exclude milling raised areas inside the face.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Pocket.py" line="66"/>
-      <location filename="../../../Path/Op/Profile.py" line="117"/>
       <location filename="../../../Path/Op/Surface.py" line="247"/>
+      <location filename="../../../Path/Op/Profile.py" line="117"/>
+      <location filename="../../../Path/Op/Pocket.py" line="66"/>
       <location filename="../../../Path/Op/Waterline.py" line="267"/>
       <source>Choose how to process multiple Base Geometry features.</source>
-      <translation>Izberite, kako naj se obdeluje značilnosti več osnovnih geometrij.</translation>
+      <translation type="unfinished">Choose how to process multiple Base Geometry features.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Pocket.py" line="77"/>
@@ -5441,18 +5460,18 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Pocket.py" line="97"/>
       <source>Process the model and stock in an operation with no Base Geometry selected.</source>
-      <translation>Obdelaj obdelovanec in surovec z dejanjem brez izbrane izhodiščne geometrije.</translation>
+      <translation type="unfinished">Process the model and stock in an operation with no Base Geometry selected.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/PocketBase.py" line="128"/>
       <location filename="../../../Path/Op/Profile.py" line="108"/>
+      <location filename="../../../Path/Op/PocketBase.py" line="128"/>
       <source>The direction that the toolpath should go around the part ClockWise (CW) or CounterClockWise (CCW)</source>
-      <translation>Smer, po kateri naj gre pot orodja okoli dela v SUK (smeri urinega kazalca) ali NSUK (nasprotni smeri urinega kazalca)</translation>
+      <translation type="unfinished">The direction that the toolpath should go around the part ClockWise (CW) or CounterClockWise (CCW)</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="137"/>
       <source>Extra offset to apply to the operation. Direction is operation dependent.</source>
-      <translation>Pri dejanjih naj se uporabi dodaten odmik. Smer je odvisna od dejanja.</translation>
+      <translation type="unfinished">Extra offset to apply to the operation. Direction is operation dependent.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="143"/>
@@ -5462,199 +5481,182 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="157"/>
       <source>Angle of the zigzag pattern</source>
-      <translation>Kót cikcak vzorca</translation>
+      <translation type="unfinished">Angle of the zigzag pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="163"/>
       <source>Clearing pattern to use</source>
-      <translation>Vzorec čiščenja, ki se uporabi</translation>
+      <translation type="unfinished">Clearing pattern to use</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="169"/>
       <source>Use 3D Sorting of Path</source>
-      <translation>Uporabi 3D-razvrščanje poti</translation>
+      <translation type="unfinished">Use 3D Sorting of Path</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="177"/>
       <source>Attempts to avoid unnecessary retractions.</source>
-      <translation>Poskuša se izogniti nepotrebnim vračanjem.</translation>
+      <translation type="unfinished">Attempts to avoid unnecessary retractions.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/PocketBase.py" line="186"/>
-      <location filename="../../../Path/Op/PocketBase.py" line="265"/>
+      <location filename="../../../Path/Op/PocketBase.py" line="246"/>
       <source>Last Stepover Radius.  If 0, 50% of cutter is used. Tuning this can be used to improve stepover for some shapes</source>
-      <translation>Zadnji polmer zmika. Če je uporabljenih več kot 50% rezila. Omogočenje te zmožnosti lahko pri nekaterih oblikah izboljša zmikanje</translation>
-    </message>
-    <message>
-      <location filename="../../../Path/Op/PocketBase.py" line="195"/>
-      <location filename="../../../Path/Op/PocketBase.py" line="277"/>
-      <source>Skips machining regions that have already been cleared by previous operations.</source>
-      <translation type="unfinished">Skips machining regions that have already been cleared by previous operations.</translation>
-    </message>
-    <message>
-      <location filename="../../../Path/Op/PocketBase.py" line="204"/>
-      <location filename="../../../Path/Op/PocketBase.py" line="288"/>
-      <source>The areas cleared by this operation, one area per height, stored as a compound part. Used internally for rest machining.</source>
-      <translation type="unfinished">The areas cleared by this operation, one area per height, stored as a compound part. Used internally for rest machining.</translation>
-    </message>
-    <message>
-      <location filename="../../../Path/Op/PocketBase.py" line="299"/>
-      <source>Flag to indicate that the rest machining regions have never been computed, and must be recomputed before being used.</source>
-      <translation type="unfinished">Flag to indicate that the rest machining regions have never been computed, and must be recomputed before being used.</translation>
+      <translation type="unfinished">Last Stepover Radius.  If 0, 50% of cutter is used. Tuning this can be used to improve stepover for some shapes</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Probe.py" line="55"/>
       <source>X offset between tool and probe</source>
-      <translation>Odmik med orodjem in tipalom v smeri X</translation>
+      <translation type="unfinished">X offset between tool and probe</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Probe.py" line="61"/>
       <source>Y offset between tool and probe</source>
-      <translation>Odmik med orodjem in tipalom v smeri Y</translation>
+      <translation type="unfinished">Y offset between tool and probe</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Probe.py" line="69"/>
       <source>Number of points to probe in X direction</source>
-      <translation>Število točk zaznavanja v smeri X</translation>
+      <translation type="unfinished">Number of points to probe in X direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Probe.py" line="77"/>
       <source>Number of points to probe in Y direction</source>
-      <translation>Število točk zaznavanja v smeri Y</translation>
+      <translation type="unfinished">Number of points to probe in Y direction</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Probe.py" line="85"/>
       <source>The output location for the probe data to be written</source>
-      <translation>Mesto zapisa meritev tipala</translation>
+      <translation type="unfinished">The output location for the probe data to be written</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="126"/>
       <source>Controls how tool moves around corners. Default=Round</source>
-      <translation>Nadzir premikanje orodja okoli vogalov. Privzeto=Okroglo</translation>
+      <translation type="unfinished">Controls how tool moves around corners. Default=Round</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="134"/>
       <source>Maximum distance before a miter join is truncated</source>
-      <translation>Največja razdalja preden se spoj na zajero prireže</translation>
+      <translation type="unfinished">Maximum distance before a miter join is truncated</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="151"/>
       <source>Profile holes as well as the outline</source>
-      <translation>Oriši tako luknje, kot tudi obod</translation>
+      <translation type="unfinished">Profile holes as well as the outline</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="157"/>
       <source>Profile the outline</source>
-      <translation>Oriši obod</translation>
+      <translation type="unfinished">Profile the outline</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="163"/>
       <source>Profile round holes</source>
-      <translation>Oriši okrogle izbrtine</translation>
+      <translation type="unfinished">Profile round holes</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="169"/>
       <source>Side of edge that tool should cut</source>
-      <translation>Stran roba, ki naj jo orodje obdela</translation>
+      <translation type="unfinished">Side of edge that tool should cut</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Profile.py" line="177"/>
       <source>Make True, if using Cutter Radius Compensation</source>
-      <translation>Nastavi na Prav, če se uporablja Popravek polmera rezkarja</translation>
+      <translation type="unfinished">Make True, if using Cutter Radius Compensation</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Slot.py" line="122"/>
       <location filename="../../../Path/Op/Surface.py" line="127"/>
+      <location filename="../../../Path/Op/Slot.py" line="122"/>
       <location filename="../../../Path/Op/Waterline.py" line="205"/>
       <source>Show the temporary path construction objects when module is in DEBUG mode.</source>
-      <translation>Ko je modul v razhroščevalnem načinu, prikaži pomožni predmet za ustvarjanje poti.</translation>
+      <translation type="unfinished">Show the temporary path construction objects when module is in DEBUG mode.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="130"/>
       <source>Enter custom start point for slot path.</source>
-      <translation>Vnesite lastno začetno točko utorove poti.</translation>
+      <translation type="unfinished">Enter custom start point for slot path.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="138"/>
       <source>Enter custom end point for slot path.</source>
-      <translation>Vnesite lastno končno točko utorove poti.</translation>
+      <translation type="unfinished">Enter custom end point for slot path.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Slot.py" line="147"/>
       <location filename="../../../Path/Op/Surface.py" line="291"/>
+      <location filename="../../../Path/Op/Slot.py" line="147"/>
       <location filename="../../../Path/Op/Waterline.py" line="329"/>
       <source>Set the geometric clearing pattern to use for the operation.</source>
-      <translation>Določi za dejanje geometrični vzorec čiščenja.</translation>
+      <translation type="unfinished">Set the geometric clearing pattern to use for the operation.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="156"/>
       <source>Positive extends the beginning of the path, negative shortens.</source>
-      <translation>Pozitivno podaljša začetek poti, negativno pa ga skrajša.</translation>
+      <translation type="unfinished">Positive extends the beginning of the path, negative shortens.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="165"/>
       <source>Positive extends the end of the path, negative shortens.</source>
-      <translation>Pozitivno podaljša konec poti, negativno pa ga skrajša.</translation>
+      <translation type="unfinished">Positive extends the end of the path, negative shortens.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Slot.py" line="174"/>
       <location filename="../../../Path/Op/Surface.py" line="326"/>
+      <location filename="../../../Path/Op/Slot.py" line="174"/>
       <location filename="../../../Path/Op/Waterline.py" line="372"/>
       <source>Complete the operation in a single pass at depth, or multiple passes to final depth.</source>
-      <translation>Končaj dejanje v enem prehodu na globini ali postopno z večkratnim prehodom do končne globine.</translation>
+      <translation type="unfinished">Complete the operation in a single pass at depth, or multiple passes to final depth.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="183"/>
       <source>Choose the path orientation with regard to the feature(s) selected.</source>
-      <translation>Izberite usmeritev poti glede na izbrane značilnosti.</translation>
+      <translation type="unfinished">Choose the path orientation with regard to the feature(s) selected.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="192"/>
       <source>Choose what point to use on the first selected feature.</source>
-      <translation>Izberite točko na prvi izbrani značilnosti, ki naj se uporabi.</translation>
+      <translation type="unfinished">Choose what point to use on the first selected feature.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="201"/>
       <source>Choose what point to use on the second selected feature.</source>
-      <translation>Izberite točko na drugi izbrani značilnosti, ki naj se uporabi.</translation>
+      <translation type="unfinished">Choose what point to use on the second selected feature.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="210"/>
       <source>For arcs/circlular edges, offset the radius for the path.</source>
-      <translation>Pri lokih oz. krožnih robovih odmakni polmer poti.</translation>
+      <translation type="unfinished">For arcs/circlular edges, offset the radius for the path.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Slot.py" line="219"/>
       <source>Enable to reverse the cut direction of the slot path.</source>
-      <translation>Omogočite, če želite obrniti smer rezkanja utorove poti.</translation>
+      <translation type="unfinished">Enable to reverse the cut direction of the slot path.</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Slot.py" line="228"/>
       <location filename="../../../Path/Op/Surface.py" line="423"/>
+      <location filename="../../../Path/Op/Slot.py" line="228"/>
       <location filename="../../../Path/Op/Waterline.py" line="452"/>
       <source>The custom start point for the path of this operation</source>
-      <translation>Uporabniko določena začetna točka poti tega dejanja</translation>
+      <translation type="unfinished">The custom start point for the path of this operation</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="136"/>
       <source>Smaller values yield a finer, more accurate mesh. Smaller values increase processing time a lot.</source>
-      <translation>Manjše vrednosti prinašajo drobnejše, natančnejše ploskovje, vendar zelo podaljšajo obdelovalni čas.</translation>
+      <translation type="unfinished">Smaller values yield a finer, more accurate mesh. Smaller values increase processing time a lot.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="145"/>
       <source>Smaller values yield a finer, more accurate mesh. Smaller values do not increase processing time much.</source>
-      <translation>Manjše vrednosti prinašajo drobnejše, natančnejše ploskovje, hkrati pa ne podaljšajo obdelovalnega časa preveč.</translation>
+      <translation type="unfinished">Smaller values yield a finer, more accurate mesh. Smaller values do not increase processing time much.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="153"/>
       <location filename="../../../Path/Op/Surface.py" line="194"/>
       <source>Stop index(angle) for rotational scan</source>
-      <translation>Pokazatelj zaustavitve (kót) pri sukajočem odčitavanju</translation>
+      <translation type="unfinished">Stop index(angle) for rotational scan</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="162"/>
       <source>Dropcutter lines are created parallel to this axis.</source>
-      <translation>Poteze spustnega rezkanja bodo vzporedne tej osi.</translation>
+      <translation type="unfinished">Dropcutter lines are created parallel to this axis.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="170"/>
@@ -5664,7 +5666,7 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Surface.py" line="178"/>
       <source>The model will be rotated around this axis.</source>
-      <translation>Oblikovanec bo zavrten okoli te osi.</translation>
+      <translation type="unfinished">The model will be rotated around this axis.</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Surface.py" line="186"/>
@@ -5925,134 +5927,134 @@ Na primer:
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="76"/>
       <source>The number of copies in Y direction in Linear pattern</source>
-      <translation>Število dvojnikov premega vzorca v smeri Y</translation>
+      <translation type="unfinished">The number of copies in Y direction in Linear pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="82"/>
       <source>Total angle in Polar pattern</source>
-      <translation>Skupni kót pri krožnem vzorcu</translation>
+      <translation type="unfinished">Total angle in Polar pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="90"/>
       <source>The number of copies in Linear 1D and Polar pattern</source>
-      <translation>Število dvojnikov v 1D premi in v krožni razpostavitvi</translation>
+      <translation type="unfinished">The number of copies in Linear 1D and Polar pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="98"/>
       <source>The centre of rotation in Polar pattern</source>
-      <translation>Središče sukanja pri krožni razpostavitvi</translation>
+      <translation type="unfinished">The centre of rotation in Polar pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="107"/>
       <source>Make copies in X direction before Y in Linear 2D pattern</source>
-      <translation>Pri 2D premi razpostavitvi naredi dvojnike v smeri X pred smerjo Y</translation>
+      <translation type="unfinished">Make copies in X direction before Y in Linear 2D pattern</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="113"/>
       <source>Percent of copies to randomly offset</source>
-      <translation>Odstotek dvojnikov v naključnem odmiku</translation>
+      <translation type="unfinished">Percent of copies to randomly offset</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="119"/>
       <source>Maximum random offset of copies</source>
-      <translation>Največji naključni odmik dvojnikov</translation>
+      <translation type="unfinished">Maximum random offset of copies</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Array.py" line="125"/>
       <location filename="../../../Path/Op/Gui/Array.py" line="175"/>
       <source>Seed value for jitter randomness</source>
-      <translation>Semenska vrednost za naključnost trepetanja</translation>
+      <translation type="unfinished">Seed value for jitter randomness</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Comment.py" line="41"/>
       <source>Comment or note for CNC program</source>
-      <translation>Pripomba ali opomba za program CNC</translation>
+      <translation type="unfinished">Comment or note for CNC program</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Copy.py" line="41"/>
       <source>The path to be copied</source>
-      <translation>Pot za kopiranje</translation>
+      <translation type="unfinished">The path to be copied</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Hop.py" line="39"/>
       <source>The object to be reached by this hop</source>
-      <translation>Predmet, ki naj ga ta skok doseže</translation>
+      <translation type="unfinished">The object to be reached by this hop</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Hop.py" line="45"/>
       <source>The Z height of the hop</source>
-      <translation>Višina skoka po Z-ju</translation>
+      <translation type="unfinished">The Z height of the hop</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Stop.py" line="42"/>
       <source>Add Optional or Mandatory Stop to the program</source>
-      <translation>Dodaj programu izbirno ali obvezno ustavitev</translation>
+      <translation type="unfinished">Add Optional or Mandatory Stop to the program</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Bit.py" line="144"/>
       <source>Shape for bit shape</source>
-      <translation>Oblika orodnega nastavka</translation>
+      <translation type="unfinished">Shape for bit shape</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Bit.py" line="152"/>
       <source>The parametrized body representing the tool bit</source>
-      <translation>To določilovno telo predstavlja orodni nastavek</translation>
+      <translation type="unfinished">The parametrized body representing the tool bit</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Bit.py" line="158"/>
       <source>The file of the tool</source>
-      <translation>Datoteka orodja</translation>
+      <translation type="unfinished">The file of the tool</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Bit.py" line="164"/>
       <source>The name of the shape file</source>
-      <translation>Ime oblikovne daoteke</translation>
+      <translation type="unfinished">The name of the shape file</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Bit.py" line="172"/>
       <location filename="../../../Path/Tool/Bit.py" line="210"/>
       <source>List of all properties inherited from the bit</source>
-      <translation>Seznam vseh lastnostih, nasledenih po orodnem nastavku</translation>
+      <translation type="unfinished">List of all properties inherited from the bit</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="68"/>
       <source>The active tool</source>
-      <translation>Dejavno orodje</translation>
+      <translation type="unfinished">The active tool</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="77"/>
       <source>The speed of the cutting spindle in RPM</source>
-      <translation>Hitrost obdelovalnega vretena v obr./min.</translation>
+      <translation type="unfinished">The speed of the cutting spindle in RPM</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="83"/>
       <source>Direction of spindle rotation</source>
-      <translation>Smer vrtenja vretena</translation>
+      <translation type="unfinished">Direction of spindle rotation</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="89"/>
       <source>Feed rate for vertical moves in Z</source>
-      <translation>Podajalna hitrost za navpične premike v smeri Z</translation>
+      <translation type="unfinished">Feed rate for vertical moves in Z</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="95"/>
       <source>Feed rate for horizontal moves</source>
-      <translation>Hitrost podajanja vodoravnih premikov</translation>
+      <translation type="unfinished">Feed rate for horizontal moves</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="101"/>
       <source>Rapid rate for vertical moves in Z</source>
-      <translation>Hitrohodna hitrost navpičnih pomikov po smeri Z</translation>
+      <translation type="unfinished">Rapid rate for vertical moves in Z</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="107"/>
       <source>Rapid rate for horizontal moves</source>
-      <translation>Hitrohodna hitrost pri vodoravnih premikih</translation>
+      <translation type="unfinished">Rapid rate for horizontal moves</translation>
     </message>
     <message>
       <location filename="../../../Path/Tool/Controller.py" line="304"/>
       <source>The tool used by this controller</source>
-      <translation>Orodje, ki ga ta krmilnik uporablja</translation>
+      <translation type="unfinished">The tool used by this controller</translation>
     </message>
   </context>
   <context>
@@ -6065,7 +6067,7 @@ Na primer:
     <message>
       <location filename="../../../Path/Base/Gui/PropertyBag.py" line="443"/>
       <source>Creates an object which can be used to store reference properties.</source>
-      <translation>Ustvari predmet, ki lahko hrani sklicne lastnosti.</translation>
+      <translation type="unfinished">Creates an object which can be used to store reference properties.</translation>
     </message>
   </context>
   <context>
@@ -6078,7 +6080,7 @@ Na primer:
     <message>
       <location filename="../../../Path/Dressup/Gui/Boundary.py" line="263"/>
       <source>Boundary</source>
-      <translation>Meja</translation>
+      <translation type="unfinished">Boundary</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/Boundary.py" line="267"/>
@@ -6145,24 +6147,24 @@ Na primer:
   <context>
     <name>Path_Dressup</name>
     <message>
-      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="284"/>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="368"/>
+      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="284"/>
       <source>Please select one path object
 </source>
       <translation type="unfinished">Please select one path object
 </translation>
     </message>
     <message>
-      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="289"/>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="373"/>
+      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="289"/>
       <source>The selected object is not a path
 </source>
       <translation type="unfinished">The selected object is not a path
 </translation>
     </message>
     <message>
-      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="294"/>
       <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="378"/>
+      <location filename="../../../Path/Dressup/Gui/AxisMap.py" line="294"/>
       <source>Please select a Path object</source>
       <translation type="unfinished">Please select a Path object</translation>
     </message>
@@ -6319,8 +6321,8 @@ Na primer:
       <translation type="unfinished">Select Probe Point File</translation>
     </message>
     <message>
-      <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="295"/>
       <location filename="../../../Path/Op/Gui/Probe.py" line="95"/>
+      <location filename="../../../Path/Dressup/Gui/ZCorrect.py" line="295"/>
       <source>All Files (*.*)</source>
       <translation>Vse datoteke (*.*)</translation>
     </message>
@@ -6871,11 +6873,6 @@ Na primer:
       <source>no job for operation %s found.</source>
       <translation type="unfinished">no job for operation %s found.</translation>
     </message>
-    <message>
-      <location filename="../../../Path/Op/Area.py" line="259"/>
-      <source>Previous operation %s is required for rest machining, but it has no stored rest machining metadata. Recomputing to generate this metadata...</source>
-      <translation type="unfinished">Previous operation %s is required for rest machining, but it has no stored rest machining metadata. Recomputing to generate this metadata...</translation>
-    </message>
   </context>
   <context>
     <name>Path_Operation</name>
@@ -6979,14 +6976,14 @@ Na primer:
   <context>
     <name>PathProfile</name>
     <message>
-      <location filename="../../../Path/Op/Helix.py" line="75"/>
       <location filename="../../../Path/Op/Profile.py" line="209"/>
+      <location filename="../../../Path/Op/Helix.py" line="75"/>
       <source>Outside</source>
       <translation>Zunaj</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Helix.py" line="76"/>
       <location filename="../../../Path/Op/Profile.py" line="210"/>
+      <location filename="../../../Path/Op/Helix.py" line="76"/>
       <source>Inside</source>
       <translation>Znotraj</translation>
     </message>
@@ -7122,7 +7119,7 @@ Na primer:
   <context>
     <name>PathPocket</name>
     <message>
-      <location filename="../../../Path/Op/Pocket.py" line="192"/>
+      <location filename="../../../Path/Op/Pocket.py" line="191"/>
       <source>Final depth set below ZMin of face(s) selected.</source>
       <translation type="unfinished">Final depth set below ZMin of face(s) selected.</translation>
     </message>
@@ -7142,12 +7139,12 @@ Na primer:
       <translation>Y</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Gui/PocketBase.py" line="82"/>
+      <location filename="../../../Path/Op/Gui/PocketBase.py" line="81"/>
       <source>Pass Extension</source>
       <translation type="unfinished">Pass Extension</translation>
     </message>
     <message>
-      <location filename="../../../Path/Op/Gui/PocketBase.py" line="88"/>
+      <location filename="../../../Path/Op/Gui/PocketBase.py" line="87"/>
       <source>The distance the facing operation will extend beyond the boundary shape.</source>
       <translation type="unfinished">The distance the facing operation will extend beyond the boundary shape.</translation>
     </message>
@@ -7917,7 +7914,7 @@ Na primer:
       <location filename="../../../Path/Op/Gui/Array.py" line="142"/>
       <location filename="../../../Path/Op/Gui/Array.py" line="205"/>
       <source>Make False, to prevent operation from generating code</source>
-      <translation>Spremeni v Napak, da se opravilu prepreči ustvarjanje kode</translation>
+      <translation type="unfinished">Make False, to prevent operation from generating code</translation>
     </message>
     <message>
       <location filename="../../../Path/Op/Gui/Base.py" line="189"/>
@@ -8197,7 +8194,7 @@ Aborting op creation</translation>
     <message>
       <location filename="../../../Path/Op/Gui/Stop.py" line="113"/>
       <source>Add Optional or Mandatory Stop to the program</source>
-      <translation>Dodaj programu izbirno ali obvezno ustavitev</translation>
+      <translation type="unfinished">Add Optional or Mandatory Stop to the program</translation>
     </message>
   </context>
   <context>

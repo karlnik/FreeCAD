@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-// clang-format off
 #ifdef _MSC_VER
 # define strdup _strdup
 #endif
@@ -163,4 +162,3 @@ PYBIND11_MODULE(flatmesh, m)
         .def_readonly("A", &FaceUnwrapper::A);
 
 };
-// clang-format on

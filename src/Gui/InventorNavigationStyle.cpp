@@ -40,9 +40,13 @@ using namespace Gui;
 
 TYPESYSTEM_SOURCE(Gui::InventorNavigationStyle, Gui::UserNavigationStyle)
 
-InventorNavigationStyle::InventorNavigationStyle() = default;
+InventorNavigationStyle::InventorNavigationStyle()
+{
+}
 
-InventorNavigationStyle::~InventorNavigationStyle() = default;
+InventorNavigationStyle::~InventorNavigationStyle()
+{
+}
 
 const char* InventorNavigationStyle::mouseButtons(ViewerMode mode)
 {

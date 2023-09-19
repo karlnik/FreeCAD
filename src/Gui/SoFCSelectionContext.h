@@ -32,7 +32,6 @@
 
 #include <App/Material.h>
 
-class SoState;
 
 namespace Gui {
 
@@ -41,11 +40,11 @@ struct SoFCSelectionContextBase;
 using SoFCSelectionContextBasePtr = std::shared_ptr<SoFCSelectionContextBase>;
 
 struct GuiExport SoFCSelectionContextBase {
-    virtual ~SoFCSelectionContextBase() = default;
+    virtual ~SoFCSelectionContextBase() {}
     using MergeFunc = int (int status,
                            SoFCSelectionContextBasePtr &output,
                            SoFCSelectionContextBasePtr input,
-                           SoNode *node);
+                           SoFCSelectionRoot *node);
 };
 
 struct SoFCSelectionContext;
@@ -132,8 +131,8 @@ public:
     void checkAction(SoSelectionElementAction *selaction, SoFCSelectionContextPtr ctx);
 protected:
     std::shared_ptr<int> counter;
-    bool hasSelection{false};
-    bool hasPreselection{false};
+    bool hasSelection;
+    bool hasPreselection;
     static int cachingMode;
 };
 

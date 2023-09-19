@@ -57,7 +57,7 @@ public:
    explicit NullShapeException(const char * sMessage);
    explicit NullShapeException(const std::string& sMessage);
    /// Destruction
-   ~NullShapeException() noexcept override = default;
+   ~NullShapeException() noexcept override {}
 };
 
 /* A special sub-class to indicate boolean failures
@@ -70,7 +70,7 @@ public:
    explicit BooleanException(const char * sMessage);
    explicit BooleanException(const std::string& sMessage);
    /// Destruction
-   ~BooleanException() noexcept override = default;
+   ~BooleanException() noexcept override {}
 };
 
 class PartExport ShapeSegment : public Data::Segment
@@ -79,7 +79,7 @@ class PartExport ShapeSegment : public Data::Segment
 
 public:
     ShapeSegment(const TopoDS_Shape &ShapeIn):Shape(ShapeIn){}
-    ShapeSegment() = default;
+    ShapeSegment(){}
     std::string getName() const override;
 
     TopoDS_Shape Shape;
@@ -154,9 +154,6 @@ public:
 
     /** @name Subelement management */
     //@{
-    /// Unlike \ref getTypeAndIndex() this function only handles the supported
-    /// element types.
-    static std::pair<std::string, unsigned long> getElementTypeAndIndex(const char* Name);
     /** Sub type list
      *  List of different subelement types
      *  it is NOT a list of the subelements itself

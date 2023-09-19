@@ -39,7 +39,10 @@ ViewProviderCircleParametric::ViewProviderCircleParametric()
   sPixmap = "Part_Circle_Parametric";
 }
 
-ViewProviderCircleParametric::~ViewProviderCircleParametric() = default;
+ViewProviderCircleParametric::~ViewProviderCircleParametric()
+{
+
+}
 
 
 

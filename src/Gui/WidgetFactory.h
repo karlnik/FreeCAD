@@ -61,8 +61,8 @@ public:
 private:
     static WidgetFactoryInst* _pcSingleton;
 
-    WidgetFactoryInst() = default;
-    ~WidgetFactoryInst() override = default;
+    WidgetFactoryInst(){}
+    ~WidgetFactoryInst() override{}
 };
 
 inline WidgetFactoryInst& WidgetFactory()
@@ -90,7 +90,7 @@ public:
         WidgetFactoryInst::instance().AddProducer(cname, this);
     }
 
-    ~WidgetProducer () override = default;
+    ~WidgetProducer () override{}
 
     /**
      * Creates an instance of the specified widget.
@@ -129,7 +129,7 @@ public:
         }
     }
 
-    ~PrefPageProducer () override = default;
+    ~PrefPageProducer () override{}
 
     /**
      * Creates an instance of the specified widget.
@@ -212,7 +212,7 @@ public:
         }
     }
 
-    ~CustomPageProducer () override = default;
+    ~CustomPageProducer () override{}
 
     /**
      * Creates an instance of the specified widget.

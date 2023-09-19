@@ -40,9 +40,8 @@ int qp_eq(MatrixXd& H, VectorXd& g, MatrixXd& A, VectorXd& c, VectorXd& x, Matri
     size_t constr_num = qrAT.cols();
     size_t rank = qrAT.rank();
 
-    if (rank != constr_num || constr_num > params_num) {
+    if (rank != constr_num || constr_num > params_num)
         return -1;
-    }
 
     // A^T = Q*R*P^T = Q1*R1*P^T
     // Q = [Q1,Q2], R=[R1;0]
@@ -54,9 +53,8 @@ int qp_eq(MatrixXd& H, VectorXd& g, MatrixXd& A, VectorXd& c, VectorXd& x, Matri
             .transpose()
             .solve<OnTheRight>(Q.leftCols(rank))
         * qrAT.colsPermutation().transpose();
-    if (params_num == rank) {
+    if (params_num == rank)
         x = -Y * c;
-    }
     else {
         Z = Q.rightCols(params_num - rank);
 

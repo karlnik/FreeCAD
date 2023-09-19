@@ -56,8 +56,10 @@ DlgSettingsMacroImp::DlgSettingsMacroImp( QWidget* parent )
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsMacroImp::~DlgSettingsMacroImp() = default;
-
+DlgSettingsMacroImp::~DlgSettingsMacroImp()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 /** Sets the size of the recent macros list from the user parameters.
  * @see RecentMacrosAction
  * @see StdCmdRecentMacros

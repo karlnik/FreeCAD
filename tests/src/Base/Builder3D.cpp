@@ -1,10 +1,9 @@
 #include "gtest/gtest.h"
 
-#include <Base/Builder3D.h>
+#include "Base/Builder3D.h"
+#include <QString>
 
-TEST(Builder3D, openInventor)
+TEST(Builder, one)
 {
-    Base::Builder3D builder;
-    builder.beginSeparator();
-    builder.endSeparator();
+    QString ss {};
 }

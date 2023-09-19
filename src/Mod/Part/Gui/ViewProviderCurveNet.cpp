@@ -58,6 +58,7 @@ PROPERTY_SOURCE(PartGui::ViewProviderCurveNet,PartGui::ViewProviderPart)
 
 
 ViewProviderCurveNet::ViewProviderCurveNet()
+  : bInEdit(false),bMovePointMode(false),EdgeRoot(nullptr),VertexRoot(nullptr)
 {
     LineWidth.setValue(4.0f);
     PointSize.setValue(0.05f);
@@ -71,7 +72,10 @@ ViewProviderCurveNet::ViewProviderCurveNet()
     */
 }
 
-ViewProviderCurveNet::~ViewProviderCurveNet() = default;
+ViewProviderCurveNet::~ViewProviderCurveNet()
+{
+
+}
 
 void ViewProviderCurveNet::attach(App::DocumentObject *pcFeat)
 {
@@ -186,12 +190,12 @@ bool ViewProviderCurveNet::handleEvent(const SoEvent * const ev, Gui::View3DInve
                     Base::Console().Log("ViewProviderCurveNet::handleEvent() press left\n");
 
                     bool bIsNode =  false;
-                    for (const auto & It : NodeList)
+                    for (std::list<Node>::iterator It = NodeList.begin();It != NodeList.end(); It++)
                     {
-                        if (It.pcHighlight->isHighlighted())
+                        if (It->pcHighlight->isHighlighted())
                         {
                             bIsNode = true;
-                            PointToMove = It;
+                            PointToMove = *It;
                             break;
                         }
                     }

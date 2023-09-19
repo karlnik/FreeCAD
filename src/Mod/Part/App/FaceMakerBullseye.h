@@ -45,7 +45,8 @@ class PartExport FaceMakerBullseye: public FaceMakerPublic
 {
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 public:
-    FaceMakerBullseye() = default;
+    FaceMakerBullseye()
+        :planeSupplied(false){}
     /**
      * @brief setPlane: sets the plane to use when making faces. This is
      * optional. If the plane was set, it is not tested that the wires are
@@ -62,7 +63,7 @@ protected:
 
 protected:
     gp_Pln myPlane; //externally supplied plane (if any)
-    bool planeSupplied{false};
+    bool planeSupplied;
 
     /**
      * @brief The FaceDriller class is similar to BRepBuilderAPI_MakeFace,

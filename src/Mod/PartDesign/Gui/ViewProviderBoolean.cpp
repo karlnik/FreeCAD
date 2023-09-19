@@ -54,7 +54,9 @@ ViewProviderBoolean::ViewProviderBoolean()
     Display.setEnums(DisplayEnum);
 }
 
-ViewProviderBoolean::~ViewProviderBoolean() = default;
+ViewProviderBoolean::~ViewProviderBoolean()
+{
+}
 
 
 void ViewProviderBoolean::setupContextMenu(QMenu* menu, QObject* receiver, const char* member)
@@ -111,10 +113,9 @@ bool ViewProviderBoolean::onDelete(const std::vector<std::string> &s)
 
     // if abort command deleted the object the bodies are visible again
     std::vector<App::DocumentObject*> bodies = pcBoolean->Group.getValues();
-    for (auto body : bodies) {
-        if (auto vp = Gui::Application::Instance->getViewProvider(body)) {
-            vp->show();
-        }
+    for (std::vector<App::DocumentObject*>::const_iterator b = bodies.begin(); b != bodies.end(); b++) {
+        if (*b && Gui::Application::Instance->getViewProvider(*b))
+        Gui::Application::Instance->getViewProvider(*b)->show();
     }
 
     return ViewProvider::onDelete(s);

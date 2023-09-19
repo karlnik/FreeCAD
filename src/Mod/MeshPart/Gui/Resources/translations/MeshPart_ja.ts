@@ -4,17 +4,17 @@
   <context>
     <name>CmdMeshPartCrossSections</name>
     <message>
-      <location filename="../../Command.cpp" line="280"/>
+      <location filename="../../Command.cpp" line="269"/>
       <source>MeshPart</source>
       <translation>メッシュパート</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="281"/>
+      <location filename="../../Command.cpp" line="270"/>
       <source>Cross-sections...</source>
       <translation>断面...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="282"/>
+      <location filename="../../Command.cpp" line="271"/>
       <source>Cross-sections</source>
       <translation>断面</translation>
     </message>
@@ -22,17 +22,17 @@
   <context>
     <name>CmdMeshPartCurveOnMesh</name>
     <message>
-      <location filename="../../Command.cpp" line="316"/>
+      <location filename="../../Command.cpp" line="305"/>
       <source>Mesh</source>
-      <translation>メッシュ</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="317"/>
+      <location filename="../../Command.cpp" line="306"/>
       <source>Curve on mesh...</source>
       <translation>メッシュ上の曲線...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="318"/>
+      <location filename="../../Command.cpp" line="307"/>
       <source>Creates an approximated curve on top of a mesh.
 This command only works with a 'mesh' object.</source>
       <translation>メッシュの上に近似曲線を作成します。
@@ -44,7 +44,7 @@ This command only works with a 'mesh' object.</source>
     <message>
       <location filename="../../Command.cpp" line="58"/>
       <source>Mesh</source>
-      <translation>メッシュ</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="59"/>
@@ -60,17 +60,17 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>CmdMeshPartSection</name>
     <message>
-      <location filename="../../Command.cpp" line="192"/>
+      <location filename="../../Command.cpp" line="185"/>
       <source>Mesh</source>
-      <translation>メッシュ</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="193"/>
+      <location filename="../../Command.cpp" line="186"/>
       <source>Create section from mesh and plane</source>
       <translation>メッシュと平面から断面を作成</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="194"/>
+      <location filename="../../Command.cpp" line="187"/>
       <source>Section</source>
       <translation>セクション</translation>
     </message>
@@ -80,7 +80,7 @@ This command only works with a 'mesh' object.</source>
     <message>
       <location filename="../../Command.cpp" line="83"/>
       <source>Mesh</source>
-      <translation>メッシュ</translation>
+      <translation type="unfinished">Mesh</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="84"/>
@@ -97,12 +97,12 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="134"/>
+      <location filename="../../Command.cpp" line="129"/>
       <source>Trim with plane</source>
       <translation>平面でトリム</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="217"/>
+      <location filename="../../Command.cpp" line="208"/>
       <source>Section with plane</source>
       <translation>平面で切断</translation>
     </message>
@@ -170,7 +170,7 @@ This command only works with a 'mesh' object.</source>
       <translation>距離が小さい場合はエッジを接続する</translation>
     </message>
     <message>
-      <location filename="../../CrossSections.cpp" line="384"/>
+      <location filename="../../CrossSections.cpp" line="366"/>
       <source>Failure</source>
       <translation>失敗</translation>
     </message>
@@ -178,32 +178,32 @@ This command only works with a 'mesh' object.</source>
   <context>
     <name>MeshPartGui::CurveOnMeshHandler</name>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="362"/>
+      <location filename="../../CurveOnMesh.cpp" line="364"/>
       <source>Create</source>
       <translation>作成</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="364"/>
+      <location filename="../../CurveOnMesh.cpp" line="366"/>
       <source>Close wire</source>
       <translation>閉じた連線</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="366"/>
+      <location filename="../../CurveOnMesh.cpp" line="368"/>
       <source>Clear</source>
       <translation>クリア</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="367"/>
+      <location filename="../../CurveOnMesh.cpp" line="369"/>
       <source>Cancel</source>
       <translation>キャンセル</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="626"/>
+      <location filename="../../CurveOnMesh.cpp" line="615"/>
       <source>Wrong mesh picked</source>
       <translation>不適切なメッシュがピックされています。</translation>
     </message>
     <message>
-      <location filename="../../CurveOnMesh.cpp" line="667"/>
+      <location filename="../../CurveOnMesh.cpp" line="655"/>
       <source>No point was picked</source>
       <translation>ピックされた点はありません</translation>
     </message>
@@ -485,32 +485,32 @@ A value in the range of 0.2-10.</source>
       <translation>パネルを開いたままにする</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="62"/>
+      <location filename="../../Tessellation.cpp" line="61"/>
       <source>Gmsh</source>
       <translation>Gmsh</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="235"/>
-      <location filename="../../Tessellation.cpp" line="241"/>
+      <location filename="../../Tessellation.cpp" line="225"/>
+      <location filename="../../Tessellation.cpp" line="231"/>
       <source>No active document</source>
       <translation>アクティブなドキュメントがありません</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="272"/>
+      <location filename="../../Tessellation.cpp" line="259"/>
       <source>You have selected a body without tip.
 Either set the tip of the body or select a different shape, please.</source>
       <translation>チップのないボディを選択しました。
 ボディの先端を設定するか、別の形を選択してください。</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="278"/>
+      <location filename="../../Tessellation.cpp" line="263"/>
       <source>You have selected a shape without faces.
 Select a different shape, please.</source>
       <translation>面のないシェイプを選択しました。
 別のシェイプを選択してください。</translation>
     </message>
     <message>
-      <location filename="../../Tessellation.cpp" line="282"/>
+      <location filename="../../Tessellation.cpp" line="267"/>
       <source>Select a shape for meshing, first.</source>
       <translation>最初にメッシュにするシェイプを選択してください。</translation>
     </message>
@@ -518,12 +518,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_Section</name>
     <message>
-      <location filename="../../Command.cpp" line="206"/>
+      <location filename="../../Command.cpp" line="198"/>
       <source>Select plane</source>
       <translation>平面を選択</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="207"/>
+      <location filename="../../Command.cpp" line="199"/>
       <source>Please select a plane at which you section the mesh.</source>
       <translation>メッシュの分割を行う平面を選択してください。</translation>
     </message>
@@ -541,27 +541,27 @@ Select a different shape, please.</source>
       <translation>メッシュのトリムを行う平面を選択してください。</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="103"/>
+      <location filename="../../Command.cpp" line="102"/>
       <source>Trim by plane</source>
       <translation>平面でトリム</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="104"/>
+      <location filename="../../Command.cpp" line="103"/>
       <source>Select the side you want to keep.</source>
       <translation>維持したい側面を選択してください。</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="106"/>
+      <location filename="../../Command.cpp" line="104"/>
       <source>Below</source>
       <translation>下側</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="108"/>
+      <location filename="../../Command.cpp" line="105"/>
       <source>Above</source>
       <translation>上側</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="110"/>
+      <location filename="../../Command.cpp" line="106"/>
       <source>Split</source>
       <translation>スプリット</translation>
     </message>
@@ -577,12 +577,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_CreateFlatMesh</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="49"/>
+      <location filename="../../MeshFlatteningCommand.py" line="47"/>
       <source>Unwrap Mesh</source>
       <translation>メッシュを展開</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="52"/>
+      <location filename="../../MeshFlatteningCommand.py" line="50"/>
       <source>Find a flat representation of a mesh.</source>
       <translation>メッシュの平面表現を作成</translation>
     </message>
@@ -590,12 +590,12 @@ Select a different shape, please.</source>
   <context>
     <name>MeshPart_CreateFlatFace</name>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="88"/>
+      <location filename="../../MeshFlatteningCommand.py" line="79"/>
       <source>Unwrap Face</source>
       <translation>面を展開</translation>
     </message>
     <message>
-      <location filename="../../MeshFlatteningCommand.py" line="91"/>
+      <location filename="../../MeshFlatteningCommand.py" line="82"/>
       <source>Find a flat representation of a face.</source>
       <translation>面の平面表現を作成</translation>
     </message>

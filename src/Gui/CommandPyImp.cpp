@@ -34,7 +34,6 @@
 #include "Selection.h"
 #include "Window.h"
 #include "PythonWrapper.h"
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 // inclusion of the generated files (generated out of CommandPy.xml)
 #include "CommandPy.h"
@@ -45,7 +44,7 @@
 // returns a string which represents the object e.g. when printed in python
 std::string CommandPy::representation() const
 {
-    return {"<Command object>"};
+    return std::string("<Command object>");
 }
 
 PyObject* CommandPy::get(PyObject *args)
@@ -297,12 +296,10 @@ PyObject* CommandPy::createCustomCommand(PyObject* args, PyObject* kw)
     const char* statustipTxt = nullptr;
     const char* pixmapTxt = nullptr;
     const char* shortcutTxt = nullptr;
-    static const std::array<const char *, 8> kwlist{"macroFile", "menuText", "toolTip", "whatsThis", "statusTip",
-                                                    "pixmap", "shortcut", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kw, "s|zzzzzz", kwlist, &macroFile, &menuTxt,
-                                            &tooltipTxt, &whatsthisTxt, &statustipTxt, &pixmapTxt, &shortcutTxt)) {
+    static char* kwlist[] = {"macroFile", "menuText", "toolTip", "whatsThis","statusTip", "pixmap", "shortcut", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kw, "s|zzzzzz", kwlist, &macroFile, &menuTxt,
+            &tooltipTxt, &whatsthisTxt, &statustipTxt, &pixmapTxt, &shortcutTxt))
         return nullptr;
-    }
 
     auto name = Application::Instance->commandManager().newMacroName();
     CommandManager& commandManager = Application::Instance->commandManager();

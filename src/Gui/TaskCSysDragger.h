@@ -20,14 +20,12 @@
  *                                                                         *
  ***************************************************************************/
 
-
 #ifndef TASKCSYSDRAGGER_H
 #define TASKCSYSDRAGGER_H
 
 #include "TaskView/TaskDialog.h"
 #include <App/DocumentObserver.h>
 
-class SoDragger;
 
 namespace Gui
 {
@@ -42,16 +40,13 @@ namespace Gui
       TaskCSysDragger(ViewProviderDocumentObject *vpObjectIn, SoFCCSysDragger *draggerIn);
       ~TaskCSysDragger() override;
       QDialogButtonBox::StandardButtons getStandardButtons() const override
-        { return QDialogButtonBox::Ok | QDialogButtonBox::Cancel;}
+        { return QDialogButtonBox::Ok;}
       void open() override;
       bool accept() override;
-      bool reject() override;
     private Q_SLOTS:
       void onTIncrementSlot(double freshValue);
       void onRIncrementSlot(double freshValue);
     private:
-      static inline bool firstDrag = true;
-      static void dragStartCallback(void * data, SoDragger * d);
       void setupGui();
       App::DocumentObjectT vpObject;
       SoFCCSysDragger *dragger;

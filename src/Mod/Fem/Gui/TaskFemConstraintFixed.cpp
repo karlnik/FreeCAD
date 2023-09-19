@@ -88,7 +88,8 @@ TaskFemConstraintFixed::TaskFemConstraintFixed(ViewProviderFemConstraintFixed* C
     updateUI();
 }
 
-TaskFemConstraintFixed::~TaskFemConstraintFixed() = default;
+TaskFemConstraintFixed::~TaskFemConstraintFixed()
+{}
 
 void TaskFemConstraintFixed::updateUI()
 {
@@ -149,7 +150,7 @@ void TaskFemConstraintFixed::addToSelection()
             for (const auto & SubElement : SubElements) {
                 if (SubElement.find(searchStr) == std::string::npos) {
                     QString msg = tr(
-                        "Only one type of selection (vertex, face or edge) per analysis feature allowed!");
+                        "Only one type of selection (vertex,face or edge) per constraint allowed!");
                     QMessageBox::warning(this, tr("Selection error"), msg);
                     addMe = false;
                     break;
@@ -275,7 +276,7 @@ void TaskDlgFemConstraintFixed::open()
 {
     // a transaction is already open at creation time of the panel
     if (!Gui::Command::hasPendingCommand()) {
-        QString msg = QObject::tr("Fixed boundary condition");
+        QString msg = QObject::tr("Constraint fixed");
         Gui::Command::openCommand((const char*)msg.toUtf8());
         ConstraintView->setVisible(true);
         Gui::Command::doCommand(

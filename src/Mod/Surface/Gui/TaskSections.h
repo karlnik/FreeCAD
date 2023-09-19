@@ -44,18 +44,13 @@ namespace SurfaceGui
 
 class Ui_Sections;
 
-class ViewProviderSections: public PartGui::ViewProviderSpline
+class ViewProviderSections : public PartGui::ViewProviderSpline
 {
     PROPERTY_HEADER_WITH_OVERRIDE(SurfaceGui::ViewProviderSections);
     using References = std::vector<App::PropertyLinkSubList::SubSet>;
 
 public:
-    enum ShapeType
-    {
-        Vertex,
-        Edge,
-        Face
-    };
+    enum ShapeType {Vertex, Edge, Face};
     void setupContextMenu(QMenu*, QObject*, const char*) override;
     bool setEdit(int ModNum) override;
     void unsetEdit(int ModNum) override;
@@ -63,18 +58,15 @@ public:
     void highlightReferences(ShapeType type, const References& refs, bool on);
 };
 
-class SectionsPanel: public QWidget, public Gui::SelectionObserver, public Gui::DocumentObserver
+class SectionsPanel : public QWidget,
+                      public Gui::SelectionObserver,
+                      public Gui::DocumentObserver
 {
     Q_OBJECT
 
 protected:
     class ShapeSelection;
-    enum SelectionMode
-    {
-        None,
-        AppendEdge,
-        RemoveEdge
-    };
+    enum SelectionMode { None, AppendEdge, RemoveEdge };
     SelectionMode selectionMode;
     Surface::Sections* editedObject;
     bool checkCommand;
@@ -82,7 +74,7 @@ protected:
 private:
     std::unique_ptr<Ui_Sections> ui;
     ViewProviderSections* vp;
-    Gui::ButtonGroup* buttonGroup;
+    Gui::ButtonGroup *buttonGroup;
 
 public:
     SectionsPanel(ViewProviderSections* vp, Surface::Sections* obj);
@@ -95,7 +87,7 @@ public:
     void setEditedObject(Surface::Sections* obj);
 
 protected:
-    void changeEvent(QEvent* e) override;
+    void changeEvent(QEvent *e) override;
     void onSelectionChanged(const Gui::SelectionChanges& msg) override;
     /** Notifies on undo */
     void slotUndoDocument(const Gui::Document& Doc) override;
@@ -118,12 +110,13 @@ private:
     void exitSelectionMode();
 };
 
-class TaskSections: public Gui::TaskView::TaskDialog
+class TaskSections : public Gui::TaskView::TaskDialog
 {
     Q_OBJECT
 
 public:
     TaskSections(ViewProviderSections* vp, Surface::Sections* obj);
+    ~TaskSections() override;
     void setEditedObject(Surface::Sections* obj);
 
 public:
@@ -132,14 +125,12 @@ public:
     bool reject() override;
 
     QDialogButtonBox::StandardButtons getStandardButtons() const override
-    {
-        return QDialogButtonBox::Ok | QDialogButtonBox::Cancel;
-    }
+    { return QDialogButtonBox::Ok | QDialogButtonBox::Cancel; }
 
 private:
     SectionsPanel* widget1;
 };
 
-}  // namespace SurfaceGui
+} //namespace SurfaceGui
 
-#endif  // SURFACEGUI_TASKSECTIONS_H
+#endif // SURFACEGUI_TASKSECTIONS_H

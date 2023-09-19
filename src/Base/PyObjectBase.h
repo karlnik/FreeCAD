@@ -117,7 +117,7 @@ inline void Assert(int expr, char *msg)         // C++ assert
 inline PyObject* getTypeAsObject(PyTypeObject* type) {
     // See https://en.cppreference.com/w/cpp/string/byte/memcpy
     // and https://en.cppreference.com/w/cpp/language/reinterpret_cast
-    PyObject* obj{};
+    PyObject* obj;
     std::memcpy(&obj, &type, sizeof type);
     return obj;
 }
@@ -184,7 +184,7 @@ namespace Base
  *  @see Py_Try
  *  @see Py_Assert
  */
-class BaseExport PyObjectBase : public PyObject //NOLINT
+class BaseExport PyObjectBase : public PyObject
 {
     /** Py_Header struct from python.h.
      *  Every PyObjectBase object is also a python object. So you can use
@@ -337,15 +337,15 @@ private:
     void clearAttributes();
 
 protected:
-    std::bitset<32> StatusBits; //NOLINT
+    std::bitset<32> StatusBits;
     /// pointer to the handled class
-    void * _pcTwinPointer; //NOLINT
+    void * _pcTwinPointer;
 
 public:
-    PyObject* baseProxy{nullptr}; //NOLINT
+    PyObject* baseProxy;
 
 private:
-    PyObject* attrDict{nullptr};
+    PyObject* attrDict;
 };
 
 

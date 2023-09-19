@@ -138,7 +138,9 @@ public:
 
 // ----------------------------------------------------------------
 
-SoU3DVectorOutput::SoU3DVectorOutput() = default;
+SoU3DVectorOutput::SoU3DVectorOutput()
+{
+}
 
 SoU3DVectorOutput::~SoU3DVectorOutput()
 {

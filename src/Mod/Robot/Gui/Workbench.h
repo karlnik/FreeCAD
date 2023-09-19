@@ -20,21 +20,20 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef ROBOT_WORKBENCH_H
-#define ROBOT_WORKBENCH_H
+#ifndef IMAGE_WORKBENCH_H
+#define IMAGE_WORKBENCH_H
 
-#include <Gui/TaskView/TaskWatcher.h>
 #include <Gui/Workbench.h>
+#include <Gui/TaskView/TaskWatcher.h>
 #include <Mod/Robot/RobotGlobal.h>
 
 
-namespace RobotGui
-{
+namespace RobotGui {
 
 /**
  * @author Werner Mayer
  */
-class RobotGuiExport Workbench: public Gui::StdWorkbench
+class RobotGuiExport Workbench : public Gui::StdWorkbench
 {
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 
@@ -42,7 +41,7 @@ public:
     Workbench();
     ~Workbench() override;
 
-    /** Run some actions when the workbench gets activated. */
+      /** Run some actions when the workbench gets activated. */
     void activated() override;
     /** Run some actions when the workbench gets deactivated. */
     void deactivated() override;
@@ -50,12 +49,12 @@ public:
 
 protected:
     Gui::ToolBarItem* setupToolBars() const override;
-    Gui::MenuItem* setupMenuBar() const override;
+    Gui::MenuItem*    setupMenuBar() const override;
 
     std::vector<Gui::TaskView::TaskWatcher*> Watcher;
 };
 
-}  // namespace RobotGui
+} // namespace RobotGui
 
 
-#endif  // ROBOT_WORKBENCH_H
+#endif // IMAGE_WORKBENCH_H 

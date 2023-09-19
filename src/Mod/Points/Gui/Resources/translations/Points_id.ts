@@ -4,18 +4,18 @@
   <context>
     <name>CmdPointsConvert</name>
     <message>
-      <location filename="../../Command.cpp" line="206"/>
+      <location filename="../../Command.cpp" line="187"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="207"/>
+      <location filename="../../Command.cpp" line="188"/>
       <source>Convert to points...</source>
       <translation>Ubah ke titik...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="208"/>
-      <location filename="../../Command.cpp" line="210"/>
+      <location filename="../../Command.cpp" line="189"/>
+      <location filename="../../Command.cpp" line="191"/>
       <source>Convert to points</source>
       <translation>Ubah ke titik</translation>
     </message>
@@ -23,18 +23,18 @@
   <context>
     <name>CmdPointsExport</name>
     <message>
-      <location filename="../../Command.cpp" line="120"/>
+      <location filename="../../Command.cpp" line="110"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="121"/>
+      <location filename="../../Command.cpp" line="111"/>
       <source>Export points...</source>
       <translation>Poin Ekspor...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="122"/>
-      <location filename="../../Command.cpp" line="124"/>
+      <location filename="../../Command.cpp" line="112"/>
+      <location filename="../../Command.cpp" line="114"/>
       <source>Exports a point cloud</source>
       <translation>Ekspor titik awan</translation>
     </message>
@@ -42,18 +42,18 @@
   <context>
     <name>CmdPointsImport</name>
     <message>
-      <location filename="../../Command.cpp" line="67"/>
+      <location filename="../../Command.cpp" line="65"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="68"/>
+      <location filename="../../Command.cpp" line="66"/>
       <source>Import points...</source>
       <translation>Import points...</translation>
     </message>
     <message>
+      <location filename="../../Command.cpp" line="67"/>
       <location filename="../../Command.cpp" line="69"/>
-      <location filename="../../Command.cpp" line="71"/>
       <source>Imports a point cloud</source>
       <translation>Imports a point cloud</translation>
     </message>
@@ -61,18 +61,18 @@
   <context>
     <name>CmdPointsMerge</name>
     <message>
-      <location filename="../../Command.cpp" line="342"/>
+      <location filename="../../Command.cpp" line="308"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="343"/>
+      <location filename="../../Command.cpp" line="309"/>
       <source>Merge point clouds</source>
       <translation>Gabungkan titik awan</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="344"/>
-      <location filename="../../Command.cpp" line="346"/>
+      <location filename="../../Command.cpp" line="310"/>
+      <location filename="../../Command.cpp" line="312"/>
       <source>Merge several point clouds into one</source>
       <translation>Gabungkan beberapa titik awan menjadi satu</translation>
     </message>
@@ -80,18 +80,18 @@
   <context>
     <name>CmdPointsPolyCut</name>
     <message>
-      <location filename="../../Command.cpp" line="294"/>
+      <location filename="../../Command.cpp" line="263"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="295"/>
+      <location filename="../../Command.cpp" line="264"/>
       <source>Cut point cloud</source>
       <translation>Cut point cloud</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="296"/>
-      <location filename="../../Command.cpp" line="298"/>
+      <location filename="../../Command.cpp" line="265"/>
+      <location filename="../../Command.cpp" line="267"/>
       <source>Cuts a point cloud with a picked polygon</source>
       <translation>Memotong awan titik dengan sebuah poligon yang dipilih</translation>
     </message>
@@ -99,18 +99,18 @@
   <context>
     <name>CmdPointsStructure</name>
     <message>
-      <location filename="../../Command.cpp" line="405"/>
+      <location filename="../../Command.cpp" line="351"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="406"/>
+      <location filename="../../Command.cpp" line="352"/>
       <source>Structured point cloud</source>
       <translation>Awan titik terstruktur</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="407"/>
-      <location filename="../../Command.cpp" line="409"/>
+      <location filename="../../Command.cpp" line="353"/>
+      <location filename="../../Command.cpp" line="355"/>
       <source>Convert points to structured point cloud</source>
       <translation>Ubah poin menjadi awan titik terstruktur</translation>
     </message>
@@ -118,18 +118,18 @@
   <context>
     <name>CmdPointsTransform</name>
     <message>
-      <location filename="../../Command.cpp" line="167"/>
+      <location filename="../../Command.cpp" line="150"/>
       <source>Points</source>
       <translation>Poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="168"/>
+      <location filename="../../Command.cpp" line="151"/>
       <source>Transform Points</source>
       <translation>Transform Points</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="169"/>
-      <location filename="../../Command.cpp" line="171"/>
+      <location filename="../../Command.cpp" line="152"/>
+      <location filename="../../Command.cpp" line="154"/>
       <source>Test to transform a point cloud</source>
       <translation>Tes untuk mengubah awan titik</translation>
     </message>
@@ -137,23 +137,23 @@
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="92"/>
+      <location filename="../../Command.cpp" line="86"/>
       <source>Import points</source>
       <translation>Impor poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="183"/>
+      <location filename="../../Command.cpp" line="166"/>
       <source>Transform points</source>
       <translation>Ubah poin</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="240"/>
+      <location filename="../../Command.cpp" line="212"/>
       <source>Convert to points</source>
       <translation>Ubah ke titik</translation>
     </message>
     <message>
-      <location filename="../../ViewProvider.cpp" line="485"/>
-      <location filename="../../ViewProvider.cpp" line="653"/>
+      <location filename="../../ViewProvider.cpp" line="456"/>
+      <location filename="../../ViewProvider.cpp" line="615"/>
       <source>Cut points</source>
       <translation>Potong poin</translation>
     </message>
@@ -291,24 +291,24 @@
   <context>
     <name>QObject</name>
     <message>
-      <location filename="../../Command.cpp" line="84"/>
-      <location filename="../../Command.cpp" line="141"/>
+      <location filename="../../Command.cpp" line="79"/>
+      <location filename="../../Command.cpp" line="127"/>
       <source>Point formats</source>
       <translation>Format titik</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="84"/>
-      <location filename="../../Command.cpp" line="141"/>
+      <location filename="../../Command.cpp" line="79"/>
+      <location filename="../../Command.cpp" line="127"/>
       <source>All Files</source>
       <translation>Semua data</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="227"/>
+      <location filename="../../Command.cpp" line="206"/>
       <source>Distance</source>
       <translation type="unfinished">Distance</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="228"/>
+      <location filename="../../Command.cpp" line="207"/>
       <source>Enter maximum distance:</source>
       <translation>Masukkan jarak maksimum:</translation>
     </message>

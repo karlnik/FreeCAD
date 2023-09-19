@@ -38,10 +38,11 @@ class CallTip
 {
 public:
     enum Type {Unknown, Module, Class, Method, Member, Property};
+    CallTip():type(Unknown) {}
     QString name;
     QString description;
     QString parameter;
-    Type type{Unknown};
+    Type type;
 };
 
 /**

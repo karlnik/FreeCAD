@@ -50,8 +50,8 @@ class PartExport FaceMaker: public BRepBuilderAPI_MakeShape, public Base::BaseCl
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 
 public:
-    FaceMaker() = default;
-    ~FaceMaker() override = default;
+    FaceMaker() {}
+    ~FaceMaker() override {}
 
     virtual void addWire(const TopoDS_Wire& w);
     /**

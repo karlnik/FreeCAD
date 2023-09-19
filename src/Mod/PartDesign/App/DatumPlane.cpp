@@ -66,7 +66,9 @@ Plane::Plane()
     Shape.setValue(myShape);
 }
 
-Plane::~Plane() = default;
+Plane::~Plane()
+{
+}
 
 Base::Vector3d Plane::getNormal()
 {

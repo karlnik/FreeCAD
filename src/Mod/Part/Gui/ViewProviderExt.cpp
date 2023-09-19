@@ -67,6 +67,7 @@
 # include <Inventor/nodes/SoSeparator.h>
 # include <Inventor/nodes/SoShapeHints.h>
 
+# include <boost/regex.hpp>
 # include <boost/algorithm/string/predicate.hpp>
 #endif
 
@@ -508,27 +509,31 @@ std::string ViewProviderPartExt::getElement(const SoDetail* detail) const
 
 SoDetail* ViewProviderPartExt::getDetail(const char* subelement) const
 {
-    auto type = Part::TopoShape::getElementTypeAndIndex(subelement);
-    std::string element = type.first;
-    int index = type.second;
+    std::string element;
+    int index;
+    SoDetail* detail = nullptr;
+    boost::regex ex("^(Face|Edge|Vertex)([1-9][0-9]*)$");
+    boost::cmatch what;
 
-    if (element == "Face") {
-        SoFaceDetail* detail = new SoFaceDetail();
-        detail->setPartIndex(index - 1);
-        return detail;
-    }
-    else if (element == "Edge") {
-        SoLineDetail* detail = new SoLineDetail();
-        detail->setLineIndex(index - 1);
-        return detail;
-    }
-    else if (element == "Vertex") {
-        SoPointDetail* detail = new SoPointDetail();
-        static_cast<SoPointDetail*>(detail)->setCoordinateIndex(index + nodeset->startIndex.getValue() - 1);
-        return detail;
+    if (boost::regex_match(subelement, what, ex)) {
+        element = what[1].str();
+        index = std::atoi(what[2].str().c_str());
+
+        if (element == "Face") {
+            detail = new SoFaceDetail();
+            static_cast<SoFaceDetail*>(detail)->setPartIndex(index - 1);
+        }
+        else if (element == "Edge") {
+            detail = new SoLineDetail();
+            static_cast<SoLineDetail*>(detail)->setLineIndex(index - 1);
+        }
+        else if (element == "Vertex") {
+            detail = new SoPointDetail();
+            static_cast<SoPointDetail*>(detail)->setCoordinateIndex(index + nodeset->startIndex.getValue() - 1);
+        }
     }
 
-    return nullptr;
+    return detail;
 }
 
 std::vector<Base::Vector3d> ViewProviderPartExt::getModelPoints(const SoPickedPoint* pp) const
@@ -573,12 +578,12 @@ std::vector<Base::Vector3d> ViewProviderPartExt::getModelPoints(const SoPickedPo
     }
 
     // if something went wrong returns an empty array
-    return {};
+    return std::vector<Base::Vector3d>();
 }
 
 std::vector<Base::Vector3d> ViewProviderPartExt::getSelectionShape(const char* /*Element*/) const
 {
-    return {};
+    return std::vector<Base::Vector3d>();
 }
 
 void ViewProviderPartExt::setHighlightedFaces(const std::vector<App::Color>& colors)
@@ -1248,8 +1253,8 @@ void ViewProviderPartExt::updateVisual()
             norms[i].normalize();
 
         std::vector<int32_t> lineSetCoords;
-        for (const auto & it : lineSetMap) {
-            lineSetCoords.insert(lineSetCoords.end(), it.second.begin(), it.second.end());
+        for (std::map<int, std::vector<int32_t> >::iterator it = lineSetMap.begin(); it != lineSetMap.end(); ++it) {
+            lineSetCoords.insert(lineSetCoords.end(), it->second.begin(), it->second.end());
             lineSetCoords.push_back(-1);
         }
 

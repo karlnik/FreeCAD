@@ -109,21 +109,20 @@ void QGVNavStyle::handleFocusOutEvent(QFocusEvent* event)
 
 void QGVNavStyle::handleKeyPressEvent(QKeyEvent* event)
 {
-//    Base::Console().Message("QGNS::handleKeyPressEvent(%d)\n", event->key());
     if (event->modifiers().testFlag(Qt::ControlModifier)) {
         switch (event->key()) {
             case Qt::Key_Plus: {
-                zoomIn();
+                zoom(1.0 + zoomStep);
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Minus: {
-                zoomOut();
+                zoom(1.0 - zoomStep);
                 event->accept();
-                return;
+                break;
             }
             default: {
-                return;
+                break;
             }
         }
     }
@@ -133,35 +132,35 @@ void QGVNavStyle::handleKeyPressEvent(QKeyEvent* event)
             case Qt::Key_Left: {
                 getViewer()->kbPanScroll(1, 0);
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Up: {
                 getViewer()->kbPanScroll(0, 1);
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Right: {
                 getViewer()->kbPanScroll(-1, 0);
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Down: {
                 getViewer()->kbPanScroll(0, -1);
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Escape: {
                 getViewer()->cancelBalloonPlacing();
                 event->accept();
-                return;
+                break;
             }
             case Qt::Key_Shift: {
                 this->shiftdown = true;
                 event->accept();
-                return;
+                break;
             }
             default: {
-                return;
+                break;
             }
         }
     }
@@ -336,16 +335,6 @@ double QGVNavStyle::mouseZoomFactor(QPoint p)
     double factor = 1.0 + (direction * zoomStep);
     zoomOrigin = p;
     return factor;
-}
-
-void QGVNavStyle::zoomIn()
-{
-    zoom(1.0 + zoomStep);
-}
-
-void QGVNavStyle::zoomOut()
-{
-    zoom(1.0 - zoomStep);
 }
 
 void QGVNavStyle::startPan(QPoint p)

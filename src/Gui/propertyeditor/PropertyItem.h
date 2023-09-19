@@ -97,8 +97,8 @@ public:
 private:
     static PropertyItemFactory* _singleton;
 
-    PropertyItemFactory() = default;
-    ~PropertyItemFactory() override = default;
+    PropertyItemFactory(){}
+    ~PropertyItemFactory() override{}
 };
 
 template <class CLASS>
@@ -108,7 +108,8 @@ public:
     explicit PropertyItemProducer(const char* className) {
         PropertyItemFactory::instance().AddProducer(className, this);
     }
-    ~PropertyItemProducer() override = default;
+    ~PropertyItemProducer() override {
+    }
     void* Produce () const override {
         return CLASS::create();
     }

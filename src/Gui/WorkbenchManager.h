@@ -25,9 +25,6 @@
 #define GUI_WORKBENCHMANAGER_H
 
 #include <list>
-#include <map>
-#include <string>
-#include <FCGlobal.h>
 
 namespace Gui {
 
@@ -70,7 +67,7 @@ protected:
 
 private:
     static WorkbenchManager* _instance;
-    Workbench*  _activeWorkbench{nullptr};
+    Workbench*  _activeWorkbench;
     std::map<std::string, Workbench*> _workbenches;
 };
 

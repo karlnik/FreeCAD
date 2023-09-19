@@ -990,7 +990,9 @@ DockablePlacement::DockablePlacement(QWidget* parent, Qt::WindowFlags fl) : Plac
     dw->show();
 }
 
-DockablePlacement::~DockablePlacement() = default;
+DockablePlacement::~DockablePlacement()
+{
+}
 
 void DockablePlacement::accept()
 {
@@ -1024,7 +1026,10 @@ TaskPlacement::TaskPlacement()
     connect(widget, &Placement::placementChanged, this, &TaskPlacement::slotPlacementChanged);
 }
 
-TaskPlacement::~TaskPlacement() = default;
+TaskPlacement::~TaskPlacement()
+{
+    // automatically deleted in the sub-class
+}
 
 
 /*!

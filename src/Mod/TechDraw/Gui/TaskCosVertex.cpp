@@ -55,7 +55,6 @@
 using namespace Gui;
 using namespace TechDraw;
 using namespace TechDrawGui;
-using DU = DrawUtil;
 
 TaskCosVertex::TaskCosVertex(TechDraw::DrawViewPart* baseFeat,
                                TechDraw::DrawPage* page) :
@@ -123,7 +122,6 @@ void TaskCosVertex::setUiPrimary()
     ui->dsbY->setUnit(Base::Unit::Length);
 }
 
-// set the ui x,y to apparent coords (ie invertY)
 void TaskCosVertex::updateUi()
 {
     double x = m_savePoint.x();
@@ -237,18 +235,6 @@ void TaskCosVertex::onTrackerFinished(std::vector<QPointF> pts, QGIView* qgParen
     QPointF displace = dragEnd - basePosScene;
     QPointF scenePosCV = displace / scale;
 
-    // if the base view is rotated, we need to unrotate it before saving
-    double rotDeg = m_baseFeat->Rotation.getValue();
-    if (rotDeg != 0.0) {
-        //  Invert Y value so the math works.
-        Base::Vector3d posToRotate = DU::invertY(DU::toVector3d(scenePosCV));
-        double rotRad = rotDeg * M_PI / 180.0;
-        // we always rotate around the origin.
-        posToRotate.RotateZ(-rotRad);
-        // now put Y value back to display form
-        scenePosCV = DU::toQPointF(DU::invertY(posToRotate));
-    }
-
     m_savePoint = Rez::appX(scenePosCV);
     updateUi();
 
@@ -313,8 +299,6 @@ bool TaskCosVertex::accept()
         return false;
 
     removeTracker();
-    // whatever is in the ui for x,y is treated as an unscaled, unrotated, invertedY position.
-    // the position from the tracker is unscaled & unrotated before updating the ui
     double x = ui->dsbX->value().getValue();
     double y = ui->dsbY->value().getValue();
     QPointF uiPoint(x, -y);

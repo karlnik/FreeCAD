@@ -111,6 +111,7 @@ class TaskRemeshGmsh : public Gui::TaskView::TaskDialog
 
 public:
     explicit TaskRemeshGmsh(Mesh::Feature* mesh);
+    ~TaskRemeshGmsh() override;
 
 public:
     void clicked(int) override;

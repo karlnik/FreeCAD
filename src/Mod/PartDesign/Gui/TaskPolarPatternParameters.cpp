@@ -131,14 +131,10 @@ void TaskPolarPatternParameters::connectSignals()
             this, &TaskPolarPatternParameters::onUpdateViewTimer);
     connect(ui->comboAxis, qOverload<int>(&QComboBox::activated),
             this, &TaskPolarPatternParameters::onAxisChanged);
-    connect(ui->comboMode, qOverload<int>(&QComboBox::activated),
-            this, &TaskPolarPatternParameters::onModeChanged);
     connect(ui->checkReverse, &QCheckBox::toggled,
             this, &TaskPolarPatternParameters::onCheckReverse);
     connect(ui->polarAngle, qOverload<double>(&Gui::QuantitySpinBox::valueChanged),
             this, &TaskPolarPatternParameters::onAngle);
-    connect(ui->angleOffset, qOverload<double>(&Gui::QuantitySpinBox::valueChanged),
-            this, &TaskPolarPatternParameters::onOffset);
     connect(ui->spinOccurrences, &Gui::UIntSpinBox::unsignedChanged,
             this, &TaskPolarPatternParameters::onOccurrences);
     connect(ui->checkBoxUpdateView, &QCheckBox::toggled,
@@ -152,7 +148,8 @@ void TaskPolarPatternParameters::setupUI()
     std::vector<App::DocumentObject*> originals = pcPolarPattern->Originals.getValues();
 
     // Fill data into dialog elements
-    for (auto obj : originals) {
+    for (std::vector<App::DocumentObject*>::const_iterator i = originals.begin(); i != originals.end(); ++i) {
+        const App::DocumentObject* obj = *i;
         if (obj) {
             QListWidgetItem* item = new QListWidgetItem();
             item->setText(QString::fromUtf8(obj->Label.getValue()));
@@ -163,14 +160,11 @@ void TaskPolarPatternParameters::setupUI()
     // ---------------------
 
     ui->polarAngle->bind(pcPolarPattern->Angle);
-    ui->angleOffset->bind(pcPolarPattern->Offset);
-
     ui->spinOccurrences->bind(pcPolarPattern->Occurrences);
     ui->spinOccurrences->setMaximum(pcPolarPattern->Occurrences.getMaximum());
     ui->spinOccurrences->setMinimum(pcPolarPattern->Occurrences.getMinimum());
 
     ui->comboAxis->setEnabled(true);
-    ui->comboMode->setEnabled(true);
     ui->checkReverse->setEnabled(true);
     ui->polarAngle->setEnabled(true);
     ui->spinOccurrences->setEnabled(true);
@@ -198,7 +192,6 @@ void TaskPolarPatternParameters::setupUI()
         }
     }
 
-    adaptVisibilityToMode();
     updateUI();
     connectSignals();
 }
@@ -211,24 +204,20 @@ void TaskPolarPatternParameters::updateUI()
 
     PartDesign::PolarPattern* pcPolarPattern = static_cast<PartDesign::PolarPattern*>(getObject());
 
-    PartDesign::PolarPatternMode mode = static_cast<PartDesign::PolarPatternMode>(pcPolarPattern->Mode.getValue());
     bool reverse = pcPolarPattern->Reversed.getValue();
     double angle = pcPolarPattern->Angle.getValue();
-    double offset = pcPolarPattern->Offset.getValue();
     unsigned occurrences = pcPolarPattern->Occurrences.getValue();
 
-    if (axesLinks.setCurrentLink(pcPolarPattern->Axis) == -1) {
+    if (axesLinks.setCurrentLink(pcPolarPattern->Axis) == -1){
         //failed to set current, because the link isn't in the list yet
         axesLinks.addLink(pcPolarPattern->Axis, getRefStr(pcPolarPattern->Axis.getValue(),pcPolarPattern->Axis.getSubValues()));
         axesLinks.setCurrentLink(pcPolarPattern->Axis);
     }
 
-    // Note: This block of code would trigger change signal handlers (e.g. onOccurrences())
-    // and another updateUI() if we didn't check for blockUpdate
+    // Note: These three lines would trigger onLength(), on Occurrences() and another updateUI() if we
+    // didn't check for blockUpdate
     ui->checkReverse->setChecked(reverse);
-    ui->comboMode->setCurrentIndex((long)mode);
     ui->polarAngle->setValue(angle);
-    ui->angleOffset->setValue(offset);
     ui->spinOccurrences->setValue(occurrences);
 
     blockUpdate = false;
@@ -243,15 +232,6 @@ void TaskPolarPatternParameters::onUpdateViewTimer()
 void TaskPolarPatternParameters::kickUpdateViewTimer() const
 {
     updateViewTimer->start();
-}
-
-void TaskPolarPatternParameters::adaptVisibilityToMode()
-{
-    auto pcLinearPattern = static_cast<PartDesign::PolarPattern*>(getObject());
-    auto mode = static_cast<PartDesign::PolarPatternMode>(pcLinearPattern->Mode.getValue());
-
-    ui->polarAngleWrapper->setVisible(mode == PartDesign::PolarPatternMode::angle);
-    ui->angleOffsetWrapper->setVisible(mode == PartDesign::PolarPatternMode::offset);
 }
 
 void TaskPolarPatternParameters::addObject(App::DocumentObject* obj)
@@ -313,33 +293,11 @@ void TaskPolarPatternParameters::onCheckReverse(const bool on) {
     kickUpdateViewTimer();
 }
 
-void TaskPolarPatternParameters::onModeChanged(const int mode) {
-    if (blockUpdate)
-        return;
-    PartDesign::PolarPattern* pcPolarPattern = static_cast<PartDesign::PolarPattern*>(getObject());
-    pcPolarPattern->Mode.setValue(mode);
-
-    adaptVisibilityToMode();
-
-    exitSelectionMode();
-    kickUpdateViewTimer();
-}
-
 void TaskPolarPatternParameters::onAngle(const double a) {
     if (blockUpdate)
         return;
     PartDesign::PolarPattern* pcPolarPattern = static_cast<PartDesign::PolarPattern*>(getObject());
     pcPolarPattern->Angle.setValue(a);
-
-    exitSelectionMode();
-    kickUpdateViewTimer();
-}
-
-void TaskPolarPatternParameters::onOffset(const double a) {
-    if (blockUpdate)
-        return;
-    PartDesign::PolarPattern* pcPolarPattern = static_cast<PartDesign::PolarPattern*>(getObject());
-    pcPolarPattern->Offset.setValue(a);
 
     exitSelectionMode();
     kickUpdateViewTimer();

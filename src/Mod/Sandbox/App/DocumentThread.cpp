@@ -31,7 +31,6 @@
 
 #include <Base/Console.h>
 #include <Base/Sequencer.h>
-#include <Base/Stream.h>
 #include <Base/Writer.h>
 #include <Base/Interpreter.h>
 #include <App/Application.h>
@@ -89,7 +88,7 @@ void WorkerThread::run()
 
 // --------------------------------------
 
-QRecursiveMutex PythonThread::mutex;
+QMutex PythonThread::mutex(QMutex::Recursive);
 
 PythonThread::PythonThread(QObject* parent)
   : QThread(parent)

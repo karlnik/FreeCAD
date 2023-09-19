@@ -80,7 +80,8 @@ class SoFCMeshObjectShape;
 class MeshGuiExport ViewProviderMeshBuilder : public Gui::ViewProviderBuilder
 {
 public:
-    ViewProviderMeshBuilder() = default;
+    ViewProviderMeshBuilder(){}
+    ~ViewProviderMeshBuilder() override{}
     void buildNodes(const App::Property*, std::vector<SoNode*>&) const override;
     void createMesh(const App::Property*, SoCoordinate3*, SoIndexedFaceSet*) const;
     void createMesh(const MeshCore::MeshKernel&, SoCoordinate3*, SoIndexedFaceSet*) const;
@@ -236,18 +237,16 @@ protected:
         Segment,
         Color
     };
-    //NOLINTBEGIN
     HighlighMode highlightMode;
-    Gui::SoFCSelection  * pcHighlight{nullptr};
-    SoGroup             * pcShapeGroup{nullptr};
-    SoDrawStyle         * pcLineStyle{nullptr};
-    SoDrawStyle         * pcPointStyle{nullptr};
-    SoSeparator         * pcOpenEdge{nullptr};
-    SoBaseColor         * pOpenColor{nullptr};
-    SoMaterial          * pLineColor{nullptr};
-    SoShapeHints        * pShapeHints{nullptr};
-    SoMaterialBinding   * pcMatBinding{nullptr};
-    //NOLINTEND
+    Gui::SoFCSelection  * pcHighlight;
+    SoGroup             * pcShapeGroup;
+    SoDrawStyle         * pcLineStyle;
+    SoDrawStyle         * pcPointStyle;
+    SoSeparator         * pcOpenEdge;
+    SoBaseColor         * pOpenColor;
+    SoMaterial          * pLineColor;
+    SoShapeHints        * pShapeHints;
+    SoMaterialBinding   * pcMatBinding;
 
 private:
     static App::PropertyFloatConstraint::Constraints floatRange;

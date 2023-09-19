@@ -63,7 +63,9 @@ DlgRunExternal::DlgRunExternal( QWidget* parent, Qt::WindowFlags fl )
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgRunExternal::~DlgRunExternal() = default;
+DlgRunExternal::~DlgRunExternal()
+{
+}
 
 void DlgRunExternal::addArgument(const QString& arg)
 {

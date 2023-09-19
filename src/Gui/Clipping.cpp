@@ -48,11 +48,11 @@ public:
     SoClipPlane* clipY;
     SoClipPlane* clipZ;
     SoClipPlane* clipView;
-    bool flipX{false};
-    bool flipY{false};
-    bool flipZ{false};
+    bool flipX;
+    bool flipY;
+    bool flipZ;
     SoTimerSensor* sensor;
-    Private()
+    Private() : flipX(false), flipY(false), flipZ(false)
     {
         clipX = new SoClipPlane();
         clipX->on.setValue(false);

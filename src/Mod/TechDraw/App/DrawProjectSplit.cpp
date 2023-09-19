@@ -52,7 +52,6 @@
 #include "DrawUtil.h"
 #include "Geometry.h"
 #include "GeometryObject.h"
-#include "ShapeUtils.h"
 
 
 using namespace TechDraw;
@@ -83,9 +82,9 @@ std::vector<TopoDS_Edge> DrawProjectSplit::getEdgesForWalker(TopoDS_Shape shape,
 
     gp_Pnt inputCenter(0, 0, 0);
     TopoDS_Shape scaledShape;
-    scaledShape = ShapeUtils::scaleShape(copyShape,
+    scaledShape = TechDraw::scaleShape(copyShape,
                                        scale);
-    gp_Ax2 viewAxis = ShapeUtils::legacyViewAxis1(Base::Vector3d(0.0, 0.0, 0.0), direction, false);
+    gp_Ax2 viewAxis = TechDraw::legacyViewAxis1(Base::Vector3d(0.0, 0.0, 0.0), direction, false);
     TechDraw::GeometryObjectPtr go = buildGeometryObject(scaledShape, viewAxis);
     const std::vector<TechDraw::BaseGeomPtr>& goEdges = go->getVisibleFaceEdges(false, false);
     for (auto& e: goEdges){

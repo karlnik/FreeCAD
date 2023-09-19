@@ -6,7 +6,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="67"/>
       <source>Select</source>
-      <translation>Izberi</translation>
+      <translation>Izberite</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="68"/>
@@ -81,7 +81,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="335"/>
       <source>Turntable</source>
-      <translation>Sukajoči pogled</translation>
+      <translation>Sukajoča pogled</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="336"/>
@@ -91,7 +91,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="337"/>
       <source>Trackball</source>
-      <translation>Sledilna kroglica</translation>
+      <translation>Vrtilna krogla</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="338"/>

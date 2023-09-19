@@ -38,7 +38,9 @@
 
 using namespace Gui;
 
-Breakpoint::Breakpoint() = default;
+Breakpoint::Breakpoint()
+{
+}
 
 Breakpoint::Breakpoint(const Breakpoint& rBp)
 {
@@ -58,7 +60,10 @@ Breakpoint& Breakpoint::operator= (const Breakpoint& rBp)
     return *this;
 }
 
-Breakpoint::~Breakpoint() = default;
+Breakpoint::~Breakpoint()
+{
+
+}
 
 void Breakpoint::setFilename(const QString& fn)
 {
@@ -161,9 +166,13 @@ void PythonDebugStdout::init_type()
     add_varargs_method("flush",&PythonDebugStdout::flush,"flush the output");
 }
 
-PythonDebugStdout::PythonDebugStdout() = default;
+PythonDebugStdout::PythonDebugStdout()
+{
+}
 
-PythonDebugStdout::~PythonDebugStdout() = default;
+PythonDebugStdout::~PythonDebugStdout()
+{
+}
 
 Py::Object PythonDebugStdout::repr()
 {
@@ -209,9 +218,13 @@ void PythonDebugStderr::init_type()
     add_varargs_method("write",&PythonDebugStderr::write,"write to stderr");
 }
 
-PythonDebugStderr::PythonDebugStderr() = default;
+PythonDebugStderr::PythonDebugStderr()
+{
+}
 
-PythonDebugStderr::~PythonDebugStderr() = default;
+PythonDebugStderr::~PythonDebugStderr()
+{
+}
 
 Py::Object PythonDebugStderr::repr()
 {
@@ -254,9 +267,13 @@ void PythonDebugExcept::init_type()
     add_varargs_method("fc_excepthook",&PythonDebugExcept::excepthook,"Custom exception handler");
 }
 
-PythonDebugExcept::PythonDebugExcept() = default;
+PythonDebugExcept::PythonDebugExcept()
+{
+}
 
-PythonDebugExcept::~PythonDebugExcept() = default;
+PythonDebugExcept::~PythonDebugExcept()
+{
+}
 
 Py::Object PythonDebugExcept::repr()
 {
@@ -304,7 +321,7 @@ class PythonDebuggerPy : public Py::PythonExtension<PythonDebuggerPy>
 {
 public:
     explicit PythonDebuggerPy(PythonDebugger* d) : dbg(d), depth(0) { }
-    ~PythonDebuggerPy() override = default;
+    ~PythonDebuggerPy() override {}
     PythonDebugger* dbg;
     int depth;
 };
@@ -321,20 +338,24 @@ private:
 };
 
 struct PythonDebuggerP {
-    PyObject* out_o{nullptr};
-    PyObject* err_o{nullptr};
-    PyObject* exc_o{nullptr};
-    PyObject* out_n{nullptr};
-    PyObject* err_n{nullptr};
-    PyObject* exc_n{nullptr};
+    PyObject* out_o;
+    PyObject* err_o;
+    PyObject* exc_o;
+    PyObject* out_n;
+    PyObject* err_n;
+    PyObject* exc_n;
     PythonDebugExcept* pypde;
-    bool init{false}, trystop{false}, running{false};
+    bool init, trystop, running;
     QEventLoop loop;
-    PyObject* pydbg{nullptr};
+    PyObject* pydbg;
     std::vector<Breakpoint> bps;
 
-    explicit PythonDebuggerP(PythonDebugger* that)
+    explicit PythonDebuggerP(PythonDebugger* that) :
+        init(false), trystop(false), running(false)
     {
+        out_o = nullptr;
+        err_o = nullptr;
+        exc_o = nullptr;
         Base::PyGILStateLocker lock;
         out_n = new PythonDebugStdout();
         err_n = new PythonDebugStderr();
@@ -373,7 +394,7 @@ Breakpoint PythonDebugger::getBreakpoint(const QString& fn) const
         }
     }
 
-    return {};
+    return Breakpoint();
 }
 
 bool PythonDebugger::toggleBreakpoint(int line, const QString& fn)

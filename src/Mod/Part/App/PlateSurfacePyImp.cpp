@@ -29,7 +29,6 @@
 #endif
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 #include <Base/Vector3D.h>
 
@@ -56,9 +55,8 @@ PyObject *PlateSurfacePy::PyMake(struct _typeobject *, PyObject *, PyObject *)  
 // constructor method
 int PlateSurfacePy::PyInit(PyObject* args, PyObject* kwds)
 {
-    static const std::array<const char *, 12> kwds_Parameter{"Surface", "Points", "Curves", "Degree",
-                                                             "NbPtsOnCur", "NbIter", "Tol2d", "Tol3d", "TolAng",
-                                                             "TolCurv", "Anisotropie", nullptr};
+    static char* kwds_Parameter[] = {"Surface","Points","Curves","Degree",
+        "NbPtsOnCur","NbIter","Tol2d","Tol3d","TolAng","TolCurv","Anisotropie",nullptr};
 
     PyObject* surface = nullptr;
     PyObject* points = nullptr;
@@ -70,14 +68,13 @@ int PlateSurfacePy::PyInit(PyObject* args, PyObject* kwds)
     double Tol3d = 0.0001;
     double TolAng = 0.01;
     double TolCurv = 0.1;
-    PyObject* Anisotropie = Py_False; // NOLINT
+    PyObject* Anisotropie = Py_False;
 
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "|O!OOiiiddddO!", kwds_Parameter,
-                                             &(GeometryPy::Type), &surface, &points, &curves,
-                                             &Degree, &NbPtsOnCur, &NbIter, &Tol2d, &Tol3d, &TolAng, &TolCurv,
-                                             &PyBool_Type, &Anisotropie)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O!OOiiiddddO!", kwds_Parameter,
+        &(GeometryPy::Type), &surface, &points, &curves,
+        &Degree, &NbPtsOnCur, &NbIter, &Tol2d, &Tol3d, &TolAng, &TolCurv,
+        &PyBool_Type,&Anisotropie))
         return -1;
-    }
 
     if (!surface && !points && !curves) {
         PyErr_SetString(PyExc_ValueError, "set points or curves as constraints");
@@ -140,8 +137,8 @@ int PlateSurfacePy::PyInit(PyObject* args, PyObject* kwds)
 
 PyObject* PlateSurfacePy::makeApprox(PyObject *args, PyObject* kwds)
 {
-    static const std::array<const char *, 8> kwds_Parameter{"Tol3d", "MaxSegments", "MaxDegree", "MaxDistance",
-                                                            "CritOrder", "Continuity", "EnlargeCoeff", nullptr};
+    static char* kwds_Parameter[] = {"Tol3d","MaxSegments","MaxDegree","MaxDistance",
+        "CritOrder","Continuity","EnlargeCoeff",nullptr};
 
     double tol3d=0.01;
     int maxSeg=9;
@@ -151,10 +148,9 @@ PyObject* PlateSurfacePy::makeApprox(PyObject *args, PyObject* kwds)
     char* cont = "C1";
     double enlargeCoeff = 1.1;
 
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "|diidisd", kwds_Parameter,
-                                             &tol3d, &maxSeg, &maxDegree, &dmax, &critOrder, &cont, &enlargeCoeff)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|diidisd", kwds_Parameter,
+        &tol3d, &maxSeg, &maxDegree, &dmax, &critOrder, &cont, &enlargeCoeff))
         return nullptr;
-    }
 
     GeomAbs_Shape continuity;
     std::string uc = cont;

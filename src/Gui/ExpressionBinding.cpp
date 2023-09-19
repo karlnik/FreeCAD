@@ -47,9 +47,15 @@ using namespace Gui;
 using namespace App;
 namespace sp = std::placeholders;
 
-ExpressionBinding::ExpressionBinding() = default;
+ExpressionBinding::ExpressionBinding()
+    : m_autoApply(false)
+{
+}
 
-ExpressionBinding::~ExpressionBinding() = default;
+
+ExpressionBinding::~ExpressionBinding()
+{
+}
 
 bool ExpressionBinding::isBound() const
 {
@@ -154,7 +160,7 @@ std::string ExpressionBinding::getExpressionString(bool no_throw) const
         else
             throw;
     }
-    return {};
+    return std::string();
 }
 
 std::string ExpressionBinding::getEscapedExpressionString() const
@@ -274,7 +280,12 @@ void ExpressionBinding::objectDeleted(const App::DocumentObject& obj)
 
 // ----------------------------------------------------------------------------
 
-ExpressionWidget::ExpressionWidget() = default;
+ExpressionWidget::ExpressionWidget()
+    : iconLabel(nullptr)
+    , iconHeight(-1)
+{
+
+}
 
 QPixmap ExpressionWidget::getIcon(const char* name, const QSize& size) const
 {

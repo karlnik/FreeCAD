@@ -212,7 +212,9 @@ void DlgPreferencePackManagementImp::showAddonManager()
     close();
 }
 
-DlgPreferencePackManagementImp::~DlgPreferencePackManagementImp() = default;
+DlgPreferencePackManagementImp::~DlgPreferencePackManagementImp()
+{
+}
 
 
 

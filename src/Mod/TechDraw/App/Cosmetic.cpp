@@ -56,10 +56,10 @@ LineFormat::LineFormat()
     m_visible = true;
 }
 
-LineFormat::LineFormat(const int style,
-                       const double weight,
-                       const App::Color& color,
-                       const bool visible) :
+LineFormat::LineFormat(int style,
+               double weight,
+               App::Color color,
+               bool visible) :
     m_style(style),
     m_weight(weight),
     m_color(color),
@@ -112,7 +112,7 @@ CosmeticEdge::CosmeticEdge()
     initialize();
 }
 
-CosmeticEdge::CosmeticEdge(const CosmeticEdge* ce)
+CosmeticEdge::CosmeticEdge(CosmeticEdge* ce)
 {
 //    Base::Console().Message("CE::CE(ce)\n");
     TechDraw::BaseGeomPtr newGeom = ce->m_geometry->copy();
@@ -125,18 +125,18 @@ CosmeticEdge::CosmeticEdge(const CosmeticEdge* ce)
     initialize();
 }
 
-CosmeticEdge::CosmeticEdge(const Base::Vector3d& pt1, const Base::Vector3d& pt2) :
+CosmeticEdge::CosmeticEdge(Base::Vector3d pt1, Base::Vector3d pt2) :
 //                             🠓 returns TopoDS_Edge
     CosmeticEdge::CosmeticEdge(TopoDS_EdgeFromVectors(pt1, pt2))
 {
 }
 
 //                                                       🠓 returns TechDraw::BaseGeomPtr
-CosmeticEdge::CosmeticEdge(const TopoDS_Edge& e) : CosmeticEdge(TechDraw::BaseGeom::baseFactory(e))
+CosmeticEdge::CosmeticEdge(TopoDS_Edge e) : CosmeticEdge(TechDraw::BaseGeom::baseFactory(e))
 {
 }
 
-CosmeticEdge::CosmeticEdge(const TechDraw::BaseGeomPtr g)
+CosmeticEdge::CosmeticEdge(TechDraw::BaseGeomPtr g)
 {
 //    Base::Console().Message("CE::CE(bg)\n");
     m_geometry = g;
@@ -169,7 +169,7 @@ void CosmeticEdge::initialize()
     m_geometry->setCosmeticTag(getTagAsString());
 }
 
-TopoDS_Edge CosmeticEdge::TopoDS_EdgeFromVectors(const Base::Vector3d& pt1, const Base::Vector3d& pt2)
+TopoDS_Edge CosmeticEdge::TopoDS_EdgeFromVectors(Base::Vector3d pt1, Base::Vector3d pt2)
 {
     // Base::Console().Message("CE::CE(p1, p2)\n");
     Base::Vector3d p1 = DrawUtil::invertY(pt1);
@@ -179,29 +179,10 @@ TopoDS_Edge CosmeticEdge::TopoDS_EdgeFromVectors(const Base::Vector3d& pt1, cons
     return BRepBuilderAPI_MakeEdge(gp1, gp2);
 }
 
-TechDraw::BaseGeomPtr CosmeticEdge::scaledGeometry(const double scale)
+TechDraw::BaseGeomPtr CosmeticEdge::scaledGeometry(double scale)
 {
     TopoDS_Edge e = m_geometry->getOCCEdge();
-    TopoDS_Shape s = ShapeUtils::scaleShape(e, scale);
-    TopoDS_Edge newEdge = TopoDS::Edge(s);
-    TechDraw::BaseGeomPtr newGeom = TechDraw::BaseGeom::baseFactory(newEdge);
-    newGeom->setClassOfEdge(ecHARD);
-    newGeom->setHlrVisible( true);
-    newGeom->setCosmetic(true);
-    newGeom->source(COSMETICEDGE);
-    newGeom->setCosmeticTag(getTagAsString());
-    return newGeom;
-}
-
-TechDraw::BaseGeomPtr CosmeticEdge::scaledAndRotatedGeometry(const double scale, const double rotDegrees)
-{
-    TopoDS_Edge e = m_geometry->getOCCEdge();
-//    TopoDS_Shape s = TechDraw::scaleShape(e, scale);
-    // Mirror shape in Y and scale
-    TopoDS_Shape s = ShapeUtils::mirrorShape(e, gp_Pnt(0.0, 0.0, 0.0), scale);
-    // rotate using OXYZ as the coordinate system
-    s = ShapeUtils::rotateShape(s, gp_Ax2(), rotDegrees);
-    s = ShapeUtils::mirrorShape(s);
+    TopoDS_Shape s = TechDraw::scaleShape(e, scale);
     TopoDS_Edge newEdge = TopoDS::Edge(s);
     TechDraw::BaseGeomPtr newGeom = TechDraw::BaseGeom::baseFactory(newEdge);
     newGeom->setClassOfEdge(ecHARD);
@@ -226,7 +207,7 @@ std::string CosmeticEdge::toString() const
     return ss.str();
 }
 
-void CosmeticEdge::dump(const char* title) const
+void CosmeticEdge::dump(const char* title)
 {
     Base::Console().Message("CE::dump - %s \n", title);
     Base::Console().Message("CE::dump - %s \n", toString().c_str());
@@ -332,7 +313,7 @@ void CosmeticEdge::createNewTag()
     tag = gen();
 }
 
-void CosmeticEdge::assignTag(const TechDraw::CosmeticEdge* ce)
+void CosmeticEdge::assignTag(const TechDraw::CosmeticEdge * ce)
 {
     if(ce->getTypeId() == this->getTypeId())
         this->tag = ce->tag;
@@ -382,7 +363,7 @@ GeomFormat::GeomFormat() :
     createNewTag();
 }
 
-GeomFormat::GeomFormat(const GeomFormat* gf)
+GeomFormat::GeomFormat(GeomFormat* gf)
 {
     m_geomIndex  = gf->m_geomIndex;
     m_format.m_style = gf->m_format.m_style;
@@ -393,8 +374,8 @@ GeomFormat::GeomFormat(const GeomFormat* gf)
     createNewTag();
 }
 
-GeomFormat::GeomFormat(const int idx,
-                       const TechDraw::LineFormat& fmt) :
+GeomFormat::GeomFormat(int idx,
+                       TechDraw::LineFormat fmt) :
     m_geomIndex(idx)
 {
     m_format.m_style = fmt.m_style;
@@ -485,7 +466,7 @@ void GeomFormat::createNewTag()
     tag = gen();
 }
 
-void GeomFormat::assignTag(const TechDraw::GeomFormat* ce)
+void GeomFormat::assignTag(const TechDraw::GeomFormat * ce)
 {
     if(ce->getTypeId() == this->getTypeId())
         this->tag = ce->tag;

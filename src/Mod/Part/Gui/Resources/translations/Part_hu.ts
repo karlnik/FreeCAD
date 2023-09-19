@@ -1150,14 +1150,14 @@
   <context>
     <name>CmdBoxSelection</name>
     <message>
-      <location filename="../../Command.cpp" line="2356"/>
+      <location filename="../../Command.cpp" line="2326"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2357"/>
-      <location filename="../../Command.cpp" line="2358"/>
-      <location filename="../../Command.cpp" line="2360"/>
+      <location filename="../../Command.cpp" line="2327"/>
+      <location filename="../../Command.cpp" line="2328"/>
+      <location filename="../../Command.cpp" line="2330"/>
       <source>Box selection</source>
       <translation>Négyzet kiválasztás</translation>
     </message>
@@ -1165,17 +1165,17 @@
   <context>
     <name>CmdCheckGeometry</name>
     <message>
-      <location filename="../../Command.cpp" line="2065"/>
+      <location filename="../../Command.cpp" line="2035"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2066"/>
+      <location filename="../../Command.cpp" line="2036"/>
       <source>Check Geometry</source>
       <translation>Geometria ellenőrzése</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2067"/>
+      <location filename="../../Command.cpp" line="2037"/>
       <source>Analyzes Geometry For Errors</source>
       <translation>Geometria hiba analízis</translation>
     </message>
@@ -1183,17 +1183,17 @@
   <context>
     <name>CmdColorPerFace</name>
     <message>
-      <location filename="../../Command.cpp" line="2098"/>
+      <location filename="../../Command.cpp" line="2068"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2099"/>
+      <location filename="../../Command.cpp" line="2069"/>
       <source>Color per face</source>
       <translation>Felületenkénti szín</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2100"/>
+      <location filename="../../Command.cpp" line="2070"/>
       <source>Set the color of each individual face of the selected object.</source>
       <translation>Állítsa be a kijelölt tárgy összes falának színét.</translation>
     </message>
@@ -1201,17 +1201,17 @@
   <context>
     <name>CmdMeasureAngular</name>
     <message>
-      <location filename="../../Command.cpp" line="2168"/>
+      <location filename="../../Command.cpp" line="2138"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2169"/>
+      <location filename="../../Command.cpp" line="2139"/>
       <source>Measure Angular</source>
       <translation>Hosszirányú méretezés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2170"/>
+      <location filename="../../Command.cpp" line="2140"/>
       <source>Measure the angle between two edges.</source>
       <translation>Mérje meg a két él közötti szöget.</translation>
     </message>
@@ -1219,17 +1219,17 @@
   <context>
     <name>CmdMeasureClearAll</name>
     <message>
-      <location filename="../../Command.cpp" line="2227"/>
+      <location filename="../../Command.cpp" line="2197"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2228"/>
+      <location filename="../../Command.cpp" line="2198"/>
       <source>Clear All</source>
       <translation>Minden törlése</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2229"/>
+      <location filename="../../Command.cpp" line="2199"/>
       <source>Clear all dimensions from the screen.</source>
       <translation>Törölje az összes méretet a képernyőről.</translation>
     </message>
@@ -1237,17 +1237,17 @@
   <context>
     <name>CmdMeasureLinear</name>
     <message>
-      <location filename="../../Command.cpp" line="2137"/>
+      <location filename="../../Command.cpp" line="2107"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2138"/>
+      <location filename="../../Command.cpp" line="2108"/>
       <source>Measure Linear</source>
       <translation>Egyenes méretezés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2139"/>
+      <location filename="../../Command.cpp" line="2109"/>
       <source>Measure the linear distance between two points;
 if edges or faces are picked, it will measure
 between two vertices of them.</source>
@@ -1259,17 +1259,17 @@ a mérést a két csúcs között kell végezni.</translation>
   <context>
     <name>CmdMeasureRefresh</name>
     <message>
-      <location filename="../../Command.cpp" line="2197"/>
+      <location filename="../../Command.cpp" line="2167"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2198"/>
+      <location filename="../../Command.cpp" line="2168"/>
       <source>Refresh</source>
       <translation>Frissítés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2199"/>
+      <location filename="../../Command.cpp" line="2169"/>
       <source>Recalculate the dimensions
 if the measured points have moved.</source>
       <translation>A mérési pontok mozgatásakor 
@@ -1279,17 +1279,17 @@ számítsa újra a méreteket.</translation>
   <context>
     <name>CmdMeasureToggle3d</name>
     <message>
-      <location filename="../../Command.cpp" line="2293"/>
+      <location filename="../../Command.cpp" line="2263"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2294"/>
+      <location filename="../../Command.cpp" line="2264"/>
       <source>Toggle 3D</source>
       <translation>3D kapcsolása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2295"/>
+      <location filename="../../Command.cpp" line="2265"/>
       <source>Toggle on and off all direct dimensions,
 including angular.</source>
       <translation>Kapcsolja ki és tiltsa le az összes közvetlen méretet,
@@ -1299,17 +1299,17 @@ beleértve a szöget.</translation>
   <context>
     <name>CmdMeasureToggleAll</name>
     <message>
-      <location filename="../../Command.cpp" line="2256"/>
+      <location filename="../../Command.cpp" line="2226"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2257"/>
+      <location filename="../../Command.cpp" line="2227"/>
       <source>Toggle All</source>
       <translation>Mindegyiket kapcsolja</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2258"/>
+      <location filename="../../Command.cpp" line="2228"/>
       <source>Toggle on and off all currently visible dimensions,
 direct, orthogonal, and angular.</source>
       <translation>Kapcsolja ki és be az összes jelenleg látható méretezést,
@@ -1319,17 +1319,17 @@ közvetlent, merőlegest és szögest.</translation>
   <context>
     <name>CmdMeasureToggleDelta</name>
     <message>
-      <location filename="../../Command.cpp" line="2324"/>
+      <location filename="../../Command.cpp" line="2294"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2325"/>
+      <location filename="../../Command.cpp" line="2295"/>
       <source>Toggle Delta</source>
       <translation>Delta ki-/ bekapcsolása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2326"/>
+      <location filename="../../Command.cpp" line="2296"/>
       <source>Toggle on and off all orthogonal dimensions,
 meaning that a direct dimension will be decomposed
 into its X, Y, and Z components.</source>
@@ -1341,17 +1341,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartBoolean</name>
     <message>
-      <location filename="../../Command.cpp" line="1248"/>
+      <location filename="../../Command.cpp" line="1247"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1249"/>
+      <location filename="../../Command.cpp" line="1248"/>
       <source>Boolean...</source>
       <translation>Logikai...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1250"/>
+      <location filename="../../Command.cpp" line="1249"/>
       <source>Run a boolean operation with two shapes selected</source>
       <translation>Logikai művelet végrehajtása a két kijelölt alakzaton</translation>
     </message>
@@ -1379,17 +1379,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartBox2</name>
     <message>
-      <location filename="../../Command.cpp" line="131"/>
+      <location filename="../../Command.cpp" line="130"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="132"/>
+      <location filename="../../Command.cpp" line="131"/>
       <source>Box fix 1</source>
       <translation>Rögzített doboz 1</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="133"/>
+      <location filename="../../Command.cpp" line="132"/>
       <source>Create a box solid without dialog</source>
       <translation>Hozzon létre egy doboz szilárd testet párbeszéd nélkül</translation>
     </message>
@@ -1397,17 +1397,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartBox3</name>
     <message>
-      <location filename="../../Command.cpp" line="172"/>
+      <location filename="../../Command.cpp" line="171"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="173"/>
+      <location filename="../../Command.cpp" line="172"/>
       <source>Box fix 2</source>
       <translation>Rögzített doboz 2</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="174"/>
+      <location filename="../../Command.cpp" line="173"/>
       <source>Create a box solid without dialog</source>
       <translation>Hozzon létre egy doboz szilárd testet párbeszéd nélkül</translation>
     </message>
@@ -1415,17 +1415,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartBuilder</name>
     <message>
-      <location filename="../../Command.cpp" line="1539"/>
+      <location filename="../../Command.cpp" line="1509"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1540"/>
+      <location filename="../../Command.cpp" line="1510"/>
       <source>Shape builder...</source>
       <translation>Alak építő ...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1541"/>
+      <location filename="../../Command.cpp" line="1511"/>
       <source>Advanced utility to create shapes</source>
       <translation>Forma létrehozó fejlett eszköz</translation>
     </message>
@@ -1433,17 +1433,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartChamfer</name>
     <message>
-      <location filename="../../Command.cpp" line="1444"/>
+      <location filename="../../Command.cpp" line="1414"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1445"/>
+      <location filename="../../Command.cpp" line="1415"/>
       <source>Chamfer...</source>
       <translation>Letörés...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1446"/>
+      <location filename="../../Command.cpp" line="1416"/>
       <source>Chamfer the selected edges of a shape</source>
       <translation>Az alakzat kijelölt éleinek letörése</translation>
     </message>
@@ -1451,17 +1451,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCommon</name>
     <message>
-      <location filename="../../Command.cpp" line="359"/>
+      <location filename="../../Command.cpp" line="358"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="360"/>
+      <location filename="../../Command.cpp" line="359"/>
       <source>Intersection</source>
       <translation>Metszet</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="361"/>
+      <location filename="../../Command.cpp" line="360"/>
       <source>Make an intersection of two shapes</source>
       <translation>Készíts egy metszetet két alakzattal</translation>
     </message>
@@ -1469,17 +1469,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCompCompoundTools</name>
     <message>
-      <location filename="../../Command.cpp" line="736"/>
+      <location filename="../../Command.cpp" line="735"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="737"/>
+      <location filename="../../Command.cpp" line="736"/>
       <source>Compound tools</source>
       <translation>Kapcsolati eszközök</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="738"/>
+      <location filename="../../Command.cpp" line="737"/>
       <source>Compound tools: working with lists of shapes.</source>
       <translation>Egyesítő eszközök: munka az alakzatok listáival.</translation>
     </message>
@@ -1487,17 +1487,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCompJoinFeatures</name>
     <message>
-      <location filename="../../Command.cpp" line="512"/>
+      <location filename="../../Command.cpp" line="511"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="513"/>
+      <location filename="../../Command.cpp" line="512"/>
       <source>Join objects...</source>
       <translation>Objektumok csatlakoztatása...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="514"/>
+      <location filename="../../Command.cpp" line="513"/>
       <source>Join walled objects</source>
       <translation>Fallal határolt objektumok csatlakoztatása</translation>
     </message>
@@ -1505,17 +1505,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCompOffset</name>
     <message>
-      <location filename="../../Command.cpp" line="1738"/>
+      <location filename="../../Command.cpp" line="1708"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1739"/>
+      <location filename="../../Command.cpp" line="1709"/>
       <source>Offset:</source>
       <translation>Eltolás:</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1740"/>
+      <location filename="../../Command.cpp" line="1710"/>
       <source>Tools to offset shapes (construct parallel shapes)</source>
       <translation>Eszközök az alakzatok eltolásához (párhuzamos alakzatokat épít)</translation>
     </message>
@@ -1523,17 +1523,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCompSplitFeatures</name>
     <message>
-      <location filename="../../Command.cpp" line="618"/>
+      <location filename="../../Command.cpp" line="617"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="619"/>
+      <location filename="../../Command.cpp" line="618"/>
       <source>Split objects...</source>
       <translation>Objektumok felosztása...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="620"/>
+      <location filename="../../Command.cpp" line="619"/>
       <source>Shape splitting and Compsolid creation tools.</source>
       <translation>Szerszámok a formák felosztásához és az összetett testek létrehozásához.</translation>
     </message>
@@ -1541,17 +1541,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCompound</name>
     <message>
-      <location filename="../../Command.cpp" line="843"/>
+      <location filename="../../Command.cpp" line="842"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="844"/>
+      <location filename="../../Command.cpp" line="843"/>
       <source>Make compound</source>
       <translation>Összetett létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="845"/>
+      <location filename="../../Command.cpp" line="844"/>
       <source>Make a compound of several shapes</source>
       <translation>Több alakzat összetettjének létrehozása</translation>
     </message>
@@ -1579,17 +1579,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCrossSections</name>
     <message>
-      <location filename="../../Command.cpp" line="1500"/>
+      <location filename="../../Command.cpp" line="1470"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1501"/>
+      <location filename="../../Command.cpp" line="1471"/>
       <source>Cross-sections...</source>
       <translation>Keresztmetszet...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1502"/>
+      <location filename="../../Command.cpp" line="1472"/>
       <source>Cross-sections</source>
       <translation>Keresztmetszet</translation>
     </message>
@@ -1597,17 +1597,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartCut</name>
     <message>
-      <location filename="../../Command.cpp" line="300"/>
+      <location filename="../../Command.cpp" line="299"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="301"/>
+      <location filename="../../Command.cpp" line="300"/>
       <source>Cut</source>
       <translation>Kivágás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="302"/>
+      <location filename="../../Command.cpp" line="301"/>
       <source>Make a cut of two shapes</source>
       <translation>Készíts egy kivágást két alakzattal</translation>
     </message>
@@ -1671,17 +1671,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartExport</name>
     <message>
-      <location filename="../../Command.cpp" line="1011"/>
+      <location filename="../../Command.cpp" line="1010"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1012"/>
+      <location filename="../../Command.cpp" line="1011"/>
       <source>Export CAD...</source>
       <translation>Export CAD ...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1013"/>
+      <location filename="../../Command.cpp" line="1012"/>
       <source>Exports to a CAD file</source>
       <translation>CAD fájlok exportálása</translation>
     </message>
@@ -1689,17 +1689,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartExtrude</name>
     <message>
-      <location filename="../../Command.cpp" line="1279"/>
+      <location filename="../../Command.cpp" line="1278"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1280"/>
+      <location filename="../../Command.cpp" line="1279"/>
       <source>Extrude...</source>
       <translation>Kihúzás...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1281"/>
+      <location filename="../../Command.cpp" line="1280"/>
       <source>Extrude a selected sketch</source>
       <translation>Kiválasztott vázlat kihúzása</translation>
     </message>
@@ -1707,17 +1707,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartFillet</name>
     <message>
-      <location filename="../../Command.cpp" line="1416"/>
+      <location filename="../../Command.cpp" line="1386"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1417"/>
+      <location filename="../../Command.cpp" line="1387"/>
       <source>Fillet...</source>
       <translation>Lekerekítés...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1418"/>
+      <location filename="../../Command.cpp" line="1388"/>
       <source>Fillet the selected edges of a shape</source>
       <translation>Egy alakzat kiválasztott éleinek lekerekítése</translation>
     </message>
@@ -1725,17 +1725,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartFuse</name>
     <message>
-      <location filename="../../Command.cpp" line="435"/>
+      <location filename="../../Command.cpp" line="434"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="436"/>
+      <location filename="../../Command.cpp" line="435"/>
       <source>Union</source>
       <translation>Egyesítés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="437"/>
+      <location filename="../../Command.cpp" line="436"/>
       <source>Make a union of several shapes</source>
       <translation>Készíts egy egyesítést több alakzattal</translation>
     </message>
@@ -1743,17 +1743,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartImport</name>
     <message>
-      <location filename="../../Command.cpp" line="948"/>
+      <location filename="../../Command.cpp" line="947"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="949"/>
+      <location filename="../../Command.cpp" line="948"/>
       <source>Import CAD...</source>
       <translation>CAD import...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="950"/>
+      <location filename="../../Command.cpp" line="949"/>
       <source>Imports a CAD file</source>
       <translation>CAD-fájl importálása</translation>
     </message>
@@ -1761,17 +1761,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartImportCurveNet</name>
     <message>
-      <location filename="../../Command.cpp" line="1059"/>
+      <location filename="../../Command.cpp" line="1058"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1060"/>
+      <location filename="../../Command.cpp" line="1059"/>
       <source>Import curve network...</source>
       <translation>Görbe hálózat importálás...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1061"/>
+      <location filename="../../Command.cpp" line="1060"/>
       <source>Import a curve network</source>
       <translation>Görbe hálózat importálása</translation>
     </message>
@@ -1779,17 +1779,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartLoft</name>
     <message>
-      <location filename="../../Command.cpp" line="1568"/>
+      <location filename="../../Command.cpp" line="1538"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1569"/>
+      <location filename="../../Command.cpp" line="1539"/>
       <source>Loft...</source>
       <translation>Szint ...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1570"/>
+      <location filename="../../Command.cpp" line="1540"/>
       <source>Utility to loft</source>
       <translation>Elágazás segédprogram</translation>
     </message>
@@ -1797,17 +1797,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartMakeFace</name>
     <message>
-      <location filename="../../Command.cpp" line="1336"/>
+      <location filename="../../Command.cpp" line="1306"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1337"/>
+      <location filename="../../Command.cpp" line="1307"/>
       <source>Make face from wires</source>
       <translation>Felület létrehozás hálóból</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1338"/>
+      <location filename="../../Command.cpp" line="1308"/>
       <source>Make face from set of wires (e.g. from a sketch)</source>
       <translation>Felület létrehozás meghatározott hálókból (pl. egy vázlatból)</translation>
     </message>
@@ -1815,17 +1815,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartMakeSolid</name>
     <message>
-      <location filename="../../Command.cpp" line="1107"/>
+      <location filename="../../Command.cpp" line="1106"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1108"/>
+      <location filename="../../Command.cpp" line="1107"/>
       <source>Convert to solid</source>
       <translation>Konvertálás szilárd testté</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1109"/>
+      <location filename="../../Command.cpp" line="1108"/>
       <source>Create solid from a shell or compound</source>
       <translation>Hozzon létre egy alakzatot szilárd héjból vagy összetettből</translation>
     </message>
@@ -1833,17 +1833,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartMirror</name>
     <message>
-      <location filename="../../Command.cpp" line="1472"/>
+      <location filename="../../Command.cpp" line="1442"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1473"/>
+      <location filename="../../Command.cpp" line="1443"/>
       <source>Mirroring...</source>
       <translation>Tükrözés...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1474"/>
+      <location filename="../../Command.cpp" line="1444"/>
       <source>Mirroring a selected shape</source>
       <translation>A kijelölt alakzat tükrözése</translation>
     </message>
@@ -1851,17 +1851,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartOffset</name>
     <message>
-      <location filename="../../Command.cpp" line="1626"/>
+      <location filename="../../Command.cpp" line="1596"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1627"/>
+      <location filename="../../Command.cpp" line="1597"/>
       <source>3D Offset...</source>
       <translation>3D eltolás...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1628"/>
+      <location filename="../../Command.cpp" line="1598"/>
       <source>Utility to offset in 3D</source>
       <translation>Segéd a 3D eltolás alkalmazásához</translation>
     </message>
@@ -1869,17 +1869,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartOffset2D</name>
     <message>
-      <location filename="../../Command.cpp" line="1683"/>
+      <location filename="../../Command.cpp" line="1653"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1684"/>
+      <location filename="../../Command.cpp" line="1654"/>
       <source>2D Offset...</source>
       <translation>2D eltolás...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1685"/>
+      <location filename="../../Command.cpp" line="1655"/>
       <source>Utility to offset planar shapes</source>
       <translation>Segéd a síkbeli eltolás alkalmazásához</translation>
     </message>
@@ -1887,17 +1887,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartPickCurveNet</name>
     <message>
-      <location filename="../../Command.cpp" line="85"/>
+      <location filename="../../Command.cpp" line="84"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="86"/>
+      <location filename="../../Command.cpp" line="85"/>
       <source>Pick curve network</source>
       <translation>Válasszon görbét</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="87"/>
+      <location filename="../../Command.cpp" line="86"/>
       <source>Pick a curve network</source>
       <translation>Válasszon egy görbét</translation>
     </message>
@@ -1923,17 +1923,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartPrimitives</name>
     <message>
-      <location filename="../../Command.cpp" line="213"/>
+      <location filename="../../Command.cpp" line="212"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="214"/>
+      <location filename="../../Command.cpp" line="213"/>
       <source>Create primitives...</source>
       <translation>Alaptestek létrehozása...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="215"/>
+      <location filename="../../Command.cpp" line="214"/>
       <source>Creation of parametrized geometric primitives</source>
       <translation>Paraméteres geometriai alaptestek létrehozása</translation>
     </message>
@@ -1941,17 +1941,17 @@ X, Y és Z komponenseire.</translation>
   <context>
     <name>CmdPartProjectionOnSurface</name>
     <message>
-      <location filename="../../Command.cpp" line="2386"/>
+      <location filename="../../Command.cpp" line="2356"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2387"/>
+      <location filename="../../Command.cpp" line="2357"/>
       <source>Create projection on surface...</source>
       <translation>Kivetítés létrehozása a felületen...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2388"/>
+      <location filename="../../Command.cpp" line="2358"/>
       <source>Project edges, wires, or faces of one object
 onto a face of another object.
 The camera view determines the direction
@@ -1983,17 +1983,17 @@ irányát.</translation>
   <context>
     <name>CmdPartReverseShape</name>
     <message>
-      <location filename="../../Command.cpp" line="1186"/>
+      <location filename="../../Command.cpp" line="1185"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1187"/>
+      <location filename="../../Command.cpp" line="1186"/>
       <source>Reverse shapes</source>
       <translation>Fordított alakzat</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1188"/>
+      <location filename="../../Command.cpp" line="1187"/>
       <source>Reverse orientation of shapes</source>
       <translation>Alakzat irányának megfordítása</translation>
     </message>
@@ -2001,17 +2001,17 @@ irányát.</translation>
   <context>
     <name>CmdPartRevolve</name>
     <message>
-      <location filename="../../Command.cpp" line="1388"/>
+      <location filename="../../Command.cpp" line="1358"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1389"/>
+      <location filename="../../Command.cpp" line="1359"/>
       <source>Revolve...</source>
       <translation>Körmetszés...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1390"/>
+      <location filename="../../Command.cpp" line="1360"/>
       <source>Revolve a selected shape</source>
       <translation>Kijelölt alakzat körmetszése</translation>
     </message>
@@ -2019,17 +2019,17 @@ irányát.</translation>
   <context>
     <name>CmdPartRuledSurface</name>
     <message>
-      <location filename="../../Command.cpp" line="1960"/>
+      <location filename="../../Command.cpp" line="1930"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1961"/>
+      <location filename="../../Command.cpp" line="1931"/>
       <source>Create ruled surface</source>
       <translation>Zárható felület létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1962"/>
+      <location filename="../../Command.cpp" line="1932"/>
       <source>Create a ruled surface from either two Edges or two wires</source>
       <translation>Vonalazott felület létrehozása két élből vagy két dróthálóból</translation>
     </message>
@@ -2037,17 +2037,17 @@ irányát.</translation>
   <context>
     <name>CmdPartSection</name>
     <message>
-      <location filename="../../Command.cpp" line="900"/>
+      <location filename="../../Command.cpp" line="899"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="901"/>
+      <location filename="../../Command.cpp" line="900"/>
       <source>Section</source>
       <translation>Szakasz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="902"/>
+      <location filename="../../Command.cpp" line="901"/>
       <source>Make a section of two shapes</source>
       <translation>Szakasz készítése két alakzattal</translation>
     </message>
@@ -2055,12 +2055,12 @@ irányát.</translation>
   <context>
     <name>CmdPartSectionCut</name>
     <message>
-      <location filename="../../Command.cpp" line="2420"/>
+      <location filename="../../Command.cpp" line="2390"/>
       <source>Persistent section cut</source>
       <translation>Állandó szakaszkivágás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2421"/>
+      <location filename="../../Command.cpp" line="2391"/>
       <source>Creates a persistent section cut of visible part objects</source>
       <translation>Állandó szakaszkivágást hoz létre látható alkatrész tárgyból</translation>
     </message>
@@ -2142,17 +2142,17 @@ irányát.</translation>
   <context>
     <name>CmdPartSweep</name>
     <message>
-      <location filename="../../Command.cpp" line="1597"/>
+      <location filename="../../Command.cpp" line="1567"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1598"/>
+      <location filename="../../Command.cpp" line="1568"/>
       <source>Sweep...</source>
       <translation>Húzás...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1599"/>
+      <location filename="../../Command.cpp" line="1569"/>
       <source>Utility to sweep</source>
       <translation>Segédprogram a húzáshoz</translation>
     </message>
@@ -2160,27 +2160,27 @@ irányát.</translation>
   <context>
     <name>CmdPartThickness</name>
     <message>
-      <location filename="../../Command.cpp" line="1830"/>
+      <location filename="../../Command.cpp" line="1800"/>
       <source>Part</source>
       <translation>Alkatrész</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1831"/>
+      <location filename="../../Command.cpp" line="1801"/>
       <source>Thickness...</source>
       <translation>Vastagság...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1832"/>
+      <location filename="../../Command.cpp" line="1802"/>
       <source>Utility to apply a thickness</source>
       <translation>Segéd a vastagságok alkalmazásához</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1881"/>
+      <location filename="../../Command.cpp" line="1851"/>
       <source>Wrong selection</source>
       <translation>Rossz kijelölés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1882"/>
+      <location filename="../../Command.cpp" line="1852"/>
       <source>Selected shape is not a solid</source>
       <translation>A kijelölt alakzat nem szilárd test</translation>
     </message>
@@ -2226,73 +2226,73 @@ irányát.</translation>
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../Command.cpp" line="142"/>
-      <location filename="../../Command.cpp" line="183"/>
+      <location filename="../../Command.cpp" line="141"/>
+      <location filename="../../Command.cpp" line="182"/>
       <source>Part Box Create</source>
       <translation>Párhuzamos alkatrész létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="336"/>
+      <location filename="../../Command.cpp" line="335"/>
       <source>Part Cut</source>
       <translation>Rész szakasz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="412"/>
+      <location filename="../../Command.cpp" line="411"/>
       <source>Common</source>
       <translation>Közös</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="488"/>
+      <location filename="../../Command.cpp" line="487"/>
       <source>Fusion</source>
       <translation>Kapcsolat</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="878"/>
+      <location filename="../../Command.cpp" line="877"/>
       <source>Compound</source>
       <translation>Összetétel</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="923"/>
+      <location filename="../../Command.cpp" line="922"/>
       <source>Section</source>
       <translation>Szakasz</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="975"/>
+      <location filename="../../Command.cpp" line="974"/>
       <source>Import Part</source>
       <translation>Alkatrész importálása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1082"/>
+      <location filename="../../Command.cpp" line="1081"/>
       <source>Part Import Curve Net</source>
       <translation>Ívelt hálórész importálása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1199"/>
+      <location filename="../../Command.cpp" line="1198"/>
       <source>Reverse</source>
       <translation>Fordított</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1350"/>
+      <location filename="../../Command.cpp" line="1320"/>
       <source>Make face</source>
       <translation>Felület létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1650"/>
+      <location filename="../../Command.cpp" line="1620"/>
       <source>Make Offset</source>
       <translation>Eltolás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1708"/>
+      <location filename="../../Command.cpp" line="1678"/>
       <source>Make 2D Offset</source>
       <translation>2D eltolás létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1888"/>
+      <location filename="../../Command.cpp" line="1858"/>
       <source>Make Thickness</source>
       <translation>Vastagság létrehozása</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2040"/>
+      <location filename="../../Command.cpp" line="2010"/>
       <source>Create ruled surface</source>
       <translation>Zárható felület létrehozása</translation>
     </message>
@@ -2317,53 +2317,53 @@ irányát.</translation>
       <translation>Alaksajátosság</translation>
     </message>
     <message>
-      <location filename="../../ShapeFromMesh.cpp" line="73"/>
+      <location filename="../../ShapeFromMesh.cpp" line="76"/>
       <source>Convert mesh</source>
       <translation>Rács konvertálása</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="1076"/>
+      <location filename="../../TaskAttacher.cpp" line="1077"/>
       <source>Edit attachment</source>
       <translation>Csatolmány szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../TaskFaceColors.cpp" line="421"/>
+      <location filename="../../TaskFaceColors.cpp" line="419"/>
       <source>Change face colors</source>
       <translation>Felületi színek megváltoztatása</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="199"/>
+      <location filename="../../TaskLoft.cpp" line="203"/>
       <source>Loft</source>
       <translation>Szint</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="263"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="265"/>
       <source>Edge</source>
       <translation>Él</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="304"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="306"/>
       <source>Wire</source>
       <translation>Drótháló</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="356"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="408"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="358"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="410"/>
       <source>Face</source>
       <translation>Felület</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="469"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="473"/>
       <source>Shell</source>
       <translation>Kéreg</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="521"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="525"/>
       <source>Solid</source>
       <translation>Szilárd test</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="365"/>
+      <location filename="../../TaskSweep.cpp" line="369"/>
       <source>Sweep</source>
       <translation>Húzás</translation>
     </message>
@@ -2375,6 +2375,11 @@ irányát.</translation>
   </context>
   <context>
     <name>PartDesignGui::TaskDatumParameters</name>
+    <message>
+      <location filename="../../../AttachmentEditor/TaskAttachmentEditor.ui" line="14"/>
+      <source>Form</source>
+      <translation>Űrlap</translation>
+    </message>
     <message>
       <location filename="../../../AttachmentEditor/TaskAttachmentEditor.ui" line="20"/>
       <source>Selection accepted</source>
@@ -2599,42 +2604,42 @@ Megjegyzés: A pozíciót a mellékelt tárgy helyi terében fejezzük ki.</tran
       <translation>Kijelölés csere</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="387"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="385"/>
       <source>Select a shape on the left side, first</source>
       <translation>Először bal oldalon jelölje ki az alakzatot</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="392"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="390"/>
       <source>Select a shape on the right side, first</source>
       <translation>Először jobb oldalon jelölje ki az alakzatot</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="397"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="395"/>
       <source>Cannot perform a boolean operation with the same shape</source>
       <translation>Nem tud végrehajtani logikai művelet az azonos alakzaton</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="407"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="405"/>
       <source>No active document available</source>
       <translation>Nincs elérhető aktív dokumentum</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="417"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="415"/>
       <source>One of the selected objects doesn't exist anymore</source>
       <translation>Az egyik kijelölt objektum nem létezik</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="424"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="422"/>
       <source>Performing union on non-solids is not possible</source>
       <translation>Nem szilárd testek egységesítése nem lehetséges</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="432"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="430"/>
       <source>Performing intersection on non-solids is not possible</source>
       <translation>Nem szilárd test metszése nem lehetséges</translation>
     </message>
     <message>
-      <location filename="../../DlgBooleanOperation.cpp" line="440"/>
+      <location filename="../../DlgBooleanOperation.cpp" line="438"/>
       <source>Performing difference on non-solids is not possible</source>
       <translation>Nem szilárd test kivonása egymásból nem lehetséges</translation>
     </message>
@@ -2642,7 +2647,7 @@ Megjegyzés: A pozíciót a mellékelt tárgy helyi terében fejezzük ki.</tran
   <context>
     <name>PartGui::DlgChamferEdges</name>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="1068"/>
+      <location filename="../../DlgFilletEdges.cpp" line="1067"/>
       <source>Chamfer Edges</source>
       <translation>Élek letörése</translation>
     </message>
@@ -3009,7 +3014,7 @@ Ha mindkét hossz nulla, akkor az irány magnitúdóértékét kell használni.<
     </message>
     <message>
       <location filename="../../DlgFilletEdges.ui" line="51"/>
-      <location filename="../../DlgFilletEdges.cpp" line="279"/>
+      <location filename="../../DlgFilletEdges.cpp" line="276"/>
       <source>Fillet Parameter</source>
       <translation>Lekerekítés paraméter</translation>
     </message>
@@ -3059,105 +3064,105 @@ Ha mindkét hossz nulla, akkor az irány magnitúdóértékét kell használni.<
       <translation>Sugár:</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="268"/>
+      <location filename="../../DlgFilletEdges.cpp" line="265"/>
       <source>Chamfer Parameter</source>
       <translation>Letörési paraméterek</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="269"/>
+      <location filename="../../DlgFilletEdges.cpp" line="266"/>
       <source>Chamfer type</source>
       <translation>Letörés típusa</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="270"/>
+      <location filename="../../DlgFilletEdges.cpp" line="267"/>
       <source>Length:</source>
       <translation>Hossz:</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="274"/>
+      <location filename="../../DlgFilletEdges.cpp" line="271"/>
       <source>Edges to chamfer</source>
       <translation>Élek letörése</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="867"/>
+      <location filename="../../DlgFilletEdges.cpp" line="864"/>
       <source>Start length</source>
       <translation>Hossz kezdete</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="271"/>
+      <location filename="../../DlgFilletEdges.cpp" line="268"/>
       <source>Equal distance</source>
       <translation>Egyenlő távolság</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="272"/>
+      <location filename="../../DlgFilletEdges.cpp" line="269"/>
       <source>Two distances</source>
       <translation>Két távolság</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="275"/>
+      <location filename="../../DlgFilletEdges.cpp" line="272"/>
       <source>Size</source>
       <translation>Méret</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="276"/>
+      <location filename="../../DlgFilletEdges.cpp" line="273"/>
       <source>Size2</source>
       <translation>Méret2</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="280"/>
+      <location filename="../../DlgFilletEdges.cpp" line="277"/>
       <source>Fillet type</source>
       <translation>Lekerekítés típusa</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="281"/>
+      <location filename="../../DlgFilletEdges.cpp" line="278"/>
       <source>Edges to fillet</source>
       <translation>Lekerekítendő élek</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="282"/>
-      <location filename="../../DlgFilletEdges.cpp" line="869"/>
+      <location filename="../../DlgFilletEdges.cpp" line="279"/>
+      <location filename="../../DlgFilletEdges.cpp" line="866"/>
       <source>Start radius</source>
       <translation>Kezdeti sugár</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="283"/>
+      <location filename="../../DlgFilletEdges.cpp" line="280"/>
       <source>End radius</source>
       <translation>Vég sugár</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="716"/>
-      <location filename="../../DlgFilletEdges.cpp" line="776"/>
+      <location filename="../../DlgFilletEdges.cpp" line="713"/>
+      <location filename="../../DlgFilletEdges.cpp" line="773"/>
       <source>Edge%1</source>
       <translation>Él%1</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="859"/>
+      <location filename="../../DlgFilletEdges.cpp" line="856"/>
       <source>Length</source>
       <translation>Hossz</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="861"/>
+      <location filename="../../DlgFilletEdges.cpp" line="858"/>
       <source>Radius</source>
       <translation>Sugár</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="915"/>
+      <location filename="../../DlgFilletEdges.cpp" line="912"/>
       <source>No shape selected</source>
       <translation>Nincs kijelölve alakzat</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="916"/>
+      <location filename="../../DlgFilletEdges.cpp" line="913"/>
       <source>No valid shape is selected.
 Please select a valid shape in the drop-down box first.</source>
       <translation>Nem érvényes alakzat van kijelölve. Kérjük, először válasszon egy érvényes alakzatot a legördülő listában.</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="967"/>
+      <location filename="../../DlgFilletEdges.cpp" line="964"/>
       <source>No edge selected</source>
       <translation>Nincs kiválasztott él</translation>
     </message>
     <message>
-      <location filename="../../DlgFilletEdges.cpp" line="968"/>
+      <location filename="../../DlgFilletEdges.cpp" line="965"/>
       <source>No edge entity is checked to fillet.
 Please check one or more edge entities first.</source>
       <translation>Egyetlen élet sem választott ki.
@@ -3265,7 +3270,7 @@ Kérem, válasszon ki legalább egyet.</translation>
   <context>
     <name>PartGui::DlgImportExportStep</name>
     <message>
-      <location filename="../../DlgSettingsGeneral.cpp" line="171"/>
+      <location filename="../../DlgSettingsGeneral.cpp" line="177"/>
       <source>STEP</source>
       <translation>STEP</translation>
     </message>
@@ -3498,12 +3503,12 @@ a fájl olvasása közben (lassabb, de pontosabb).</translation>
   <context>
     <name>PartGui::DlgPartImportIgesImp</name>
     <message>
-      <location filename="../../DlgPartImportIgesImp.cpp" line="67"/>
+      <location filename="../../DlgPartImportIgesImp.cpp" line="70"/>
       <source>IGES</source>
       <translation>IGES</translation>
     </message>
     <message>
-      <location filename="../../DlgPartImportIgesImp.cpp" line="68"/>
+      <location filename="../../DlgPartImportIgesImp.cpp" line="71"/>
       <source>All Files</source>
       <translation>Összes fájl</translation>
     </message>
@@ -3524,12 +3529,12 @@ a fájl olvasása közben (lassabb, de pontosabb).</translation>
   <context>
     <name>PartGui::DlgPartImportStepImp</name>
     <message>
-      <location filename="../../DlgPartImportStepImp.cpp" line="67"/>
+      <location filename="../../DlgPartImportStepImp.cpp" line="70"/>
       <source>STEP</source>
       <translation>STEP</translation>
     </message>
     <message>
-      <location filename="../../DlgPartImportStepImp.cpp" line="68"/>
+      <location filename="../../DlgPartImportStepImp.cpp" line="71"/>
       <source>All Files</source>
       <translation>Összes fájl</translation>
     </message>
@@ -3875,20 +3880,20 @@ a fájl olvasása közben (lassabb, de pontosabb).</translation>
       <translation>Végpont</translation>
     </message>
     <message>
-      <location filename="../../DlgPrimitives.cpp" line="1910"/>
-      <location filename="../../DlgPrimitives.cpp" line="1920"/>
-      <location filename="../../DlgPrimitives.cpp" line="1935"/>
-      <location filename="../../DlgPrimitives.cpp" line="1939"/>
+      <location filename="../../DlgPrimitives.cpp" line="1912"/>
+      <location filename="../../DlgPrimitives.cpp" line="1922"/>
+      <location filename="../../DlgPrimitives.cpp" line="1937"/>
+      <location filename="../../DlgPrimitives.cpp" line="1941"/>
       <source>Create %1</source>
       <translation>Létrehozás %1</translation>
     </message>
     <message>
-      <location filename="../../DlgPrimitives.cpp" line="1911"/>
+      <location filename="../../DlgPrimitives.cpp" line="1913"/>
       <source>No active document</source>
       <translation>Nincs aktív dokumentum</translation>
     </message>
     <message>
-      <location filename="../../DlgPrimitives.cpp" line="2209"/>
+      <location filename="../../DlgPrimitives.cpp" line="2216"/>
       <source>&amp;Create</source>
       <translation>Létrehozás</translation>
     </message>
@@ -4155,12 +4160,12 @@ a fájl olvasása közben (lassabb, de pontosabb).</translation>
       <translation>Legnagyobb szöghajlás</translation>
     </message>
     <message>
-      <location filename="../../DlgSettings3DViewPartImp.cpp" line="67"/>
+      <location filename="../../DlgSettings3DViewPartImp.cpp" line="70"/>
       <source>Deviation</source>
       <translation>Eltérés</translation>
     </message>
     <message>
-      <location filename="../../DlgSettings3DViewPartImp.cpp" line="68"/>
+      <location filename="../../DlgSettings3DViewPartImp.cpp" line="71"/>
       <source>Setting a too small deviation causes the tessellation to take longerand thus freezes or slows down the GUI.</source>
       <translation>Ha túl kicsi eltérést állít be, akkor a hálózófaktorálás tovább tart, és így lefagy vagy lelassul a grafikus felület.</translation>
     </message>
@@ -4483,37 +4488,37 @@ the sketch plane's normal vector will be used</source>
   <context>
     <name>PartGui::LoftWidget</name>
     <message>
-      <location filename="../../TaskLoft.cpp" line="73"/>
+      <location filename="../../TaskLoft.cpp" line="77"/>
       <source>Available profiles</source>
       <translation>Rendelkezésre álló profilok</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="74"/>
+      <location filename="../../TaskLoft.cpp" line="78"/>
       <source>Selected profiles</source>
       <translation>Kiválasztott profilok</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="177"/>
+      <location filename="../../TaskLoft.cpp" line="181"/>
       <source>Too few elements</source>
       <translation>Túl kevés elem</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="177"/>
+      <location filename="../../TaskLoft.cpp" line="181"/>
       <source>At least two vertices, edges, wires or faces are required.</source>
       <translation>Szükséges legalább két csúcspont, él, drótháló vagy felület.</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="211"/>
+      <location filename="../../TaskLoft.cpp" line="215"/>
       <source>Input error</source>
       <translation>Bemeneti hiba</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="240"/>
+      <location filename="../../TaskLoft.cpp" line="244"/>
       <source>Vertex/Edge/Wire/Face</source>
       <translation>Csúcspont/Él/Drótváz/Felület</translation>
     </message>
     <message>
-      <location filename="../../TaskLoft.cpp" line="241"/>
+      <location filename="../../TaskLoft.cpp" line="245"/>
       <source>Loft</source>
       <translation>Szint</translation>
     </message>
@@ -4571,12 +4576,12 @@ the sketch plane's normal vector will be used</source>
       <translation>z</translation>
     </message>
     <message>
-      <location filename="../../Mirroring.cpp" line="126"/>
+      <location filename="../../Mirroring.cpp" line="129"/>
       <source>Select a shape for mirroring, first.</source>
       <translation>Tükrözéshez előszőr a formát válassza ki.</translation>
     </message>
     <message>
-      <location filename="../../Mirroring.cpp" line="133"/>
+      <location filename="../../Mirroring.cpp" line="136"/>
       <source>No such document '%1'.</source>
       <translation>Nincs ilyen dokumentum '%1'.</translation>
     </message>
@@ -4584,7 +4589,7 @@ the sketch plane's normal vector will be used</source>
   <context>
     <name>PartGui::OffsetWidget</name>
     <message>
-      <location filename="../../TaskOffset.cpp" line="204"/>
+      <location filename="../../TaskOffset.cpp" line="210"/>
       <source>Input error</source>
       <translation>Bemeneti hiba</translation>
     </message>
@@ -4739,80 +4744,80 @@ only created cuts will be visible</source>
   <context>
     <name>PartGui::ShapeBuilderWidget</name>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="222"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="224"/>
       <source>Unsupported</source>
       <translation>Nem támogatott</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="222"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="224"/>
       <source>Box selection for shells is not supported</source>
       <translation>A rendszerhéj jelölőnégyzetének kiválasztása nem támogatott</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="231"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="250"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="278"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="319"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="371"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="423"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="484"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="233"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="252"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="280"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="321"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="373"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="425"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="488"/>
       <source>Wrong selection</source>
       <translation>Rossz kijelölés</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="231"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="250"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="233"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="252"/>
       <source>Select two vertices</source>
       <translation>Válasszon ki a két csúcsot</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="278"/>
-      <location filename="../../TaskShapeBuilder.cpp" line="371"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="280"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="373"/>
       <source>Select one or more edges</source>
       <translation>Jelöljön ki egy vagy több élt</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="319"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="321"/>
       <source>Select three or more vertices</source>
       <translation>Válasszon három vagy több csúcspontot</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="423"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="425"/>
       <source>Select two or more faces</source>
       <translation>Válasszon ki a két vagy több felületet</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="484"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="488"/>
       <source>Select only one part object</source>
       <translation>Válasszon ki a csak egy tárgy részt</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="536"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="540"/>
       <source>Select two vertices to create an edge</source>
       <translation>Válasszon ki a két csúcsot egy él létrehozásához</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="543"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="547"/>
       <source>Select adjacent edges</source>
       <translation>Válassza ki a szomszédos éleket</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="550"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="554"/>
       <source>Select a list of vertices</source>
       <translation>Válasszon csúcspontok listáját</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="557"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="561"/>
       <source>Select a closed set of edges</source>
       <translation>Válasszon ki egy zárt él halmazt</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="564"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="568"/>
       <source>Select adjacent faces</source>
       <translation>Válasszon ki szomszédos felületeket</translation>
     </message>
     <message>
-      <location filename="../../TaskShapeBuilder.cpp" line="571"/>
+      <location filename="../../TaskShapeBuilder.cpp" line="575"/>
       <source>All shape types can be selected</source>
       <translation>Minden alakzat kiválasztható</translation>
     </message>
@@ -4838,85 +4843,90 @@ only created cuts will be visible</source>
   <context>
     <name>PartGui::SweepWidget</name>
     <message>
-      <location filename="../../TaskSweep.cpp" line="131"/>
+      <location filename="../../TaskSweep.cpp" line="135"/>
       <source>Available profiles</source>
       <translation>Rendelkezésre álló profilok</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="132"/>
+      <location filename="../../TaskSweep.cpp" line="136"/>
       <source>Selected profiles</source>
       <translation>Kiválasztott profilok</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="328"/>
+      <location filename="../../TaskSweep.cpp" line="332"/>
       <source>Too few elements</source>
       <translation>Túl kevés elem</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="328"/>
+      <location filename="../../TaskSweep.cpp" line="332"/>
       <source>At least one edge or wire is required.</source>
       <translation>Szükséges legalább egy él vagy háló.</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="332"/>
+      <location filename="../../TaskSweep.cpp" line="336"/>
       <source>Invalid selection</source>
       <translation>Érvénytelen kijelölés</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="332"/>
+      <location filename="../../TaskSweep.cpp" line="336"/>
       <source>Select one or more edges from a single object.</source>
       <translation>Jelöljön ki egy vagy több szegélyt egyetlen tárgyból.</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="339"/>
+      <location filename="../../TaskSweep.cpp" line="343"/>
       <source>Wrong selection</source>
       <translation>Rossz kijelölés</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="339"/>
+      <location filename="../../TaskSweep.cpp" line="343"/>
       <source>'%1' cannot be used as profile and path.</source>
       <translation>'%1' profilként és elérési útként nem használható.</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="377"/>
+      <location filename="../../TaskSweep.cpp" line="381"/>
       <source>Input error</source>
       <translation>Bemeneti hiba</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="410"/>
+      <location filename="../../TaskSweep.cpp" line="414"/>
       <source>Done</source>
       <translation>Kész</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="412"/>
+      <location filename="../../TaskSweep.cpp" line="416"/>
       <source>Select one or more connected edges in the 3d view and press 'Done'</source>
       <translation>Jelöljön ki egy vagy több csatlakoztatott élt a 3D-s nézetben, és nyomjon a "Kész"-re</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="434"/>
-      <location filename="../../TaskSweep.cpp" line="442"/>
+      <location filename="../../TaskSweep.cpp" line="438"/>
+      <location filename="../../TaskSweep.cpp" line="446"/>
       <source>Sweep path</source>
       <translation>Húzás elérési útja</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="434"/>
-      <location filename="../../TaskSweep.cpp" line="442"/>
+      <location filename="../../TaskSweep.cpp" line="438"/>
+      <location filename="../../TaskSweep.cpp" line="446"/>
       <source>The selected sweep path is invalid.</source>
       <translation>A kijelölt pásztázási (sweep) út érvénytelen.</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="454"/>
+      <location filename="../../TaskSweep.cpp" line="458"/>
       <source>Vertex/Wire</source>
       <translation>Végpont/Vonal</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="455"/>
+      <location filename="../../TaskSweep.cpp" line="459"/>
       <source>Sweep</source>
       <translation>Húzás</translation>
     </message>
   </context>
   <context>
     <name>PartGui::TaskAttacher</name>
+    <message>
+      <location filename="../../TaskAttacher.ui" line="14"/>
+      <source>Form</source>
+      <translation>Űrlap</translation>
+    </message>
     <message>
       <location filename="../../TaskAttacher.ui" line="20"/>
       <source>Selection accepted</source>
@@ -4949,7 +4959,7 @@ only created cuts will be visible</source>
     </message>
     <message>
       <location filename="../../TaskAttacher.ui" line="124"/>
-      <location filename="../../TaskAttacher.cpp" line="337"/>
+      <location filename="../../TaskAttacher.cpp" line="335"/>
       <source>Attachment Offset (in local coordinates):</source>
       <translation>Csatolás eltolása (helyi koordinátákban):</translation>
     </message>
@@ -5030,77 +5040,77 @@ rendszerében fejezzük ki.</translation>
       <translation>Oldalak megfordítása</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="320"/>
+      <location filename="../../TaskAttacher.cpp" line="318"/>
       <source>OCC error: %1</source>
       <translation>OCC hiba: %1</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="322"/>
+      <location filename="../../TaskAttacher.cpp" line="320"/>
       <source>unknown error</source>
       <translation>ismeretlen hiba</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="325"/>
+      <location filename="../../TaskAttacher.cpp" line="323"/>
       <source>Attachment mode failed: %1</source>
       <translation>Csatolási mód sikertelen: %1</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="329"/>
+      <location filename="../../TaskAttacher.cpp" line="327"/>
       <source>Not attached</source>
       <translation>Nem csatolt</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="333"/>
+      <location filename="../../TaskAttacher.cpp" line="331"/>
       <source>Attached with mode %1</source>
       <translation>Csatolt ezzel a móddal %1</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="337"/>
+      <location filename="../../TaskAttacher.cpp" line="335"/>
       <source>Attachment Offset (inactive - not attached):</source>
       <translation>Csatolás eltolás (inaktív - nem csatolt):</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="634"/>
+      <location filename="../../TaskAttacher.cpp" line="632"/>
       <source>Face</source>
       <translation>Felület</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="641"/>
+      <location filename="../../TaskAttacher.cpp" line="639"/>
       <source>Edge</source>
       <translation>Él</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="648"/>
+      <location filename="../../TaskAttacher.cpp" line="646"/>
       <source>Vertex</source>
       <translation>Végpont</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="713"/>
+      <location filename="../../TaskAttacher.cpp" line="711"/>
       <source>Selecting...</source>
       <translation>Kiválasztás...</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="717"/>
+      <location filename="../../TaskAttacher.cpp" line="715"/>
       <source>Reference%1</source>
       <translation>Hivatkozás%1</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="764"/>
+      <location filename="../../TaskAttacher.cpp" line="762"/>
       <source>Not editable because rotation of AttachmentOffset is bound by expressions.</source>
       <translation>Nem szerkeszthető, mert a csatolt eltolás elforgatás egy kifejezéssel kényszerített.</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="830"/>
+      <location filename="../../TaskAttacher.cpp" line="828"/>
       <source>Reference combinations:</source>
       <translation>Hivatkozás kombinációk:</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="847"/>
+      <location filename="../../TaskAttacher.cpp" line="845"/>
       <source>%1 (add %2)</source>
       <translation>%1 (hozzáad %2)</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="852"/>
+      <location filename="../../TaskAttacher.cpp" line="850"/>
       <source>%1 (add more references)</source>
       <translation>%1 (további hivatkozás hozzáadása)</translation>
     </message>
@@ -5354,7 +5364,7 @@ Egyedi logikai művelet ellenőrzés:</translation>
   <context>
     <name>PartGui::TaskDlgAttacher</name>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="1117"/>
+      <location filename="../../TaskAttacher.cpp" line="1118"/>
       <source>Datum dialog: Input error</source>
       <translation>Referencia párbeszédpanel: bemenet hiba</translation>
     </message>
@@ -5362,7 +5372,7 @@ Egyedi logikai művelet ellenőrzés:</translation>
   <context>
     <name>PartGui::TaskExportStep</name>
     <message>
-      <location filename="../../DlgExportStep.cpp" line="208"/>
+      <location filename="../../DlgExportStep.cpp" line="213"/>
       <source>Don't show this dialog again</source>
       <translation>Ne jelenjen meg újra ez az ablak</translation>
     </message>
@@ -5587,7 +5597,7 @@ kijelölési téglalap húzásával a 3D nézetben</translation>
       <translation>Frenet</translation>
     </message>
     <message>
-      <location filename="../../TaskSweep.cpp" line="484"/>
+      <location filename="../../TaskSweep.cpp" line="488"/>
       <source>Select one or more profiles and select an edge or wire
 in the 3D view for the sweep path.</source>
       <translation>Válassz egy vagy több profilt és válassza ki a szegélyt vagy hálót 3D nézetben a húzás irányához.</translation>
@@ -5624,24 +5634,24 @@ in the 3D view for the sweep path.</source>
   <context>
     <name>PartGui::ThicknessWidget</name>
     <message>
-      <location filename="../../TaskThickness.cpp" line="89"/>
-      <location filename="../../TaskThickness.cpp" line="288"/>
-      <location filename="../../TaskThickness.cpp" line="298"/>
+      <location filename="../../TaskThickness.cpp" line="95"/>
+      <location filename="../../TaskThickness.cpp" line="294"/>
+      <location filename="../../TaskThickness.cpp" line="304"/>
       <source>Thickness</source>
       <translation>Vastagság</translation>
     </message>
     <message>
-      <location filename="../../TaskThickness.cpp" line="185"/>
+      <location filename="../../TaskThickness.cpp" line="191"/>
       <source>Select faces of the source object and press 'Done'</source>
       <translation>Válassza ki az adatforrás-objektum felületeit, és kattintson a "Kész" gombra</translation>
     </message>
     <message>
-      <location filename="../../TaskThickness.cpp" line="188"/>
+      <location filename="../../TaskThickness.cpp" line="194"/>
       <source>Done</source>
       <translation>Kész</translation>
     </message>
     <message>
-      <location filename="../../TaskThickness.cpp" line="253"/>
+      <location filename="../../TaskThickness.cpp" line="259"/>
       <source>Input error</source>
       <translation>Bemeneti hiba</translation>
     </message>
@@ -5694,8 +5704,8 @@ in the 3D view for the sweep path.</source>
     <message>
       <location filename="../../../BasicShapes/ViewProviderShapes.py" line="47"/>
       <location filename="../../../BasicShapes/ViewProviderShapes.py" line="54"/>
-      <location filename="../../ViewProvider.cpp" line="49"/>
-      <location filename="../../ViewProviderPrimitive.cpp" line="53"/>
+      <location filename="../../ViewProviderPrimitive.cpp" line="56"/>
+      <location filename="../../ViewProvider.cpp" line="53"/>
       <source>Edit %1</source>
       <translation>%1 szerkesztése</translation>
     </message>
@@ -5719,63 +5729,63 @@ in the 3D view for the sweep path.</source>
       <translation>Importálás-Exportálás</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="314"/>
-      <location filename="../../Command.cpp" line="390"/>
-      <location filename="../../Command.cpp" line="466"/>
-      <location filename="../../Command.cpp" line="857"/>
-      <location filename="../../Command.cpp" line="914"/>
-      <location filename="../../Command.cpp" line="2035"/>
+      <location filename="../../Command.cpp" line="313"/>
+      <location filename="../../Command.cpp" line="389"/>
+      <location filename="../../Command.cpp" line="465"/>
+      <location filename="../../Command.cpp" line="856"/>
+      <location filename="../../Command.cpp" line="913"/>
+      <location filename="../../Command.cpp" line="2005"/>
       <source>Wrong selection</source>
       <translation>Rossz kijelölés</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="315"/>
-      <location filename="../../Command.cpp" line="915"/>
+      <location filename="../../Command.cpp" line="314"/>
+      <location filename="../../Command.cpp" line="914"/>
       <source>Select two shapes please.</source>
       <translation>Két alakzatot jelöljön ki.</translation>
+    </message>
+    <message>
+      <location filename="../../Command.cpp" line="324"/>
+      <location filename="../../Command.cpp" line="400"/>
+      <location filename="../../Command.cpp" line="476"/>
+      <source>Non-solids selected</source>
+      <translation>Nem szilárdtest a kiválasztott</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="325"/>
       <location filename="../../Command.cpp" line="401"/>
       <location filename="../../Command.cpp" line="477"/>
-      <source>Non-solids selected</source>
-      <translation>Nem szilárdtest a kiválasztott</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="326"/>
-      <location filename="../../Command.cpp" line="402"/>
-      <location filename="../../Command.cpp" line="478"/>
       <source>The use of non-solids for boolean operations may lead to unexpected results.
 Do you want to continue?</source>
       <translation>Logikai műveletekben a nem szilárdtestek használata nem várt eredményekhez vezethet. Folytatni szeretné?</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="391"/>
+      <location filename="../../Command.cpp" line="390"/>
       <source>Select two shapes or more, please. Or, select one compound containing two or more shapes to compute common between.</source>
       <translation>Kérjük válasszon két vagy több alakzatot. Vagy válasszon két vagy több alakzatból állót, melynek összeolvadása számolható.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="467"/>
+      <location filename="../../Command.cpp" line="466"/>
       <source>Select two shapes or more, please. Or, select one compound containing two or more shapes to be fused.</source>
       <translation>Kérjük válasszon két vagy több alakzatot. Vagy válasszon két vagy több alakzatból állót, melyet összeolvaszt.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="858"/>
+      <location filename="../../Command.cpp" line="857"/>
       <source>Select one shape or more, please.</source>
       <translation>Kérem, válasszon egy vagy több alakzatot.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1072"/>
+      <location filename="../../Command.cpp" line="1071"/>
       <source>All CAD Files</source>
       <translation>Minden CAD fájl</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="1077"/>
+      <location filename="../../Command.cpp" line="1076"/>
       <source>All Files</source>
       <translation>Összes fájl</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="2036"/>
+      <location filename="../../Command.cpp" line="2006"/>
       <source>You have to select either two edges or two wires.</source>
       <translation>Választani kell két élet, vagy két dróthálót.</translation>
     </message>
@@ -5786,20 +5796,20 @@ Do you want to continue?</source>
       <translation>Nincs kijelölt hivatkozás</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="75"/>
       <location filename="../../TaskCheckGeometry.cpp" line="81"/>
+      <location filename="../../TaskAttacher.cpp" line="75"/>
       <source>Face</source>
       <translation>Felület</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="78"/>
       <location filename="../../TaskCheckGeometry.cpp" line="83"/>
+      <location filename="../../TaskAttacher.cpp" line="78"/>
       <source>Edge</source>
       <translation>Él</translation>
     </message>
     <message>
-      <location filename="../../TaskAttacher.cpp" line="81"/>
       <location filename="../../TaskCheckGeometry.cpp" line="84"/>
+      <location filename="../../TaskAttacher.cpp" line="81"/>
       <source>Vertex</source>
       <translation>Végpont</translation>
     </message>
@@ -6079,44 +6089,44 @@ Do you want to continue?</source>
       <translation>Érvénytelen</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="658"/>
-      <location filename="../../TaskDimension.cpp" line="1794"/>
+      <location filename="../../TaskDimension.cpp" line="656"/>
+      <location filename="../../TaskDimension.cpp" line="1792"/>
       <source>Selections</source>
       <translation>Kijelölések</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="665"/>
-      <location filename="../../TaskDimension.cpp" line="1801"/>
+      <location filename="../../TaskDimension.cpp" line="663"/>
+      <location filename="../../TaskDimension.cpp" line="1799"/>
       <source>Control</source>
       <translation>Vezérlés</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="1419"/>
+      <location filename="../../TaskDimension.cpp" line="1420"/>
       <source>Selection </source>
       <translation>Kiválasztás </translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="1503"/>
+      <location filename="../../TaskDimension.cpp" line="1504"/>
       <source>Reset selection</source>
       <translation>Kijelölés visszaállítása</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="1507"/>
+      <location filename="../../TaskDimension.cpp" line="1508"/>
       <source>Toggle direct dimensions</source>
       <translation>Közvetlen méretek kapcsolása</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="1512"/>
+      <location filename="../../TaskDimension.cpp" line="1513"/>
       <source>Toggle orthogonal dimensions</source>
       <translation>Merőleges méretek kapcsolása</translation>
     </message>
     <message>
-      <location filename="../../TaskDimension.cpp" line="1517"/>
+      <location filename="../../TaskDimension.cpp" line="1518"/>
       <source>Clear all dimensions</source>
       <translation>Összes méret eltávolítása</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderExt.cpp" line="853"/>
+      <location filename="../../ViewProviderExt.cpp" line="858"/>
       <source>Set colors...</source>
       <translation>Színek beállítása...</translation>
     </message>
@@ -6126,27 +6136,27 @@ Do you want to continue?</source>
       <translation>Tükrözési sík szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderMirror.cpp" line="282"/>
+      <location filename="../../ViewProviderMirror.cpp" line="284"/>
       <source>Edit fillet edges</source>
       <translation>Kijelölt élek szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderMirror.cpp" line="392"/>
+      <location filename="../../ViewProviderMirror.cpp" line="396"/>
       <source>Edit chamfer edges</source>
       <translation>Letörés szegélyek szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderMirror.cpp" line="528"/>
+      <location filename="../../ViewProviderMirror.cpp" line="540"/>
       <source>Edit offset</source>
       <translation>Eltolás szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderMirror.cpp" line="610"/>
+      <location filename="../../ViewProviderMirror.cpp" line="624"/>
       <source>Edit thickness</source>
       <translation>Vastagság szerkesztése</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderSpline.cpp" line="94"/>
+      <location filename="../../ViewProviderSpline.cpp" line="97"/>
       <source>Show control points</source>
       <translation>Ellenőrző pontok megjelenítése</translation>
     </message>
@@ -6744,100 +6754,6 @@ A 'Compound Filter' can be used to extract the remaining pieces.</source>
 vagy az összetevőn belüli alakzatokkal.
 Ez azt jelenti, hogy az alakzatok egymást átfedő formái törlődnek.
 A fennmaradó darabok kivonására az 'összetevő szűrő' használható.</translation>
-    </message>
-  </context>
-  <context>
-    <name>PartGui::DlgScale</name>
-    <message>
-      <location filename="../../DlgScale.ui" line="14"/>
-      <source>Scale</source>
-      <translation>Méretezés</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="22"/>
-      <source>X Factor</source>
-      <translation type="unfinished">X Factor</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="29"/>
-      <source>Factor</source>
-      <translation>Tényező</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="64"/>
-      <source>Z Factor</source>
-      <translation type="unfinished">Z Factor</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="71"/>
-      <source>Scale the object by a single factor in all directions.</source>
-      <translation type="unfinished">Scale the object by a single factor in all directions.</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="74"/>
-      <source>Uniform Scaling</source>
-      <translation type="unfinished">Uniform Scaling</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="112"/>
-      <source>Y Factor</source>
-      <translation type="unfinished">Y Factor</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="119"/>
-      <source>Specify a different scale factor for each cardinal direction.</source>
-      <translation type="unfinished">Specify a different scale factor for each cardinal direction.</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="122"/>
-      <source>Non-Uniform Scaling</source>
-      <translation type="unfinished">Non-Uniform Scaling</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="195"/>
-      <source>Select shape(s) that should be scaled</source>
-      <translation type="unfinished">Select shape(s) that should be scaled</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.ui" line="199"/>
-      <source>Shape</source>
-      <translation>Alakzat</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.cpp" line="195"/>
-      <source>No scalable shapes selected</source>
-      <translation type="unfinished">No scalable shapes selected</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.cpp" line="203"/>
-      <source>The document '%1' doesn't exist.</source>
-      <translation>A '%1' dokumentum nem létezik.</translation>
-    </message>
-    <message>
-      <location filename="../../DlgScale.cpp" line="251"/>
-      <location filename="../../DlgScale.cpp" line="257"/>
-      <source>Creating Scale failed.
-%1</source>
-      <translation type="unfinished">Creating Scale failed.
-%1</translation>
-    </message>
-  </context>
-  <context>
-    <name>CmdPartScale</name>
-    <message>
-      <location filename="../../Command.cpp" line="1307"/>
-      <source>Part</source>
-      <translation>Alkatrész</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="1308"/>
-      <source>Scale...</source>
-      <translation>Lépték...</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="1309"/>
-      <source>Scale a selected shape</source>
-      <translation type="unfinished">Scale a selected shape</translation>
     </message>
   </context>
 </TS>

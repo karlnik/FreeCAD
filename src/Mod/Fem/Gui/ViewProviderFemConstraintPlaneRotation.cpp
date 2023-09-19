@@ -52,7 +52,9 @@ ViewProviderFemConstraintPlaneRotation::ViewProviderFemConstraintPlaneRotation()
     ADD_PROPERTY(FaceColor, (0.2f, 0.3f, 0.2f));
 }
 
-ViewProviderFemConstraintPlaneRotation::~ViewProviderFemConstraintPlaneRotation() = default;
+ViewProviderFemConstraintPlaneRotation::~ViewProviderFemConstraintPlaneRotation()
+{
+}
 
 //FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintPlaneRotation::setEdit(int ModNum)

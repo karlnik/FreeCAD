@@ -42,7 +42,9 @@ ViewProviderFemConstraintInitialTemperature::ViewProviderFemConstraintInitialTem
     ADD_PROPERTY(FaceColor, (0.2f, 0.3f, 0.2f));
 }
 
-ViewProviderFemConstraintInitialTemperature::~ViewProviderFemConstraintInitialTemperature() = default;
+ViewProviderFemConstraintInitialTemperature::~ViewProviderFemConstraintInitialTemperature()
+{
+}
 
 //FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintInitialTemperature::setEdit(int ModNum)

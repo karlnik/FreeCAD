@@ -33,10 +33,12 @@ using namespace CloudGui;
 TYPESYSTEM_SOURCE(CloudGui::Workbench, Gui::StdWorkbench)
 
 Workbench::Workbench()
-{}
+{
+}
 
 Workbench::~Workbench()
-{}
+{
+}
 /*
 Gui::MenuItem* Workbench::setupMenuBar() const
 {
@@ -54,7 +56,7 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
     Gui::ToolBarItem* root = StdWorkbench::setupToolBars();
     Gui::ToolBarItem* test = new Gui::ToolBarItem(root);
     test->setCommand( "Cloud Tools" );
-    *test << "Cloud_Test";
+    *test << "Cloud_Test"; 
     return root;
 }
 */

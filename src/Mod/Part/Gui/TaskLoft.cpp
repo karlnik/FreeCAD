@@ -56,8 +56,12 @@ class LoftWidget::Private
 public:
     Ui_TaskLoft ui;
     std::string document;
-    Private() = default;
-    ~Private() = default;
+    Private()
+    {
+    }
+    ~Private()
+    {
+    }
 };
 
 /* TRANSLATOR PartGui::LoftWidget */
@@ -96,8 +100,8 @@ void LoftWidget::findShapes()
 
     std::vector<App::DocumentObject*> objs = activeDoc->getObjectsOfType<App::DocumentObject>();
 
-    for (auto obj : objs) {
-        Part::TopoShape topoShape = Part::Feature::getTopoShape(obj);
+    for (std::vector<App::DocumentObject*>::iterator it = objs.begin(); it!=objs.end(); ++it) {
+        Part::TopoShape topoShape = Part::Feature::getTopoShape(*it);
         if (topoShape.isNull()) {
             continue;
         }
@@ -139,13 +143,13 @@ void LoftWidget::findShapes()
             shape.ShapeType() == TopAbs_WIRE ||
             shape.ShapeType() == TopAbs_EDGE ||
             shape.ShapeType() == TopAbs_VERTEX) {
-            QString label = QString::fromUtf8(obj->Label.getValue());
-            QString name = QString::fromLatin1(obj->getNameInDocument());
+            QString label = QString::fromUtf8((*it)->Label.getValue());
+            QString name = QString::fromLatin1((*it)->getNameInDocument());
             QTreeWidgetItem* child = new QTreeWidgetItem();
             child->setText(0, label);
             child->setToolTip(0, label);
             child->setData(0, Qt::UserRole, name);
-            Gui::ViewProvider* vp = activeGui->getViewProvider(obj);
+            Gui::ViewProvider* vp = activeGui->getViewProvider(*it);
             if (vp) child->setIcon(0, vp->getIcon());
             d->ui.selector->availableTreeWidget()->addTopLevelItem(child);
         }
@@ -255,7 +259,9 @@ TaskLoft::TaskLoft()
     Content.push_back(taskbox);
 }
 
-TaskLoft::~TaskLoft() = default;
+TaskLoft::~TaskLoft()
+{
+}
 
 void TaskLoft::open()
 {

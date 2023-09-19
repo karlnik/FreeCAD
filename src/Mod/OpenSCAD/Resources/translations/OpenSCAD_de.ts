@@ -205,7 +205,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="369"/>
       <source>Clear</source>
-      <translation>Leeren</translation>
+      <translation>Löschen</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="366"/>

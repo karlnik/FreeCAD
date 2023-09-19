@@ -38,7 +38,7 @@ using namespace App;
 // returns a string which represent the object e.g. when printed in python
 std::string ExtensionContainerPy::representation() const
 {
-    return {"<extension>"};
+    return std::string("<extension>");
 }
 
 int  ExtensionContainerPy::initialization() {

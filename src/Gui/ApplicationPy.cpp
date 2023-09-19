@@ -41,7 +41,6 @@
 #include <App/PropertyFile.h>
 #include <Base/Interpreter.h>
 #include <Base/Console.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <CXX/Objects.hxx>
 
 #include "Application.h"
@@ -1476,7 +1475,7 @@ PyObject* Application::sReload(PyObject * /*self*/, PyObject *args)
 
 PyObject* Application::sLoadFile(PyObject * /*self*/, PyObject *args)
 {
-    const char *path, *mod = "";
+    char *path, *mod = "";
     if (!PyArg_ParseTuple(args, "s|s", &path, &mod))
         return nullptr;
 

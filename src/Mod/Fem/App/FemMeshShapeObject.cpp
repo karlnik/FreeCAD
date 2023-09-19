@@ -66,7 +66,9 @@ FemMeshShapeObject::FemMeshShapeObject()
         "Geometry object, the mesh is made from. The geometry object has to have a Shape.");
 }
 
-FemMeshShapeObject::~FemMeshShapeObject() = default;
+FemMeshShapeObject::~FemMeshShapeObject()
+{
+}
 
 App::DocumentObjectExecReturn *FemMeshShapeObject::execute()
 {

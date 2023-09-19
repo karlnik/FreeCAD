@@ -1118,7 +1118,7 @@ bool MeshEvalCorruptedFacets::Evaluate()
   const MeshFacetArray& rFaces = _rclMesh.GetFacets();
 
   for (const auto & it : rFaces) {
-    // duplicated point indices
+    // dupicated point indices
     if (it.IsDegenerated())
       return false;
   }

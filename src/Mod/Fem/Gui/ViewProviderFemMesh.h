@@ -41,8 +41,8 @@ namespace FemGui
 class ViewProviderFEMMeshBuilder : public Gui::ViewProviderBuilder
 {
 public:
-    ViewProviderFEMMeshBuilder()= default;
-    ~ViewProviderFEMMeshBuilder() override= default;
+    ViewProviderFEMMeshBuilder(){}
+    ~ViewProviderFEMMeshBuilder() override{}
     void buildNodes(const App::Property*, std::vector<SoNode*>&) const override;
     void createMesh(const App::Property*,
                     SoCoordinate3*,

@@ -39,7 +39,10 @@ ViewProviderLineParametric::ViewProviderLineParametric()
   sPixmap = "Part_Line_Parametric";
 }
 
-ViewProviderLineParametric::~ViewProviderLineParametric() = default;
+ViewProviderLineParametric::~ViewProviderLineParametric()
+{
+
+}
 
 
 

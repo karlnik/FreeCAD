@@ -48,7 +48,9 @@ DlgDecimating::DlgDecimating(QWidget* parent, Qt::WindowFlags fl)
     onCheckAbsoluteNumberToggled(false);
 }
 
-DlgDecimating::~DlgDecimating() = default;
+DlgDecimating::~DlgDecimating()
+{
+}
 
 bool DlgDecimating::isAbsoluteNumber() const
 {
@@ -132,6 +134,11 @@ TaskDecimating::TaskDecimating()
         const Mesh::MeshObject& mm = mesh->Mesh.getValue();
         widget->setNumberOfTriangles(static_cast<int>(mm.countFacets()));
     }
+}
+
+TaskDecimating::~TaskDecimating()
+{
+    // automatically deleted in the sub-class
 }
 
 bool TaskDecimating::accept()

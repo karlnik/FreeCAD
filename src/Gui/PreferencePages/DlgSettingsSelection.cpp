@@ -39,7 +39,9 @@ DlgSettingsSelection::DlgSettingsSelection(QWidget* parent)
     ui->setupUi(this);
 }
 
-DlgSettingsSelection::~DlgSettingsSelection() = default;
+DlgSettingsSelection::~DlgSettingsSelection()
+{
+}
 
 void DlgSettingsSelection::saveSettings()
 {

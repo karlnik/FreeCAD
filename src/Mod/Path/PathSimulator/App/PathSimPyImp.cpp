@@ -23,7 +23,6 @@
 #include "PreCompiled.h"
 
 #include <Base/PlacementPy.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 #include <Mod/Mesh/App/MeshPy.h>
 #include <Mod/Path/App/CommandPy.h>
@@ -58,10 +57,10 @@ int PathSimPy::PyInit(PyObject* /*args*/, PyObject* /*kwd*/)
 
 PyObject* PathSimPy::BeginSimulation(PyObject * args, PyObject * kwds)
 {
-	static const std::array<const char *, 3> kwlist { "stock", "resolution", nullptr };
+	static char *kwlist[] = { "stock", "resolution", nullptr };
 	PyObject *pObjStock;
 	float resolution;
-	if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!f", kwlist, &(Part::TopoShapePy::Type), &pObjStock, &resolution))
+	if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!f", kwlist, &(Part::TopoShapePy::Type), &pObjStock, &resolution))
 		return nullptr;
 	PathSim *sim = getPathSimPtr();
 	Part::TopoShape *stock = static_cast<Part::TopoShapePy*>(pObjStock)->getTopoShapePtr();
@@ -108,13 +107,11 @@ PyObject* PathSimPy::GetResultMesh(PyObject * args)
 
 PyObject* PathSimPy::ApplyCommand(PyObject * args, PyObject * kwds)
 {
-    static const std::array<const char *, 3> kwlist { "position", "command", nullptr };
+	static char *kwlist[] = { "position", "command", nullptr };
 	PyObject *pObjPlace;
 	PyObject *pObjCmd;
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!", kwlist, &(Base::PlacementPy::Type), &pObjPlace,
-                                             &(Path::CommandPy::Type), &pObjCmd)) {
-        return nullptr;
-    }
+	if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!", kwlist, &(Base::PlacementPy::Type), &pObjPlace, &(Path::CommandPy::Type), &pObjCmd))
+		return nullptr;
 	PathSim *sim = getPathSimPtr();
 	Base::Placement *pos = static_cast<Base::PlacementPy*>(pObjPlace)->getPlacementPtr();
 	Path::Command *cmd = static_cast<Path::CommandPy*>(pObjCmd)->getCommandPtr();

@@ -40,7 +40,9 @@ float  MeshDefinitions::_fMinEdgeLength       =  MESH_MIN_EDGE_LEN;
 bool   MeshDefinitions::_bRemoveMinLength     =  MESH_REMOVE_MIN_LEN;
 float  MeshDefinitions::_fMinEdgeAngle        =  Base::toRadians<float>(MESH_MIN_EDGE_ANGLE);
 
-MeshDefinitions::MeshDefinitions () = default;
+MeshDefinitions::MeshDefinitions ()
+{
+}
 
 void MeshDefinitions::SetMinPointDistance (float fMin)
 {

@@ -63,7 +63,9 @@ TaskPocketParameters::TaskPocketParameters(ViewProviderPocket *PocketView,QWidge
     }
 }
 
-TaskPocketParameters::~TaskPocketParameters() = default;
+TaskPocketParameters::~TaskPocketParameters()
+{
+}
 
 void TaskPocketParameters::translateModeList(int index)
 {

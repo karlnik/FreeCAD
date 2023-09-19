@@ -104,9 +104,11 @@ private:
     static int getPriority(const SoPickedPoint* p);
 
     struct PickedInfo {
-        const SoPickedPoint *pp{nullptr};
-        ViewProviderDocumentObject *vpd{nullptr};
+        const SoPickedPoint *pp;
+        ViewProviderDocumentObject *vpd;
         std::string element;
+        PickedInfo():pp(nullptr),vpd(nullptr)
+        {}
     };
 
     bool setHighlight(const PickedInfo &);
@@ -116,7 +118,7 @@ private:
 
     std::vector<PickedInfo> getPickedList(SoHandleEventAction* action, bool singlePick) const;
 
-    Gui::Document       *pcDocument{nullptr};
+    Gui::Document       *pcDocument;
 
     static SoFullPath * currenthighlight;
     SoFullPath * detailPath;
@@ -329,9 +331,9 @@ protected:
     void renderPrivate(SoGLRenderAction *, bool inPath);
     bool _renderPrivate(SoGLRenderAction *, bool inPath);
 
-    class Stack : public std::vector<SoNode*> {
+    class Stack : public std::vector<SoFCSelectionRoot*> {
     public:
-        std::unordered_set<SoNode*> nodeSet;
+        std::unordered_set<SoFCSelectionRoot*> nodeSet;
         size_t offset = 0;
     };
 
@@ -401,9 +403,9 @@ private:
     static void callDoAction(SoAction *action,SoNode *node);
 
 private:
-    SbBool _highlight{false};
+    SbBool _highlight;
     SbColor _color;
-    const SoDetail* _det{nullptr};
+    const SoDetail* _det;
 };
 
 /**
@@ -455,7 +457,7 @@ private:
 private:
     Type _type;
     SbColor _color;
-    const SoDetail* _det{nullptr};
+    const SoDetail* _det;
     std::map<std::string,App::Color> _colors;
     bool _secondary;
 };
@@ -476,7 +478,7 @@ public:
     static void initClass();
 
 private:
-    SbBool overrideMode{true};
+    SbBool overrideMode;
     std::list<int> bindList;
     static void callDoAction(SoAction *action,SoNode *node);
 

@@ -41,9 +41,14 @@ PROPERTY_SOURCE(Gui::ViewProviderMaterialObject, Gui::ViewProviderDocumentObject
 /**
  * Creates the view provider for an object group.
  */
-ViewProviderMaterialObject::ViewProviderMaterialObject() = default;
+ViewProviderMaterialObject::ViewProviderMaterialObject()
+{
 
-ViewProviderMaterialObject::~ViewProviderMaterialObject() = default;
+}
+
+ViewProviderMaterialObject::~ViewProviderMaterialObject()
+{
+}
 
 bool ViewProviderMaterialObject::doubleClicked()
 {

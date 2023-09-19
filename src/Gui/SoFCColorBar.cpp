@@ -46,7 +46,7 @@ SO_NODE_ABSTRACT_SOURCE(SoFCColorBarBase)
 /*!
   Constructor.
 */
-SoFCColorBarBase::SoFCColorBarBase() : _windowSize(0,0)
+SoFCColorBarBase::SoFCColorBarBase() : _boxWidth(-1.0f), _windowSize(0,0)
 {
     SO_NODE_CONSTRUCTOR(SoFCColorBarBase);
 }
@@ -54,7 +54,10 @@ SoFCColorBarBase::SoFCColorBarBase() : _windowSize(0,0)
 /*!
   Destructor.
 */
-SoFCColorBarBase::~SoFCColorBarBase() = default;
+SoFCColorBarBase::~SoFCColorBarBase()
+{
+    //delete THIS;
+}
 
 // doc from parent
 void SoFCColorBarBase::initClass()
@@ -156,7 +159,7 @@ class SoFCColorBarProxyObject : public QObject
 public:
     explicit SoFCColorBarProxyObject(SoFCColorBar* b)
         : QObject(nullptr), bar(b) {}
-    ~SoFCColorBarProxyObject() override = default;
+    ~SoFCColorBarProxyObject() override {}
     void customEvent(QEvent *) override
     {
         bar->customize(bar->getActiveBar());
@@ -195,7 +198,10 @@ SoFCColorBar::SoFCColorBar()
 /*!
   Destructor.
 */
-SoFCColorBar::~SoFCColorBar() = default;
+SoFCColorBar::~SoFCColorBar()
+{
+    //delete THIS;
+}
 
 // doc from parent
 void SoFCColorBar::initClass()

@@ -632,7 +632,10 @@ TaskDisplayProperties::TaskDisplayProperties()
     Content.push_back(taskbox);
 }
 
-TaskDisplayProperties::~TaskDisplayProperties() = default;
+TaskDisplayProperties::~TaskDisplayProperties()
+{
+    // automatically deleted in the sub-class
+}
 
 QDialogButtonBox::StandardButtons TaskDisplayProperties::getStandardButtons() const
 {

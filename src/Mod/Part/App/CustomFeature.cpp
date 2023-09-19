@@ -31,9 +31,13 @@ using namespace Part;
 PROPERTY_SOURCE(Part::CustomFeature, Part::Feature)
 
 
-CustomFeature::CustomFeature() = default;
+CustomFeature::CustomFeature()
+{
+}
 
-CustomFeature::~CustomFeature() = default;
+CustomFeature::~CustomFeature()
+{
+}
 
 short CustomFeature::mustExecute() const
 {

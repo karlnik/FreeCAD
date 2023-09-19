@@ -30,7 +30,7 @@
 namespace SketcherGui
 {
 
-extern GeometryCreationMode geometryCreationMode;  // defined in CommandCreateGeo.cpp
+extern GeometryCreationMode geometryCreationMode;// defined in CommandCreateGeo.cpp
 
 class DrawSketchHandlerLine: public DrawSketchHandler
 {
@@ -129,18 +129,16 @@ public:
             bool avoidredundant =
                 sketchgui->AvoidRedundant.getValue() && sketchgui->Autoconstraints.getValue();
 
-            if (avoidredundant) {
+            if (avoidredundant)
                 removeRedundantHorizontalVertical(
                     static_cast<Sketcher::SketchObject*>(sketchgui->getObject()),
                     sugConstr1,
                     sugConstr2);
-            }
 
             // add auto constraints for the line segment start
             if (!sugConstr1.empty()) {
-                createAutoConstraints(sugConstr1,
-                                      getHighestCurveIndex(),
-                                      Sketcher::PointPos::start);
+                createAutoConstraints(
+                    sugConstr1, getHighestCurveIndex(), Sketcher::PointPos::start);
                 sugConstr1.clear();
             }
 
@@ -168,8 +166,8 @@ public:
                  * right button of the mouse */
             }
             else {
-                sketchgui->purgeHandler();  // no code after this line, Handler get deleted in
-                                            // ViewProvider
+                sketchgui
+                    ->purgeHandler();// no code after this line, Handler get deleted in ViewProvider
             }
         }
         return true;
@@ -187,7 +185,7 @@ protected:
     std::vector<AutoConstraint> sugConstr1, sugConstr2;
 };
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_DrawSketchHandlerLine_H
+#endif// SKETCHERGUI_DrawSketchHandlerLine_H

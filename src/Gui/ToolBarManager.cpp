@@ -169,9 +169,13 @@ void ToolBarManager::destruct()
     _instance = nullptr;
 }
 
-ToolBarManager::ToolBarManager() = default;
+ToolBarManager::ToolBarManager()
+{
+}
 
-ToolBarManager::~ToolBarManager() = default;
+ToolBarManager::~ToolBarManager()
+{
+}
 
 namespace {
 QPointer<QWidget> createActionWidget()

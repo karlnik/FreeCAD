@@ -135,7 +135,7 @@ PyObject* EdgePy::unbound(PyObject *args)
 
 Py::Boolean EdgePy::getBound() const
 {
-    return {getEdgePtr()->isBound()};
+    return Py::Boolean(getEdgePtr()->isBound());
 }
 
 Py::List EdgePy::getPoints() const

@@ -42,9 +42,13 @@ using namespace PartDesignGui;
 PROPERTY_SOURCE(PartDesignGui::ViewProviderHelix,PartDesignGui::ViewProvider)
 
 
-ViewProviderHelix::ViewProviderHelix() = default;
+ViewProviderHelix::ViewProviderHelix()
+{
+}
 
-ViewProviderHelix::~ViewProviderHelix() = default;
+ViewProviderHelix::~ViewProviderHelix()
+{
+}
 
 void ViewProviderHelix::setupContextMenu(QMenu* menu, QObject* receiver, const char* member)
 {

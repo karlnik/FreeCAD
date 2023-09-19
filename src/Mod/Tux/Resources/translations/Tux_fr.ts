@@ -6,7 +6,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="67"/>
       <source>Select</source>
-      <translation>Sélectionnez</translation>
+      <translation>Sélectionner</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="68"/>
@@ -61,7 +61,7 @@
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="331"/>
       <source>Settings</source>
-      <translation>Paramètres</translation>
+      <translation>Réglages</translation>
     </message>
     <message>
       <location filename="../../NavigationIndicatorGui.py" line="332"/>

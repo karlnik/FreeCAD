@@ -32,6 +32,8 @@ DockWindow::DockWindow( Gui::Document* pcDocument, QWidget *parent)
 {
 }
 
-DockWindow::~DockWindow() = default;
+DockWindow::~DockWindow()
+{
+}
 
 #include "moc_DockWindow.cpp"

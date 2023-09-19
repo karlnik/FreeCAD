@@ -48,10 +48,16 @@ using namespace PartGui;
 class ThicknessWidget::Private
 {
 public:
-    Ui_TaskOffset ui{};
+    Ui_TaskOffset ui;
     QString text;
     std::string selection;
-    Part::Thickness* thickness{nullptr};
+    Part::Thickness* thickness;
+    Private() : thickness(nullptr)
+    {
+    }
+    ~Private()
+    {
+    }
 
     class FaceSelection : public Gui::SelectionFilterGate
     {
@@ -179,8 +185,8 @@ void ThicknessWidget::onFacesButtonToggled(bool on)
 {
     if (on) {
         QList<QWidget*> c = this->findChildren<QWidget*>();
-        for (auto it : c)
-            it->setEnabled(false);
+        for (QList<QWidget*>::iterator it = c.begin(); it != c.end(); ++it)
+            (*it)->setEnabled(false);
         d->ui.facesButton->setEnabled(true);
         d->ui.labelFaces->setText(tr("Select faces of the source object and press 'Done'"));
         d->ui.labelFaces->setEnabled(true);
@@ -194,18 +200,18 @@ void ThicknessWidget::onFacesButtonToggled(bool on)
     }
     else {
         QList<QWidget*> c = this->findChildren<QWidget*>();
-        for (auto it : c)
-            it->setEnabled(true);
+        for (QList<QWidget*>::iterator it = c.begin(); it != c.end(); ++it)
+            (*it)->setEnabled(true);
         d->ui.facesButton->setText(d->text);
         d->ui.labelFaces->clear();
 
         d->selection = Gui::Command::getPythonTuple
             (d->thickness->Faces.getValue()->getNameInDocument(), d->thickness->Faces.getSubValues());
         std::vector<Gui::SelectionObject> sel = Gui::Selection().getSelectionEx();
-        for (auto & it : sel) {
-            if (it.getObject() == d->thickness->Faces.getValue()) {
-                d->thickness->Faces.setValue(it.getObject(), it.getSubNames());
-                d->selection = it.getAsPropertyLinkSubString();
+        for (std::vector<Gui::SelectionObject>::iterator it = sel.begin(); it != sel.end(); ++it) {
+            if (it->getObject() == d->thickness->Faces.getValue()) {
+                d->thickness->Faces.setValue(it->getObject(), it->getSubNames());
+                d->selection = it->getAsPropertyLinkSubString();
                 break;
             }
         }
@@ -301,6 +307,10 @@ TaskThickness::TaskThickness(Part::Thickness* offset)
         widget->windowTitle(), true, nullptr);
     taskbox->groupLayout()->addWidget(widget);
     Content.push_back(taskbox);
+}
+
+TaskThickness::~TaskThickness()
+{
 }
 
 Part::Thickness* TaskThickness::getObject() const

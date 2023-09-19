@@ -54,7 +54,10 @@ DlgSettingsFemElmerImp::DlgSettingsFemElmerImp(QWidget* parent)
             this, &DlgSettingsFemElmerImp::onCoresValueChanged);
 }
 
-DlgSettingsFemElmerImp::~DlgSettingsFemElmerImp() = default;
+DlgSettingsFemElmerImp::~DlgSettingsFemElmerImp()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsFemElmerImp::saveSettings()
 {

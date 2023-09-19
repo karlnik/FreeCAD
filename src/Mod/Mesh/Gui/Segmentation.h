@@ -60,6 +60,7 @@ class TaskSegmentation : public Gui::TaskView::TaskDialog
 {
 public:
     explicit TaskSegmentation(Mesh::Feature* mesh);
+    ~TaskSegmentation() override;
 
 public:
     bool accept() override;

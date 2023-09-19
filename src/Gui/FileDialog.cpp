@@ -80,7 +80,9 @@ FileDialog::FileDialog(QWidget * parent)
     connect(this, &QFileDialog::filterSelected, this, &FileDialog::onSelectedFilter);
 }
 
-FileDialog::~FileDialog() = default;
+FileDialog::~FileDialog()
+{
+}
 
 void FileDialog::onSelectedFilter(const QString& /*filter*/)
 {
@@ -243,7 +245,7 @@ QString FileDialog::getSaveFileName (QWidget * parent, const QString & caption, 
         setWorkingDirectory(file);
         return file;
     } else {
-        return {};
+        return QString();
     }
 }
 
@@ -312,7 +314,7 @@ QString FileDialog::getOpenFileName(QWidget * parent, const QString & caption, c
         setWorkingDirectory(file);
         return file;
     } else {
-        return {};
+        return QString();
     }
 }
 
@@ -453,7 +455,9 @@ FileOptionsDialog::FileOptionsDialog( QWidget* parent, Qt::WindowFlags fl )
     connect(extensionButton, &QPushButton::clicked, this, &FileOptionsDialog::toggleExtension);
 }
 
-FileOptionsDialog::~FileOptionsDialog() = default;
+FileOptionsDialog::~FileOptionsDialog()
+{
+}
 
 void FileOptionsDialog::accept()
 {
@@ -580,9 +584,13 @@ QWidget* FileOptionsDialog::getOptionsWidget() const
 /**
  * Constructs an empty file icon provider called \a name, with the parent \a parent.
  */
-FileIconProvider::FileIconProvider() = default;
+FileIconProvider::FileIconProvider()
+{
+}
 
-FileIconProvider::~FileIconProvider() = default;
+FileIconProvider::~FileIconProvider()
+{
+}
 
 QIcon FileIconProvider::icon(IconType type) const
 {
@@ -683,7 +691,9 @@ FileChooser::FileChooser ( QWidget * parent )
     setFocusProxy(lineEdit);
 }
 
-FileChooser::~FileChooser() = default;
+FileChooser::~FileChooser()
+{
+}
 
 void FileChooser::resizeEvent(QResizeEvent* e)
 {
@@ -906,7 +916,9 @@ SelectModule::SelectModule (const QString& type, const SelectModule::Dict& types
 #endif
 }
 
-SelectModule::~SelectModule() = default;
+SelectModule::~SelectModule()
+{
+}
 
 void SelectModule::accept()
 {

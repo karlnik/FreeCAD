@@ -228,7 +228,9 @@ Command::Command(const char* name)
     bCanLog     = true;
 }
 
-Command::~Command() = default;
+Command::~Command()
+{
+}
 
 void Command::setShortcut(const QString &shortcut)
 {
@@ -577,7 +579,7 @@ std::string Command::getObjectCmd(const char *Name, const App::Document *doc,
 {
     if(!doc) doc = App::GetApplication().getActiveDocument();
     if(!doc || !Name)
-        return {"None"};
+        return std::string("None");
     std::ostringstream str;
     if(prefix)
         str << prefix;
@@ -592,7 +594,7 @@ std::string Command::getObjectCmd(const App::DocumentObject *obj,
         const char *prefix, const char *postfix, bool gui)
 {
     if(!obj || !obj->getNameInDocument())
-        return {"None"};
+        return std::string("None");
     return getObjectCmd(obj->getNameInDocument(), obj->getDocument(), prefix, postfix,gui);
 }
 
@@ -1006,36 +1008,6 @@ GroupCommand::GroupCommand(const char *name)
     :Command(name)
 {}
 
-bool GroupCommand::isCheckable() const
-{
-    return checkable;
-}
-
-void GroupCommand::setCheckable(bool on)
-{
-    checkable = on;
-}
-
-bool GroupCommand::isExclusive() const
-{
-    return exclusive;
-}
-
-void GroupCommand::setExclusive(bool on)
-{
-    exclusive = on;
-}
-
-bool GroupCommand::hasDropDownMenu() const
-{
-    return dropDownMenu;
-}
-
-void GroupCommand::setDropDownMenu(bool on)
-{
-    dropDownMenu = on;
-}
-
 int GroupCommand::addCommand(Command *cmd, bool reg) {
     cmds.emplace_back(cmd,cmds.size());
     if(cmd && reg)
@@ -1060,9 +1032,9 @@ Command *GroupCommand::getCommand(int idx) const
 Action * GroupCommand::createAction() {
     auto* pcAction = new ActionGroup(this, getMainWindow());
     pcAction->setMenuRole(QAction::NoRole);
-    pcAction->setDropDownMenu(hasDropDownMenu());
-    pcAction->setExclusive(isExclusive());
-    pcAction->setCheckable(isCheckable());
+    pcAction->setDropDownMenu(true);
+    pcAction->setExclusive(false);
+    pcAction->setCheckable(true);
     pcAction->setWhatsThis(QString::fromLatin1(sWhatsThis));
 
     for(auto &v : cmds) {
@@ -1146,7 +1118,9 @@ MacroCommand::MacroCommand(const char* name, bool system)
     sScriptName = nullptr;
 }
 
-MacroCommand::~MacroCommand() = default;
+MacroCommand::~MacroCommand()
+{
+}
 
 void MacroCommand::activated(int iMsg)
 {
@@ -1813,7 +1787,9 @@ void PythonGroupCommand::onActionInit() const
 // CommandManager
 //===========================================================================
 
-CommandManager::CommandManager() = default;
+CommandManager::CommandManager()
+{
+}
 
 CommandManager::~CommandManager()
 {

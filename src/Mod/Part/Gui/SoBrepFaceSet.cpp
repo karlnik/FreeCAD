@@ -173,7 +173,9 @@ SoBrepFaceSet::SoBrepFaceSet()
     pimpl = std::make_unique<VBO>();
 }
 
-SoBrepFaceSet::~SoBrepFaceSet() = default;
+SoBrepFaceSet::~SoBrepFaceSet()
+{
+}
 
 void SoBrepFaceSet::doAction(SoAction* action)
 {

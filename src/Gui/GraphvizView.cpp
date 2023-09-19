@@ -153,11 +153,12 @@ class GraphvizGraphicsView final : public QGraphicsView
     void mouseReleaseEvent(QMouseEvent *event) override;
 
   private:
-    bool   isPanning{false};
+    bool   isPanning;
     QPoint panStart;
 };
 
-GraphvizGraphicsView::GraphvizGraphicsView(QGraphicsScene* scene, QWidget* parent) : QGraphicsView(scene, parent)
+GraphvizGraphicsView::GraphvizGraphicsView(QGraphicsScene* scene, QWidget* parent) : QGraphicsView(scene, parent),
+                                                                     isPanning(false)
 {
 }
 
@@ -414,7 +415,7 @@ QByteArray GraphvizView::exportGraph(const QString& format)
     dotProc.setEnvironment(QProcess::systemEnvironment());
     dotProc.start(exe, args);
     if (!dotProc.waitForStarted()) {
-        return {};
+        return QByteArray();
     }
 
     ParameterGrp::handle depGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/DependencyGraph");
@@ -422,12 +423,12 @@ QByteArray GraphvizView::exportGraph(const QString& format)
         flatProc.setEnvironment(QProcess::systemEnvironment());
         flatProc.start(unflatten, flatArgs);
         if (!flatProc.waitForStarted()) {
-            return {};
+            return QByteArray();
         }
         flatProc.write(graphCode.c_str(), graphCode.size());
         flatProc.closeWriteChannel();
         if (!flatProc.waitForFinished())
-            return {};
+            return QByteArray();
 
         dotProc.write(flatProc.readAll());
     }
@@ -436,50 +437,40 @@ QByteArray GraphvizView::exportGraph(const QString& format)
 
     dotProc.closeWriteChannel();
     if (!dotProc.waitForFinished())
-        return {};
+        return QByteArray();
 
     return dotProc.readAll();
 }
 
-bool GraphvizView::onMsg(const char* pMsg, const char**)
+bool GraphvizView::onMsg(const char* pMsg,const char**)
 {
     if (strcmp("Save",pMsg) == 0 || strcmp("SaveAs",pMsg) == 0) {
         QList< QPair<QString, QString> > formatMap;
-        formatMap << qMakePair(QString::fromLatin1("%1 (*.gv)").arg(tr("Graphviz format")), QString::fromLatin1("gv"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.png)").arg(tr("PNG format")), QString::fromLatin1("png"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.bmp)").arg(tr("Bitmap format")), QString::fromLatin1("bmp"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.gif)").arg(tr("GIF format")), QString::fromLatin1("gif"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.jpg)").arg(tr("JPG format")), QString::fromLatin1("jpg"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.svg)").arg(tr("SVG format")), QString::fromLatin1("svg"));
         formatMap << qMakePair(QString::fromLatin1("%1 (*.pdf)").arg(tr("PDF format")), QString::fromLatin1("pdf"));
+      //formatMap << qMakePair(tr("VRML format (*.vrml)"), QString::fromLatin1("vrml"));
 
         QStringList filter;
-        for (const auto & it : qAsConst(formatMap)) {
+        for (const auto & it : formatMap)
             filter << it.first;
-        }
 
         QString selectedFilter;
         QString fn = Gui::FileDialog::getSaveFileName(this, tr("Export graph"), QString(), filter.join(QLatin1String(";;")), &selectedFilter);
         if (!fn.isEmpty()) {
             QString format;
-            for (const auto & it : qAsConst(formatMap)) {
+            for (const auto & it : formatMap) {
                 if (selectedFilter == it.first) {
                     format = it.second;
                     break;
                 }
             }
-            QByteArray buffer;
-            if (format == QLatin1String("gv")) {
-                std::stringstream str;
-                doc.exportGraphviz(str);
-                buffer = QByteArray::fromStdString(str.str());
-            }
-            else {
-                buffer = exportGraph(format);
-            }
-            if (buffer.isEmpty()) {
+            QByteArray buffer = exportGraph(format);
+            if (buffer.isEmpty())
                 return true;
-            }
             QFile file(fn);
             if (file.open(QFile::WriteOnly)) {
                 file.write(buffer);

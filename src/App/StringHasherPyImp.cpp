@@ -26,7 +26,6 @@
 
 #include "StringHasherPy.h"
 #include "StringHasherPy.cpp"
-#include <Base/PyWrapParseTupleAndKeywords.h>
 
 using namespace App;
 
@@ -46,8 +45,8 @@ PyObject *StringHasherPy::PyMake(struct _typeobject *, PyObject *, PyObject *)  
 // constructor method
 int StringHasherPy::PyInit(PyObject* args, PyObject* kwds)
 {
-    static const std::array<const char *, 1> kwlist {nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "", kwlist)) {
+    char* kw[] = {nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "", kw)) {
         return -1;
     }
 
@@ -128,7 +127,7 @@ Py::Long StringHasherPy::getSize() const
 
 Py::Boolean StringHasherPy::getSaveAll() const
 {
-    return {getStringHasherPtr()->getSaveAll()};
+    return Py::Boolean(getStringHasherPtr()->getSaveAll());
 }
 
 void StringHasherPy::setSaveAll(Py::Boolean value)

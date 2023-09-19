@@ -68,7 +68,6 @@
 #include <Gui/Command.h>
 #include <Gui/MainWindow.h>
 #include <Gui/FileDialog.h>
-#include <Gui/Tools.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/WaitCursor.h>
@@ -934,7 +933,7 @@ void CmdTestGrabWidget::activated(int)
 {
     QCalendarWidget* c = new QCalendarWidget();
     c->hide();
-    QPixmap p = c->grab(c->rect());
+    QPixmap p = QPixmap::grabWidget(c, c->rect());
     QLabel* label = new QLabel();
     label->resize(c->size());
     label->setPixmap(p);
@@ -1056,7 +1055,7 @@ void CmdTestImageNode::activated(int)
     QString text = QString::fromLatin1("Distance: 2.7jgiorjgor84mm");
     QFont font;
     QFontMetrics fm(font);
-    int w = Gui::QtTools::horizontalAdvance(fm, text);
+    int w = fm.width(text);
     int h = fm.height();
 
 

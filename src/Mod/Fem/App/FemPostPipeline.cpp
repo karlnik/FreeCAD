@@ -73,7 +73,9 @@ FemPostPipeline::FemPostPipeline()
     Mode.setEnums(ModeEnums);
 }
 
-FemPostPipeline::~FemPostPipeline() = default;
+FemPostPipeline::~FemPostPipeline()
+{
+}
 
 short FemPostPipeline::mustExecute() const
 {

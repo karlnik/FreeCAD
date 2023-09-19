@@ -23,8 +23,8 @@
 #ifndef GUI_TASKVIEW_TrajectorySimulate_H
 #define GUI_TASKVIEW_TrajectorySimulate_H
 
-#include <QDialog>
 #include <memory>
+#include <QDialog>
 
 #include <Mod/Robot/App/RobotObject.h>
 #include <Mod/Robot/App/Simulation.h>
@@ -33,19 +33,16 @@
 #include "ViewProviderRobotObject.h"
 
 
-namespace RobotGui
-{
+namespace RobotGui { 
 
 class Ui_DlgTrajectorySimulate;
 
-class TrajectorySimulate: public QDialog
+class TrajectorySimulate : public QDialog
 {
     Q_OBJECT
 
 public:
-    TrajectorySimulate(Robot::RobotObject* pcRobotObject,
-                       Robot::TrajectoryObject* pcTrajectoryObject,
-                       QWidget* parent = nullptr);
+    TrajectorySimulate(Robot::RobotObject *pcRobotObject,Robot::TrajectoryObject *pcTrajectoryObject,QWidget *parent = nullptr);
     ~TrajectorySimulate() override;
 
 private Q_SLOTS:
@@ -57,17 +54,17 @@ private Q_SLOTS:
     void end();
 
     void timerDone();
-    void valueChanged(int value);
-    void valueChanged(double d);
+    void valueChanged ( int value );
+    void valueChanged ( double d );
 
 protected:
     void setTo();
 
-    QTimer* timer;
+    QTimer *timer;
 
     Robot::Simulation sim;
 
-    ViewProviderRobotObject* ViewProv;
+    ViewProviderRobotObject *ViewProv;
 
     bool Run;
     bool block;
@@ -79,6 +76,6 @@ private:
     std::unique_ptr<Ui_DlgTrajectorySimulate> ui;
 };
 
-}  // namespace RobotGui
+} //namespace PartDesignGui
 
-#endif  // GUI_TASKVIEW_TrajectorySimulate_H
+#endif // GUI_TASKVIEW_TrajectorySimulate_H

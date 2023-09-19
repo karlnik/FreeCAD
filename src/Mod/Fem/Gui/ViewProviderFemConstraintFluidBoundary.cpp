@@ -49,7 +49,9 @@ ViewProviderFemConstraintFluidBoundary::ViewProviderFemConstraintFluidBoundary()
     sPixmap = "FEM_ConstraintFluidBoundary";
 }
 
-ViewProviderFemConstraintFluidBoundary::~ViewProviderFemConstraintFluidBoundary() = default;
+ViewProviderFemConstraintFluidBoundary::~ViewProviderFemConstraintFluidBoundary()
+{
+}
 
 bool ViewProviderFemConstraintFluidBoundary::setEdit(int ModNum)
 {

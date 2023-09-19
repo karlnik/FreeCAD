@@ -31,7 +31,7 @@
 namespace SketcherGui
 {
 
-extern GeometryCreationMode geometryCreationMode;  // defined in CommandCreateGeo.cpp
+extern GeometryCreationMode geometryCreationMode;// defined in CommandCreateGeo.cpp
 
 class CarbonCopySelection: public Gui::SelectionFilterGate
 {
@@ -117,9 +117,8 @@ public:
     void mouseMove(Base::Vector2d onSketchPos) override
     {
         Q_UNUSED(onSketchPos);
-        if (Gui::Selection().getPreselection().pObjectName) {
+        if (Gui::Selection().getPreselection().pObjectName)
             applyCursor();
-        }
     }
 
     bool pressButton(Base::Vector2d onSketchPos) override
@@ -143,9 +142,8 @@ public:
         if (msg.Type == Gui::SelectionChanges::AddSelection) {
             App::DocumentObject* obj =
                 sketchgui->getObject()->getDocument()->getObject(msg.pObjectName);
-            if (!obj) {
+            if (!obj)
                 throw Base::ValueError("Sketcher: Carbon Copy: Invalid object in selection");
-            }
 
             if (obj->getTypeId() == Sketcher::SketchObject::getClassTypeId()) {
 
@@ -206,7 +204,7 @@ private:
     }
 };
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_DrawSketchHandlerCarbonCopy_H
+#endif// SKETCHERGUI_DrawSketchHandlerCarbonCopy_H

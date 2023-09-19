@@ -33,7 +33,7 @@
 namespace SketcherGui
 {
 
-extern GeometryCreationMode geometryCreationMode;  // defined in CommandCreateGeo.cpp
+extern GeometryCreationMode geometryCreationMode;// defined in CommandCreateGeo.cpp
 
 class DrawSketchHandlerArcOfHyperbola: public DrawSketchHandler
 {
@@ -78,10 +78,8 @@ public:
             }
 
             drawEdit(EditCurve);
-            if (seekAutoConstraint(sugConstr2,
-                                   onSketchPos,
-                                   Base::Vector2d(0.f, 0.f),
-                                   AutoConstraint::CURVE)) {
+            if (seekAutoConstraint(
+                    sugConstr2, onSketchPos, Base::Vector2d(0.f, 0.f), AutoConstraint::CURVE)) {
                 renderSuggestConstraintsCursor(sugConstr2);
                 return;
             }
@@ -210,7 +208,7 @@ public:
             arcAngle_t = 0.;
             Mode = STATUS_SEEK_Fourth;
         }
-        else {  // Fourth
+        else {// Fourth
             endPoint = onSketchPos;
 
             Mode = STATUS_Close;
@@ -262,9 +260,8 @@ public:
 
             bool isOriginalArcCCW = true;
 
-            if (arcAngle > 0) {
+            if (arcAngle > 0)
                 endAngle = startAngle + arcAngle;
-            }
             else {
                 endAngle = startAngle;
                 startAngle += arcAngle;
@@ -323,9 +320,8 @@ public:
 
                 currentgeoid++;
 
-                Gui::cmdAppObjectArgs(sketchgui->getObject(),
-                                      "exposeInternalGeometry(%d)",
-                                      currentgeoid);
+                Gui::cmdAppObjectArgs(
+                    sketchgui->getObject(), "exposeInternalGeometry(%d)", currentgeoid);
             }
             catch (const Base::Exception&) {
                 Gui::NotifyError(
@@ -392,8 +388,8 @@ public:
                  * right button of the mouse */
             }
             else {
-                sketchgui->purgeHandler();  // no code after this line, Handler get deleted in
-                                            // ViewProvider
+                sketchgui
+                    ->purgeHandler();// no code after this line, Handler get deleted in ViewProvider
             }
         }
         return true;
@@ -415,7 +411,7 @@ protected:
 };
 
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_DrawSketchHandlerArcOfHyperbola_H
+#endif// SKETCHERGUI_DrawSketchHandlerArcOfHyperbola_H

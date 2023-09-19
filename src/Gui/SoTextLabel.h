@@ -55,7 +55,7 @@ public:
     SoSFFloat frameSize;
 
 protected:
-    ~SoTextLabel() override = default;
+    ~SoTextLabel() override {}
     void GLRender(SoGLRenderAction *action) override;
 };
 
@@ -91,7 +91,7 @@ public:
     SoSFInt32  size;
 
 protected:
-    ~SoStringLabel() override = default;
+    ~SoStringLabel() override {}
     void GLRender(SoGLRenderAction *action) override;
 };
 
@@ -118,7 +118,7 @@ public:
   //SoSFImage  image;
 
 protected:
-    ~SoFrameLabel() override = default;
+    ~SoFrameLabel() override {}
     void notify(SoNotList * list) override;
     void GLRender(SoGLRenderAction *action) override;
 

@@ -64,9 +64,13 @@
 using namespace Gui;
 namespace sp = std::placeholders;
 
-AlignmentGroup::AlignmentGroup() = default;
+AlignmentGroup::AlignmentGroup()
+{
+}
 
-AlignmentGroup::~AlignmentGroup() = default;
+AlignmentGroup::~AlignmentGroup()
+{
+}
 
 void AlignmentGroup::addView(App::DocumentObject* pView)
 {
@@ -250,21 +254,33 @@ Base::BoundBox3d AlignmentGroup::getBoundingBox() const
 
 // ------------------------------------------------------------------
 
-MovableGroup::MovableGroup() = default;
+MovableGroup::MovableGroup()
+{
+}
 
-MovableGroup::~MovableGroup() = default;
-
-// ------------------------------------------------------------------
-
-FixedGroup::FixedGroup() = default;
-
-FixedGroup::~FixedGroup() = default;
+MovableGroup::~MovableGroup()
+{
+}
 
 // ------------------------------------------------------------------
 
-MovableGroupModel::MovableGroupModel() = default;
+FixedGroup::FixedGroup()
+{
+}
 
-MovableGroupModel::~MovableGroupModel() = default;
+FixedGroup::~FixedGroup()
+{
+}
+
+// ------------------------------------------------------------------
+
+MovableGroupModel::MovableGroupModel()
+{
+}
+
+MovableGroupModel::~MovableGroupModel()
+{
+}
 
 void MovableGroupModel::addGroup(const MovableGroup& grp)
 {
@@ -410,7 +426,9 @@ public:
         static_cast<SoGroup*>(getViewer(1)->getSoRenderManager()->getSceneGraph())->
             addChild(setupHeadUpDisplay(tr("Fixed object")));
     }
-    ~AlignmentView() override = default;
+    ~AlignmentView() override
+    {
+    }
     PyObject* getPyObject() override
     {
         Py_Return;
@@ -471,12 +489,13 @@ class ManualAlignment::Private {
 public:
     SoSeparator * picksepLeft;
     SoSeparator * picksepRight;
-    SoNodeSensor* sensorCam1{nullptr};
-    SoNodeSensor* sensorCam2{nullptr};
+    SoNodeSensor* sensorCam1;
+    SoNodeSensor* sensorCam2;
     SbRotation rot_cam1, rot_cam2;
     SbVec3f pos_cam1, pos_cam2;
 
     Private()
+      : sensorCam1(nullptr), sensorCam2(nullptr)
     {
         // left view
         picksepLeft = new SoSeparator;
@@ -590,7 +609,7 @@ public:
         Base::Vector3d pln_base;
         rot.multVec(plane1_base,pln_base);
         Base::Vector3d dif = plane2_base - pln_base;
-        return {dif, rot};
+        return Base::Placement(dif, rot);
     }
 
     static Base::Placement

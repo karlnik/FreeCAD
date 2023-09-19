@@ -774,7 +774,8 @@ bool TaskFemConstraintFluidBoundary::getReverse() const
     return ui->checkReverse->isChecked();
 }
 
-TaskFemConstraintFluidBoundary::~TaskFemConstraintFluidBoundary() = default;
+TaskFemConstraintFluidBoundary::~TaskFemConstraintFluidBoundary()
+{}
 
 void TaskFemConstraintFluidBoundary::addToSelection()
 {
@@ -826,7 +827,7 @@ void TaskFemConstraintFluidBoundary::addToSelection()
             for (const auto & SubElement : SubElements) {
                 if (SubElement.find(searchStr) == std::string::npos) {
                     QString msg = tr(
-                        "Only one type of selection (vertex, face or edge) per analysis feature allowed!");
+                        "Only one type of selection (vertex,face or edge) per constraint allowed!");
                     QMessageBox::warning(this, tr("Selection error"), msg);
                     addMe = false;
                     break;
@@ -957,7 +958,7 @@ void TaskDlgFemConstraintFluidBoundary::open()
 {
     // a transaction is already open when creating this panel
     if (!Gui::Command::hasPendingCommand()) {
-        QString msg = QObject::tr("Fluid boundary condition");
+        QString msg = QObject::tr("Constraint fluid boundary");
         Gui::Command::openCommand((const char*)msg.toUtf8());
     }
 }

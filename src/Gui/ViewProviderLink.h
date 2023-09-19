@@ -66,7 +66,7 @@ public:
     virtual void onLinkedIconChange(LinkInfoPtr) {}
     virtual void onLinkedUpdateData(LinkInfoPtr,const App::Property *) {}
 protected:
-    virtual ~LinkOwner() = default;
+    virtual ~LinkOwner() {}
 };
 
 class GuiExport LinkView : public Base::BaseClass, public LinkOwner {

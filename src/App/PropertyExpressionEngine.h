@@ -92,9 +92,16 @@ public:
             this->busy = false;
         }
 
-        ExpressionInfo(const ExpressionInfo &) = default;
+        ExpressionInfo(const ExpressionInfo & other) {
+            expression = other.expression;
+            busy = other.busy;
+        }
 
-        ExpressionInfo & operator=(const ExpressionInfo &) = default;
+        ExpressionInfo & operator=(const ExpressionInfo & other) {
+            expression = other.expression;
+            busy = other.busy;
+            return *this;
+        }
     };
 
     PropertyExpressionEngine();
@@ -192,7 +199,7 @@ private:
     void slotChangedProperty(const App::DocumentObject &obj, const App::Property &prop);
     void updateHiddenReference(const std::string &key);
 
-    bool running = false; /**< Boolean used to avoid loops */
+    bool running; /**< Boolean used to avoid loops */
     bool restoring = false;
 
     ExpressionMap expressions; /**< Stored expressions */

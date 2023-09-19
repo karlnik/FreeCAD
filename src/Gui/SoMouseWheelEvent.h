@@ -45,7 +45,7 @@ public: //methods
     /// smaller values come from high-resolution devices like touchpads
     int getDelta() const {return delta;}
     void setDelta(int delta) {this->delta = delta;}
-    ~SoMouseWheelEvent() override = default;
+    ~SoMouseWheelEvent() override {}
 
 private: //data
     int delta;

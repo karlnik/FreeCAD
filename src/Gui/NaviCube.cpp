@@ -32,7 +32,6 @@
 # else
 #  include <GL/gl.h>
 # endif
-# include <boost/math/constants/constants.hpp>
 # include <Inventor/nodes/SoOrthographicCamera.h>
 # include <Inventor/events/SoEvent.h>
 # include <Inventor/events/SoLocation2Event.h>
@@ -171,8 +170,8 @@ public:
     double m_BorderWidth = 1.1;
     bool m_RotateToNearest = true;
     int m_NaviStepByTurn = 8;
-    float m_FontZoom = 0.3F;
-    float m_Chamfer = 0.12F;
+    float m_FontZoom = 0.3;
+    float m_Chamfer = 0.12;
     std::string m_TextFont;
     int m_FontWeight = 0;
     int m_FontStretch = 0;
@@ -464,9 +463,9 @@ void NaviCubeImplementation::addButtonFace(PickId pickId, const SbVec3f& directi
 {
     if (m_Faces[pickId].vertexArray.size())
         m_Faces[pickId].vertexArray.clear();
-    float scale = 0.005F;
-    float offx = 0.5F;
-    float offy = 0.5F;
+    float scale = 0.005;
+    float offx = 0.5;
+    float offy = 0.5;
     vector<float> pointData;
 
     switch (pickId) {
@@ -475,19 +474,19 @@ void NaviCubeImplementation::addButtonFace(PickId pickId, const SbVec3f& directi
         case PickId::ArrowRight:
         case PickId::ArrowLeft: {
             pointData = {
-                66.6F, -66.6F,//outer curve
-                58.3F, -74.0F,
-                49.2F ,-80.3F,
-                39.4F ,-85.5F,
-                29.0F, -89.5F,
-                25.3F, -78.1F,//inner curve
-                34.3F, -74.3F,
-                42.8F, -69.9F,
-                50.8F, -64.4F,
-                58.1F, -58.1F,
-                53.8F, -53.8F,//arrowhead
-                74.7F, -46.8F,
-                70.7F, -70.4F
+                66.6, -66.6,//outer curve
+                58.3, -74.0,
+                49.2 ,-80.3,
+                39.4 ,-85.5,
+                29. , -89.5,
+                25.3, -78.1,//inner curve
+                34.3, -74.3,
+                42.8, -69.9,
+                50.8, -64.4,
+                58.1, -58.1,
+                53.8, -53.8,//arrowhead
+                74.7, -46.8,
+                70.7, -70.4
             };
             break;
         }
@@ -503,8 +502,8 @@ void NaviCubeImplementation::addButtonFace(PickId pickId, const SbVec3f& directi
             break;
         }
         case PickId::ViewMenu: {
-            offx = 0.84F;
-            offy = 0.84F;
+            offx = 0.84;
+            offy = 0.84;
             pointData = {
                   0.,   0.,//top rhombus
                  15.,  -6.,
@@ -628,11 +627,7 @@ void NaviCubeImplementation::setSize(int size)
     m_Prepared = false;
 }
 
-void NaviCubeImplementation::prepare()
-{
-    static const float pi = boost::math::constants::pi<float>();
-    static const float pi1_2 = boost::math::constants::half_pi<float>();
-
+void NaviCubeImplementation::prepare() {
     createCubeFaceTextures();
 
     Vector3f x(1, 0, 0);
@@ -648,28 +643,28 @@ void NaviCubeImplementation::prepare()
     addCubeFace( x,-z, ShapeId::Main, PickId::Bottom);
 
     // create corner faces
-    addCubeFace(-x-y, x-y+z, ShapeId::Corner, PickId::FrontTopRight, pi);
-    addCubeFace(-x+y,-x-y+z, ShapeId::Corner, PickId::FrontTopLeft, pi);
+    addCubeFace(-x-y, x-y+z, ShapeId::Corner, PickId::FrontTopRight, M_PI);
+    addCubeFace(-x+y,-x-y+z, ShapeId::Corner, PickId::FrontTopLeft, M_PI);
     addCubeFace(x+y, x-y-z, ShapeId::Corner, PickId::FrontBottomRight);
     addCubeFace(x-y,-x-y-z, ShapeId::Corner, PickId::FrontBottomLeft);
-    addCubeFace(x-y, x+y+z, ShapeId::Corner, PickId::RearTopRight, pi);
-    addCubeFace(x+y,-x+y+z, ShapeId::Corner, PickId::RearTopLeft, pi);
+    addCubeFace(x-y, x+y+z, ShapeId::Corner, PickId::RearTopRight, M_PI);
+    addCubeFace(x+y,-x+y+z, ShapeId::Corner, PickId::RearTopLeft, M_PI);
     addCubeFace(-x+y, x+y-z, ShapeId::Corner, PickId::RearBottomRight);
     addCubeFace(-x-y,-x+y-z, ShapeId::Corner, PickId::RearBottomLeft);
 
     // create edge faces
     addCubeFace(x, z-y, ShapeId::Edge, PickId::FrontTop);
     addCubeFace(x,-z-y, ShapeId::Edge, PickId::FrontBottom);
-    addCubeFace(x, y-z, ShapeId::Edge, PickId::RearBottom, pi);
-    addCubeFace(x, y+z, ShapeId::Edge, PickId::RearTop, pi);
-    addCubeFace(z, x+y, ShapeId::Edge, PickId::RearRight, pi1_2);
-    addCubeFace(z, x-y, ShapeId::Edge, PickId::FrontRight, pi1_2);
-    addCubeFace(z,-x-y, ShapeId::Edge, PickId::FrontLeft, pi1_2);
-    addCubeFace(z, y-x, ShapeId::Edge, PickId::RearLeft, pi1_2);
-    addCubeFace(y, z-x, ShapeId::Edge, PickId::TopLeft, pi);
+    addCubeFace(x, y-z, ShapeId::Edge, PickId::RearBottom, M_PI);
+    addCubeFace(x, y+z, ShapeId::Edge, PickId::RearTop, M_PI);
+    addCubeFace(z, x+y, ShapeId::Edge, PickId::RearRight, M_PI_2);
+    addCubeFace(z, x-y, ShapeId::Edge, PickId::FrontRight, M_PI_2);
+    addCubeFace(z,-x-y, ShapeId::Edge, PickId::FrontLeft, M_PI_2);
+    addCubeFace(z, y-x, ShapeId::Edge, PickId::RearLeft, M_PI_2);
+    addCubeFace(y, z-x, ShapeId::Edge, PickId::TopLeft, M_PI);
     addCubeFace(y, x+z, ShapeId::Edge, PickId::TopRight);
     addCubeFace(y, x-z, ShapeId::Edge, PickId::BottomRight);
-    addCubeFace(y,-z-x, ShapeId::Edge, PickId::BottomLeft, pi);
+    addCubeFace(y,-z-x, ShapeId::Edge, PickId::BottomLeft, M_PI);
 
     // create the flat buttons
     addButtonFace(PickId::ArrowNorth, SbVec3f(-1, 0, 0));
@@ -790,7 +785,7 @@ void NaviCubeImplementation::drawNaviCube(bool pickMode)
     SbMatrix mx;
     mx = cam->orientation.getValue();
     mx = mx.inverse();
-    mx[3][2] = -5.1F;
+    mx[3][2] = -5.1;
     glLoadMatrixf((float*)mx);
 
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -979,10 +974,7 @@ SbRotation NaviCubeImplementation::getNearestOrientation(PickId pickId) {
     return intermediateOrientation * rotation;
 }
 
-bool NaviCubeImplementation::mouseReleased(short x, short y)
-{
-    static const float pi = boost::math::constants::pi<float>();
-
+bool NaviCubeImplementation::mouseReleased(short x, short y) {
     setHilite(PickId::None);
     m_MouseDown = false;
 
@@ -1015,7 +1007,7 @@ bool NaviCubeImplementation::mouseReleased(short x, short y)
             // Handle the flat buttons
             SbRotation rotation = m_Faces[pickId].rotation;
             if (pickId == PickId::DotBackside) {
-                rotation.scaleAngle(pi);
+                rotation.scaleAngle(M_PI);
             }
             else {
                 rotation.scaleAngle(rotStepAngle);

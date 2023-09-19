@@ -29,47 +29,28 @@
      <item row="0" column="0">
       <layout class="QGridLayout">
        <item row="0" column="0">
-        <widget class="QLabel">
+        <widget class="QLabel" name="styleSheetLabel">
          <property name="text">
-          <string>Accent color 1</string>
+          <string>Style sheet:</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="Gui::PrefColorButton" name="ThemeAccentColor1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QComboBox" name="styleSheetsCombobox">
          <property name="toolTip">
-          <string>This color might be used by your theme to let you customize it.</string>
-         </property>
-         <property name="color" stdset="0">
-          <color>
-           <red>85</red>
-           <green>123</green>
-           <blue>182</blue>
-          </color>
-         </property>
-         <property name="prefEntry" stdset="0">
-          <cstring>ThemeAccentColor1</cstring>
-         </property>
-         <property name="prefPath" stdset="0">
-          <cstring>Themes</cstring>
+          <string>Style sheet how user interface will look like</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel">
          <property name="text">
-          <string>Accent color 2</string>
+          <string>Secondary theme color</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="Gui::PrefColorButton" name="ThemeAccentColor2">
+        <widget class="Gui::PrefColorButton" name="ThemeSecondaryColor">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -87,7 +68,7 @@
           </color>
          </property>
          <property name="prefEntry" stdset="0">
-          <cstring>ThemeAccentColor2</cstring>
+          <cstring>ThemeSecondaryColor</cstring>
          </property>
          <property name="prefPath" stdset="0">
           <cstring>Themes</cstring>
@@ -97,12 +78,12 @@
        <item row="2" column="0">
         <widget class="QLabel">
          <property name="text">
-          <string>Accent color 3</string>
+          <string>Highlight color</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="Gui::PrefColorButton" name="ThemeAccentColor3">
+        <widget class="Gui::PrefColorButton" name="ThemeHighlightColor">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -120,7 +101,7 @@
           </color>
          </property>
          <property name="prefEntry" stdset="0">
-          <cstring>ThemeAccentColor3</cstring>
+          <cstring>ThemeHighlightColor</cstring>
          </property>
          <property name="prefPath" stdset="0">
           <cstring>Themes</cstring>
@@ -128,17 +109,35 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="styleSheetLabel">
+        <widget class="QLabel">
          <property name="text">
-          <string>Style sheet (advanced):</string>
+          <string>Focus theme color</string>
          </property>
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QComboBox" name="styleSheetsCombobox">
+        <widget class="Gui::PrefColorButton" name="ThemeFocusColor">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
-          <string>Apply manually .qss Qt Stylesheets. This is the legacy way that was used to customize the interface.
-You can now use Theme to get a full customization of the interface.</string>
+          <string>This color might be used by your theme to let you customize it.</string>
+         </property>
+         <property name="color" stdset="0">
+          <color>
+           <red>85</red>
+           <green>123</green>
+           <blue>182</blue>
+          </color>
+         </property>
+         <property name="prefEntry" stdset="0">
+          <cstring>ThemeFocusColor</cstring>
+         </property>
+         <property name="prefPath" stdset="0">
+          <cstring>Themes</cstring>
          </property>
         </widget>
        </item>

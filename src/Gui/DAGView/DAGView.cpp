@@ -60,7 +60,9 @@ View::View(QWidget* parentIn): QGraphicsView(parentIn)
           this, &View::awakeSlot);
 }
 
-View::~View() = default;
+View::~View()
+{
+}
 
 void View::slotActiveDocument(const Document &documentIn)
 {

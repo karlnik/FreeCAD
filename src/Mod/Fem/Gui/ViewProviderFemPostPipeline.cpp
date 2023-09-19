@@ -48,7 +48,9 @@ ViewProviderFemPostPipeline::ViewProviderFemPostPipeline()
     sPixmap = "FEM_PostPipelineFromResult";
 }
 
-ViewProviderFemPostPipeline::~ViewProviderFemPostPipeline() = default;
+ViewProviderFemPostPipeline::~ViewProviderFemPostPipeline()
+{
+}
 
 std::vector< App::DocumentObject* > ViewProviderFemPostPipeline::claimChildren() const {
 

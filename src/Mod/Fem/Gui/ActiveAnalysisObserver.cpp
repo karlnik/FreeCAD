@@ -41,9 +41,14 @@ ActiveAnalysisObserver* ActiveAnalysisObserver::instance()
     return inst;
 }
 
-ActiveAnalysisObserver::ActiveAnalysisObserver() = default;
+ActiveAnalysisObserver::ActiveAnalysisObserver()
+    : activeObject(nullptr), activeView(nullptr), activeDocument(nullptr)
+{
+}
 
-ActiveAnalysisObserver::~ActiveAnalysisObserver() = default;
+ActiveAnalysisObserver::~ActiveAnalysisObserver()
+{
+}
 
 void ActiveAnalysisObserver::setActiveObject(Fem::FemAnalysis* fem)
 {

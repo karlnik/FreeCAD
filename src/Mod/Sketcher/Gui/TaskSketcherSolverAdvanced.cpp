@@ -42,21 +42,19 @@
 #define DL_TOLF 1E-10
 #define CONVERGENCE 1E-10
 #define MAX_ITER 100
-#define DEFAULT_SOLVER 2          // DL=2, LM=1, BFGS=0
-#define DEFAULT_RSOLVER 2         // DL=2, LM=1, BFGS=0
-#define DEFAULT_QRSOLVER 1        // DENSE=0, SPARSEQR=1
-#define QR_PIVOT_THRESHOLD 1E-13  // under this value a Jacobian value is regarded as zero
-#define DEFAULT_SOLVER_DEBUG 1    // None=0, Minimal=1, IterationLevel=2
+#define DEFAULT_SOLVER 2        // DL=2, LM=1, BFGS=0
+#define DEFAULT_RSOLVER 2       // DL=2, LM=1, BFGS=0
+#define DEFAULT_QRSOLVER 1      // DENSE=0, SPARSEQR=1
+#define QR_PIVOT_THRESHOLD 1E-13// under this value a Jacobian value is regarded as zero
+#define DEFAULT_SOLVER_DEBUG 1  // None=0, Minimal=1, IterationLevel=2
 #define MAX_ITER_MULTIPLIER false
-#define DEFAULT_DOGLEG_GAUSS_STEP 0  // FullPivLU = 0, LeastNormFullPivLU = 1, LeastNormLdlt = 2
+#define DEFAULT_DOGLEG_GAUSS_STEP 0// FullPivLU = 0, LeastNormFullPivLU = 1, LeastNormLdlt = 2
 
 using namespace SketcherGui;
 using namespace Gui::TaskView;
 
 TaskSketcherSolverAdvanced::TaskSketcherSolverAdvanced(ViewProviderSketch* sketchView)
-    : TaskBox(Gui::BitmapFactory().pixmap("document-new"),
-              tr("Advanced solver control"),
-              true,
+    : TaskBox(Gui::BitmapFactory().pixmap("document-new"), tr("Advanced solver control"), true,
               nullptr)
     , sketchView(sketchView)
     , ui(new Ui_TaskSketcherSolverAdvanced)
@@ -179,15 +177,13 @@ void TaskSketcherSolverAdvanced::updateDefaultMethodParameters()
     int currentindex = ui->comboBoxDefaultSolver->currentIndex();
     int redundantcurrentindex = ui->comboBoxRedundantDefaultSolver->currentIndex();
 
-    if (redundantcurrentindex == 2 || currentindex == 2) {
+    if (redundantcurrentindex == 2 || currentindex == 2)
         ui->comboBoxDogLegGaussStep->setEnabled(true);
-    }
-    else {
+    else
         ui->comboBoxDogLegGaussStep->setEnabled(false);
-    }
 
     switch (currentindex) {
-        case 0:  // BFGS
+        case 0:// BFGS
             ui->labelSolverParam1->setText(QString::fromLatin1(""));
             ui->labelSolverParam2->setText(QString::fromLatin1(""));
             ui->labelSolverParam3->setText(QString::fromLatin1(""));
@@ -198,7 +194,7 @@ void TaskSketcherSolverAdvanced::updateDefaultMethodParameters()
             ui->lineEditSolverParam2->setDisabled(true);
             ui->lineEditSolverParam3->setDisabled(true);
             break;
-        case 1:  // LM
+        case 1:// LM
         {
             ui->labelSolverParam1->setText(QString::fromLatin1("Eps"));
             ui->labelSolverParam2->setText(QString::fromLatin1("Eps1"));
@@ -235,7 +231,7 @@ void TaskSketcherSolverAdvanced::updateDefaultMethodParameters()
                 .setLM_tau(tau);
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             ui->labelSolverParam1->setText(QString::fromLatin1("Tolg"));
             ui->labelSolverParam2->setText(QString::fromLatin1("Tolx"));
@@ -280,15 +276,13 @@ void TaskSketcherSolverAdvanced::updateRedundantMethodParameters()
     int currentindex = ui->comboBoxDefaultSolver->currentIndex();
     int redundantcurrentindex = ui->comboBoxRedundantDefaultSolver->currentIndex();
 
-    if (redundantcurrentindex == 2 || currentindex == 2) {
+    if (redundantcurrentindex == 2 || currentindex == 2)
         ui->comboBoxDogLegGaussStep->setEnabled(true);
-    }
-    else {
+    else
         ui->comboBoxDogLegGaussStep->setEnabled(false);
-    }
 
     switch (redundantcurrentindex) {
-        case 0:  // BFGS
+        case 0:// BFGS
             ui->labelRedundantSolverParam1->setText(QString::fromLatin1(""));
             ui->labelRedundantSolverParam2->setText(QString::fromLatin1(""));
             ui->labelRedundantSolverParam3->setText(QString::fromLatin1(""));
@@ -299,7 +293,7 @@ void TaskSketcherSolverAdvanced::updateRedundantMethodParameters()
             ui->lineEditRedundantSolverParam2->setDisabled(true);
             ui->lineEditRedundantSolverParam3->setDisabled(true);
             break;
-        case 1:  // LM
+        case 1:// LM
         {
             ui->labelRedundantSolverParam1->setText(QString::fromLatin1("R.Eps"));
             ui->labelRedundantSolverParam2->setText(QString::fromLatin1("R.Eps1"));
@@ -333,7 +327,7 @@ void TaskSketcherSolverAdvanced::updateRedundantMethodParameters()
                 .setLM_tauRedundant(eps1);
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             ui->labelRedundantSolverParam1->setText(QString::fromLatin1("R.Tolg"));
             ui->labelRedundantSolverParam2->setText(QString::fromLatin1("R.Tolx"));
@@ -380,7 +374,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam1EditingFinished()
     ui->lineEditSolverParam1->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_eps(val);
@@ -388,7 +382,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam1EditingFinished()
             ui->lineEditSolverParam1->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolg(val);
@@ -409,7 +403,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam1EditingFinished(
     ui->lineEditRedundantSolverParam1->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_epsRedundant(val);
@@ -417,7 +411,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam1EditingFinished(
             ui->lineEditRedundantSolverParam1->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolgRedundant(val);
@@ -438,7 +432,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam2EditingFinished()
     ui->lineEditSolverParam2->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_eps1(val);
@@ -446,7 +440,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam2EditingFinished()
             ui->lineEditSolverParam2->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolx(val);
@@ -467,7 +461,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam2EditingFinished(
     ui->lineEditRedundantSolverParam2->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_eps1Redundant(val);
@@ -475,7 +469,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam2EditingFinished(
             ui->lineEditRedundantSolverParam2->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolxRedundant(val);
@@ -496,7 +490,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam3EditingFinished()
     ui->lineEditSolverParam3->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_tau(val);
@@ -504,7 +498,7 @@ void TaskSketcherSolverAdvanced::onLineEditSolverParam3EditingFinished()
             ui->lineEditSolverParam3->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolf(val);
@@ -525,7 +519,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam3EditingFinished(
     ui->lineEditRedundantSolverParam3->setText(sci.toUpper());
 
     switch (ui->comboBoxDefaultSolver->currentIndex()) {
-        case 1:  // LM
+        case 1:// LM
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setLM_tauRedundant(val);
@@ -533,7 +527,7 @@ void TaskSketcherSolverAdvanced::onLineEditRedundantSolverParam3EditingFinished(
             ui->lineEditRedundantSolverParam3->onSave();
             break;
         }
-        case 2:  // DogLeg
+        case 2:// DogLeg
         {
             const_cast<Sketcher::Sketch&>(sketchView->getSketchObject()->getSolvedSketch())
                 .setDL_tolfRedundant(val);

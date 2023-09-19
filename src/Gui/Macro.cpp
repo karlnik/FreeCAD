@@ -43,7 +43,11 @@
 
 using namespace Gui;
 
-MacroFile::MacroFile() = default;
+MacroFile::MacroFile()
+  : openMacro(false)
+{
+
+}
 
 void MacroFile::open(const char *sName)
 {
@@ -132,7 +136,10 @@ void MacroFile::cancel()
 
 // ----------------------------------------------------------------------------
 
-MacroOutputBuffer::MacroOutputBuffer() = default;
+MacroOutputBuffer::MacroOutputBuffer()
+  : totalLines(0)
+{
+}
 
 void MacroOutputBuffer::addPendingLine(int type, const char* line)
 {
@@ -163,7 +170,12 @@ void MacroOutputBuffer::incrementIfNoComment(int type)
 
 // ----------------------------------------------------------------------------
 
-MacroOutputOption::MacroOutputOption() = default;
+MacroOutputOption::MacroOutputOption()
+  : recordGui(true)
+  , guiAsComment(true)
+  , scriptToPyConsole(true)
+{
+}
 
 std::tuple<bool, bool> MacroOutputOption::values(int type) const
 {
@@ -201,7 +213,9 @@ bool MacroOutputOption::isAppCommand(int type)
 // ----------------------------------------------------------------------------
 
 MacroManager::MacroManager()
-  : pyDebugger(new PythonDebugger())
+  : localEnv(true),
+    pyConsole(nullptr),
+    pyDebugger(new PythonDebugger())
 {
     // Attach to the Parametergroup regarding macros
     this->params = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/Macro");
@@ -344,7 +358,7 @@ namespace Gui {
     class PythonRedirector
     {
     public:
-        PythonRedirector(const char* type, PyObject* obj) : std_out(type), out(obj)
+        PythonRedirector(const char* type, PyObject* obj) : std_out(type), out(obj), old(nullptr)
         {
             if (out) {
                 Base::PyGILStateLocker lock;
@@ -363,7 +377,7 @@ namespace Gui {
     private:
         const char* std_out;
         PyObject* out;
-        PyObject* old{nullptr};
+        PyObject* old;
     };
 }
 

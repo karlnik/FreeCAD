@@ -23,8 +23,6 @@
 #ifndef TECHDRAW_DrawSVGTemplate_h_
 #define TECHDRAW_DrawSVGTemplate_h_
 
-# include <QDomDocument>
-
 #include <App/FeaturePython.h>
 #include <App/PropertyFile.h>
 #include <Mod/TechDraw/TechDrawGlobal.h>
@@ -58,11 +56,6 @@ public:
     double getHeight() const override;
 
     QString processTemplate();
-    void extractTemplateAttributes(QDomDocument& templateDocument);
-    bool getTemplateDocument(std::string sourceFile, QDomDocument& templateDocument) const;
-
-    void translateLabel(std::string context, std::string baseName, std::string uniqueName);
-
 
 protected:
     void replaceFileIncluded(std::string newTemplateFileName);

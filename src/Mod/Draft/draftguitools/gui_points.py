@@ -64,8 +64,15 @@ class Point(gui_base_original.Creator):
 
     def Activated(self):
         """Execute when the command is called."""
-        super().Activated(name="Point")
+        super(Point, self).Activated(name="Point")
+        self.view = gui_utils.get3DView()
         self.stack = []
+        rot = self.view.getCameraNode().getField("orientation").getValue()
+        upv = App.Vector(rot.multVec(coin.SbVec3f(0, 1, 0)).getValue())
+        App.DraftWorkingPlane.setup(self.view.getViewDirection().negative(),
+                                    App.Vector(0, 0, 0),
+                                    upv)
+        self.point = None
         if self.ui:
             self.ui.pointUi(title=translate("draft", self.featureName), icon="Draft_Point")
             self.ui.isRelative.hide()
@@ -152,7 +159,7 @@ class Point(gui_base_original.Creator):
             Restart (continue) the command if `True`, or if `None` and
             `ui.continueMode` is `True`.
         """
-        super().finish()
+        super(Point, self).finish()
         if self.callbackClick:
             self.view.removeEventCallbackPivy(coin.SoMouseButtonEvent.getClassTypeId(), self.callbackClick)
         if self.callbackMove:

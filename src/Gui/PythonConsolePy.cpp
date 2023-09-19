@@ -44,7 +44,9 @@ PythonStdout::PythonStdout(PythonConsole *pc)
 {
 }
 
-PythonStdout::~PythonStdout() = default;
+PythonStdout::~PythonStdout()
+{
+}
 
 Py::Object PythonStdout::getattr(const char *name)
 {
@@ -108,7 +110,9 @@ PythonStderr::PythonStderr(PythonConsole *pc)
 {
 }
 
-PythonStderr::~PythonStderr() = default;
+PythonStderr::~PythonStderr()
+{
+}
 
 Py::Object PythonStderr::getattr(const char *name)
 {
@@ -167,9 +171,13 @@ void OutputStdout::init_type()
     add_noargs_method("isatty",&OutputStdout::isatty,"isatty()");
 }
 
-OutputStdout::OutputStdout() = default;
+OutputStdout::OutputStdout()
+{
+}
 
-OutputStdout::~OutputStdout() = default;
+OutputStdout::~OutputStdout()
+{
+}
 
 Py::Object OutputStdout::getattr(const char *name)
 {
@@ -228,9 +236,13 @@ void OutputStderr::init_type()
     add_noargs_method("isatty",&OutputStderr::isatty,"isatty()");
 }
 
-OutputStderr::OutputStderr() = default;
+OutputStderr::OutputStderr()
+{
+}
 
-OutputStderr::~OutputStderr() = default;
+OutputStderr::~OutputStderr()
+{
+}
 
 Py::Object OutputStderr::getattr(const char *name)
 {
@@ -293,7 +305,9 @@ PythonStdin::PythonStdin(PythonConsole *pc)
 {
 }
 
-PythonStdin::~PythonStdin() = default;
+PythonStdin::~PythonStdin()
+{
+}
 
 Py::Object PythonStdin::repr()
 {

@@ -42,7 +42,9 @@ CADNavigationStyle::CADNavigationStyle() : lockButton1(false)
 {
 }
 
-CADNavigationStyle::~CADNavigationStyle() = default;
+CADNavigationStyle::~CADNavigationStyle()
+{
+}
 
 const char* CADNavigationStyle::mouseButtons(ViewerMode mode)
 {

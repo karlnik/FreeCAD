@@ -496,12 +496,12 @@ Py::Int DocumentPy::getEditMode() const
 
 Py::Boolean DocumentPy::getTransacting() const
 {
-    return {getDocumentPtr()->isPerformingTransaction()};
+    return Py::Boolean(getDocumentPtr()->isPerformingTransaction());
 }
 
 Py::Boolean DocumentPy::getModified() const
 {
-    return {getDocumentPtr()->isModified()};
+    return Py::Boolean(getDocumentPtr()->isModified());
 }
 
 PyObject *DocumentPy::getCustomAttributes(const char* attr) const

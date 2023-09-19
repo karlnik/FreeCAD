@@ -42,7 +42,6 @@
 #include "QGSPage.h"
 #include "ViewProviderPage.h"
 #include "ViewProviderDrawingView.h"
-#include "PagePrinter.h"
 
 
 namespace TechDrawGui {
@@ -186,12 +185,12 @@ private:
                    if (vpp) {
                        mdi = vpp->getMDIViewPage();
                        if (mdi) {
-                           mdi->savePDF(filePath);
+                           mdi->printPdf(filePath);
                        } else {
                            vpp->showMDIViewPage();
                            mdi = vpp->getMDIViewPage();
                            if (mdi) {
-                               mdi->savePDF(filePath);
+                               mdi->printPdf(filePath);
                            } else {
                                throw Py::TypeError("Page not available! Is it Hidden?");
                            }

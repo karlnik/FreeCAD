@@ -30,9 +30,6 @@ from AddonManagerTest.app.test_utilities import (
 from AddonManagerTest.app.test_addon import (
     TestAddon as AddonManagerTestAddon,
 )
-from AddonManagerTest.app.test_cache import (
-    TestCache as AddonManagerTestCache,
-)
 from AddonManagerTest.app.test_macro import (
     TestMacro as AddonManagerTestMacro,
 )
@@ -77,7 +74,6 @@ except ImportError:
 loaded_gui_tests = [
     AddonManagerTestUtilities,
     AddonManagerTestAddon,
-    AddonManagerTestCache,
     AddonManagerTestMacro,
     AddonManagerTestGit,
     AddonManagerTestAddonInstaller,

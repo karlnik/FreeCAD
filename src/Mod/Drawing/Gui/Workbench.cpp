@@ -30,7 +30,7 @@
 
 using namespace DrawingGui;
 
-#if 0  // needed for Qt's lupdate utility
+#if 0 // needed for Qt's lupdate utility
     qApp->translate("Workbench", "Drawing");
 #endif
 
@@ -38,10 +38,12 @@ using namespace DrawingGui;
 TYPESYSTEM_SOURCE(DrawingGui::Workbench, Gui::StdWorkbench)
 
 Workbench::Workbench()
-{}
+{
+}
 
 Workbench::~Workbench()
-{}
+{
+}
 
 Gui::MenuItem* Workbench::setupMenuBar() const
 {
@@ -98,7 +100,7 @@ Gui::ToolBarItem* Workbench::setupCommandBars() const
     *img << "Drawing_Open";
     img = new Gui::ToolBarItem(root);
     img->setCommand("Drawing types");
-    //*img << "Drawing_NewA3Landscape";
+  //*img << "Drawing_NewA3Landscape";
     *img << "Drawing_NewPage";
     *img << "Drawing_OrthoViews";
     *img << "Drawing_OpenBrowserView";
@@ -110,3 +112,4 @@ Gui::ToolBarItem* Workbench::setupCommandBars() const
     *img << "Drawing_NewView";
     return root;
 }
+

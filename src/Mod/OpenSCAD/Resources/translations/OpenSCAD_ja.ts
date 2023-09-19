@@ -253,7 +253,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="428"/>
       <source>Open file</source>
-      <translation>ファイルを開く</translation>
+      <translation type="unfinished">Open file</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="430"/>
@@ -264,7 +264,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="442"/>
       <source>Save file</source>
-      <translation>ファイルを保存</translation>
+      <translation type="unfinished">Save file</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="456"/>

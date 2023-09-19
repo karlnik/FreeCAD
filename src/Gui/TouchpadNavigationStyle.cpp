@@ -37,9 +37,13 @@ using namespace Gui;
 
 TYPESYSTEM_SOURCE(Gui::TouchpadNavigationStyle, Gui::UserNavigationStyle)
 
-TouchpadNavigationStyle::TouchpadNavigationStyle() = default;
+TouchpadNavigationStyle::TouchpadNavigationStyle()
+{
+}
 
-TouchpadNavigationStyle::~TouchpadNavigationStyle() = default;
+TouchpadNavigationStyle::~TouchpadNavigationStyle()
+{
+}
 
 const char* TouchpadNavigationStyle::mouseButtons(ViewerMode mode)
 {

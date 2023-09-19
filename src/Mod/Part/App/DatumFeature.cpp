@@ -39,7 +39,9 @@ Datum::Datum()
     touch();
 }
 
-Datum::~Datum() = default;
+Datum::~Datum()
+{
+}
 
 void Datum::onDocumentRestored()
 {

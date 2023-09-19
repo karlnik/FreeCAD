@@ -61,14 +61,19 @@ namespace PartGui {
 class Picker
 {
 public:
-    virtual ~Picker() = default;
+    Picker() : exitCode(-1)
+    {
+    }
+    virtual ~Picker()
+    {
+    }
 
     virtual bool pickedPoint(const SoPickedPoint * point) = 0;
     virtual QString command(App::Document*) const = 0;
     void createPrimitive(QWidget* widget, const QString&, Gui::Document*);
     QString toPlacement(const gp_Ax2&) const;
 
-    int exitCode{-1};
+    int exitCode;
     QEventLoop loop;
 };
 
@@ -449,6 +454,7 @@ class TaskPrimitives : public Gui::TaskView::TaskDialog
 
 public:
     TaskPrimitives();
+    ~TaskPrimitives() override;
 
 public:
     bool accept() override;
@@ -467,6 +473,7 @@ class TaskPrimitivesEdit : public Gui::TaskView::TaskDialog
 
 public:
     explicit TaskPrimitivesEdit(Part::Primitive* feature);
+    ~TaskPrimitivesEdit() override;
 
 public:
     bool accept() override;

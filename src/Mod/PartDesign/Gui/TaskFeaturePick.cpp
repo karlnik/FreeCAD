@@ -170,10 +170,10 @@ void TaskFeaturePick::updateList()
 {
     int index = 0;
 
-    for (auto status : statuses) {
+    for (std::vector<featureStatus>::const_iterator st = statuses.begin(); st != statuses.end(); st++) {
         QListWidgetItem* item = ui->listWidget->item(index);
 
-        switch (status) {
+        switch (*st) {
             case validFeature: item->setHidden(false); break;
             case invalidShape: item->setHidden(true); break;
             case isUsed: item->setHidden(!ui->checkUsed->isChecked()); break;
@@ -218,11 +218,8 @@ std::vector<App::DocumentObject*> TaskFeaturePick::getFeatures()
 
     std::vector<App::DocumentObject*> result;
 
-    for (const auto& feature : features) {
-        result.push_back(App::GetApplication()
-                             .getDocument(documentName.c_str())
-                             ->getObject(feature.toLatin1().data()));
-    }
+    for (std::vector<QString>::const_iterator s = features.begin(); s != features.end(); ++s)
+        result.push_back(App::GetApplication().getDocument(documentName.c_str())->getObject(s->toLatin1().data()));
 
     return result;
 }
@@ -238,7 +235,7 @@ std::vector<App::DocumentObject*> TaskFeaturePick::buildFeatures()
 
         auto activePart = PartDesignGui::getPartFor(activeBody, false);
 
-        for (auto status : statuses) {
+        for (std::vector<featureStatus>::const_iterator st = statuses.begin(); st != statuses.end(); st++) {
             QListWidgetItem* item = ui->listWidget->item(index);
 
             if (item->isSelected() && !item->isHidden()) {
@@ -246,21 +243,21 @@ std::vector<App::DocumentObject*> TaskFeaturePick::buildFeatures()
                 auto obj = App::GetApplication().getDocument(documentName.c_str())->getObject(t.toLatin1().data());
 
                 //build the dependent copy or reference if wanted by the user
-                if (status == otherBody || status == otherPart || status == notInBody) {
+                if (*st == otherBody || *st == otherPart || *st == notInBody) {
                     if (!ui->radioXRef->isChecked()) {
                         auto copy = makeCopy(obj, "", ui->radioIndependent->isChecked());
 
-                        if (status == otherBody) {
+                        if (*st == otherBody) {
                             activeBody->addObject(copy);
                         }
-                        else if (status == otherPart) {
+                        else if (*st == otherPart) {
                             auto oBody = PartDesignGui::getBodyFor(obj, false);
                             if (!oBody)
                                 activePart->addObject(copy);
                             else
                                 activeBody->addObject(copy);
                         }
-                        else if (status == notInBody) {
+                        else if (*st == notInBody) {
                             activeBody->addObject(copy);
                             // doesn't supposed to get here anything but sketch but to be on the safe side better to check
                             if (copy->getTypeId().isDerivedFrom(Sketcher::SketchObject::getClassTypeId())) {

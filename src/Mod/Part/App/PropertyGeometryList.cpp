@@ -47,13 +47,15 @@ TYPESYSTEM_SOURCE(Part::PropertyGeometryList, App::PropertyLists)
 // Construction/Destruction
 
 
-PropertyGeometryList::PropertyGeometryList() = default;
+PropertyGeometryList::PropertyGeometryList()
+{
+
+}
 
 PropertyGeometryList::~PropertyGeometryList()
 {
-    for (auto it : _lValueList) {
-        if (it) delete it;
-    }
+    for (std::vector<Geometry*>::iterator it = _lValueList.begin(); it != _lValueList.end(); ++it)
+        if (*it) delete *it;
 }
 
 void PropertyGeometryList::setSize(int newSize)
@@ -73,8 +75,8 @@ void PropertyGeometryList::setValue(const Geometry* lValue)
     if (lValue) {
         aboutToSetValue();
         Geometry* newVal = lValue->clone();
-        for (auto it : _lValueList)
-            delete it;
+        for (unsigned int i = 0; i < _lValueList.size(); i++)
+            delete _lValueList[i];
         _lValueList.resize(1);
         _lValueList[0] = newVal;
         hasSetValue();

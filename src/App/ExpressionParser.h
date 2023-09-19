@@ -522,12 +522,12 @@ public:
     Base::Quantity scaler;
     std::string unitStr;
   } quantity;
-  Expression::Component *component{nullptr};
-  Expression * expr{nullptr};
+  Expression::Component *component;
+  Expression * expr;
   ObjectIdentifier path;
   std::deque<ObjectIdentifier::Component> components;
-  long long int ivalue{0};
-  double fvalue{0};
+  long long int ivalue;
+  double fvalue;
   struct {
     const char *name = "";
     double fvalue = 0;
@@ -537,7 +537,8 @@ public:
   std::string string;
   std::pair<FunctionExpression::Function,std::string> func;
   ObjectIdentifier::String string_or_identifier;
-  semantic_type() : func({FunctionExpression::NONE, std::string()}) {}
+  semantic_type() : component(nullptr), expr(nullptr), ivalue(0), fvalue(0)
+                  , func({FunctionExpression::NONE, std::string()}) {}
 };
 
 #define YYSTYPE semantic_type

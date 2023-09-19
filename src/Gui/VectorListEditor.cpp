@@ -41,15 +41,15 @@ QVariant VectorTableModel::headerData(int section, Qt::Orientation orientation, 
         return section + 1;
 
     if (role != Qt::DisplayRole || orientation != Qt::Horizontal)
-        return {};
+        return QVariant();
     if (section == 0)
-        return {QLatin1Char('x')};
+        return QVariant(QLatin1Char('x'));
     if (section == 1)
-        return {QLatin1Char('y')};
+        return QVariant(QLatin1Char('y'));
     if (section == 2)
-        return {QLatin1Char('z')};
+        return QVariant(QLatin1Char('z'));
     else
-        return {};
+        return QVariant();
 }
 
 int VectorTableModel::columnCount(const QModelIndex&) const
@@ -117,12 +117,12 @@ QVariant VectorTableModel::data(const QModelIndex &index, int role) const
         }
     }
 
-    return {};
+    return QVariant();
 }
 
 QModelIndex VectorTableModel::parent(const QModelIndex &) const
 {
-    return {};
+    return QModelIndex();
 }
 
 void VectorTableModel::setValues(const QList<Base::Vector3d>& d)
@@ -240,7 +240,9 @@ VectorListEditor::VectorListEditor(int decimals, QWidget* parent)
     connect(ui->tableWidget, &QTableView::clicked, this, &VectorListEditor::clickedRow);
 }
 
-VectorListEditor::~VectorListEditor() = default;
+VectorListEditor::~VectorListEditor()
+{
+}
 
 void VectorListEditor::setValues(const QList<Base::Vector3d>& v)
 {

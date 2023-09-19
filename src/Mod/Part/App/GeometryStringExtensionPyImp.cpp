@@ -86,7 +86,7 @@ int GeometryStringExtensionPy::PyInit(PyObject* args, PyObject* /*kwd*/)
 
 Py::String GeometryStringExtensionPy::getValue() const
 {
-    return {this->getGeometryStringExtensionPtr()->getValue()};
+    return Py::String(this->getGeometryStringExtensionPtr()->getValue());
 }
 
 void GeometryStringExtensionPy::setValue(Py::String value)

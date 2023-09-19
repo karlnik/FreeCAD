@@ -89,6 +89,17 @@ ColorField::ColorField (const ColorModel &rclModel, float fMin, float fMax, std:
     set(rclModel, fMin, fMax, usCt);
 }
 
+ColorField::ColorField (const ColorField &rclCF)
+  : colorModel(rclCF.colorModel)
+  , fMin(rclCF.fMin)
+  , fMax(rclCF.fMax)
+  , fAscent(rclCF.fAscent)
+  , fConstant(rclCF.fConstant)
+  , ctColors(rclCF.ctColors)
+  , colorField(rclCF.colorField)
+{
+}
+
 ColorField& ColorField::operator = (const ColorField &rclCF)
 {
     colorField = rclCF.colorField;
@@ -157,7 +168,16 @@ void ColorField::interpolate (Color clCol1, std::size_t usInd1, Color clCol2, st
 }
 
 
-ColorGradientProfile::ColorGradientProfile() = default;
+ColorGradientProfile::ColorGradientProfile()
+  : tStyle{ColorBarStyle::FLOW}
+  , fMin{}
+  , fMax{}
+  , ctColors{}
+  , tColorModel{}
+  , visibility{Visibility::Default}
+{
+
+}
 
 bool ColorGradientProfile::isEqual(const ColorGradientProfile& cg) const
 {
@@ -300,7 +320,8 @@ void ColorGradient::setColorModel ()
     }
 }
 
-ColorLegend::ColorLegend()
+ColorLegend::ColorLegend ()
+  : outsideGrayed(false)
 {
     // default  blue, green, red
     colorFields.emplace_back(0, 0, 1);
@@ -315,6 +336,21 @@ ColorLegend::ColorLegend()
     values.push_back(-0.333f);
     values.push_back(0.333f);
     values.push_back(1.0f);
+}
+
+ColorLegend::ColorLegend (const ColorLegend &rclCL)
+{
+    *this = rclCL;
+}
+
+ColorLegend& ColorLegend::operator = (const ColorLegend &rclCL)
+{
+    colorFields = rclCL.colorFields;
+    names       = rclCL.names;
+    values      = rclCL.values;
+    outsideGrayed = rclCL.outsideGrayed;
+
+    return *this;
 }
 
 bool ColorLegend::operator == (const ColorLegend &rclCL) const

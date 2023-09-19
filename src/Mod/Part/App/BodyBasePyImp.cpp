@@ -33,8 +33,9 @@ using namespace Part;
 // returns a string which represents the object e.g. when printed in python
 std::string BodyBasePy::representation() const
 {
-    return {"<body object>"};
+    return std::string("<body object>");
 }
+
 
 PyObject *BodyBasePy::getCustomAttributes(const char* /*attr*/) const
 {

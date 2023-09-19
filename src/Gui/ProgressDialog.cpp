@@ -303,7 +303,9 @@ ProgressDialog::ProgressDialog (SequencerDialog* s, QWidget * parent)
     connect(this, &QProgressDialog::canceled, this, &ProgressDialog::onCancel);
 }
 
-ProgressDialog::~ProgressDialog() = default;
+ProgressDialog::~ProgressDialog ()
+{
+}
 
 void ProgressDialog::onCancel()
 {

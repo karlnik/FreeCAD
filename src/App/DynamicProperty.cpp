@@ -328,7 +328,7 @@ DynamicProperty::PropData DynamicProperty::getDynamicPropertyData(const Property
     auto it = index.find(const_cast<Property*>(prop));
     if(it != index.end())
         return *it;
-    return {};
+    return PropData();
 }
 
 bool DynamicProperty::changeDynamicProperty(const Property *prop, const char *group, const char *doc) {

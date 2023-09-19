@@ -666,7 +666,6 @@ SET(Editor_CPP_SRCS
     PythonConsole.cpp
     PythonConsolePy.cpp
     PythonDebugger.cpp
-    PythonTracing.cpp
     PythonEditor.cpp
     SyntaxHighlighter.cpp
     TextEdit.cpp
@@ -678,7 +677,6 @@ SET(Editor_HPP_SRCS
     PythonConsole.h
     PythonConsolePy.h
     PythonDebugger.h
-    PythonTracing.h
     PythonEditor.h
     SyntaxHighlighter.h
     TextEdit.h
@@ -970,7 +968,6 @@ SET(Inventor_CPP_SRCS
     SoFCDB.cpp
     SoFCInteractiveElement.cpp
     SoFCOffscreenRenderer.cpp
-    SoQtOffscreenRendererPy.cpp
     SoFCSelection.cpp
     SoFCUnifiedSelection.cpp
     SoFCSelectionContext.cpp
@@ -999,7 +996,6 @@ SET(Inventor_SRCS
     SoFCDB.h
     SoFCInteractiveElement.h
     SoFCOffscreenRenderer.h
-    SoQtOffscreenRendererPy.h
     SoFCSelection.h
     SoFCUnifiedSelection.h
     SoFCSelectionContext.h
@@ -1152,7 +1148,6 @@ SET(FreeCADGui_CPP_SRCS
     DocumentPyImp.cpp
     DocumentObserver.cpp
     DocumentObserverPython.cpp
-    EditableDatumLabel.cpp
     ExpressionBinding.cpp
     ExpressionBindingPy.cpp
     GraphicsViewZoom.cpp
@@ -1184,7 +1179,6 @@ SET(FreeCADGui_SRCS
     DocumentModel.h
     DocumentObserver.h
     DocumentObserverPython.h
-    EditableDatumLabel.h
     ExpressionBinding.h
     ExpressionBindingPy.h
     ExpressionCompleter.h

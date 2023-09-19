@@ -80,7 +80,7 @@ class TaskDlgFemConstraintBearing : public TaskDlgFemConstraint
     Q_OBJECT
 
 public:
-    TaskDlgFemConstraintBearing() = default;
+    TaskDlgFemConstraintBearing() {}
     explicit TaskDlgFemConstraintBearing(ViewProviderFemConstraintBearing *ConstraintView);
 
     /// is called by the framework if the dialog is accepted (Ok)

@@ -42,7 +42,9 @@ using namespace Part;
 PROPERTY_SOURCE(Part::Common, Part::Boolean)
 
 
-Common::Common() = default;
+Common::Common()
+{
+}
 
 BRepAlgoAPI_BooleanOperation* Common::makeOperation(const TopoDS_Shape& base, const TopoDS_Shape& tool) const
 {
@@ -130,8 +132,8 @@ App::DocumentObjectExecReturn *MultiCommon::execute()
                     history.push_back(hist2);
                 }
                 else {
-                    for (auto & jt : history)
-                        jt = joinHistory(jt, hist1);
+                    for (std::vector<ShapeHistory>::iterator jt = history.begin(); jt != history.end(); ++jt)
+                        *jt = joinHistory(*jt, hist1);
                     history.push_back(hist2);
                 }
             }
@@ -152,8 +154,8 @@ App::DocumentObjectExecReturn *MultiCommon::execute()
                     BRepBuilderAPI_RefineModel mkRefine(oldShape);
                     resShape = mkRefine.Shape();
                     ShapeHistory hist = buildHistory(mkRefine, TopAbs_FACE, resShape, oldShape);
-                    for (auto & jt : history)
-                        jt = joinHistory(jt, hist);
+                    for (std::vector<ShapeHistory>::iterator jt = history.begin(); jt != history.end(); ++jt)
+                        *jt = joinHistory(*jt, hist);
                 }
                 catch (Standard_Failure&) {
                     // do nothing

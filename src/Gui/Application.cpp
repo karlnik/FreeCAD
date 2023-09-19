@@ -66,7 +66,6 @@
 #include "CommandPy.h"
 #include "Control.h"
 #include "PreferencePages/DlgSettingsCacheDirectory.h"
-#include "DlgCheckableMessageBox.h"
 #include "DocumentPy.h"
 #include "DocumentRecovery.h"
 #include "EditorView.h"
@@ -85,7 +84,7 @@
 #include "SoFCDB.h"
 #include "Selection.h"
 #include "SelectionFilterPy.h"
-#include "SoQtOffscreenRendererPy.h"
+#include "SoFCOffscreenRenderer.h"
 #include "SplitView3DInventor.h"
 #include "TaskView/TaskView.h"
 #include "TaskView/TaskDialogPython.h"
@@ -171,7 +170,11 @@ public:
 // Pimpl class
 struct ApplicationP
 {
-    explicit ApplicationP(bool GUIenabled)
+    explicit ApplicationP(bool GUIenabled) :
+    activeDocument(nullptr),
+    editDocument(nullptr),
+    isClosing(false),
+    startingUp(true)
     {
         // create the macro manager
         if (GUIenabled)
@@ -192,14 +195,14 @@ struct ApplicationP
     /// list of all handled documents
     std::map<const App::Document*, Gui::Document*> documents;
     /// Active document
-    Gui::Document*   activeDocument{nullptr};
-    Gui::Document*  editDocument{nullptr};
+    Gui::Document*   activeDocument;
+    Gui::Document*  editDocument;
     MacroManager*  macroMngr;
     PreferencePackManager* prefPackManager;
     /// List of all registered views
     std::list<Gui::BaseView*> passive;
-    bool isClosing{false};
-    bool startingUp{true};
+    bool isClosing;
+    bool startingUp;
     /// Handles all commands
     CommandManager commandManager;
     ViewProviderMap viewproviderMap;
@@ -1570,7 +1573,7 @@ QPixmap Application::workbenchIcon(const QString& wb) const
         if (!s.isEmpty())
             return icon.pixmap(s[0]);
     }
-    return {};
+    return QPixmap();
 }
 
 QString Application::workbenchToolTip(const QString& wb) const
@@ -1594,7 +1597,7 @@ QString Application::workbenchToolTip(const QString& wb) const
         }
     }
 
-    return {};
+    return QString();
 }
 
 QString Application::workbenchMenuText(const QString& wb) const
@@ -1619,7 +1622,7 @@ QString Application::workbenchMenuText(const QString& wb) const
         }
     }
 
-    return {};
+    return QString();
 }
 
 QStringList Application::workbenches() const
@@ -1745,7 +1748,6 @@ void setCategoryFilterRules()
     stream << "qt.qpa.xcb.warning=false\n";
     stream << "qt.qpa.mime.warning=false\n";
     stream << "qt.svg.warning=false\n";
-    stream << "qt.xkb.compose.warning=false\n";
     stream.flush();
     QLoggingCategory::setFilterRules(filter);
 }
@@ -2194,25 +2196,6 @@ void Application::runApplication()
 
             int major = context.format().majorVersion();
             int minor = context.format().minorVersion();
-
-#ifdef NDEBUG
-            // In release mode, issue a warning to users that their version of OpenGL is
-            // potentially going to cause problems
-            if (major < 2) {
-                auto message =
-                    QObject::tr("This system is running OpenGL %1.%2. "
-                                "FreeCAD requires OpenGL 2.0 or above. "
-                                "Please upgrade your graphics driver and/or card as required.")
-                        .arg(major)
-                        .arg(minor)
-                    + QStringLiteral("\n");
-                Base::Console().Warning(message.toStdString().c_str());
-                Dialog::DlgCheckableMessageBox::showMessage(
-                    Gui::GUISingleApplication::applicationName() + QStringLiteral(" - ")
-                        + QObject::tr("Invalid OpenGL Version"),
-                    message);
-            }
-#endif
             const char* glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
             Base::Console().Log("OpenGL version is: %d.%d (%s)\n", major, minor, glVersion);
         }
@@ -2478,9 +2461,11 @@ void Application::setStyleSheet(const QString& qssFile, bool tiledBackground)
         qApp->setPalette(newPal);
     }
 
+
+    QString current = mw->property("fc_currentStyleSheet").toString();
     mw->setProperty("fc_currentStyleSheet", qssFile);
 
-    if (!qssFile.isEmpty()) {
+    if (!qssFile.isEmpty() && current != qssFile) {
         // Search for stylesheet in user-defined search paths.
         // For qss they are set-up in runApplication() with the prefix "qss"
         QString prefix(QLatin1String("qss:"));
@@ -2496,10 +2481,7 @@ void Application::setStyleSheet(const QString& qssFile, bool tiledBackground)
         if (!f.fileName().isEmpty() && f.open(QFile::ReadOnly | QFile::Text)) {
             mdi->setBackground(QBrush(Qt::NoBrush));
             QTextStream str(&f);
-
-            QString styleSheetContent = replaceVariablesInQss(str.readAll());
-
-            qApp->setStyleSheet(styleSheetContent);
+            qApp->setStyleSheet(str.readAll());
 
             ActionStyleEvent e(ActionStyleEvent::Clear);
             qApp->sendEvent(mw, &e);
@@ -2525,7 +2507,8 @@ void Application::setStyleSheet(const QString& qssFile, bool tiledBackground)
             }
         }
     }
-    else {
+
+    if (qssFile.isEmpty()) {
         if (tiledBackground) {
             qApp->setStyleSheet(QString());
             ActionStyleEvent e(ActionStyleEvent::Restore);
@@ -2548,28 +2531,6 @@ void Application::setStyleSheet(const QString& qssFile, bool tiledBackground)
         if (mdi->style())
             mdi->style()->unpolish(qApp);
     }
-}
-
-QString Application::replaceVariablesInQss(QString qssText)
-{
-    //First we fetch the colors from preferences,
-    ParameterGrp::handle hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/Themes");
-    unsigned long longAccentColor1 = hGrp->GetUnsigned("ThemeAccentColor1", 0);
-    unsigned long longAccentColor2 = hGrp->GetUnsigned("ThemeAccentColor2", 0);
-    unsigned long longAccentColor3 = hGrp->GetUnsigned("ThemeAccentColor3", 0);
-
-    //convert them to hex.
-    //Note: the ulong contains alpha channels so 8 hex characters when we need 6 here.
-    QString accentColor1 = QString::fromLatin1("#%1").arg(longAccentColor1, 8, 16, QLatin1Char('0')).toUpper().mid(0, 7);
-    QString accentColor2 = QString::fromLatin1("#%1").arg(longAccentColor2, 8, 16, QLatin1Char('0')).toUpper().mid(0, 7);
-    QString accentColor3 = QString::fromLatin1("#%1").arg(longAccentColor3, 8, 16, QLatin1Char('0')).toUpper().mid(0, 7);
-
-    qssText = qssText.replace(QString::fromLatin1("@ThemeAccentColor1"), accentColor1);
-    qssText = qssText.replace(QString::fromLatin1("@ThemeAccentColor2"), accentColor2);
-    qssText = qssText.replace(QString::fromLatin1("@ThemeAccentColor3"), accentColor3);
-
-    //Base::Console().Warning("%s\n", qssText.toStdString());
-    return qssText;
 }
 
 void Application::checkForDeprecatedSettings()

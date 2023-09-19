@@ -160,7 +160,9 @@ public:
     {
         this->rdbuf(&buf);
     }
-    ~SoInputStream() override = default;
+    ~SoInputStream() override
+    {
+    }
 
 private:
     SoInputStreambuf buf;
@@ -298,7 +300,9 @@ void SoFCMeshObjectElement::init(SoState * state)
     this->mesh = nullptr;
 }
 
-SoFCMeshObjectElement::~SoFCMeshObjectElement() = default;
+SoFCMeshObjectElement::~SoFCMeshObjectElement()
+{
+}
 
 void SoFCMeshObjectElement::set(SoState * const state, SoNode * const node, const Mesh::MeshObject * const mesh)
 {
@@ -331,7 +335,7 @@ SO_NODE_SOURCE(SoFCMeshPickNode)
 /*!
   Constructor.
 */
-SoFCMeshPickNode::SoFCMeshPickNode()
+SoFCMeshPickNode::SoFCMeshPickNode() : meshGrid(nullptr)
 {
     SO_NODE_CONSTRUCTOR(SoFCMeshPickNode);
 
@@ -415,7 +419,9 @@ SoFCMeshGridNode::SoFCMeshGridNode()
 /*!
   Destructor.
 */
-SoFCMeshGridNode::~SoFCMeshGridNode() = default;
+SoFCMeshGridNode::~SoFCMeshGridNode()
+{
+}
 
 // Doc from superclass.
 void SoFCMeshGridNode::initClass()
@@ -498,7 +504,9 @@ SoFCMeshObjectNode::SoFCMeshObjectNode()
 /*!
   Destructor.
 */
-SoFCMeshObjectNode::~SoFCMeshObjectNode() = default;
+SoFCMeshObjectNode::~SoFCMeshObjectNode()
+{
+}
 
 // Doc from superclass.
 void SoFCMeshObjectNode::initClass()
@@ -573,7 +581,7 @@ inline void glNormal(float* n)
 // Helper function: convert Vec to SbVec3f
 inline SbVec3f sbvec3f(const Base::Vector3f& _v)
 {
-    return {_v.x, _v.y, _v.z};
+    return SbVec3f(_v.x, _v.y, _v.z);
 }
 
 SO_NODE_SOURCE(SoFCMeshObjectShape)
@@ -585,12 +593,16 @@ void SoFCMeshObjectShape::initClass()
 
 SoFCMeshObjectShape::SoFCMeshObjectShape()
     : renderTriangleLimit(UINT_MAX)
+    , selectBuf(nullptr)
+    , updateGLArray(false)
 {
     SO_NODE_CONSTRUCTOR(SoFCMeshObjectShape);
     setName(SoFCMeshObjectShape::getClassTypeId().getName());
 }
 
-SoFCMeshObjectShape::~SoFCMeshObjectShape() = default;
+SoFCMeshObjectShape::~SoFCMeshObjectShape()
+{
+}
 
 void SoFCMeshObjectShape::notify(SoNotList * node)
 {

@@ -28,42 +28,41 @@
 #include <Mod/Robot/App/RobotObject.h>
 
 
-namespace App
-{
+class Ui_TaskRobotControl;
+
+namespace App {
 class Property;
 }
 
-namespace Gui
-{
+namespace Gui {
 class ViewProvider;
 }
 
-namespace RobotGui
-{
+namespace RobotGui { 
 
-class Ui_TaskRobotControl;
-class TaskRobotControl: public Gui::TaskView::TaskBox
+class TaskRobotControl : public Gui::TaskView::TaskBox
 {
     Q_OBJECT
 
 public:
-    explicit TaskRobotControl(Robot::RobotObject* pcRobotObject, QWidget* parent = nullptr);
+    explicit TaskRobotControl(Robot::RobotObject *pcRobotObject,QWidget *parent = nullptr);
     ~TaskRobotControl() override;
 
-    void setRobot(Robot::RobotObject* pcRobotObject);
+    void setRobot(Robot::RobotObject *pcRobotObject);
 
 private Q_SLOTS:
-
+    
 
 protected:
-    Robot::RobotObject* pcRobot;
+    Robot::RobotObject *pcRobot;
 
 private:
+
 private:
     QWidget* proxy;
     Ui_TaskRobotControl* ui;
 };
 
-}  // namespace RobotGui
+} //namespace PartDesignGui
 
-#endif  // GUI_TASKVIEW_TASKAPPERANCE_H
+#endif // GUI_TASKVIEW_TASKAPPERANCE_H

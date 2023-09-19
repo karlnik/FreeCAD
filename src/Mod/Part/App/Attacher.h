@@ -285,7 +285,7 @@ public: //methods
      */
     void EnableAllSupportedModes();
 
-    ~AttachEngine() override = default;
+    ~AttachEngine() override{};
 
 public://helper functions that may be useful outside of the class
     /**
@@ -363,10 +363,10 @@ public: //enums
 public: //members
     App::PropertyLinkSubList references;
 
-    eMapMode mapMode = mmDeactivated;
-    bool mapReverse = false;
-    double attachParameter = 0.0;
-    double surfU = 0.0, surfV = 0.0;
+    eMapMode mapMode;
+    bool mapReverse;
+    double attachParameter;
+    double surfU, surfV;
     Base::Placement attachmentOffset;
 
     /**
@@ -463,9 +463,9 @@ private:
 class ExceptionCancel : public Base::Exception
 {
 public:
-    ExceptionCancel() = default;
+    ExceptionCancel(){}
     explicit ExceptionCancel(char* msg){this->setMessage(msg);}
-    ~ExceptionCancel() noexcept override = default;
+    ~ExceptionCancel() noexcept override {}
 };
 
 } // namespace Attacher

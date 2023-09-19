@@ -122,9 +122,6 @@ public:
 
     TechDraw::DrawView* getBalloonParent() { return m_balloonParent; }
 
-    void zoomIn();
-    void zoomOut();
-
 public Q_SLOTS:
     void setHighQualityAntialiasing(bool highQualityAntialiasing);
 
@@ -182,6 +179,7 @@ private:
     TechDraw::DrawView* m_balloonParent;//temp field. used during balloon placing.
 
     QPoint panOrigin;
+    bool panningActive;
 
     bool m_showGrid;
     QPainterPath m_gridPath;

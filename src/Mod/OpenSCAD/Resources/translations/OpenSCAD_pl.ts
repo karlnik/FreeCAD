@@ -231,7 +231,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="337"/>
       <source>Open...</source>
-      <translation>Otwórz ...</translation>
+      <translation>Otwórz...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="338"/>
@@ -303,7 +303,7 @@
       <location filename="../../importCSG.py" line="550"/>
       <location filename="../../importCSG.py" line="1432"/>
       <source>Press OK</source>
-      <translation>Naciśnij OK</translation>
+      <translation>Naciśnij przycisk OK</translation>
     </message>
   </context>
   <context>
@@ -475,7 +475,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="566"/>
       <source>Hull</source>
-      <translation>Powłoka</translation>
+      <translation>Kadłub</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="569"/>

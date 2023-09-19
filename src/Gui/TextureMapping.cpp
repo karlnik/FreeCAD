@@ -188,7 +188,10 @@ TaskTextureMapping::TaskTextureMapping()
     Content.push_back(taskbox);
 }
 
-TaskTextureMapping::~TaskTextureMapping() = default;
+TaskTextureMapping::~TaskTextureMapping()
+{
+    // automatically deleted in the sub-class
+}
 
 bool TaskTextureMapping::accept()
 {

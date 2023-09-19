@@ -46,7 +46,9 @@ CommandActionPy::CommandActionPy(Py::PythonClassInstance* self, Py::Tuple& args,
     cmd = Application::Instance->commandManager().getCommandByName(name);
 }
 
-CommandActionPy::~CommandActionPy() = default;
+CommandActionPy::~CommandActionPy()
+{
+}
 
 Py::Object CommandActionPy::getAction()
 {

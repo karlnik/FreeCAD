@@ -47,9 +47,13 @@ using namespace PartGui;
 /// @namespace PartGui @class Workbench
 TYPESYSTEM_SOURCE(PartGui::Workbench, Gui::StdWorkbench)
 
-Workbench::Workbench() = default;
+Workbench::Workbench()
+{
+}
 
-Workbench::~Workbench() = default;
+Workbench::~Workbench()
+{
+}
 
 Gui::MenuItem* Workbench::setupMenuBar() const
 {
@@ -124,7 +128,6 @@ Gui::MenuItem* Workbench::setupMenuBar() const
           << "Part_Extrude"
           << "Part_Revolve"
           << "Part_Mirror"
-          << "Part_Scale"
           << "Part_Fillet"
           << "Part_Chamfer"
           << "Part_MakeFace"
@@ -184,7 +187,6 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
     *tool << "Part_Extrude"
           << "Part_Revolve"
           << "Part_Mirror"
-          << "Part_Scale"
           << "Part_Fillet"
           << "Part_Chamfer"
           << "Part_MakeFace"

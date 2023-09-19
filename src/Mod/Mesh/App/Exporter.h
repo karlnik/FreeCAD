@@ -187,12 +187,6 @@ public:
     ~Exporter3MF() override;
 
     bool addMesh(const char *name, const MeshObject & mesh) override;
-    /*!
-     * \brief SetForceModel
-     * Forcces to write the mesh as model even if itsn't a solid.
-     * \param model
-     */
-    void setForceModel(bool model);
 
 private:
     /// Write the meshes of the added objects to the output file
@@ -229,8 +223,8 @@ private:
     void write();
 
 private:
-    std::ostream *outputStreamPtr{nullptr};
-    int nextObjectIndex{0};
+    std::ostream *outputStreamPtr;
+    int nextObjectIndex;
 
     /// Helper for putting Base::Vector3f objects into a std::map in addMesh()
     class VertLess;

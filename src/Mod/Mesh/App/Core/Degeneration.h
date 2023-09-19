@@ -51,6 +51,10 @@ public:
    */
   explicit MeshEvalInvalids (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshEvalInvalids () override { }
+  /**
    * Searches for as 'Invalid' marked points or facets.
    */
   bool Evaluate () override;
@@ -73,6 +77,10 @@ public:
    */
   explicit MeshFixInvalids (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixInvalids () override { }
+  /**
    * Remove invalid elements.
    */
   bool Fixup () override;
@@ -93,6 +101,10 @@ public:
    * Construction.
    */
   explicit MeshEvalDuplicatePoints (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalDuplicatePoints () override { }
   /**
    * Merges points to one if the distance between them is less than the global \a MeshDefinitions::_fMinPointDistanceD1.
    */
@@ -116,6 +128,10 @@ public:
    */
   explicit MeshFixDuplicatePoints (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixDuplicatePoints () override { }
+  /**
    * Merges duplicated points.
    */
   bool Fixup () override;
@@ -133,6 +149,10 @@ public:
    * Construction.
    */
   explicit MeshEvalNaNPoints (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalNaNPoints () override { }
   /**
    * Returns false if a point with NaN coordinate is found.
    */
@@ -156,6 +176,10 @@ public:
    */
   explicit MeshFixNaNPoints (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixNaNPoints () override { }
+  /**
    * Merges duplicated points.
    */
   bool Fixup () override;
@@ -175,6 +199,10 @@ public:
    * Construction.
    */
   explicit MeshEvalDuplicateFacets (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalDuplicateFacets () override { }
   /**
    * Searches for duplicated facets.
    */
@@ -198,6 +226,10 @@ public:
    */
   explicit MeshFixDuplicateFacets (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixDuplicateFacets () override { }
+  /**
    * Removes duplicated facets.
    */
   bool Fixup () override;
@@ -214,6 +246,10 @@ public:
    * Construction.
    */
   explicit MeshEvalInternalFacets (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalInternalFacets () override { }
   /**
    * Identify internal facets.
    */
@@ -246,6 +282,10 @@ public:
   MeshEvalDegeneratedFacets (const MeshKernel &rclM, float fEps)
       : MeshEvaluation(rclM), fEpsilon(fEps) {}
   /**
+   * Destruction.
+   */
+  ~MeshEvalDegeneratedFacets () override { }
+  /**
    * Searches degenerated facets.
    */
   bool Evaluate () override;
@@ -276,6 +316,10 @@ public:
   MeshFixDegeneratedFacets (MeshKernel &rclM, float fEps)
       : MeshValidation(rclM), fEpsilon(fEps) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixDegeneratedFacets () override { }
+  /**
    * Removes degenerated facets.
    */
   bool Fixup () override;
@@ -302,6 +346,10 @@ public:
      */
   explicit MeshRemoveNeedles (MeshKernel &rclM, float fMinEdgeLen = 0.05f)
       : MeshValidation(rclM), fMinEdgeLength(std::min(fMinEdgeLen, 0.25f)) {}
+  /**
+   * Destruction.
+   */
+  ~MeshRemoveNeedles () override { }
   /**
    * Removes all facets with an edge smaller than \a fMinEdgeLength without leaving holes or gaps
    * in the mesh.
@@ -331,6 +379,10 @@ public:
   explicit MeshFixCaps (MeshKernel &rclM, float fMaxAng = 2.61f, float fFactor = 0.25f) // ~150 degree
       : MeshValidation(rclM), fMaxAngle(fMaxAng), fSplitFactor(fFactor) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixCaps () override { }
+  /**
    */
   bool Fixup () override;
 
@@ -353,6 +405,10 @@ public:
    */
   MeshEvalDeformedFacets (const MeshKernel &rclM, float fMinAngle, float fMaxAngle)
       : MeshEvaluation(rclM), fMinAngle(fMinAngle), fMaxAngle(fMaxAngle) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalDeformedFacets () override { }
   /**
    * Searches deformed facets.
    */
@@ -384,6 +440,10 @@ public:
       : MeshValidation(rclM), fMinAngle(fMinAngle), fMaxAngle(fMaxAngle),
         fMaxSwapAngle(fSwapAngle), fEpsilon(fEps) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixDeformedFacets () override { }
+  /**
    * Removes deformed facets.
    */
   bool Fixup () override;
@@ -412,6 +472,10 @@ public:
   explicit MeshFixMergeFacets (MeshKernel &rclM)
       : MeshValidation(rclM) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixMergeFacets () override { }
+  /**
    * Removes deformed facets.
    */
   bool Fixup () override;
@@ -425,6 +489,7 @@ class MeshExport MeshEvalDentsOnSurface : public MeshEvaluation
 {
 public:
     explicit MeshEvalDentsOnSurface (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+    ~MeshEvalDentsOnSurface() override {}
 
     bool Evaluate() override;
     std::vector<FacetIndex> GetIndices() const;
@@ -437,6 +502,7 @@ class MeshExport MeshFixDentsOnSurface : public MeshValidation
 {
 public:
     explicit MeshFixDentsOnSurface (MeshKernel &rclM) : MeshValidation( rclM ) { }
+    ~MeshFixDentsOnSurface() override {}
 
     bool Fixup() override;
 };
@@ -450,6 +516,7 @@ class MeshExport MeshEvalFoldsOnSurface : public MeshEvaluation
 {
 public:
     explicit MeshEvalFoldsOnSurface (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+    ~MeshEvalFoldsOnSurface() override {}
 
     bool Evaluate() override;
     std::vector<FacetIndex> GetIndices() const;
@@ -468,6 +535,7 @@ class MeshExport MeshEvalFoldsOnBoundary : public MeshEvaluation
 {
 public:
     explicit MeshEvalFoldsOnBoundary (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+    ~MeshEvalFoldsOnBoundary() override {}
 
     bool Evaluate() override;
     std::vector<FacetIndex> GetIndices() const;
@@ -480,6 +548,7 @@ class MeshExport MeshFixFoldsOnBoundary : public MeshValidation
 {
 public:
     explicit MeshFixFoldsOnBoundary (MeshKernel &rclM) : MeshValidation( rclM ) { }
+    ~MeshFixFoldsOnBoundary() override {}
 
     bool Fixup() override;
 };
@@ -492,6 +561,7 @@ class MeshExport MeshEvalFoldOversOnSurface : public MeshEvaluation
 {
 public:
     explicit MeshEvalFoldOversOnSurface (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+    ~MeshEvalFoldOversOnSurface() override {}
 
     bool Evaluate() override;
     std::vector<FacetIndex> GetIndices() const
@@ -511,6 +581,7 @@ class MeshExport MeshEvalBorderFacet : public MeshEvaluation
 public:
   MeshEvalBorderFacet (const MeshKernel &rclB, std::vector<FacetIndex>& f)
     : MeshEvaluation(rclB), _facets(f) {}
+  ~MeshEvalBorderFacet () override {}
   bool Evaluate() override;
 
 protected:
@@ -536,6 +607,10 @@ public:
    */
   explicit MeshEvalRangeFacet (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshEvalRangeFacet () override { }
+  /**
    * Searches for facets that has neighbour facet indices out of range.
    */
   bool Evaluate () override;
@@ -558,6 +633,10 @@ public:
    */
   explicit MeshFixRangeFacet (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixRangeFacet () override { }
+  /**
    * Fixes facets with neighbour indices out of range.
    */
   bool Fixup () override;
@@ -575,6 +654,10 @@ public:
    * Construction.
    */
   explicit MeshEvalRangePoint (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalRangePoint () override { }
   /**
    * Searches for facets that has point indices out of range.
    */
@@ -598,6 +681,10 @@ public:
    */
   explicit MeshFixRangePoint (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixRangePoint () override { }
+  /**
    * Fixes facets with point indices out of range.
    */
   bool Fixup () override;
@@ -616,6 +703,10 @@ public:
    * Construction.
    */
   explicit MeshEvalCorruptedFacets (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalCorruptedFacets () override { }
   /**
    * Searches for corrupted facets.
    */
@@ -640,6 +731,10 @@ public:
    */
   explicit MeshFixCorruptedFacets (MeshKernel &rclM) : MeshValidation( rclM ) { }
   /**
+   * Destruction.
+   */
+  ~MeshFixCorruptedFacets () override { }
+  /**
    * Removes corrupted facets.
    */
   bool Fixup () override;
@@ -657,6 +752,10 @@ public:
    * Construction.
    */
   explicit MeshEvalPointOnEdge (const MeshKernel &rclM) : MeshEvaluation( rclM ) { }
+  /**
+   * Destruction.
+   */
+  ~MeshEvalPointOnEdge () override { }
   /**
    * Searches for points that lie on edge of triangle.
    */
@@ -687,6 +786,10 @@ public:
    * Construction.
    */
   explicit MeshFixPointOnEdge (MeshKernel &rclM, bool fill = false) : MeshValidation( rclM ), fillBoundary(fill) { }
+  /**
+   * Destruction.
+   */
+  ~MeshFixPointOnEdge () override { }
   /**
    * Removes points that lie on edges of triangles.
    */

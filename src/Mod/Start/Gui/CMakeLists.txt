@@ -14,7 +14,6 @@ set(StartGui_LIBS
 
 set(StartGui_UIC_SRCS
     DlgStartPreferences.ui
-    DlgStartPreferencesAdvanced.ui
 )
 
 set (Start_TR_QRC ${CMAKE_CURRENT_BINARY_DIR}/Resources/Start_translation.qrc)
@@ -27,7 +26,6 @@ SET(StartGui_SRCS
     ${Start_QRC_SRCS}
     ${StartGui_UIC_SRCS}
     DlgStartPreferences.ui
-    DlgStartPreferencesAdvanced.ui
     DlgStartPreferencesImp.cpp
     DlgStartPreferencesImp.h
     AppStartGui.cpp

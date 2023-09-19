@@ -103,7 +103,7 @@ private:
   SoCoordinate3* coords;
   SoSeparator* labels;
   SbBox2f _bbox;
-  int _precision{3};
+  int _precision;
   App::ColorGradient _cColGrad;
 };
 

@@ -97,7 +97,9 @@ ViewProviderFemAnalysis::ViewProviderFemAnalysis()
     sPixmap = "FEM_Analysis";
 }
 
-ViewProviderFemAnalysis::~ViewProviderFemAnalysis() = default;
+ViewProviderFemAnalysis::~ViewProviderFemAnalysis()
+{
+}
 
 void ViewProviderFemAnalysis::attach(App::DocumentObject *obj)
 {

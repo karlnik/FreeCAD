@@ -130,13 +130,13 @@ void ViewProviderFemConstraint::setDisplayMode(const char* ModeName)
 
 std::vector<App::DocumentObject*> ViewProviderFemConstraint::claimChildren()const
 {
-    return {};
+    return std::vector<App::DocumentObject*>();
 }
 
 void ViewProviderFemConstraint::setupContextMenu(QMenu *menu, QObject *receiver, const char *member)
 {
     QAction *act;
-    act = menu->addAction(QObject::tr("Edit analysis feature"), receiver, member);
+    act = menu->addAction(QObject::tr("Edit constraint"), receiver, member);
     act->setData(QVariant((int)ViewProvider::Default));
     ViewProviderDocumentObject::setupContextMenu(menu, receiver,
                                                  member);// clazy:exclude=skipped-base-method

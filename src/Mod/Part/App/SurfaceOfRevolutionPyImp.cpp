@@ -38,7 +38,7 @@ using namespace Part;
 // returns a string which represents the object e.g. when printed in python
 std::string SurfaceOfRevolutionPy::representation() const
 {
-    return {"<SurfaceOfRevolution object>"};
+    return std::string("<SurfaceOfRevolution object>");
 }
 
 PyObject *SurfaceOfRevolutionPy::PyMake(struct _typeobject *, PyObject *, PyObject *)  // Python wrapper

@@ -53,7 +53,10 @@ DlgSettingsFemCcxImp::DlgSettingsFemCcxImp(QWidget* parent)
             this, &DlgSettingsFemCcxImp::onfileNameChanged);
 }
 
-DlgSettingsFemCcxImp::~DlgSettingsFemCcxImp() = default;
+DlgSettingsFemCcxImp::~DlgSettingsFemCcxImp()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsFemCcxImp::saveSettings()
 {

@@ -84,7 +84,7 @@ class AppExport PropertyQuantityConstraint : public PropertyQuantity
     TYPESYSTEM_HEADER_WITH_OVERRIDE();
 
 public:
-    PropertyQuantityConstraint() = default;
+    PropertyQuantityConstraint():_ConstStruct(nullptr){}
     ~PropertyQuantityConstraint() override = default;
 
     /// Constraint methods
@@ -113,8 +113,9 @@ public:
     const char* getEditorName() const override;
     void setPyObject(PyObject *) override;
 
-private:
-    const Constraints* _ConstStruct{nullptr};
+
+protected:
+    const Constraints* _ConstStruct;
 };
 
 // ------------------------------------------------------

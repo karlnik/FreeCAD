@@ -36,7 +36,11 @@ using namespace MeshCore;
 
 MeshTrimming::MeshTrimming(MeshKernel &rclM, const Base::ViewProjMethod* pclProj,
                            const Base::Polygon2d& rclPoly)
-  : myMesh(rclM), myProj(pclProj), myPoly(rclPoly)
+  : myMesh(rclM), myInner(true), myProj(pclProj), myPoly(rclPoly)
+{
+}
+
+MeshTrimming::~MeshTrimming()
 {
 }
 
@@ -448,6 +452,7 @@ bool MeshTrimming::CreateFacets(FacetIndex ulFacetPos, int iSide, const std::vec
         MeshFacet& facet = myMesh._aclFacetArray[ulFacetPos];
         AdjustFacet(facet, iSide);
 
+        MeshFacet clOrg(myMesh._aclFacetArray[ulFacetPos]);
         clFac = myMesh.GetFacet(ulFacetPos);
         // intersection points
         Base::Vector3f clP1(raclPoints[0]), clP2(raclPoints[1]), clP3(raclPoints[2]), clP4(raclPoints[3]);

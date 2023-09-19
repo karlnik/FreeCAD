@@ -35,8 +35,12 @@ class PartDesignGuiExport ViewProviderTransformed : public ViewProvider
     PROPERTY_HEADER_WITH_OVERRIDE(PartDesignGui::ViewProviderTransformed);
 
 public:
-    ViewProviderTransformed() = default;
-    ~ViewProviderTransformed() override  = default;
+    /// constructor
+    ViewProviderTransformed()
+        : pcRejectedRoot(nullptr) {}
+    /// destructor
+    ~ViewProviderTransformed() override
+        {}
 
     // The feature name of the subclass
     virtual const std::string & featureName() const;
@@ -60,7 +64,7 @@ protected:
     bool checkDlgOpen(TaskDlgTransformedParameters* transformedDlg);
 
     // node for the representation of rejected repetitions
-    SoGroup           * pcRejectedRoot{nullptr};
+    SoGroup           * pcRejectedRoot;
 
     QString diagMessage;
 

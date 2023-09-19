@@ -51,7 +51,10 @@ TaskDlgAnalysis::TaskDlgAnalysis(Fem::FemAnalysis* obj)
     Content.push_back(info);
 }
 
-TaskDlgAnalysis::~TaskDlgAnalysis() = default;
+TaskDlgAnalysis::~TaskDlgAnalysis()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

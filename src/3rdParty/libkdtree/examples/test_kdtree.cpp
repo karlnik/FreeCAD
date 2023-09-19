@@ -17,7 +17,7 @@ std::set<const void*> registered;
 
 struct triplet
 {
-  typedef double value_type;
+  typedef int value_type;
 
   triplet(value_type a, value_type b, value_type c)
   {
@@ -26,8 +26,7 @@ struct triplet
     d[2] = c;
     bool reg_ok = (registered.find(this) == registered.end());
     assert(reg_ok);
-    bool reg_inserted_ok = registered.insert(this).second;
-    assert(reg_inserted_ok);
+    registered.insert(this).second;
   }
 
   triplet(const triplet & x)
@@ -37,8 +36,7 @@ struct triplet
     d[2] = x.d[2];
     bool reg_ok = (registered.find(this) == registered.end());
     assert(reg_ok);
-    bool reg_inserted_ok = registered.insert(this).second;
-    assert(reg_inserted_ok);
+    registered.insert(this).second;
   }
 
   ~triplet()
@@ -66,7 +64,7 @@ struct triplet
 // same as triplet, except with the values reversed.
 struct alternate_triplet
 {
-  typedef double value_type;
+  typedef int value_type;
 
   alternate_triplet(const triplet & x)
   {
@@ -230,7 +228,8 @@ int main()
 
   tree_type copied(src);
   std::cout << copied << std::endl;
-  tree_type assigned = src;
+  tree_type assigned;
+  assigned = src;
   std::cout << assigned << std::endl;
 
   for (int loop = 0; loop != 4; ++loop)

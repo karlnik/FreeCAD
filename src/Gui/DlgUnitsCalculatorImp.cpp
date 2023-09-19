@@ -134,7 +134,9 @@ DlgUnitsCalculator::DlgUnitsCalculator( QWidget* parent, Qt::WindowFlags fl )
 }
 
 /** Destroys the object and frees any allocated resources */
-DlgUnitsCalculator::~DlgUnitsCalculator() = default;
+DlgUnitsCalculator::~DlgUnitsCalculator()
+{
+}
 
 void DlgUnitsCalculator::accept()
 {

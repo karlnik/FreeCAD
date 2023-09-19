@@ -49,7 +49,9 @@ ViewProviderFemConstraintDisplacement::ViewProviderFemConstraintDisplacement()
     ADD_PROPERTY(FaceColor, (0.2f, 0.3f, 0.2f));
 }
 
-ViewProviderFemConstraintDisplacement::~ViewProviderFemConstraintDisplacement() = default;
+ViewProviderFemConstraintDisplacement::~ViewProviderFemConstraintDisplacement()
+{
+}
 
 // FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintDisplacement::setEdit(int ModNum)

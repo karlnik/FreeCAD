@@ -47,21 +47,21 @@ DlgSettingsTheme::DlgSettingsTheme(QWidget* parent)
     ui->setupUi(this);
 
     connect(ui->styleSheetsCombobox, qOverload<int>(&QComboBox::activated), this, &DlgSettingsTheme::onStyleSheetChanged);
-    connect(ui->ThemeAccentColor1, &Gui::PrefColorButton::changed, this, &DlgSettingsTheme::onColorChanged);
-    connect(ui->ThemeAccentColor2, &Gui::PrefColorButton::changed, this, &DlgSettingsTheme::onColorChanged);
-    connect(ui->ThemeAccentColor3, &Gui::PrefColorButton::changed, this, &DlgSettingsTheme::onColorChanged);
 }
 
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsTheme::~DlgSettingsTheme() = default;
+DlgSettingsTheme::~DlgSettingsTheme()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsTheme::saveSettings()
 {
-    ui->ThemeAccentColor1->onSave();
-    ui->ThemeAccentColor2->onSave();
-    ui->ThemeAccentColor3->onSave();
+    ui->ThemeSecondaryColor->onSave();
+    ui->ThemeHighlightColor->onSave();
+    ui->ThemeFocusColor->onSave();
 
     if (styleSheetChanged)
         saveStyleSheet();
@@ -69,9 +69,9 @@ void DlgSettingsTheme::saveSettings()
 
 void DlgSettingsTheme::loadSettings()
 {
-    ui->ThemeAccentColor1->onRestore();
-    ui->ThemeAccentColor2->onRestore();
-    ui->ThemeAccentColor3->onRestore();
+    ui->ThemeSecondaryColor->onRestore();
+    ui->ThemeHighlightColor->onRestore();
+    ui->ThemeFocusColor->onRestore();
 
     loadStyleSheet();
 }
@@ -144,10 +144,6 @@ void DlgSettingsTheme::loadStyleSheet()
 
 void DlgSettingsTheme::onStyleSheetChanged(int index) {
     Q_UNUSED(index);
-    styleSheetChanged = true;
-}
-
-void DlgSettingsTheme::onColorChanged() {
     styleSheetChanged = true;
 }
 

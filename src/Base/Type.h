@@ -81,11 +81,10 @@ class BaseExport Type
 {
 public:
   /// Construction
-  Type(const Type& type) = default;
-  Type(Type&& type) = default;
-  Type() = default;
+  Type(const Type& type);
+  Type();
   /// Destruction
-  ~Type() = default;
+  virtual ~Type();
 
   /// creates a instance of this type
   void *createInstance();
@@ -112,8 +111,7 @@ public:
   unsigned int getKey() const;
   bool isBad() const;
 
-  Type& operator =  (const Type& type) = default;
-  Type& operator =  (Type&& type) = default;
+  void operator =  (const Type type);
   bool operator == (const Type type) const;
   bool operator != (const Type type) const;
 
@@ -131,10 +129,14 @@ protected:
 
 
 private:
-  unsigned int index{0};
+
+
+  unsigned int index;
+
 
   static std::map<std::string,unsigned int> typemap;
   static std::vector<TypeData*>     typedata;
+
   static std::set<std::string>  loadModuleSet;
 
 };
@@ -150,6 +152,12 @@ inline bool
 Type::operator != (const Type type) const
 {
   return (this->getKey() != type.getKey());
+}
+
+inline void
+Type::operator = (const Type type)
+{
+  this->index = type.getKey();
 }
 
 inline bool

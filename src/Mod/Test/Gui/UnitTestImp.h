@@ -31,11 +31,10 @@
 
 class QTreeWidgetItem;
 
-namespace TestGui
-{
+namespace TestGui {
 class Ui_UnitTest;
 
-class UnitTestDialog: public QDialog
+class UnitTestDialog : public QDialog
 {
     Q_OBJECT
 
@@ -67,7 +66,7 @@ protected:
     void setProgressColor(const QColor& col);
 
 private:
-    void onTreeViewFailureItemDoubleClicked(QTreeWidgetItem* item, int column);
+    void onTreeViewFailureItemDoubleClicked (QTreeWidgetItem * item, int column);
     void onHelpButtonClicked();
     void onAboutButtonClicked();
     void onStartButtonClicked();
@@ -78,7 +77,8 @@ private:
     static UnitTestDialog* _instance;
 };
 
-}  // namespace TestGui
+} // namespace TestGui
 
 
-#endif  // TESTGUI_UNITTESTIMP_H
+#endif // TESTGUI_UNITTESTIMP_H
+

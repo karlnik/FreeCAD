@@ -83,7 +83,10 @@ TaskDlgFeatureParameters::TaskDlgFeatureParameters(PartDesignGui::ViewProvider *
     assert(vp);
 }
 
-TaskDlgFeatureParameters::~TaskDlgFeatureParameters() = default;
+TaskDlgFeatureParameters::~TaskDlgFeatureParameters()
+{
+
+}
 
 bool TaskDlgFeatureParameters::accept() {
     App::DocumentObject* feature = vp->getObject();

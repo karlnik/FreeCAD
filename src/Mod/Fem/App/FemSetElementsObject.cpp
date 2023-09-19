@@ -33,9 +33,13 @@ using namespace App;
 PROPERTY_SOURCE(Fem::FemSetElementsObject, Fem::FemSetObject)
 
 
-FemSetElementsObject::FemSetElementsObject() = default;
+FemSetElementsObject::FemSetElementsObject()
+{
+}
 
-FemSetElementsObject::~FemSetElementsObject() = default;
+FemSetElementsObject::~FemSetElementsObject()
+{
+}
 
 short FemSetElementsObject::mustExecute() const
 {

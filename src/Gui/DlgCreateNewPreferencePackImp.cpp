@@ -57,7 +57,9 @@ DlgCreateNewPreferencePackImp::DlgCreateNewPreferencePackImp(QWidget* parent)
 }
 
 
-DlgCreateNewPreferencePackImp::~DlgCreateNewPreferencePackImp() = default;
+DlgCreateNewPreferencePackImp::~DlgCreateNewPreferencePackImp()
+{
+}
 
 void DlgCreateNewPreferencePackImp::setPreferencePackTemplates(const std::vector<Gui::PreferencePackManager::TemplateFile>& availableTemplates)
 {

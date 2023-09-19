@@ -47,7 +47,9 @@ ViewProviderFemConstraintBearing::ViewProviderFemConstraintBearing()
     sPixmap = "FEM_ConstraintBearing";
 }
 
-ViewProviderFemConstraintBearing::~ViewProviderFemConstraintBearing() = default;
+ViewProviderFemConstraintBearing::~ViewProviderFemConstraintBearing()
+{
+}
 
 bool ViewProviderFemConstraintBearing::setEdit(int ModNum)
 {

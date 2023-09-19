@@ -36,7 +36,9 @@ ViewProviderGeoFeatureGroup::ViewProviderGeoFeatureGroup()
     ViewProviderGeoFeatureGroupExtension::initExtension(this);
 }
 
-ViewProviderGeoFeatureGroup::~ViewProviderGeoFeatureGroup() = default;
+ViewProviderGeoFeatureGroup::~ViewProviderGeoFeatureGroup()
+{
+}
 
 
 // Python feature -----------------------------------------------------------------------

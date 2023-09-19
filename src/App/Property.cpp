@@ -54,7 +54,7 @@ static std::atomic<int64_t> _PropID;
 
 // Here is the implementation! Description should take place in the header file!
 Property::Property()
-  : _id(++_PropID)
+  :father(nullptr), myName(nullptr), _id(++_PropID)
 {
 }
 

@@ -64,7 +64,6 @@ protected:
 
 private:
     void addWorkbench(const QString& it, bool enabled);
-    void sortEnabledWorkbenches();
 
     void setStartWorkbenchComboItems();
 

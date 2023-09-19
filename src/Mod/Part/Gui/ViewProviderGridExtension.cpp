@@ -433,7 +433,8 @@ ViewProviderGridExtension::ViewProviderGridExtension()
 
 }
 
-ViewProviderGridExtension::~ViewProviderGridExtension() = default;
+ViewProviderGridExtension::~ViewProviderGridExtension()
+{}
 
 void ViewProviderGridExtension::setGridEnabled(bool enable)
 {

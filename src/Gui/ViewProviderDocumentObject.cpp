@@ -58,6 +58,8 @@ using namespace Gui;
 PROPERTY_SOURCE(Gui::ViewProviderDocumentObject, Gui::ViewProvider)
 
 ViewProviderDocumentObject::ViewProviderDocumentObject()
+  : pcObject(nullptr)
+  , pcDocument(nullptr)
 {
     static const char *dogroup = "Display Options";
     static const char *sgroup = "Selection";

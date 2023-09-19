@@ -33,8 +33,8 @@ class MeshKernel;
 class MeshExport TriangulationVerifier
 {
 public:
-    TriangulationVerifier() = default;
-    virtual ~TriangulationVerifier() = default;
+    TriangulationVerifier() {}
+    virtual ~TriangulationVerifier() {}
     virtual bool Accept(const Base::Vector3f& n,
                         const Base::Vector3f& p1,
                         const Base::Vector3f& p2,
@@ -148,6 +148,7 @@ class MeshExport EarClippingTriangulator : public AbstractPolygonTriangulator
 {
 public:
     EarClippingTriangulator();
+    ~EarClippingTriangulator() override;
 
 protected:
     bool Triangulate() override;
@@ -189,6 +190,7 @@ class MeshExport QuasiDelaunayTriangulator : public EarClippingTriangulator
 {
 public:
     QuasiDelaunayTriangulator();
+    ~QuasiDelaunayTriangulator() override;
 
 protected:
     bool Triangulate() override;
@@ -198,6 +200,7 @@ class MeshExport DelaunayTriangulator : public AbstractPolygonTriangulator
 {
 public:
     DelaunayTriangulator();
+    ~DelaunayTriangulator() override;
 
 protected:
     bool Triangulate() override;
@@ -207,6 +210,7 @@ class MeshExport FlatTriangulator : public AbstractPolygonTriangulator
 {
 public:
     FlatTriangulator();
+    ~FlatTriangulator() override;
 
     void PostProcessing(const std::vector<Base::Vector3f>&) override;
 
@@ -218,6 +222,7 @@ class MeshExport ConstraintDelaunayTriangulator : public AbstractPolygonTriangul
 {
 public:
     explicit ConstraintDelaunayTriangulator(float area);
+    ~ConstraintDelaunayTriangulator() override;
 
 protected:
     bool Triangulate() override;

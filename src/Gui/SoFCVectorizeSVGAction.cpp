@@ -137,7 +137,9 @@ public:
 
 // ----------------------------------------------------------------
 
-SoSVGVectorOutput::SoSVGVectorOutput() = default;
+SoSVGVectorOutput::SoSVGVectorOutput()
+{
+}
 
 SoSVGVectorOutput::~SoSVGVectorOutput()
 {
@@ -376,7 +378,10 @@ void SoFCVectorizeSVGAction::initClass()
     SO_ACTION_INIT_CLASS(SoFCVectorizeSVGAction, SoVectorizeAction);
 }
 
-SoFCVectorizeSVGAction::SoFCVectorizeSVGAction()
+SoFCVectorizeSVGAction::SoFCVectorizeSVGAction() :
+    m_backgroundState(true),
+    m_lineWidth(1.0),
+    m_usemm(false)
 {
     SO_ACTION_CONSTRUCTOR(SoFCVectorizeSVGAction);
     this->setOutput(new SoSVGVectorOutput);

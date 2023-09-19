@@ -115,7 +115,7 @@ QVariant PropertyFemMeshItem::value(const App::Property*) const
     out << QObject::tr("Polyhedrons") << ": " << ctH << ", ";
     out << QObject::tr("Groups") << ": " << ctG;
     out << ']';
-    return {str};
+    return QVariant(str);
 }
 
 QVariant PropertyFemMeshItem::toolTip(const App::Property* prop) const
@@ -145,7 +145,7 @@ void PropertyFemMeshItem::setEditorData(QWidget* editor, const QVariant& data) c
 QVariant PropertyFemMeshItem::editorData(QWidget* editor) const
 {
     Q_UNUSED(editor);
-    return {};
+    return QVariant();
 }
 
 int PropertyFemMeshItem::countNodes() const

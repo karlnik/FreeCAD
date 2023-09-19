@@ -121,8 +121,8 @@ TaskPipeParameters::TaskPipeParameters(ViewProviderPipe *PipeView, bool /*newObj
     }
     // the spine edges
     std::vector<std::string> strings = pipe->Spine.getSubValues();
-    for (const auto & string : strings) {
-        QString label = QString::fromStdString(string);
+    for (std::vector<std::string>::const_iterator it = strings.begin(); it != strings.end(); ++it) {
+        QString label = QString::fromStdString(*it);
         QListWidgetItem* item = new QListWidgetItem();
         item->setText(label);
         item->setData(Qt::UserRole, QByteArray(label.toUtf8()));
@@ -255,8 +255,8 @@ void TaskPipeParameters::removeFromListWidget(QListWidget* widget, QString items
 {
     QList<QListWidgetItem*> items = widget->findItems(itemstr, Qt::MatchExactly);
     if (!items.empty()) {
-        for (auto item : items) {
-            QListWidgetItem* it = widget->takeItem(widget->row(item));
+        for (QList<QListWidgetItem*>::const_iterator i = items.cbegin(); i != items.cend(); i++) {
+            QListWidgetItem* it = widget->takeItem(widget->row(*i));
             delete it;
         }
     }
@@ -577,8 +577,8 @@ TaskPipeOrientation::TaskPipeOrientation(ViewProviderPipe* PipeView, bool /*newO
         ui->profileBaseEdit->setText(QString::fromUtf8(pipe->AuxillerySpine.getValue()->Label.getValue()));
 
     std::vector<std::string> strings = pipe->AuxillerySpine.getSubValues();
-    for (const auto & string : strings) {
-        QString label = QString::fromStdString(string);
+    for (std::vector<std::string>::const_iterator it = strings.begin(); it != strings.end(); ++it) {
+        QString label = QString::fromStdString(*it);
         QListWidgetItem* item = new QListWidgetItem();
         item->setText(label);
         item->setData(Qt::UserRole, QByteArray(label.toUtf8()));
@@ -751,8 +751,8 @@ void TaskPipeOrientation::removeFromListWidget(QListWidget* widget, QString name
 {
     QList<QListWidgetItem*> items = widget->findItems(name, Qt::MatchExactly);
     if (!items.empty()) {
-        for (auto item : items) {
-            QListWidgetItem* it = widget->takeItem(widget->row(item));
+        for (QList<QListWidgetItem*>::const_iterator i = items.cbegin(); i != items.cend(); i++) {
+            QListWidgetItem* it = widget->takeItem(widget->row(*i));
             delete it;
         }
     }
@@ -980,8 +980,8 @@ void TaskPipeScaling::removeFromListWidget(QListWidget* widget, QString name)
 {
     QList<QListWidgetItem*> items = widget->findItems(name, Qt::MatchExactly);
     if (!items.empty()) {
-        for (auto item : items) {
-            QListWidgetItem* it = widget->takeItem(widget->row(item));
+        for (QList<QListWidgetItem*>::const_iterator i = items.cbegin(); i != items.cend(); i++) {
+            QListWidgetItem* it = widget->takeItem(widget->row(*i));
             delete it;
         }
     }

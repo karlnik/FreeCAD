@@ -66,7 +66,6 @@
 #include <BRepOffsetAPI_MakeEvolved.hxx>
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include <Mod/Part/App/BezierSurfacePy.h>
@@ -443,14 +442,12 @@ PyObject* TopoShapeFacePy::makeEvolved(PyObject *args, PyObject *kwds)
     int JoinType = int(GeomAbs_Arc);
     double Tolerance = 0.0000001;
 
-    static const std::array<const char *, 7> kwds_evolve{"Profile", "Join", "AxeProf", "Solid", "ProfOnSpine",
-                                                         "Tolerance", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!|iO!O!O!d", kwds_evolve,
-                                             &TopoShapeWirePy::Type, &Profile, &JoinType,
-                                             &PyBool_Type, &AxeProf, &PyBool_Type, &Solid,
-                                             &PyBool_Type, &ProfOnSpine, &Tolerance)) {
+    static char* kwds_evolve[] = {"Profile", "Join", "AxeProf", "Solid", "ProfOnSpine", "Tolerance", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!|iO!O!O!d", kwds_evolve,
+                                     &TopoShapeWirePy::Type, &Profile, &JoinType,
+                                     &PyBool_Type, &AxeProf, &PyBool_Type, &Solid,
+                                     &PyBool_Type, &ProfOnSpine, &Tolerance))
         return nullptr;
-    }
 
     const TopoDS_Face& spine = TopoDS::Face(getTopoShapePtr()->getShape());
     BRepBuilderAPI_FindPlane findPlane(spine);
@@ -851,8 +848,8 @@ PyObject* TopoShapeFacePy::cutHoles(PyObject *args)
             if (!wires.empty()) {
                 const TopoDS_Face& f = TopoDS::Face(getTopoShapePtr()->getShape());
                 BRepBuilderAPI_MakeFace mkFace(f);
-                for (const auto & wire : wires)
-                    mkFace.Add(wire);
+                for (std::vector<TopoDS_Wire>::iterator it = wires.begin(); it != wires.end(); ++it)
+                    mkFace.Add(*it);
                 if (!mkFace.IsDone()) {
                     switch (mkFace.Error()) {
                     case BRepBuilderAPI_NoFace:

@@ -39,8 +39,8 @@ public:
     static void initClass(){
         SO_EVENT_INIT_CLASS(SoGestureEvent, SoEvent);
     }
-    SoGestureEvent() = default;
-    ~SoGestureEvent() override = default;
+    SoGestureEvent() : state(SbGSNoGesture) {}
+    ~SoGestureEvent() override{}
     SbBool isSoGestureEvent(const SoEvent* ev) const;
 
     enum SbGestureState {
@@ -50,7 +50,7 @@ public:
         SbGSEnd = Qt::GestureFinished,
         SbGsCanceled = Qt::GestureCanceled
     };
-    SbGestureState state{SbGSNoGesture};
+    SbGestureState state;
 };
 
 class SoGesturePanEvent : public SoGestureEvent {
@@ -59,9 +59,9 @@ public:
     static void initClass(){//needs to be called before the class can be used. Initializes type IDs of the class.
         SO_EVENT_INIT_CLASS(SoGesturePanEvent, SoGestureEvent);
     }
-    SoGesturePanEvent() = default;
+    SoGesturePanEvent() {}
     SoGesturePanEvent(QPanGesture *qpan, QWidget *widget);
-    ~SoGesturePanEvent() override = default;
+    ~SoGesturePanEvent() override{}
     SbBool isSoGesturePanEvent(const SoEvent* ev) const;
 
     SbVec2f deltaOffset;
@@ -79,7 +79,7 @@ public:
     {
     }
     SoGesturePinchEvent(QPinchGesture* qpinch, QWidget* widget);
-    ~SoGesturePinchEvent() override = default;
+    ~SoGesturePinchEvent() override{}
     SbBool isSoGesturePinchEvent(const SoEvent* ev) const;
 
     SbVec2f startCenter;//in GL pixel coordinates (from bottom left corner of view area)
@@ -104,7 +104,7 @@ public:
     {
     }
     SoGestureSwipeEvent(QSwipeGesture* qwsipe, QWidget *widget);
-    ~SoGestureSwipeEvent() override = default;
+    ~SoGestureSwipeEvent() override{}
     SbBool isSoGestureSwipeEvent(const SoEvent* ev) const;
 
     double angle;
@@ -117,7 +117,7 @@ class GesturesDevice : public Quarter::InputDevice {
 public:
     explicit GesturesDevice(QWidget* widget);//it needs to know the widget to do coordinate translation
 
-    ~GesturesDevice() override = default;
+    ~GesturesDevice() override  {}
     const SoEvent* translateEvent(QEvent* event) override;
 protected:
     QWidget* widget;

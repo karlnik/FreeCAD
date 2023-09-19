@@ -158,7 +158,7 @@ public:
 
   unsigned int getMemSize () const override;
 
-  virtual std::string getFullName() const {return {};}
+  virtual std::string getFullName() const {return std::string();}
 
   /// find a property by its name
   virtual Property *getPropertyByName(const char* name) const;
@@ -296,7 +296,7 @@ private: \
   TYPESYSTEM_HEADER_WITH_OVERRIDE(); \
 protected: \
   static const App::PropertyData * getPropertyDataPtr(void); \
-  const App::PropertyData &getPropertyData(void) const override; \
+  virtual const App::PropertyData &getPropertyData(void) const override; \
 private: \
   static App::PropertyData propertyData
 ///

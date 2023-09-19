@@ -35,8 +35,7 @@ PROPERTY_SOURCE(RobotGui::ViewProviderEdge2TracObject, RobotGui::ViewProviderTra
 
 bool ViewProviderEdge2TracObject::doubleClicked()
 {
-    Gui::TaskView::TaskDialog* dlg =
-        new TaskDlgEdge2Trac(static_cast<Robot::Edge2TracObject*>(getObject()));
+    Gui::TaskView::TaskDialog* dlg = new TaskDlgEdge2Trac(static_cast<Robot::Edge2TracObject *>(getObject()));
     Gui::Control().showDialog(dlg);
     return true;
 }
@@ -44,11 +43,12 @@ bool ViewProviderEdge2TracObject::doubleClicked()
 
 bool ViewProviderEdge2TracObject::setEdit(int)
 {
-    Gui::TaskView::TaskDialog* dlg =
-        new TaskDlgEdge2Trac(static_cast<Robot::Edge2TracObject*>(getObject()));
+    Gui::TaskView::TaskDialog* dlg = new TaskDlgEdge2Trac(static_cast<Robot::Edge2TracObject *>(getObject()));
     Gui::Control().showDialog(dlg);
     return true;
 }
 
 void ViewProviderEdge2TracObject::unsetEdit(int)
-{}
+{
+
+}

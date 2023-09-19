@@ -22,18 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-//===========================================================================
-// DrawViewPart overview
-//===========================================================================
-//
-// 1) get the shapes from the source objects
-// 2) center, scale and rotate the shapes
-// 3) project the shape using the OCC HLR algorithms
-// 4) add cosmetic and other objects that don't participate in hlr
-// 5) find the closed regions (faces) in the edges returned by hlr
-// everything else is mostly providing services to other objects, such as the
-// actual drawing routines in Gui
-
 #include "PreCompiled.h"
 
 #ifndef _PreComp_
@@ -89,10 +77,15 @@
 #include "GeometryObject.h"
 #include "ShapeExtractor.h"
 #include "Preferences.h"
-#include "ShapeUtils.h"
+
 
 using namespace TechDraw;
 using DU = DrawUtil;
+
+//===========================================================================
+// DrawViewPart
+//===========================================================================
+
 
 PROPERTY_SOURCE_WITH_EXTENSIONS(TechDraw::DrawViewPart, TechDraw::DrawView)
 
@@ -164,8 +157,6 @@ DrawViewPart::~DrawViewPart()
     removeAllReferencesFromGeom();
 }
 
-//! returns a compound of all the shapes from the DocumentObjects in the Source &
-//!  XSource property lists
 TopoDS_Shape DrawViewPart::getSourceShape(bool fuse) const
 {
     //    Base::Console().Message("DVP::getSourceShape()\n");
@@ -179,15 +170,15 @@ TopoDS_Shape DrawViewPart::getSourceShape(bool fuse) const
     return ShapeExtractor::getShapes(links);
 }
 
-//! deliver a shape appropriate for making a detail view based on this view
-//! TODO: why does dvp do the thinking for detail, but section picks its own
-//! version of the shape?  Should we have a getShapeForSection?
+// deliver a shape appropriate for making a detail view based on this view
+// TODO: why does dvp do the thinking for detail, but section picks its own
+// version of the shape?  Should we have a getShapeForSection?
 TopoDS_Shape DrawViewPart::getShapeForDetail() const
 {
-    return ShapeUtils::rotateShape(getSourceShape(true), getProjectionCS(), Rotation.getValue());
+    return TechDraw::rotateShape(getSourceShape(true), getProjectionCS(), Rotation.getValue());
 }
 
-//! combine the regular links and xlinks into a single list
+// combine the regular links and xlinks into a single list
 std::vector<App::DocumentObject*> DrawViewPart::getAllSources() const
 {
     //    Base::Console().Message("DVP::getAllSources()\n");
@@ -201,8 +192,8 @@ std::vector<App::DocumentObject*> DrawViewPart::getAllSources() const
     return result;
 }
 
-//! pick supported 2d shapes out of the Source properties and
-//! add them directly to the geometry without going through HLR
+//pick supported 2d shapes out of the Source properties and
+//add them directly to the geometry without going through HLR
 void DrawViewPart::addShapes2d(void)
 {
     std::vector<TopoDS_Shape> shapes = ShapeExtractor::getShapes2d(getAllSources());
@@ -220,11 +211,11 @@ void DrawViewPart::addShapes2d(void)
         else if (s.ShapeType() == TopAbs_EDGE) {
             //not supporting edges yet.  Why?
             //Base::Console().Message("DVP::add2dShapes - found loose edge - isNull: %d\n", s.IsNull());
-            TopoDS_Shape sTrans = ShapeUtils::moveShape(s,
+            TopoDS_Shape sTrans = TechDraw::moveShape(s,
                                                       m_saveCentroid * -1.0);
-            TopoDS_Shape sScale = ShapeUtils::scaleShape(sTrans,
+            TopoDS_Shape sScale = TechDraw::scaleShape(sTrans,
                                                        getScale());
-            TopoDS_Shape sMirror = ShapeUtils::mirrorShape(sScale);
+            TopoDS_Shape sMirror = TechDraw::mirrorShape(sScale);
             TopoDS_Edge edge = TopoDS::Edge(sMirror);
             BaseGeomPtr bg = projectEdge(edge);
 
@@ -309,7 +300,7 @@ void DrawViewPart::partExec(TopoDS_Shape& shape)
     }
 }
 
-//! prepare the shape for HLR processing by centering, scaling and rotating it
+//prepare the shape for HLR processing by centering, scaling and rotating it
 GeometryObjectPtr DrawViewPart::makeGeometryForShape(TopoDS_Shape& shape)
 {
 //    Base::Console().Message("DVP::makeGeometryForShape() - %s\n", getNameInDocument());
@@ -322,14 +313,14 @@ GeometryObjectPtr DrawViewPart::makeGeometryForShape(TopoDS_Shape& shape)
     BRepBuilderAPI_Copy copier(shape, copyGeometry, copyMesh);
     TopoDS_Shape localShape = copier.Shape();
 
-    gp_Pnt gCentroid = ShapeUtils::findCentroid(localShape, getProjectionCS());
+    gp_Pnt gCentroid = TechDraw::findCentroid(localShape, getProjectionCS());
     m_saveCentroid = DU::toVector3d(gCentroid);
     m_saveShape = centerScaleRotate(this, localShape, m_saveCentroid);
 
     return buildGeometryObject(localShape, getProjectionCS());
 }
 
-//! Modify a shape by centering, scaling and rotating and return the centered (but not rotated) shape
+//Modify a shape by centering, scaling and rotating and return the centered (but not rotated) shape
 TopoDS_Shape DrawViewPart::centerScaleRotate(DrawViewPart* dvp, TopoDS_Shape& inOutShape,
                                              Base::Vector3d centroid)
 {
@@ -337,18 +328,18 @@ TopoDS_Shape DrawViewPart::centerScaleRotate(DrawViewPart* dvp, TopoDS_Shape& in
     gp_Ax2 viewAxis = dvp->getProjectionCS();
 
     //center shape on origin
-    TopoDS_Shape centeredShape = ShapeUtils::moveShape(inOutShape, centroid * -1.0);
+    TopoDS_Shape centeredShape = TechDraw::moveShape(inOutShape, centroid * -1.0);
 
-    inOutShape = ShapeUtils::scaleShape(centeredShape, dvp->getScale());
+    inOutShape = TechDraw::scaleShape(centeredShape, dvp->getScale());
     if (!DrawUtil::fpCompare(dvp->Rotation.getValue(), 0.0)) {
-        inOutShape = ShapeUtils::rotateShape(inOutShape, viewAxis,
+        inOutShape = TechDraw::rotateShape(inOutShape, viewAxis,
                                            dvp->Rotation.getValue());//conventional rotation
     }
     //    BRepTools::Write(inOutShape, "DVPScaled.brep");            //debug
     return centeredShape;
 }
 
-//! create a geometry object and trigger the HLR process in another thread
+//create a geometry object and trigger the HLR process in another thread
 TechDraw::GeometryObjectPtr DrawViewPart::buildGeometryObject(TopoDS_Shape& shape,
                                                               const gp_Ax2& viewAxis)
 {
@@ -395,7 +386,7 @@ TechDraw::GeometryObjectPtr DrawViewPart::buildGeometryObject(TopoDS_Shape& shap
     return go;
 }
 
-//! continue processing after hlr thread completes
+//continue processing after hlr thread completes
 void DrawViewPart::onHlrFinished(void)
 {
     //    Base::Console().Message("DVP::onHlrFinished() - %s\n", getNameInDocument());
@@ -445,7 +436,7 @@ void DrawViewPart::onHlrFinished(void)
     }
 }
 
-//! run any tasks that need to been done after geometry is available
+//run any tasks that need to been done after geometry is available
 void DrawViewPart::postHlrTasks(void)
 {
     //    Base::Console().Message("DVP::postHlrTasks() - %s\n", getNameInDocument());
@@ -1002,7 +993,7 @@ double DrawViewPart::getSizeAlongVector(Base::Vector3d alignmentVector)
     if (getEdgeCompound().IsNull()) {
         return 1.0;
     }
-    TopoDS_Shape rotatedShape = ShapeUtils::rotateShape(getEdgeCompound(), OXYZ, alignmentAngle * 180.0 / M_PI);
+    TopoDS_Shape rotatedShape = rotateShape(getEdgeCompound(), OXYZ, alignmentAngle * 180.0 / M_PI);
     Bnd_Box shapeBox;
     shapeBox.SetGap(0.0);
     BRepBndLib::AddOptimal(rotatedShape, shapeBox);
@@ -1154,7 +1145,7 @@ Base::Vector3d DrawViewPart::getCurrentCentroid() const
         return Base::Vector3d(0.0, 0.0, 0.0);
     }
     gp_Ax2 cs = getProjectionCS();
-    gp_Pnt gCenter = ShapeUtils::findCentroid(shape, cs);
+    gp_Pnt gCenter = TechDraw::findCentroid(shape, cs);
     return DU::toVector3d(gCenter);
 }
 
@@ -1296,7 +1287,7 @@ Base::Vector3d DrawViewPart::getLegacyX(const Base::Vector3d& pt, const Base::Ve
                                         const bool flip) const
 {
     //    Base::Console().Message("DVP::getLegacyX() - %s\n", Label.getValue());
-    gp_Ax2 viewAxis = ShapeUtils::legacyViewAxis1(pt, axis, flip);
+    gp_Ax2 viewAxis = TechDraw::legacyViewAxis1(pt, axis, flip);
     gp_Dir gXDir = viewAxis.XDirection();
     return Base::Vector3d(gXDir.X(), gXDir.Y(), gXDir.Z());
 }

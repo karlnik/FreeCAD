@@ -49,7 +49,9 @@ ViewProviderFemConstraintForce::ViewProviderFemConstraintForce()
     sPixmap = "FEM_ConstraintForce";
 }
 
-ViewProviderFemConstraintForce::~ViewProviderFemConstraintForce() = default;
+ViewProviderFemConstraintForce::~ViewProviderFemConstraintForce()
+{
+}
 
 bool ViewProviderFemConstraintForce::setEdit(int ModNum)
 {

@@ -35,7 +35,9 @@ ListWidgetDragBugFix::ListWidgetDragBugFix(QWidget * parent)
 {
 }
 
-ListWidgetDragBugFix::~ListWidgetDragBugFix() = default;
+ListWidgetDragBugFix::~ListWidgetDragBugFix()
+{
+}
 
 void ListWidgetDragBugFix::dragMoveEvent(QDragMoveEvent *event)
 {

@@ -6,7 +6,7 @@
     <message>
       <location filename="../../Command.cpp" line="74"/>
       <source>Inspection</source>
-      <translation>Pregled</translation>
+      <translation>Pokrožen pravokotnik</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="75"/>
@@ -24,7 +24,7 @@
     <message>
       <location filename="../../Command.cpp" line="48"/>
       <source>Inspection</source>
-      <translation>Pregled</translation>
+      <translation>Pokrožen pravokotnik</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="49"/>
@@ -41,7 +41,7 @@
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../VisualInspection.cpp" line="237"/>
+      <location filename="../../VisualInspection.cpp" line="230"/>
       <source>Visual Inspection</source>
       <translation>Vidni pregled</translation>
     </message>
@@ -94,38 +94,38 @@
   <context>
     <name>QObject</name>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="483"/>
+      <location filename="../../ViewProviderInspection.cpp" line="455"/>
       <source>Remove annotations</source>
       <translation>Odstrani pripise</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="484"/>
+      <location filename="../../ViewProviderInspection.cpp" line="456"/>
       <source>Do you want to remove all annotations?</source>
       <translation>Ali želite odstraniti vse pripise?</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="542"/>
+      <location filename="../../ViewProviderInspection.cpp" line="508"/>
       <source>Annotation</source>
-      <translation>Pripis</translation>
+      <translation>Opis</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="545"/>
+      <location filename="../../ViewProviderInspection.cpp" line="511"/>
       <source>Leave info mode</source>
       <translation>Zapusti podatkovni način</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="680"/>
+      <location filename="../../ViewProviderInspection.cpp" line="632"/>
       <source>Distance: &gt; %1</source>
       <translation>Razdalja: &gt; %1</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="684"/>
+      <location filename="../../ViewProviderInspection.cpp" line="635"/>
       <source>Distance: &lt; %1</source>
       <translation>Razdalja: &lt; %1</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderInspection.cpp" line="704"/>
-      <location filename="../../ViewProviderInspection.cpp" line="721"/>
+      <location filename="../../ViewProviderInspection.cpp" line="654"/>
+      <location filename="../../ViewProviderInspection.cpp" line="670"/>
       <source>Distance: %1</source>
       <translation>Razdalja: %1</translation>
     </message>

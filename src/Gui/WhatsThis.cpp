@@ -50,7 +50,9 @@ StdCmdDescription::StdCmdDescription()
   sAccel        = "F1";
 }
 
-StdCmdDescription::~StdCmdDescription() = default;
+StdCmdDescription::~StdCmdDescription()
+{
+}
 
 Action * StdCmdDescription::createAction()
 {

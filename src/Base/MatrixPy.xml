@@ -185,16 +185,16 @@ index : int
 vector : Base.Vector</UserDocu>
       </Documentation>
     </Methode>
-    <Methode Name="diagonal" Const="true">
+    <Methode Name="trace" Const="true">
       <Documentation>
-        <UserDocu>diagonal() -> Base.Vector
+        <UserDocu>trace() -> Base.Vector
 
 Return the diagonal of the 3x3 leading principal submatrix as vector.</UserDocu>
       </Documentation>
     </Methode>
-    <Methode Name="setDiagonal">
+    <Methode Name="setTrace">
       <Documentation>
-        <UserDocu>setDiagonal(vector) -> None
+        <UserDocu>setTrace(vector) -> None
 
 Set the diagonal of the 3x3 leading principal submatrix.
 

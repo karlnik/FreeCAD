@@ -146,7 +146,7 @@ public:
             return genericSetAttro( name_, value );
         }
     }
-    virtual PyCxx_ssize_t sequence_length()
+    virtual int sequence_length()
     {
         // len(x)
         return m_array.size();

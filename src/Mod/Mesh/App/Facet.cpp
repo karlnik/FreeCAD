@@ -55,7 +55,9 @@ Facet::Facet(const Facet& f)
     }
 }
 
-Facet::~Facet() = default;
+Facet::~Facet()
+{
+}
 
 void Facet::operator = (const Facet& f)
 {

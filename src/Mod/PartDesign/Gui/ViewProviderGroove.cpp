@@ -39,7 +39,9 @@ ViewProviderGroove::ViewProviderGroove()
     sPixmap = "PartDesign_Groove.svg";
 }
 
-ViewProviderGroove::~ViewProviderGroove() = default;
+ViewProviderGroove::~ViewProviderGroove()
+{
+}
 
 void ViewProviderGroove::setupContextMenu(QMenu* menu, QObject* receiver, const char* member)
 {

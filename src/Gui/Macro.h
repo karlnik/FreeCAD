@@ -56,7 +56,7 @@ public:
 private:
     QStringList macroInProgress;    /**< Container for the macro */
     QString macroName;              /**< name of the macro */
-    bool openMacro{false};
+    bool openMacro;
 };
 
 class MacroOutputBuffer
@@ -75,7 +75,7 @@ public:
     }
     void incrementIfNoComment(int type);
 
-    long totalLines{0};
+    long totalLines;
     std::vector<std::pair<int, std::string> > pendingLine;
 };
 
@@ -89,9 +89,9 @@ public:
     static bool isGuiCommand(int type);
     static bool isAppCommand(int type);
 
-    bool recordGui{true};
-    bool guiAsComment{true};
-    bool scriptToPyConsole{true};
+    bool recordGui;
+    bool guiAsComment;
+    bool scriptToPyConsole;
 };
 
 /** Macro recording and play back management
@@ -170,8 +170,8 @@ private:
     MacroFile macroFile;
     MacroOutputBuffer buffer;
     MacroOutputOption option;
-    bool localEnv{true};
-    mutable PythonConsole* pyConsole{nullptr};       // link to the python console
+    bool localEnv;
+    mutable PythonConsole* pyConsole;       // link to the python console
     PythonDebugger* pyDebugger;
     Base::Reference<ParameterGrp> params;  // link to the Macro parameter group
 

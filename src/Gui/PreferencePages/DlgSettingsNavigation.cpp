@@ -64,7 +64,9 @@ DlgSettingsNavigation::DlgSettingsNavigation(QWidget* parent)
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsNavigation::~DlgSettingsNavigation() = default;
+DlgSettingsNavigation::~DlgSettingsNavigation()
+{
+}
 
 void DlgSettingsNavigation::saveSettings()
 {
@@ -340,7 +342,9 @@ CameraDialog::CameraDialog(QWidget* parent)
             &CameraDialog::onCurrentViewClicked);
 }
 
-CameraDialog::~CameraDialog() = default;
+CameraDialog::~CameraDialog()
+{
+}
 
 void CameraDialog::setValues(double q0, double q1, double q2, double q3)
 {

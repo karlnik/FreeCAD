@@ -39,7 +39,6 @@
 #include <Base/Console.h>
 #include <Base/FileInfo.h>
 #include <Base/Interpreter.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/Stream.h>
 #include <Base/VectorPy.h>
 #include <Mod/Part/App/OCCError.h>
@@ -326,14 +325,13 @@ namespace PathApp {
           PyObject *pShapes=nullptr;
           PyObject *start=nullptr;
           PyObject *return_end=Py_False;
-          static const std::array<const char *, 22> kwd_list {"shapes", "start", "return_end",
+          static char* kwd_list[] = {"shapes", "start", "return_end",
                   PARAM_FIELD_STRINGS(ARG,AREA_PARAMS_PATH), nullptr};
-          if (!Base::Wrapped_ParseTupleAndKeywords(args.ptr(), kwds.ptr(),
+          if (!PyArg_ParseTupleAndKeywords(args.ptr(), kwds.ptr(),
                   "O|O!O!" PARAM_PY_KWDS(AREA_PARAMS_PATH),
                   kwd_list, &pShapes, &(Base::VectorPy::Type), &start, &PyBool_Type, &return_end,
-                  PARAM_REF(PARAM_FARG,AREA_PARAMS_PATH))) {
+                  PARAM_REF(PARAM_FARG,AREA_PARAMS_PATH)))
               throw Py::Exception();
-          }
 
           std::list<TopoDS_Shape> shapes;
           if (PyObject_TypeCheck(pShapes, &(Part::TopoShapePy::Type)))
@@ -378,10 +376,10 @@ namespace PathApp {
           PARAM_PY_DECLARE_INIT(PARAM_FARG,AREA_PARAMS_SORT)
           PyObject *pShapes=nullptr;
           PyObject *start=nullptr;
-          static const std::array<const char *, 12> kwd_list {"shapes", "start",
+          static char* kwd_list[] = {"shapes", "start",
                   PARAM_FIELD_STRINGS(ARG,AREA_PARAMS_ARC_PLANE),
                   PARAM_FIELD_STRINGS(ARG,AREA_PARAMS_SORT), nullptr};
-          if (!Base::Wrapped_ParseTupleAndKeywords(args.ptr(), kwds.ptr(),
+          if (!PyArg_ParseTupleAndKeywords(args.ptr(), kwds.ptr(),
                   "O|O!"
                   PARAM_PY_KWDS(AREA_PARAMS_ARC_PLANE)
                   PARAM_PY_KWDS(AREA_PARAMS_SORT),

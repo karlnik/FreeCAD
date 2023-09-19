@@ -4,18 +4,18 @@
   <context>
     <name>CmdDrawingAnnotation</name>
     <message>
-      <location filename="../../Command.cpp" line="476"/>
+      <location filename="../../Command.cpp" line="475"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="477"/>
+      <location filename="../../Command.cpp" line="476"/>
       <source>&amp;Annotation</source>
       <translation>&amp;Anotación</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="478"/>
-      <location filename="../../Command.cpp" line="480"/>
+      <location filename="../../Command.cpp" line="477"/>
+      <location filename="../../Command.cpp" line="479"/>
       <source>Inserts an Annotation view in the active drawing</source>
       <translation>Inserta una anotación en el dibujo activo</translation>
     </message>
@@ -23,18 +23,18 @@
   <context>
     <name>CmdDrawingClip</name>
     <message>
-      <location filename="../../Command.cpp" line="524"/>
+      <location filename="../../Command.cpp" line="523"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="525"/>
+      <location filename="../../Command.cpp" line="524"/>
       <source>&amp;Clip</source>
       <translation>&amp;Clip</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="526"/>
-      <location filename="../../Command.cpp" line="528"/>
+      <location filename="../../Command.cpp" line="525"/>
+      <location filename="../../Command.cpp" line="527"/>
       <source>Inserts a clip group in the active drawing</source>
       <translation>Inserta un clip de grupo en el actual dibujo</translation>
     </message>
@@ -42,18 +42,18 @@
   <context>
     <name>CmdDrawingDraftView</name>
     <message>
-      <location filename="../../Command.cpp" line="715"/>
+      <location filename="../../Command.cpp" line="714"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="716"/>
+      <location filename="../../Command.cpp" line="715"/>
       <source>&amp;Draft View</source>
       <translation>&amp; Vista Boceto </translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="717"/>
-      <location filename="../../Command.cpp" line="719"/>
+      <location filename="../../Command.cpp" line="716"/>
+      <location filename="../../Command.cpp" line="718"/>
       <source>Inserts a Draft view of the selected object(s) in the active drawing</source>
       <translation>Inserta una vista de boceto del/los objeto(s) seleccionado(s) en el dibujo activo</translation>
     </message>
@@ -61,18 +61,18 @@
   <context>
     <name>CmdDrawingExportPage</name>
     <message>
-      <location filename="../../Command.cpp" line="626"/>
+      <location filename="../../Command.cpp" line="625"/>
       <source>File</source>
       <translation>Archivo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="627"/>
+      <location filename="../../Command.cpp" line="626"/>
       <source>&amp;Export page...</source>
       <translation>&amp;Exportar página...</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="628"/>
-      <location filename="../../Command.cpp" line="630"/>
+      <location filename="../../Command.cpp" line="627"/>
+      <location filename="../../Command.cpp" line="629"/>
       <source>Export a page to an SVG file</source>
       <translation>Exportar una página a un archivo SVG</translation>
     </message>
@@ -80,13 +80,13 @@
   <context>
     <name>CmdDrawingNewA3Landscape</name>
     <message>
-      <location filename="../../Command.cpp" line="270"/>
+      <location filename="../../Command.cpp" line="269"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
+      <location filename="../../Command.cpp" line="270"/>
       <location filename="../../Command.cpp" line="271"/>
-      <location filename="../../Command.cpp" line="272"/>
       <source>Insert new A3 landscape drawing</source>
       <translation>Inserta un nuevo dibujo en formato A3</translation>
     </message>
@@ -108,17 +108,17 @@
   <context>
     <name>CmdDrawingNewView</name>
     <message>
-      <location filename="../../Command.cpp" line="309"/>
+      <location filename="../../Command.cpp" line="308"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="310"/>
+      <location filename="../../Command.cpp" line="309"/>
       <source>Insert view in drawing</source>
       <translation>Insertar vista en el dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="311"/>
+      <location filename="../../Command.cpp" line="310"/>
       <source>Insert a new View of a Part in the active drawing</source>
       <translation>Insertar una nueva Vista de una Pieza en el dibujo activo</translation>
     </message>
@@ -144,18 +144,18 @@
   <context>
     <name>CmdDrawingOpenBrowserView</name>
     <message>
-      <location filename="../../Command.cpp" line="438"/>
+      <location filename="../../Command.cpp" line="437"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="439"/>
+      <location filename="../../Command.cpp" line="438"/>
       <source>Open &amp;browser view</source>
       <translation>Abrir &amp;vista de navegador</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="440"/>
-      <location filename="../../Command.cpp" line="442"/>
+      <location filename="../../Command.cpp" line="439"/>
+      <location filename="../../Command.cpp" line="441"/>
       <source>Opens the selected page in a browser view</source>
       <translation>Abre la página seleccionada en una vista de navegador</translation>
     </message>
@@ -163,17 +163,17 @@
   <context>
     <name>CmdDrawingOrthoViews</name>
     <message>
-      <location filename="../../Command.cpp" line="388"/>
+      <location filename="../../Command.cpp" line="387"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="389"/>
+      <location filename="../../Command.cpp" line="388"/>
       <source>Insert orthographic views</source>
       <translation>Insertar vistas ortogonales</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="390"/>
+      <location filename="../../Command.cpp" line="389"/>
       <source>Insert an orthographic projection of a part in the active drawing</source>
       <translation>Inserta una proyección ortogonal de una pieza en el dibujo activo</translation>
     </message>
@@ -181,18 +181,18 @@
   <context>
     <name>CmdDrawingProjectShape</name>
     <message>
-      <location filename="../../Command.cpp" line="679"/>
+      <location filename="../../Command.cpp" line="678"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="680"/>
+      <location filename="../../Command.cpp" line="679"/>
       <source>Project shape...</source>
       <translation>Formas del proyecto...</translation>
     </message>
     <message>
+      <location filename="../../Command.cpp" line="680"/>
       <location filename="../../Command.cpp" line="681"/>
-      <location filename="../../Command.cpp" line="682"/>
       <source>Project shape onto a user-defined plane</source>
       <translation>Projectar silueta a un plano definido por el usuario</translation>
     </message>
@@ -200,18 +200,18 @@
   <context>
     <name>CmdDrawingSpreadsheetView</name>
     <message>
-      <location filename="../../Command.cpp" line="746"/>
+      <location filename="../../Command.cpp" line="745"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="747"/>
+      <location filename="../../Command.cpp" line="746"/>
       <source>&amp;Spreadsheet View</source>
       <translation>Vista &amp;Hoja de cálculo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="748"/>
-      <location filename="../../Command.cpp" line="750"/>
+      <location filename="../../Command.cpp" line="747"/>
+      <location filename="../../Command.cpp" line="749"/>
       <source>Inserts a view of a selected spreadsheet in the active drawing</source>
       <translation>Inserta una vista de una hoja de cálculo seleccionada en el dibujo activo</translation>
     </message>
@@ -219,18 +219,18 @@
   <context>
     <name>CmdDrawingSymbol</name>
     <message>
-      <location filename="../../Command.cpp" line="569"/>
+      <location filename="../../Command.cpp" line="568"/>
       <source>Drawing</source>
       <translation>Dibujo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="570"/>
+      <location filename="../../Command.cpp" line="569"/>
       <source>&amp;Symbol</source>
       <translation>&amp;Símbolo</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="571"/>
-      <location filename="../../Command.cpp" line="573"/>
+      <location filename="../../Command.cpp" line="570"/>
+      <location filename="../../Command.cpp" line="572"/>
       <source>Inserts a symbol from a svg file in the active drawing</source>
       <translation>Inserta un símbolo desde un archivo svg en el dibujo activo</translation>
     </message>
@@ -635,37 +635,32 @@ Do you want to continue?</source>
   <context>
     <name>Drawing_NewPage</name>
     <message>
-      <location filename="../../Command.cpp" line="104"/>
-      <source>Page</source>
-      <translation>Página</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="218"/>
+      <location filename="../../Command.cpp" line="217"/>
       <source>Landscape</source>
       <translation>Horizontal</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="220"/>
+      <location filename="../../Command.cpp" line="219"/>
       <source>Portrait</source>
       <translation>Vertical</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="224"/>
+      <location filename="../../Command.cpp" line="223"/>
       <source>%1%2 %3</source>
       <translation>%1 %2 %3</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="229"/>
+      <location filename="../../Command.cpp" line="228"/>
       <source>Insert new %1%2 %3 drawing</source>
       <translation>Inserte el nuevo dibujo de %1 %2 %3</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="236"/>
+      <location filename="../../Command.cpp" line="235"/>
       <source>%1%2 %3 (%4)</source>
       <translation>%1%2 %3 (%4)</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="242"/>
+      <location filename="../../Command.cpp" line="241"/>
       <source>Insert new %1%2 %3 (%4) drawing</source>
       <translation>Inserte nuevo dibujo %1%2 %3 (%4)</translation>
     </message>
@@ -674,30 +669,40 @@ Do you want to continue?</source>
     <name>QObject</name>
     <message>
       <location filename="../../Command.cpp" line="70"/>
-      <location filename="../../Command.cpp" line="590"/>
+      <location filename="../../Command.cpp" line="589"/>
       <source>Choose an SVG file to open</source>
       <translation>Seleccionar un archivo SVG para abrir</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="71"/>
-      <location filename="../../Command.cpp" line="591"/>
-      <location filename="../../Command.cpp" line="645"/>
+      <location filename="../../Command.cpp" line="590"/>
+      <location filename="../../Command.cpp" line="644"/>
       <source>Scalable Vector Graphic</source>
       <translation>Gráfico vectorial escalable</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="322"/>
-      <location filename="../../Command.cpp" line="401"/>
-      <location filename="../../Command.cpp" line="451"/>
-      <location filename="../../Command.cpp" line="639"/>
-      <location filename="../../Command.cpp" line="759"/>
+      <location filename="../../Command.cpp" line="321"/>
+      <location filename="../../Command.cpp" line="400"/>
+      <location filename="../../Command.cpp" line="450"/>
+      <location filename="../../Command.cpp" line="638"/>
+      <location filename="../../Command.cpp" line="758"/>
       <source>Wrong selection</source>
       <translation>Selección Incorrecta</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="323"/>
+      <location filename="../../Command.cpp" line="322"/>
       <source>Select a Part object.</source>
       <translation>Seleccione un objeto Pieza.</translation>
+    </message>
+    <message>
+      <location filename="../../Command.cpp" line="330"/>
+      <location filename="../../Command.cpp" line="409"/>
+      <location filename="../../Command.cpp" line="490"/>
+      <location filename="../../Command.cpp" line="538"/>
+      <location filename="../../Command.cpp" line="583"/>
+      <location filename="../../Command.cpp" line="764"/>
+      <source>No page found</source>
+      <translation>No se ha encontrado una página de dibujo</translation>
     </message>
     <message>
       <location filename="../../Command.cpp" line="331"/>
@@ -706,42 +711,32 @@ Do you want to continue?</source>
       <location filename="../../Command.cpp" line="539"/>
       <location filename="../../Command.cpp" line="584"/>
       <location filename="../../Command.cpp" line="765"/>
-      <source>No page found</source>
-      <translation>No se ha encontrado una página de dibujo</translation>
-    </message>
-    <message>
-      <location filename="../../Command.cpp" line="332"/>
-      <location filename="../../Command.cpp" line="411"/>
-      <location filename="../../Command.cpp" line="492"/>
-      <location filename="../../Command.cpp" line="540"/>
-      <location filename="../../Command.cpp" line="585"/>
-      <location filename="../../Command.cpp" line="766"/>
       <source>Create a page first.</source>
       <translation>Cree una página de dibujo primero.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="402"/>
+      <location filename="../../Command.cpp" line="401"/>
       <source>Select exactly one Part object.</source>
       <translation>Seleccione un único objeto pieza.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="452"/>
-      <location filename="../../Command.cpp" line="640"/>
+      <location filename="../../Command.cpp" line="451"/>
+      <location filename="../../Command.cpp" line="639"/>
       <source>Select one Page object.</source>
       <translation>Seleccionar un objeto Página.</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="646"/>
+      <location filename="../../Command.cpp" line="645"/>
       <source>All Files</source>
       <translation>Todos los Archivos</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="648"/>
+      <location filename="../../Command.cpp" line="647"/>
       <source>Export page</source>
       <translation>Exportar página</translation>
     </message>
     <message>
-      <location filename="../../Command.cpp" line="760"/>
+      <location filename="../../Command.cpp" line="759"/>
       <source>Select exactly one Spreadsheet object.</source>
       <translation>Seleccione exactamente un objeto de hoja de cálculo.</translation>
     </message>

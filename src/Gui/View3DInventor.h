@@ -50,7 +50,8 @@ class GuiExport GLOverlayWidget : public QWidget
 public:
     explicit GLOverlayWidget(QWidget* parent=nullptr) : QWidget(parent)
     {}
-    ~GLOverlayWidget() override = default;
+    ~GLOverlayWidget() override
+    {}
     virtual void setImage(const QImage& img)
     { image = img; }
     void paintEvent(QPaintEvent*) override;

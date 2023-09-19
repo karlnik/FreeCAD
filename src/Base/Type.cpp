@@ -55,6 +55,31 @@ map<string,unsigned int> Type::typemap;
 vector<TypeData*>        Type::typedata;
 set<string>              Type::loadModuleSet;
 
+//**************************************************************************
+// Construction/Destruction
+
+/**
+ * A constructor.
+ * A more elaborate description of the constructor.
+ */
+Type::Type()
+: index(0)
+{
+}
+
+
+Type::Type(const Type& type)
+:index(type.index)
+{
+}
+
+
+/**
+ * A destructor.
+ * A more elaborate description of the destructor.
+ */
+Type::~Type() = default;
+
 void *Type::createInstance()
 {
   instantiationMethod method = typedata[index]->instMethod;
@@ -100,8 +125,9 @@ string Type::getModuleName(const char* ClassName)
   std::string::size_type pos = temp.find_first_of("::");
 
   if (pos != std::string::npos)
-    return {temp,0,pos};
-  return {};
+    return string(temp,0,pos);
+  else
+    return string();
 }
 
 Type Type::badType()

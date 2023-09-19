@@ -203,7 +203,7 @@ class ObjectDressup:
         if not obj.Base.Path:
             return
 
-        if hasattr(obj.Base, 'Active') and not obj.Base.Active:
+        if not obj.Base.Active:
             path = Path.Path("(inactive operation)")
             obj.Path = path
             return
@@ -479,9 +479,9 @@ class ObjectDressup:
         ):
             return Part.makeLine(startPoint, endPoint)
         elif type(originalEdge.Curve) == Part.Circle:
-            firstParameter = originalEdge.Curve.parameter(startPoint)
-            lastParameter = originalEdge.Curve.parameter(endPoint)
-            arcMid = originalEdge.valueAt((firstParameter + lastParameter) / 2)
+            arcMid = originalEdge.valueAt(
+                (originalEdge.FirstParameter + originalEdge.LastParameter) / 2
+            )
             arcMid.z = (startPoint.z + endPoint.z) / 2
             return Part.Arc(startPoint, arcMid, endPoint).toShape()
         else:

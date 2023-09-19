@@ -43,7 +43,9 @@ Point::Point()
     this->makeShape();
 }
 
-Point::~Point() = default;
+Point::~Point()
+{
+}
 
 void Point::onChanged(const App::Property* prop)
 {

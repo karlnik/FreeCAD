@@ -50,7 +50,9 @@ ViewProviderFemConstraintContact::ViewProviderFemConstraintContact()
     ADD_PROPERTY(FaceColor, (0.2f, 0.3f, 0.2f));
 }
 
-ViewProviderFemConstraintContact::~ViewProviderFemConstraintContact() = default;
+ViewProviderFemConstraintContact::~ViewProviderFemConstraintContact()
+{
+}
 
 //FIXME setEdit needs a careful review
 bool ViewProviderFemConstraintContact::setEdit(int ModNum)

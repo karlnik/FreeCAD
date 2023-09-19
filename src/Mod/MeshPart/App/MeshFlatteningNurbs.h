@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-// clang-format off
 #ifndef NURBS_H
 #define NURBS_H
 
@@ -37,7 +36,7 @@ using spMat = Eigen::SparseMatrix<double>;
 struct NurbsBase2D
 {
     //
-    NurbsBase2D() = default;
+    NurbsBase2D(){}
     NurbsBase2D(Eigen::VectorXd u_knots, Eigen::VectorXd v_knots,
               Eigen::VectorXd weights,
               int degree_u=3, int degree_v=3);
@@ -82,7 +81,7 @@ struct NurbsBase2D
 
 struct NurbsBase1D
 {
-    NurbsBase1D() = default;
+    NurbsBase1D(){}
     NurbsBase1D(Eigen::VectorXd u_knots, Eigen::VectorXd weights, int degree_u=3);
     int degree_u;
     Eigen::VectorXd u_knots;
@@ -116,4 +115,3 @@ struct NurbsBase1D
 }
 
 #endif
-// clang-format on

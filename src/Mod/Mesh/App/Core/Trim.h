@@ -40,6 +40,7 @@ public:
 
 public:
     MeshTrimming(MeshKernel& mesh, const Base::ViewProjMethod* pclProj, const Base::Polygon2d& rclPoly);
+    ~MeshTrimming();
 
 public:
     /**
@@ -96,7 +97,7 @@ private:
 
 private:
     MeshKernel& myMesh;
-    bool myInner{true};
+    bool myInner;
     std::vector<MeshGeomFacet> myTriangles;
     const Base::ViewProjMethod* myProj;
     const Base::Polygon2d& myPoly;

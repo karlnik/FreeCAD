@@ -44,7 +44,7 @@ class Vector3;
 class Vector2d;
 
 class Placement;
-}  // namespace Base
+}// namespace Base
 
 namespace Part
 {
@@ -55,7 +55,7 @@ namespace Sketcher
 {
 class Constraint;
 class PropertyConstraintList;
-};  // namespace Sketcher
+};// namespace Sketcher
 
 namespace SketcherGui
 {
@@ -86,8 +86,7 @@ class SketcherGuiExport EditModeGeometryCoinManager
 {
 
 public:
-    explicit EditModeGeometryCoinManager(ViewProviderSketch& vp,
-                                         DrawingParameters& drawingParams,
+    explicit EditModeGeometryCoinManager(ViewProviderSketch& vp, DrawingParameters& drawingParams,
                                          GeometryLayerParameters& geometryLayerParams,
                                          AnalysisResults& analysisResultStruct,
                                          EditModeScenegraphNodes& editModeScenegraph,
@@ -125,7 +124,7 @@ private:
 };
 
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_EditModeGeometryCoinManager_H
+#endif// SKETCHERGUI_EditModeGeometryCoinManager_H

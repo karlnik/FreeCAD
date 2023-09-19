@@ -39,9 +39,8 @@ std::string ExternalGeometryExtensionPy::representation() const
 
     str << "<ExternalGeometryExtension (";
 
-    if (!getExternalGeometryExtensionPtr()->getName().empty()) {
+    if (!getExternalGeometryExtensionPtr()->getName().empty())
         str << "\'" << getExternalGeometryExtensionPtr()->getName() << "\', ";
-    }
 
     str << "\"" << ref;
 
@@ -103,10 +102,9 @@ PyObject* ExternalGeometryExtensionPy::testFlag(PyObject* args)
 
         ExternalGeometryExtension::Flag flagtype;
 
-        if (getExternalGeometryExtensionPtr()->getFlagsFromName(flag, flagtype)) {
+        if (getExternalGeometryExtensionPtr()->getFlagsFromName(flag, flagtype))
             return new_reference_to(
                 Py::Boolean(this->getExternalGeometryExtensionPtr()->testFlag(flagtype)));
-        }
 
         PyErr_SetString(PyExc_TypeError, "Flag string does not exist.");
         return nullptr;

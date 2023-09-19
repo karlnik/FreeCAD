@@ -48,7 +48,9 @@ ViewProviderFemConstraintFixed::ViewProviderFemConstraintFixed()
     sPixmap = "FEM_ConstraintFixed";
 }
 
-ViewProviderFemConstraintFixed::~ViewProviderFemConstraintFixed() = default;
+ViewProviderFemConstraintFixed::~ViewProviderFemConstraintFixed()
+{
+}
 
 bool ViewProviderFemConstraintFixed::setEdit(int ModNum)
 {

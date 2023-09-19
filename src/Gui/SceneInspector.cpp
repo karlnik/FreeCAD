@@ -45,7 +45,9 @@ SceneModel::SceneModel(QObject* parent)
 {
 }
 
-SceneModel::~SceneModel() = default;
+SceneModel::~SceneModel()
+{
+}
 
 int SceneModel::columnCount (const QModelIndex & parent) const
 {
@@ -62,14 +64,14 @@ QVariant SceneModel::headerData (int section, Qt::Orientation orientation, int r
 {
     if (orientation == Qt::Horizontal) {
         if (role != Qt::DisplayRole)
-            return {};
+            return QVariant();
         if (section == 0)
             return tr("Inventor Tree");
         else if (section == 1)
             return tr("Name");
     }
 
-    return {};
+    return QVariant();
 }
 
 bool SceneModel::setHeaderData (int, Qt::Orientation, const QVariant &, int)

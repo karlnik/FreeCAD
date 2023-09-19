@@ -9,8 +9,11 @@
 class TestJtReader: public JtReader
 {
 public:
-    TestJtReader();
-    ~TestJtReader();
+	TestJtReader();
+	~TestJtReader();
 
-    void read(void);
+	void read(void);
+
+
 };
+

@@ -40,7 +40,10 @@ ViewProviderPlaneParametric::ViewProviderPlaneParametric()
     sPixmap = "Part_Plane_Parametric";
 }
 
-ViewProviderPlaneParametric::~ViewProviderPlaneParametric() = default;
+ViewProviderPlaneParametric::~ViewProviderPlaneParametric()
+{
+
+}
 
 std::vector<std::string> ViewProviderPlaneParametric::getDisplayModes() const
 {
@@ -61,13 +64,17 @@ std::vector<std::string> ViewProviderPlaneParametric::getDisplayModes() const
 PROPERTY_SOURCE(PartGui::ViewProviderFace, PartGui::ViewProviderPlaneParametric)
 
 
-ViewProviderFace::ViewProviderFace() = default;
+ViewProviderFace::ViewProviderFace()
+{
+}
 
-ViewProviderFace::~ViewProviderFace() = default;
+ViewProviderFace::~ViewProviderFace()
+{
+}
 
 std::vector<App::DocumentObject*> ViewProviderFace::claimChildren() const
 {
-    return static_cast<Part::Face*>(getObject())->Sources.getValues();
+    return std::vector<App::DocumentObject*>(static_cast<Part::Face*>(getObject())->Sources.getValues());
 }
 
 bool ViewProviderFace::canDragObjects() const

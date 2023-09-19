@@ -116,13 +116,8 @@ void CmdTechDrawPageDefault::activated(int iMsg)
         openCommand(QT_TRANSLATE_NOOP("Command", "Drawing create page"));
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawPage', '%s')",
                   PageName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawPage', 'Page', '%s')",
-              PageName.c_str(), PageName.c_str());
-
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawSVGTemplate', '%s')",
                   TemplateName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawSVGTemplate', 'Template', '%s')",
-              TemplateName.c_str(), TemplateName.c_str());
 
         doCommand(Doc, "App.activeDocument().%s.Template = '%s'", TemplateName.c_str(),
                   templateFileName.toStdString().c_str());
@@ -192,14 +187,10 @@ void CmdTechDrawPageTemplate::activated(int iMsg)
         openCommand(QT_TRANSLATE_NOOP("Command", "Drawing create page"));
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawPage', '%s')",
                   PageName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawPage', 'Page', '%s')",
-              PageName.c_str(), PageName.c_str());
 
         // Create the Template Object to attach to the page
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawSVGTemplate', '%s')",
                   TemplateName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawSVGTemplate', 'Template', '%s')",
-              TemplateName.c_str(), TemplateName.c_str());
 
         //why is "Template" property set twice? -wf
         // once to set DrawSVGTemplate.Template to OS template file name
@@ -314,6 +305,11 @@ CmdTechDrawView::CmdTechDrawView() : Command("TechDraw_View")
 void CmdTechDrawView::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
+    if (!page) {
+        return;
+    }
+    std::string PageName = page->getNameInDocument();
 
     //set projection direction from selected Face
     //use first object with a face selected
@@ -381,12 +377,6 @@ void CmdTechDrawView::activated(int iMsg)
         return;
     }
 
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
-    if (!page) {
-        return;
-    }
-    std::string PageName = page->getNameInDocument();
-
     Base::Vector3d projDir;
 
     Gui::WaitCursor wc;
@@ -394,8 +384,6 @@ void CmdTechDrawView::activated(int iMsg)
     std::string FeatName = getUniqueObjectName("View");
     doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawViewPart', '%s')",
               FeatName.c_str());
-    doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawViewPart', 'View', '%s')",
-              FeatName.c_str(), FeatName.c_str());
     doCommand(Doc, "App.activeDocument().%s.addView(App.activeDocument().%s)", PageName.c_str(),
               FeatName.c_str());
 
@@ -602,6 +590,11 @@ bool CmdTechDrawSectionView::isActive()
 
 void execSimpleSection(Gui::Command* cmd)
 {
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(cmd);
+    if (!page) {
+        return;
+    }
+
     std::vector<App::DocumentObject*> baseObj =
         cmd->getSelection().getObjectsOfType(TechDraw::DrawViewPart::getClassTypeId());
     if (baseObj.empty()) {
@@ -609,12 +602,6 @@ void execSimpleSection(Gui::Command* cmd)
                              QObject::tr("Select at least 1 DrawViewPart object as Base."));
         return;
     }
-
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(cmd);
-    if (!page) {
-        return;
-    }
-
     TechDraw::DrawViewPart* dvp = static_cast<TechDraw::DrawViewPart*>(*baseObj.begin());
     Gui::Control().showDialog(new TaskDlgSectionView(dvp));
 
@@ -658,6 +645,12 @@ bool CmdTechDrawComplexSection::isActive() { return DrawGuiUtil::needPage(this);
 //for the dialog is more involved that simple section
 void execComplexSection(Gui::Command* cmd)
 {
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(cmd);
+    if (!page) {
+        return;
+    }
+    std::string PageName = page->getNameInDocument();
+
     TechDraw::DrawViewPart* baseView(nullptr);
     std::vector<App::DocumentObject*> shapes;
     std::vector<App::DocumentObject*> xShapes;
@@ -739,11 +732,6 @@ void execComplexSection(Gui::Command* cmd)
         return;
     }
 
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(cmd);
-    if (!page) {
-        return;
-    }
-
     Gui::Control().showDialog(
         new TaskDlgComplexSection(page, baseView, shapes, xShapes, profileObject, profileSubs));
 }
@@ -768,6 +756,10 @@ CmdTechDrawDetailView::CmdTechDrawDetailView() : Command("TechDraw_DetailView")
 void CmdTechDrawDetailView::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
+    if (!page) {
+        return;
+    }
 
     std::vector<App::DocumentObject*> baseObj =
         getSelection().getObjectsOfType(TechDraw::DrawViewPart::getClassTypeId());
@@ -812,6 +804,13 @@ CmdTechDrawProjectionGroup::CmdTechDrawProjectionGroup() : Command("TechDraw_Pro
 void CmdTechDrawProjectionGroup::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
+    if (!page) {
+        return;
+    }
+    std::string PageName = page->getNameInDocument();
+    //    auto inlist = page->getInListEx(true);
+    //    inlist.insert(page);
 
     //set projection direction from selected Face
     //use first object with a face selected
@@ -875,12 +874,6 @@ void CmdTechDrawProjectionGroup::activated(int iMsg)
                              QObject::tr("No Shapes, Groups or Links in this selection"));
         return;
     }
-
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
-    if (!page) {
-        return;
-    }
-    std::string PageName = page->getNameInDocument();
 
     Base::Vector3d projDir;
     Gui::WaitCursor wc;
@@ -1329,8 +1322,6 @@ void CmdTechDrawSymbol::activated(int iMsg)
         doCommand(Doc, "f.close()");
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawViewSymbol', '%s')",
                   FeatName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawViewSymbol', 'Symbol', '%s')",
-              FeatName.c_str(), FeatName.c_str());
         doCommand(Doc, "App.activeDocument().%s.Symbol = svg", FeatName.c_str());
         doCommand(Doc, "App.activeDocument().%s.addView(App.activeDocument().%s)", PageName.c_str(),
                   FeatName.c_str());
@@ -1361,6 +1352,11 @@ CmdTechDrawDraftView::CmdTechDrawDraftView() : Command("TechDraw_DraftView")
 void CmdTechDrawDraftView::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
+    if (!page) {
+        return;
+    }
+    std::string PageName = page->getNameInDocument();
 
     std::vector<App::DocumentObject*> objects =
         getSelection().getObjectsOfType(App::DocumentObject::getClassTypeId());
@@ -1370,12 +1366,6 @@ void CmdTechDrawDraftView::activated(int iMsg)
                              QObject::tr("Select at least one object."));
         return;
     }
-
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
-    if (!page) {
-        return;
-    }
-    std::string PageName = page->getNameInDocument();
 
     std::pair<Base::Vector3d, Base::Vector3d> dirs = DrawGuiUtil::get3DDirAndRot();
     for (std::vector<App::DocumentObject*>::iterator it = objects.begin(); it != objects.end();
@@ -1390,8 +1380,6 @@ void CmdTechDrawDraftView::activated(int iMsg)
         openCommand(QT_TRANSLATE_NOOP("Command", "Create DraftView"));
         doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawViewDraft', '%s')",
                   FeatName.c_str());
-        doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawViewDraft', 'DraftView', '%s')",
-              FeatName.c_str(), FeatName.c_str());
         doCommand(Doc, "App.activeDocument().%s.Source = App.activeDocument().%s", FeatName.c_str(),
                   SourceName.c_str());
         doCommand(Doc, "App.activeDocument().%s.addView(App.activeDocument().%s)", PageName.c_str(),
@@ -1425,6 +1413,12 @@ CmdTechDrawArchView::CmdTechDrawArchView() : Command("TechDraw_ArchView")
 void CmdTechDrawArchView::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
+    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
+    if (!page) {
+        return;
+    }
+    std::string PageName = page->getNameInDocument();
+
 
     const std::vector<App::DocumentObject*> objects =
         getSelection().getObjectsOfType(App::DocumentObject::getClassTypeId());
@@ -1453,19 +1447,11 @@ void CmdTechDrawArchView::activated(int iMsg)
         return;
     }
 
-    TechDraw::DrawPage* page = DrawGuiUtil::findPage(this);
-    if (!page) {
-        return;
-    }
-    std::string PageName = page->getNameInDocument();
-
     std::string FeatName = getUniqueObjectName("ArchView");
     std::string SourceName = archObject->getNameInDocument();
     openCommand(QT_TRANSLATE_NOOP("Command", "Create ArchView"));
     doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawViewArch', '%s')",
               FeatName.c_str());
-    doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawViewArch', 'ArchView', '%s')",
-              FeatName.c_str(), FeatName.c_str());
     doCommand(Doc, "App.activeDocument().%s.Source = App.activeDocument().%s", FeatName.c_str(),
               SourceName.c_str());
     doCommand(Doc, "App.activeDocument().%s.addView(App.activeDocument().%s)", PageName.c_str(),
@@ -1515,8 +1501,6 @@ void CmdTechDrawSpreadsheetView::activated(int iMsg)
     std::string FeatName = getUniqueObjectName("Sheet");
     doCommand(Doc, "App.activeDocument().addObject('TechDraw::DrawViewSpreadsheet', '%s')",
               FeatName.c_str());
-    doCommand(Doc, "App.activeDocument().%s.translateLabel('DrawViewSpreadsheet', 'Sheet', '%s')",
-              FeatName.c_str(), FeatName.c_str());
     doCommand(Doc, "App.activeDocument().%s.Source = App.activeDocument().%s", FeatName.c_str(),
               SpreadName.c_str());
     doCommand(Doc, "App.activeDocument().%s.addView(App.activeDocument().%s)", PageName.c_str(),

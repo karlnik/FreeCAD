@@ -103,7 +103,9 @@ InputField::InputField(QWidget * parent)
     connect(this, &QLineEdit::textChanged, this, &InputField::newInput);
 }
 
-InputField::~InputField() = default;
+InputField::~InputField()
+{
+}
 
 void InputField::bind(const App::ObjectIdentifier &_path)
 {
@@ -414,7 +416,7 @@ QByteArray InputField::paramGrpPath() const
 {
     if(_handle.isValid())
         return sGroupString.c_str();
-    return {};
+    return QByteArray();
 }
 
 /// sets the field with a quantity
@@ -565,7 +567,7 @@ void InputField::setPrecision(const int precision)
 
 QString InputField::getFormat() const
 {
-    return {QChar::fromLatin1(actQuantity.getFormat().toFormat())};
+    return QString(QChar::fromLatin1(actQuantity.getFormat().toFormat()));
 }
 
 void InputField::setFormat(const QString& format)
@@ -763,7 +765,9 @@ InputValidator::InputValidator(InputField* parent) : QValidator(parent), dptr(pa
 {
 }
 
-InputValidator::~InputValidator() = default;
+InputValidator::~InputValidator()
+{
+}
 
 void InputValidator::fixup(QString& input) const
 {

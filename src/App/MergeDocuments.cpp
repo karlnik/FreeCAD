@@ -71,8 +71,7 @@ private:
 };
 }
 
-MergeDocuments::MergeDocuments(App::Document* doc)
-    : appdoc(doc)
+MergeDocuments::MergeDocuments(App::Document* doc) : guiup(false), verbose(true), stream(nullptr), appdoc(doc)
 {
     //NOLINTBEGIN
     connectExport = doc->signalExportObjects.connect

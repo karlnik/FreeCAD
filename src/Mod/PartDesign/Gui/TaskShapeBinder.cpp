@@ -76,7 +76,9 @@ TaskShapeBinder::TaskShapeBinder(ViewProviderShapeBinder* view, bool newObj, QWi
     updateUI();
 }
 
-TaskShapeBinder::~TaskShapeBinder() = default;
+TaskShapeBinder::~TaskShapeBinder()
+{
+}
 
 void TaskShapeBinder::updateUI()
 {
@@ -220,8 +222,8 @@ void TaskShapeBinder::removeFromListWidget(QListWidget* widget, QString itemstr)
 {
     QList<QListWidgetItem*> items = widget->findItems(itemstr, Qt::MatchExactly);
     if (!items.empty()) {
-        for (auto item : items) {
-            QListWidgetItem* it = widget->takeItem(widget->row(item));
+        for (QList<QListWidgetItem*>::const_iterator i = items.cbegin(); i != items.cend(); i++) {
+            QListWidgetItem* it = widget->takeItem(widget->row(*i));
             delete it;
         }
     }
@@ -389,7 +391,10 @@ TaskDlgShapeBinder::TaskDlgShapeBinder(ViewProviderShapeBinder* view, bool newOb
     Content.push_back(parameter);
 }
 
-TaskDlgShapeBinder::~TaskDlgShapeBinder() = default;
+TaskDlgShapeBinder::~TaskDlgShapeBinder()
+{
+
+}
 
 bool TaskDlgShapeBinder::accept()
 {

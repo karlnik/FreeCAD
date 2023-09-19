@@ -38,7 +38,9 @@ ViewProviderFeature::ViewProviderFeature()
     ADD_PROPERTY(ColourList,(c));
 }
 
-ViewProviderFeature::~ViewProviderFeature() = default;
+ViewProviderFeature::~ViewProviderFeature()
+{
+}
 
 void ViewProviderFeature::attach(App::DocumentObject *pcObj)
 {

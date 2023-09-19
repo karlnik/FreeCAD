@@ -40,7 +40,9 @@ using namespace Part;
 
 PROPERTY_SOURCE(Part::Fillet, Part::FilletBase)
 
-Fillet::Fillet() = default;
+Fillet::Fillet()
+{
+}
 
 App::DocumentObjectExecReturn *Fillet::execute()
 {
@@ -59,10 +61,10 @@ App::DocumentObjectExecReturn *Fillet::execute()
         TopExp::MapShapes(baseShape, TopAbs_EDGE, mapOfShape);
 
         std::vector<FilletElement> values = Edges.getValues();
-        for (const auto & value : values) {
-            int id = value.edgeid;
-            double radius1 = value.radius1;
-            double radius2 = value.radius2;
+        for (std::vector<FilletElement>::iterator it = values.begin(); it != values.end(); ++it) {
+            int id = it->edgeid;
+            double radius1 = it->radius1;
+            double radius2 = it->radius2;
             const TopoDS_Edge& edge = TopoDS::Edge(mapOfShape.FindKey(id));
             mkFillet.Add(radius1, radius2, edge);
         }

@@ -44,7 +44,8 @@
 
 using namespace MeshCore;
 
-MeshKernel::MeshKernel()
+MeshKernel::MeshKernel ()
+: _bValid(true)
 {
     _clBoundBox.SetVoid();
 }

@@ -457,10 +457,7 @@ TechDraw::DrawWeldSymbol* TaskWeldingSymbol::createWeldingSymbol()
 {
 //    Base::Console().Message("TWS::createWeldingSymbol()\n");
 
-    const std::string objectName{QT_TR_NOOP("SectionView")};
-    std::string symbolName = m_leadFeat->getDocument()->getUniqueObjectName(objectName.c_str());
-    std::string generatedSuffix {symbolName.substr(objectName.length())};
-
+    std::string symbolName = m_leadFeat->getDocument()->getUniqueObjectName("WeldSymbol");
     std::string symbolType = "TechDraw::DrawWeldSymbol";
 
     TechDraw::DrawPage* page = m_leadFeat->findParentPage();
@@ -497,9 +494,6 @@ TechDraw::DrawWeldSymbol* TaskWeldingSymbol::createWeldingSymbol()
     TechDraw::DrawWeldSymbol* newSym = dynamic_cast<TechDraw::DrawWeldSymbol*>(newObj);
     if (!newObj || !newSym)
         throw Base::RuntimeError("TaskWeldingSymbol - new symbol object not found");
-
-    std::string translatedObjectName{tr(objectName.c_str()).toStdString()};
-    newObj->Label.setValue(translatedObjectName + generatedSuffix);
 
     return newSym;
 }

@@ -58,18 +58,14 @@ TaskDlgEditSketch::TaskDlgEditSketch(ViewProviderSketch* sketchView)
     Content.push_back(Constraints);
     Content.push_back(Elements);
 
-    if (!hGrp->GetBool("ExpandedMessagesWidget", true)) {
+    if (!hGrp->GetBool("ExpandedMessagesWidget", true))
         Messages->hideGroupBox();
-    }
-    if (!hGrp->GetBool("ExpandedSolverAdvancedWidget", false)) {
+    if (!hGrp->GetBool("ExpandedSolverAdvancedWidget", false))
         SolverAdvanced->hideGroupBox();
-    }
-    if (!hGrp->GetBool("ExpandedConstraintsWidget", true)) {
+    if (!hGrp->GetBool("ExpandedConstraintsWidget", true))
         Constraints->hideGroupBox();
-    }
-    if (!hGrp->GetBool("ExpandedElementsWidget", true)) {
+    if (!hGrp->GetBool("ExpandedElementsWidget", true))
         Elements->hideGroupBox();
-    }
 }
 
 TaskDlgEditSketch::~TaskDlgEditSketch()
@@ -77,9 +73,8 @@ TaskDlgEditSketch::~TaskDlgEditSketch()
     // to make sure to delete the advanced solver panel
     // it must be part to the 'Content' array
     std::vector<QWidget*>::iterator it = std::find(Content.begin(), Content.end(), SolverAdvanced);
-    if (it == Content.end()) {
+    if (it == Content.end())
         Content.push_back(SolverAdvanced);
-    }
 }
 
 //==== calls from the TaskView ===============================================================
@@ -105,17 +100,11 @@ bool TaskDlgEditSketch::reject()
     hGrp->SetBool("ExpandedConstraintsWidget", Constraints->isGroupVisible());
     hGrp->SetBool("ExpandedElementsWidget", Elements->isGroupVisible());
 
-    if (sketchView && sketchView->getSketchMode() != ViewProviderSketch::STATUS_NONE) {
-        sketchView->purgeHandler();
-    }
-
-    std::string document = getDocumentName();  // needed because resetEdit() deletes this instance
-    Gui::Command::doCommand(Gui::Command::Gui,
-                            "Gui.getDocument('%s').resetEdit()",
-                            document.c_str());
-    Gui::Command::doCommand(Gui::Command::Doc,
-                            "App.getDocument('%s').recompute()",
-                            document.c_str());
+    std::string document = getDocumentName();// needed because resetEdit() deletes this instance
+    Gui::Command::doCommand(
+        Gui::Command::Gui, "Gui.getDocument('%s').resetEdit()", document.c_str());
+    Gui::Command::doCommand(
+        Gui::Command::Doc, "App.getDocument('%s').recompute()", document.c_str());
 
     return true;
 }

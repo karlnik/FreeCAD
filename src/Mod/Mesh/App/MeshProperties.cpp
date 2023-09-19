@@ -45,7 +45,15 @@ TYPESYSTEM_SOURCE(Mesh::PropertyCurvatureList , App::PropertyLists)
 TYPESYSTEM_SOURCE(Mesh::PropertyMaterial , App::Property)
 TYPESYSTEM_SOURCE(Mesh::PropertyMeshKernel , App::PropertyComplexGeoData)
 
-PropertyNormalList::PropertyNormalList() = default;
+PropertyNormalList::PropertyNormalList()
+{
+
+}
+
+PropertyNormalList::~PropertyNormalList()
+{
+
+}
 
 void PropertyNormalList::setSize(int newSize)
 {
@@ -216,7 +224,15 @@ void PropertyNormalList::transformGeometry(const Base::Matrix4D &mat)
 
 // ----------------------------------------------------------------------------
 
-PropertyCurvatureList::PropertyCurvatureList() = default;
+PropertyCurvatureList::PropertyCurvatureList()
+{
+
+}
+
+PropertyCurvatureList::~PropertyCurvatureList()
+{
+
+}
 
 void PropertyCurvatureList::setValue(const CurvatureInfo& lValue)
 {
@@ -725,7 +741,7 @@ bool PropertyMaterial::isSame(const App::Property& other) const
 // ----------------------------------------------------------------------------
 
 PropertyMeshKernel::PropertyMeshKernel()
-  : _meshObject(new MeshObject())
+  : _meshObject(new MeshObject()), meshPyObject(nullptr)
 {
     // Note: Normally this property is a member of a document object, i.e. the setValue()
     // method gets called in the constructor of a subclass of DocumentObject, e.g. Mesh::Feature.

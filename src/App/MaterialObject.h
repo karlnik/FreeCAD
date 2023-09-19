@@ -38,6 +38,7 @@ class AppExport MaterialObject : public DocumentObject
 public:
     /// Constructor
     MaterialObject();
+    ~MaterialObject() override;
 
     App::PropertyMap Material;
 

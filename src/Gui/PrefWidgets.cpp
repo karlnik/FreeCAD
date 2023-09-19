@@ -171,7 +171,9 @@ PrefSpinBox::PrefSpinBox ( QWidget * parent )
 {
 }
 
-PrefSpinBox::~PrefSpinBox() = default;
+PrefSpinBox::~PrefSpinBox()
+{
+}
 
 void PrefSpinBox::restorePreferences()
 {
@@ -203,7 +205,9 @@ PrefDoubleSpinBox::PrefDoubleSpinBox ( QWidget * parent )
 {
 }
 
-PrefDoubleSpinBox::~PrefDoubleSpinBox() = default;
+PrefDoubleSpinBox::~PrefDoubleSpinBox()
+{
+}
 
 void PrefDoubleSpinBox::restorePreferences()
 {
@@ -235,7 +239,9 @@ PrefLineEdit::PrefLineEdit ( QWidget * parent )
 {
 }
 
-PrefLineEdit::~PrefLineEdit() = default;
+PrefLineEdit::~PrefLineEdit()
+{
+}
 
 void PrefLineEdit::restorePreferences()
 {
@@ -268,7 +274,9 @@ PrefTextEdit::PrefTextEdit(QWidget* parent)
 {
 }
 
-PrefTextEdit::~PrefTextEdit() = default;
+PrefTextEdit::~PrefTextEdit()
+{
+}
 
 void PrefTextEdit::restorePreferences()
 {
@@ -302,7 +310,9 @@ PrefFileChooser::PrefFileChooser ( QWidget * parent )
 {
 }
 
-PrefFileChooser::~PrefFileChooser() = default;
+PrefFileChooser::~PrefFileChooser()
+{
+}
 
 void PrefFileChooser::restorePreferences()
 {
@@ -334,7 +344,9 @@ PrefComboBox::PrefComboBox ( QWidget * parent )
 {
 }
 
-PrefComboBox::~PrefComboBox() = default;
+PrefComboBox::~PrefComboBox()
+{
+}
 
 QMetaType::Type PrefComboBox::getParamType() const
 {
@@ -427,7 +439,9 @@ PrefCheckBox::PrefCheckBox ( QWidget * parent )
 {
 }
 
-PrefCheckBox::~PrefCheckBox() = default;
+PrefCheckBox::~PrefCheckBox()
+{
+}
 
 void PrefCheckBox::restorePreferences()
 {
@@ -459,7 +473,9 @@ PrefRadioButton::PrefRadioButton ( QWidget * parent )
 {
 }
 
-PrefRadioButton::~PrefRadioButton() = default;
+PrefRadioButton::~PrefRadioButton()
+{
+}
 
 void PrefRadioButton::restorePreferences()
 {
@@ -491,7 +507,9 @@ PrefSlider::PrefSlider ( QWidget * parent )
 {
 }
 
-PrefSlider::~PrefSlider() = default;
+PrefSlider::~PrefSlider()
+{
+}
 
 void PrefSlider::restorePreferences()
 {
@@ -523,7 +541,9 @@ PrefColorButton::PrefColorButton ( QWidget * parent )
 {
 }
 
-PrefColorButton::~PrefColorButton() = default;
+PrefColorButton::~PrefColorButton()
+{
+}
 
 void PrefColorButton::restorePreferences()
 {
@@ -568,7 +588,9 @@ PrefUnitSpinBox::PrefUnitSpinBox ( QWidget * parent )
 {
 }
 
-PrefUnitSpinBox::~PrefUnitSpinBox() = default;
+PrefUnitSpinBox::~PrefUnitSpinBox()
+{
+}
 
 void PrefUnitSpinBox::restorePreferences()
 {
@@ -664,7 +686,9 @@ PrefQuantitySpinBox::PrefQuantitySpinBox (QWidget * parent)
 {
 }
 
-PrefQuantitySpinBox::~PrefQuantitySpinBox() = default;
+PrefQuantitySpinBox::~PrefQuantitySpinBox()
+{
+}
 
 void PrefQuantitySpinBox::contextMenuEvent(QContextMenuEvent *event)
 {
@@ -786,7 +810,9 @@ PrefFontBox::PrefFontBox ( QWidget * parent )
 {
 }
 
-PrefFontBox::~PrefFontBox() = default;
+PrefFontBox::~PrefFontBox()
+{
+}
 
 void PrefFontBox::restorePreferences()
 {

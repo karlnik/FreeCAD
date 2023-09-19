@@ -85,7 +85,9 @@ MayaGestureNavigationStyle::MayaGestureNavigationStyle()
     inGesture = false;
 }
 
-MayaGestureNavigationStyle::~MayaGestureNavigationStyle() = default;
+MayaGestureNavigationStyle::~MayaGestureNavigationStyle()
+{
+}
 
 const char* MayaGestureNavigationStyle::mouseButtons(ViewerMode mode)
 {

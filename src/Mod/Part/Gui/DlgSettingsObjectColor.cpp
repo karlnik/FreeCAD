@@ -45,7 +45,10 @@ DlgSettingsObjectColor::DlgSettingsObjectColor(QWidget* parent)
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsObjectColor::~DlgSettingsObjectColor() = default;
+DlgSettingsObjectColor::~DlgSettingsObjectColor()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettingsObjectColor::saveSettings()
 {

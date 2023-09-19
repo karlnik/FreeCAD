@@ -56,9 +56,13 @@ using namespace Fem;
 
 TYPESYSTEM_SOURCE(Fem::PropertyPostDataObject , App::Property)
 
-PropertyPostDataObject::PropertyPostDataObject() = default;
+PropertyPostDataObject::PropertyPostDataObject()
+{
+}
 
-PropertyPostDataObject::~PropertyPostDataObject() = default;
+PropertyPostDataObject::~PropertyPostDataObject()
+{
+}
 
 void PropertyPostDataObject::scaleDataObject(vtkDataObject *dataObject, double s)
 {

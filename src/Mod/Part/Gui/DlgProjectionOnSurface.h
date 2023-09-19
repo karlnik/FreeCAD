@@ -151,6 +151,7 @@ class TaskProjectionOnSurface : public Gui::TaskView::TaskDialog
 
 public:
   TaskProjectionOnSurface();
+  ~TaskProjectionOnSurface() override;
 
 public:
   bool accept() override;

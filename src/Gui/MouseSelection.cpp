@@ -38,7 +38,7 @@
 
 using namespace Gui;
 
-AbstractMouseSelection::AbstractMouseSelection()
+AbstractMouseSelection::AbstractMouseSelection() : _pcView3D(nullptr)
 {
     m_iXold = 0;
     m_iYold = 0;
@@ -204,7 +204,9 @@ void PolyPickerSelection::draw()
     _pcView3D->redraw();
 }
 
-PolyPickerSelection::~PolyPickerSelection() = default;
+PolyPickerSelection::~PolyPickerSelection()
+{
+}
 
 int PolyPickerSelection::popupMenu()
 {
@@ -355,7 +357,9 @@ PolyClipSelection::PolyClipSelection()
     selectionBits.set(2);
 }
 
-PolyClipSelection::~PolyClipSelection() = default;
+PolyClipSelection::~PolyClipSelection()
+{
+}
 
 int PolyClipSelection::popupMenu()
 {
@@ -400,9 +404,14 @@ int PolyClipSelection::popupMenu()
 
 // -----------------------------------------------------------------------------------
 
-FreehandSelection::FreehandSelection() = default;
+FreehandSelection::FreehandSelection()
+{
+}
 
-FreehandSelection::~FreehandSelection() = default;
+FreehandSelection::~FreehandSelection()
+{
+
+}
 
 void FreehandSelection::setClosed(bool on)
 {
@@ -556,7 +565,9 @@ RubberbandSelection::RubberbandSelection()
     rubberband.setColor(1.0, 1.0, 0.0, 0.5);
 }
 
-RubberbandSelection::~RubberbandSelection() = default;
+RubberbandSelection::~RubberbandSelection()
+{
+}
 
 void RubberbandSelection::setColor(float r, float g, float b, float a)
 {
@@ -654,13 +665,19 @@ RectangleSelection::RectangleSelection() : RubberbandSelection()
     rubberband.setColor(0.0,0.0,1.0,1.0);
 }
 
-RectangleSelection::~RectangleSelection() = default;
+RectangleSelection::~RectangleSelection()
+{
+}
 
 // -----------------------------------------------------------------------------------
 
-BoxZoomSelection::BoxZoomSelection() = default;
+BoxZoomSelection::BoxZoomSelection()
+{
+}
 
-BoxZoomSelection::~BoxZoomSelection() = default;
+BoxZoomSelection::~BoxZoomSelection()
+{
+}
 
 void BoxZoomSelection::terminate(bool abort)
 {

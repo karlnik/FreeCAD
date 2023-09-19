@@ -107,17 +107,17 @@
     <message>
       <location filename="../ui/openscadprefs-base.ui" line="266"/>
       <source>Maximum fragment size</source>
-      <translation>Μέγιστο μέγεθος τεμαχίου</translation>
+      <translation type="unfinished">Maximum fragment size</translation>
     </message>
     <message>
       <location filename="../ui/openscadprefs-base.ui" line="289"/>
       <source>angle (fa)</source>
-      <translation>γωνία (fa)</translation>
+      <translation type="unfinished">angle (fa)</translation>
     </message>
     <message>
       <location filename="../ui/openscadprefs-base.ui" line="385"/>
       <source>Convexity</source>
-      <translation>Κυρτότητα</translation>
+      <translation type="unfinished">Convexity</translation>
     </message>
     <message>
       <location filename="../ui/openscadprefs-base.ui" line="286"/>
@@ -168,33 +168,33 @@
     <message>
       <location filename="../../InitGui.py" line="130"/>
       <source>It looks like you may be using a Snap version of OpenSCAD.</source>
-      <translation>Φαίνεται ότι μπορεί να χρησιμοποιείτε μια Snap έκδοση του OpenSCAD.</translation>
+      <translation type="unfinished">It looks like you may be using a Snap version of OpenSCAD.</translation>
     </message>
     <message>
       <location filename="../../InitGui.py" line="135"/>
       <location filename="../../InitGui.py" line="148"/>
       <source>If OpenSCAD execution fails to load the temporary file, use FreeCAD's OpenSCAD Workbench Preferences to change the transfer mechanism.</source>
-      <translation>Εάν η εκτέλεση του OpenSCAD αποτύχει να φορτώσει το προσωρινό αρχείο, χρησιμοποιήστε τις Προτιμήσεις OpenSCAD του FreeCAD για να αλλάξετε τον μηχανισμό μεταφοράς.</translation>
+      <translation type="unfinished">If OpenSCAD execution fails to load the temporary file, use FreeCAD's OpenSCAD Workbench Preferences to change the transfer mechanism.</translation>
     </message>
     <message>
       <location filename="../../InitGui.py" line="143"/>
       <source>It looks like you may be using a sandboxed version of FreeCAD.</source>
-      <translation>Φαίνεται ότι μπορεί να χρησιμοποιείτε μια sandboxed έκδοση του FreeCAD.</translation>
+      <translation type="unfinished">It looks like you may be using a sandboxed version of FreeCAD.</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="92"/>
       <source>Unable to explode %s</source>
-      <translation>Αδυναμία κατακερματισμού %s</translation>
+      <translation type="unfinished">Unable to explode %s</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="139"/>
       <source>Convert Edges to Faces</source>
-      <translation>Μετατροπή Ακμών σε Όψεις</translation>
+      <translation type="unfinished">Convert Edges to Faces</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="301"/>
       <source>Please select 3 objects first</source>
-      <translation>Παρακαλώ επιλέξτε πρώτα 3 αντικείμενα</translation>
+      <translation type="unfinished">Please select 3 objects first</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="334"/>
@@ -226,7 +226,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="336"/>
       <source>Clear code</source>
-      <translation>Εκκαθάριση κώδικα</translation>
+      <translation type="unfinished">Clear code</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="337"/>
@@ -236,68 +236,68 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="338"/>
       <source>Save...</source>
-      <translation>Αποθήκευση...</translation>
+      <translation type="unfinished">Save...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="339"/>
       <location filename="../../OpenSCADCommands.py" line="370"/>
       <source>as Mesh</source>
-      <translation>ως Πλέγμα</translation>
+      <translation type="unfinished">as Mesh</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="352"/>
       <location filename="../../OpenSCADCommands.py" line="371"/>
       <source>Add OpenSCAD Element</source>
-      <translation>Προσθήκη Στοιχείου OpenSCAD</translation>
+      <translation type="unfinished">Add OpenSCAD Element</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="428"/>
       <source>Open file</source>
-      <translation>Άνοιγμα αρχείου</translation>
+      <translation type="unfinished">Open file</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="430"/>
       <location filename="../../OpenSCADCommands.py" line="444"/>
       <source>OpenSCAD Files</source>
-      <translation>Αρχεία OpenSCAD</translation>
+      <translation type="unfinished">OpenSCAD Files</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="442"/>
       <source>Save file</source>
-      <translation>Αποθήκευση αρχείου</translation>
+      <translation type="unfinished">Save file</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="456"/>
       <location filename="../../OpenSCADCommands.py" line="485"/>
       <source>Perform</source>
-      <translation>Εκτέλεση</translation>
+      <translation type="unfinished">Perform</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="482"/>
       <location filename="../../OpenSCADCommands.py" line="486"/>
       <source>Mesh Boolean</source>
-      <translation>Δημιουργία Πλέγματος με τη χρήση Λειτουργιών Boole</translation>
+      <translation type="unfinished">Mesh Boolean</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="487"/>
       <source>Minkowski sum</source>
-      <translation>Άθροισμα Minkowski</translation>
+      <translation type="unfinished">Minkowski sum</translation>
     </message>
     <message>
       <location filename="../../OpenSCADUtils.py" line="654"/>
       <source>OpenSCAD file contains both 2D and 3D shapes. That is not supported in this importer, all shapes must have the same dimensionality.</source>
-      <translation>Το αρχείο OpenSCAD περιέχει δύο σχήματα 2D και 3D. Αυτό δεν υποστηρίζεται σε αυτόν τον εισαγωγέα, όλα τα σχήματα πρέπει να έχουν την ίδια διάσταση.</translation>
+      <translation type="unfinished">OpenSCAD file contains both 2D and 3D shapes. That is not supported in this importer, all shapes must have the same dimensionality.</translation>
     </message>
     <message>
       <location filename="../../OpenSCADUtils.py" line="665"/>
       <source>Error: either all shapes must be 2D or all shapes must be 3D</source>
-      <translation>Σφάλμα: όλα τα σχήματα πρέπει να είναι 2D είτε 3D</translation>
+      <translation type="unfinished">Error: either all shapes must be 2D or all shapes must be 3D</translation>
     </message>
     <message>
       <location filename="../../importCSG.py" line="550"/>
       <location filename="../../importCSG.py" line="1432"/>
       <source>Unsupported Function</source>
-      <translation>Μη υποστηριζόμενη λειτουργία</translation>
+      <translation type="unfinished">Unsupported Function</translation>
     </message>
     <message>
       <location filename="../../importCSG.py" line="550"/>
@@ -311,12 +311,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="100"/>
       <source>Explode Group</source>
-      <translation>Ομάδα Κατακερματισμού</translation>
+      <translation type="unfinished">Explode Group</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="103"/>
       <source>Remove fusion, apply placement to children, and color randomly</source>
-      <translation>Αναίρεση συγχώνευσης, εφαρμογή τοποθέτησης στα θυγατρικά στοιχεία, και τυχαίος χρωματισμός</translation>
+      <translation type="unfinished">Remove fusion, apply placement to children, and color randomly</translation>
     </message>
   </context>
   <context>
@@ -324,12 +324,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="116"/>
       <source>Color Shapes</source>
-      <translation>Χρωματισμός Σχημάτων</translation>
+      <translation type="unfinished">Color Shapes</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="119"/>
       <source>Color Shapes by validity and type</source>
-      <translation>Χρωματισμός Σχημάτων με βάση την εγκυρότητα και τον τύπο τους</translation>
+      <translation type="unfinished">Color Shapes by validity and type</translation>
     </message>
   </context>
   <context>
@@ -337,7 +337,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="136"/>
       <source>Convert Edges To Faces</source>
-      <translation>Μετατροπή Ακμών σε Όψεις</translation>
+      <translation type="unfinished">Convert Edges To Faces</translation>
     </message>
   </context>
   <context>
@@ -345,12 +345,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="156"/>
       <source>Refine Shape Feature</source>
-      <translation>Χαρακτηριστικό Τελειοποίησης Σχήματος</translation>
+      <translation type="unfinished">Refine Shape Feature</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="159"/>
       <source>Create Refine Shape Feature</source>
-      <translation>Δημιουργία Χαρακτηριστικού Τελειοποίησης Σχήματος</translation>
+      <translation type="unfinished">Create Refine Shape Feature</translation>
     </message>
   </context>
   <context>
@@ -358,12 +358,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="186"/>
       <source>Mirror Mesh Feature...</source>
-      <translation>Χαρακτηριστικό πλέγματος καθρέφτη...</translation>
+      <translation type="unfinished">Mirror Mesh Feature...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="189"/>
       <source>Create Mirror Mesh Feature</source>
-      <translation>Δημιουργία Χαρακτηριστικού Καθρέφτη Πλέγματος</translation>
+      <translation type="unfinished">Create Mirror Mesh Feature</translation>
     </message>
   </context>
   <context>
@@ -371,12 +371,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="215"/>
       <source>Scale Mesh Feature...</source>
-      <translation>Αλλαγή Μεγέθους Χαρακτηριστικού Πλέγματος...</translation>
+      <translation type="unfinished">Scale Mesh Feature...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="219"/>
       <source>Create Scale Mesh Feature</source>
-      <translation>Δημιουργία Κλίμακας Χαρακτηριστικού Πλέγματος</translation>
+      <translation type="unfinished">Create Scale Mesh Feature</translation>
     </message>
   </context>
   <context>
@@ -384,12 +384,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="245"/>
       <source>Resize Mesh Feature...</source>
-      <translation>Αλλαγή Μεγέθους Χαρακτηριστικού Πλέγματος...</translation>
+      <translation type="unfinished">Resize Mesh Feature...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="249"/>
       <source>Create Resize Mesh Feature</source>
-      <translation>Δημιουργία Χαρακτηριστικού Καθρέφτη Πλέγματος</translation>
+      <translation type="unfinished">Create Resize Mesh Feature</translation>
     </message>
   </context>
   <context>
@@ -397,12 +397,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="266"/>
       <source>Increase Tolerance Feature</source>
-      <translation>Αύξησης Ανοχής</translation>
+      <translation type="unfinished">Increase Tolerance Feature</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="269"/>
       <source>Create Feature that allows increasing the tolerance</source>
-      <translation>Δημιουργήστε χαρακτηριστικό που επιτρέπει την αύξηση της ανοχής</translation>
+      <translation type="unfinished">Create Feature that allows increasing the tolerance</translation>
     </message>
   </context>
   <context>
@@ -410,12 +410,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="283"/>
       <source>Expand Placements</source>
-      <translation>Επέκταση Τοποθετήσεων</translation>
+      <translation type="unfinished">Expand Placements</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="286"/>
       <source>Expand all placements downwards in the Tree view</source>
-      <translation>Ανάπτυξη όλων των τοποθετήσεων προς τα κάτω στην προβολή Δέντρου</translation>
+      <translation type="unfinished">Expand all placements downwards in the Tree view</translation>
     </message>
   </context>
   <context>
@@ -423,13 +423,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="304"/>
       <source>Replace Object</source>
-      <translation>Αντικατάσταση Αντικειμένου</translation>
+      <translation type="unfinished">Replace Object</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="307"/>
       <source>Replace an object in the Tree view. Please select old, new, and parent object</source>
-      <translation>Αντικαταστήστε ένα αντικείμενο στην προβολή δέντρου. Επιλέξτε παλιό, νέο,
-και το μητρικό αντικείμενο</translation>
+      <translation type="unfinished">Replace an object in the Tree view. Please select old, new, and parent object</translation>
     </message>
   </context>
   <context>
@@ -437,12 +436,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="317"/>
       <source>Remove Objects and their Children</source>
-      <translation>Αφαιρέστε Αντικείμενα και τα Θυγατρικά τους Στοιχεία</translation>
+      <translation type="unfinished">Remove Objects and their Children</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="320"/>
       <source>Removes the selected objects and all children that are not referenced from other objects</source>
-      <translation>Αφαιρεί τα επιλεγμένα αντικείμενα και όλα τα θυγατρικά στοιχεία που δεν αναφέρονται από άλλα αντικείμενα</translation>
+      <translation type="unfinished">Removes the selected objects and all children that are not referenced from other objects</translation>
     </message>
   </context>
   <context>
@@ -450,12 +449,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="530"/>
       <source>Add OpenSCAD Element...</source>
-      <translation>Προσθήκη στοιχείου OpenSCAD...</translation>
+      <translation type="unfinished">Add OpenSCAD Element...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="534"/>
       <source>Add an OpenSCAD element by entering OpenSCAD code and executing the OpenSCAD binary</source>
-      <translation>Προσθέστε ένα στοιχείο OpenSCAD εισάγοντας κώδικα OpenSCAD και εκτελώντας το OpenSCAD</translation>
+      <translation type="unfinished">Add an OpenSCAD element by entering OpenSCAD code and executing the OpenSCAD binary</translation>
     </message>
   </context>
   <context>
@@ -463,12 +462,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="545"/>
       <source>Mesh Boolean...</source>
-      <translation>Δημιουργία Πλέγματος με τη χρήση Λειτουργιών Boole...</translation>
+      <translation type="unfinished">Mesh Boolean...</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="549"/>
       <source>Export objects as meshes and use OpenSCAD to perform a boolean operation</source>
-      <translation>Εξαγάγετε αντικείμενα ως πλέγματα και χρησιμοποιήστε το OpenSCAD για να εκτελέσετε μια λειτουργία Boolean</translation>
+      <translation type="unfinished">Export objects as meshes and use OpenSCAD to perform a boolean operation</translation>
     </message>
   </context>
   <context>
@@ -481,7 +480,7 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="569"/>
       <source>Use OpenSCAD to create a hull</source>
-      <translation>Χρησιμοποιήστε το OpenSCAD για να δημιουργήσετε ένα κύτος</translation>
+      <translation type="unfinished">Use OpenSCAD to create a hull</translation>
     </message>
   </context>
   <context>
@@ -489,12 +488,12 @@
     <message>
       <location filename="../../InitGui.py" line="152"/>
       <source>OpenSCAD Tools</source>
-      <translation>Εργαλεία OpenSCAD</translation>
+      <translation type="unfinished">OpenSCAD Tools</translation>
     </message>
     <message>
       <location filename="../../InitGui.py" line="156"/>
       <source>Frequently-used Part WB tools</source>
-      <translation>Συχνά χρησιμοποιούμενα εργαλεία μέρος WB</translation>
+      <translation type="unfinished">Frequently-used Part WB tools</translation>
     </message>
   </context>
   <context>
@@ -502,12 +501,12 @@
     <message>
       <location filename="../../OpenSCADCommands.py" line="586"/>
       <source>Minkowski sum</source>
-      <translation>Άθροισμα Minkowski</translation>
+      <translation type="unfinished">Minkowski sum</translation>
     </message>
     <message>
       <location filename="../../OpenSCADCommands.py" line="589"/>
       <source>Use OpenSCAD to create a Minkowski sum</source>
-      <translation>Χρησιμοποιήστε το OpenSCAD για να δημιουργήσετε ένα ποσό Minkowski</translation>
+      <translation type="unfinished">Use OpenSCAD to create a Minkowski sum</translation>
     </message>
   </context>
 </TS>

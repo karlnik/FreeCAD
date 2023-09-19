@@ -144,7 +144,9 @@ PreferenceUiForm::PreferenceUiForm(const QString& fn, QWidget* parent)
     }
 }
 
-PreferenceUiForm::~PreferenceUiForm() = default;
+PreferenceUiForm::~PreferenceUiForm()
+{
+}
 
 void PreferenceUiForm::changeEvent(QEvent *e)
 {
@@ -217,7 +219,9 @@ CustomizeActionPage::CustomizeActionPage(QWidget* parent) : QWidget(parent)
 }
 
 /** Destruction */
-CustomizeActionPage::~CustomizeActionPage() = default;
+CustomizeActionPage::~CustomizeActionPage()
+{
+}
 
 bool CustomizeActionPage::event(QEvent* e)
 {

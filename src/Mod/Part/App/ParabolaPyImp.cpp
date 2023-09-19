@@ -27,7 +27,6 @@
 #endif
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include "ParabolaPy.h"
@@ -54,17 +53,17 @@ PyObject *ParabolaPy::PyMake(struct _typeobject *, PyObject *, PyObject *)  // P
 // constructor method
 int ParabolaPy::PyInit(PyObject* args, PyObject* kwds)
 {
-    static const std::array<const char *, 1> keywords_n {nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "", keywords_n)) {
+    char* keywords_n[] = {nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "", keywords_n)) {
         Handle(Geom_Parabola) parabola = Handle(Geom_Parabola)::DownCast(getGeomParabolaPtr()->handle());
         parabola->SetFocal(1.0);
         return 0;
     }
 
-    static const std::array<const char *, 2> keywords_e {"Parabola", nullptr};
+    char* keywords_e[] = {"Parabola",nullptr};
     PyErr_Clear();
     PyObject *pParab;
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!",keywords_e, &(ParabolaPy::Type), &pParab)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!",keywords_e, &(ParabolaPy::Type), &pParab)) {
         ParabolaPy* pParabola = static_cast<ParabolaPy*>(pParab);
         Handle(Geom_Parabola) Parab1 = Handle(Geom_Parabola)::DownCast
             (pParabola->getGeomParabolaPtr()->handle());
@@ -74,13 +73,13 @@ int ParabolaPy::PyInit(PyObject* args, PyObject* kwds)
         return 0;
     }
 
-    static const std::array<const char *, 4> keywords_ssc {"Focus","Center","Normal",nullptr};
+    char* keywords_ssc[] = {"Focus","Center","Normal",nullptr};
     PyErr_Clear();
     PyObject *pV1, *pV2, *pV3;
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!O!", keywords_ssc,
-                                            &(Base::VectorPy::Type), &pV1,
-                                            &(Base::VectorPy::Type), &pV2,
-                                            &(Base::VectorPy::Type), &pV3)) {
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!O!O!", keywords_ssc,
+                                         &(Base::VectorPy::Type), &pV1,
+                                         &(Base::VectorPy::Type), &pV2,
+                                         &(Base::VectorPy::Type), &pV3)) {
         Base::Vector3d focus = static_cast<Base::VectorPy*>(pV1)->value();
         Base::Vector3d center = static_cast<Base::VectorPy*>(pV2)->value();
         Base::Vector3d normal = static_cast<Base::VectorPy*>(pV3)->value();

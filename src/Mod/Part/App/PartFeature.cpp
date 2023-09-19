@@ -79,7 +79,9 @@ Feature::Feature()
     ADD_PROPERTY(Shape, (TopoDS_Shape()));
 }
 
-Feature::~Feature() = default;
+Feature::~Feature()
+{
+}
 
 short Feature::mustExecute() const
 {
@@ -449,7 +451,7 @@ TopoShape Feature::getTopoShape(const App::DocumentObject *obj, const char *subn
         bool resolveLink, bool transform, bool noElementMap)
 {
     if(!obj || !obj->getNameInDocument())
-        return {};
+        return TopoShape();
 
     std::vector<App::DocumentObject*> linkStack;
 
@@ -597,12 +599,12 @@ ShapeHistory Feature::joinHistory(const ShapeHistory& oldH, const ShapeHistory& 
     ShapeHistory join;
     join.type = oldH.type;
 
-    for (const auto & it : oldH.shapeMap) {
-        int old_shape_index = it.first;
-        if (it.second.empty())
+    for (ShapeHistory::MapList::const_iterator it = oldH.shapeMap.begin(); it != oldH.shapeMap.end(); ++it) {
+        int old_shape_index = it->first;
+        if (it->second.empty())
             join.shapeMap[old_shape_index] = ShapeHistory::List();
-        for (const auto& jt : it.second) {
-            const auto& kt = newH.shapeMap.find(jt);
+        for (ShapeHistory::List::const_iterator jt = it->second.begin(); jt != it->second.end(); ++jt) {
+            ShapeHistory::MapList::const_iterator kt = newH.shapeMap.find(*jt);
             if (kt != newH.shapeMap.end()) {
                 ShapeHistory::List& ary = join.shapeMap[old_shape_index];
                 ary.insert(ary.end(), kt->second.begin(), kt->second.end());

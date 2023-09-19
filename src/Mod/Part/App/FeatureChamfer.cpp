@@ -38,7 +38,9 @@ using namespace Part;
 
 PROPERTY_SOURCE(Part::Chamfer, Part::FilletBase)
 
-Chamfer::Chamfer() = default;
+Chamfer::Chamfer()
+{
+}
 
 App::DocumentObjectExecReturn *Chamfer::execute()
 {
@@ -55,10 +57,10 @@ App::DocumentObjectExecReturn *Chamfer::execute()
         TopExp::MapShapes(baseShape, TopAbs_EDGE, mapOfEdges);
 
         std::vector<FilletElement> values = Edges.getValues();
-        for (const auto & value : values) {
-            int id = value.edgeid;
-            double radius1 = value.radius1;
-            double radius2 = value.radius2;
+        for (std::vector<FilletElement>::iterator it = values.begin(); it != values.end(); ++it) {
+            int id = it->edgeid;
+            double radius1 = it->radius1;
+            double radius2 = it->radius2;
             const TopoDS_Edge& edge = TopoDS::Edge(mapOfEdges.FindKey(id));
             const TopoDS_Face& face = TopoDS::Face(mapEdgeFace.FindFromKey(edge).First());
             mkChamfer.Add(radius1, radius2, edge, face);

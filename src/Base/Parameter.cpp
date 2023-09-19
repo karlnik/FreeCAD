@@ -54,6 +54,9 @@
 
 FC_LOG_LEVEL_INIT("Parameter", true, true)
 
+//#ifdef XERCES_HAS_CPP_NAMESPACE
+//  using namespace xercesc;
+//#endif
 
 XERCES_CPP_NAMESPACE_USE
 using namespace Base;
@@ -78,7 +81,9 @@ public:
     // -----------------------------------------------------------------------
     //  Constructors and Destructor
     // -----------------------------------------------------------------------
-    DOMTreeErrorReporter() = default;
+    DOMTreeErrorReporter() :
+            fSawErrors(false) {
+    }
 
     ~DOMTreeErrorReporter() override = default;
 
@@ -104,7 +109,7 @@ public:
     //      method. Its used by the main code to suppress output if there are
     //      errors.
     // -----------------------------------------------------------------------
-    bool    fSawErrors{false};
+    bool    fSawErrors;
 };
 
 
@@ -146,7 +151,7 @@ public:
     void resetErrors() {}
 
     /* Unimplemented constructors and operators */
-    explicit DOMPrintErrorHandler(const DOMErrorHandler&) = delete;
+    DOMPrintErrorHandler(const DOMErrorHandler&) = delete;
     void operator=(const DOMErrorHandler&) = delete;
 
 };
@@ -393,7 +398,7 @@ Base::Reference<ParameterGrp> ParameterGrp::_GetGroup(const char* Name)
         return rParamGrp;
     }
 
-    DOMElement *pcTemp{};
+    DOMElement *pcTemp;
 
     // search if Group node already there
     pcTemp = FindElement(_pGroupNode,"FCParamGroup",Name);
@@ -913,6 +918,17 @@ std::vector<std::pair<std::string,double> > ParameterGrp::GetFloatMap(const char
     return vrValues;
 }
 
+void  ParameterGrp::SetBlob(const char* /*Name*/, void* /*pValue*/, long /*lLength*/)
+{
+    // not implemented so far
+    assert(0);
+}
+
+void ParameterGrp::GetBlob(const char* /*Name*/, void* /*pBuf*/, long /*lMaxLength*/, void* /*pPreset*/) const
+{
+    // not implemented so far
+    assert(0);
+}
 
 void  ParameterGrp::SetASCII(const char* Name, const char *sValue)
 {
@@ -964,14 +980,16 @@ std::string ParameterGrp::GetASCII(const char* Name, const char * pPreset) const
     // if not return preset
     if (!pcElem) {
         if (!pPreset)
-            return {};
-        return {pPreset};
+            return std::string("");
+        else
+            return std::string(pPreset);
     }
     // if yes check the value and return
     DOMNode *pcElem2 = pcElem->getFirstChild();
     if (pcElem2)
-        return {StrXUTF8(pcElem2->getNodeValue()).c_str()};
-    return {};
+        return std::string(StrXUTF8(pcElem2->getNodeValue()).c_str());
+    else
+        return std::string("");
 }
 
 std::vector<std::string> ParameterGrp::GetASCIIs(const char * sFilter) const
@@ -1067,6 +1085,18 @@ void ParameterGrp::RemoveBool(const char* Name)
     Notify(Name);
 }
 
+void ParameterGrp::RemoveBlob(const char* /*Name*/)
+{
+    /* not implemented yet
+    // check if Element in group
+    DOMElement *pcElem = FindElement(_pGroupNode,"FCGrp",Name);
+    // if not return
+    if(!pcElem)
+        return;
+    else
+        _pGroupNode->removeChild(pcElem);
+    */
+}
 
 void ParameterGrp::RemoveFloat(const char* Name)
 {
@@ -1413,6 +1443,7 @@ static XercesDOMParser::ValSchemes    gValScheme       = XercesDOMParser::Val_Au
 /** Default construction
   */
 ParameterManager::ParameterManager()
+  : ParameterGrp(), _pDocument(nullptr), paramSerializer(nullptr)
 {
     _Manager = this;
 
@@ -1486,7 +1517,7 @@ ParameterManager::~ParameterManager()
 
 Base::Reference<ParameterManager> ParameterManager::Create()
 {
-    return {new ParameterManager()};
+    return Base::Reference<ParameterManager>(new ParameterManager());
 }
 
 void ParameterManager::Init()

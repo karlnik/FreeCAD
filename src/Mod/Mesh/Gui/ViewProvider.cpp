@@ -160,9 +160,13 @@ void ViewProviderMeshBuilder::createMesh(const MeshCore::MeshKernel& kernel, SoC
 
 PROPERTY_SOURCE(MeshGui::ViewProviderExport, Gui::ViewProviderDocumentObject)
 
-ViewProviderExport::ViewProviderExport() = default;
+ViewProviderExport::ViewProviderExport()
+{
+}
 
-ViewProviderExport::~ViewProviderExport() = default;
+ViewProviderExport::~ViewProviderExport()
+{
+}
 
 std::vector<std::string> ViewProviderExport::getDisplayModes() const
 {
@@ -221,7 +225,7 @@ const char* ViewProviderMesh::LightingEnums[]= {"One side", "Two side", nullptr}
 
 PROPERTY_SOURCE(MeshGui::ViewProviderMesh, Gui::ViewProviderGeometryObject)
 
-ViewProviderMesh::ViewProviderMesh() : highlightMode{HighlighMode::None}
+ViewProviderMesh::ViewProviderMesh() : pcOpenEdge(nullptr)
 {
     static const char *osgroup = "Object Style";
 
@@ -908,6 +912,9 @@ public:
         , poly(poly)
         , proj(proj)
     {
+
+    }
+    ~MeshSplit() {
 
     }
     void cutMesh() {
@@ -2298,7 +2305,9 @@ ViewProviderIndexedFaceSet::ViewProviderIndexedFaceSet()
     pcMeshFaces = nullptr;
 }
 
-ViewProviderIndexedFaceSet::~ViewProviderIndexedFaceSet() = default;
+ViewProviderIndexedFaceSet::~ViewProviderIndexedFaceSet()
+{
+}
 
 /**
  * Extracts the mesh data from the feature \a pcFeature and creates
@@ -2387,7 +2396,9 @@ ViewProviderMeshObject::ViewProviderMeshObject()
     pcMeshShape = nullptr;
 }
 
-ViewProviderMeshObject::~ViewProviderMeshObject() = default;
+ViewProviderMeshObject::~ViewProviderMeshObject()
+{
+}
 
 void ViewProviderMeshObject::attach(App::DocumentObject *pcFeat)
 {

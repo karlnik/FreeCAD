@@ -81,7 +81,9 @@ SelectionGatePython::SelectionGatePython(const Py::Object& obj)
 {
 }
 
-SelectionGatePython::~SelectionGatePython() = default;
+SelectionGatePython::~SelectionGatePython()
+{
+}
 
 bool SelectionGatePython::allow(App::Document* doc, App::DocumentObject* obj, const char* sub)
 {
@@ -156,7 +158,9 @@ void SelectionFilter::setFilter(const char* filter)
     }
 }
 
-SelectionFilter::~SelectionFilter() = default;
+SelectionFilter::~SelectionFilter()
+{
+}
 
 bool SelectionFilter::match()
 {

@@ -107,7 +107,6 @@ protected Q_SLOTS:
 
 private:
     double requiredRotation(double inputAngle);
-    std::string makeSectionLabel(QString symbol);
 
     void createComplexSection();
     void updateComplexSection();

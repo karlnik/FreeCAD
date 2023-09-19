@@ -59,9 +59,13 @@ public:
 
 // ----------------------------------------------------------------------------
 
-TransformStrategy::TransformStrategy() = default;
+TransformStrategy::TransformStrategy()
+{
+}
 
-TransformStrategy::~TransformStrategy() = default;
+TransformStrategy::~TransformStrategy()
+{
+}
 
 Base::Vector3d TransformStrategy::getRotationCenter() const
 {
@@ -201,7 +205,9 @@ DefaultTransformStrategy::DefaultTransformStrategy(QWidget* w) : widget(w)
     onSelectionChanged(mod);
 }
 
-DefaultTransformStrategy::~DefaultTransformStrategy() = default;
+DefaultTransformStrategy::~DefaultTransformStrategy()
+{
+}
 
 std::set<App::DocumentObject*> DefaultTransformStrategy::transformObjects() const
 {
@@ -433,7 +439,10 @@ TaskTransform::TaskTransform()
     Content.push_back(taskbox);
 }
 
-TaskTransform::~TaskTransform() = default;
+TaskTransform::~TaskTransform()
+{
+    // automatically deleted in the sub-class
+}
 
 void TaskTransform::setTransformStrategy(TransformStrategy* ts)
 {

@@ -128,7 +128,7 @@ public:
     friend class Transaction;
 
 protected:
-    enum Status {New,Del,Chn} status{New};
+    enum Status {New,Del,Chn} status;
 
     struct PropData : DynamicProperty::PropData {
         Base::Type propertyType;

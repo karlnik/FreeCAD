@@ -233,7 +233,9 @@ init_image_module()
 }
 
 Application::Application(std::map<std::string,std::string> &mConfig)
-  : _mConfig(mConfig)
+  : _mConfig(mConfig), _pActiveDoc(nullptr), _isRestoring(false),_allowPartial(false)
+  , _isClosingAll(false), _objCount(-1), _activeTransactionID(0)
+  , _activeTransactionGuard(0), _activeTransactionTmpName(false)
 {
     //_hApp = new ApplicationOCC;
     mpcPramManager["System parameter"] = _pcSysParamMngr;
@@ -591,7 +593,7 @@ std::vector<App::Document*> Application::getDocuments() const
 std::string Application::getUniqueDocumentName(const char *Name, bool tempDoc) const
 {
     if (!Name || *Name == '\0')
-        return {};
+        return std::string();
     std::string CleanName = Base::Tools::getIdentifier(Name);
 
     // name in use?
@@ -3158,7 +3160,7 @@ std::tuple<QString, QString, QString> getCustomPaths()
         userTemp = fi.absoluteFilePath();
     }
 
-    return {userHome, userData, userTemp};
+    return std::tuple<QString, QString, QString>(userHome, userData, userTemp);
 }
 
 /*!

@@ -228,7 +228,7 @@ class AppExport Extension
 
 public:
 
-    Extension() = default;
+    Extension();
     virtual ~Extension();
 
     virtual void initExtension(App::ExtensionContainer* obj);

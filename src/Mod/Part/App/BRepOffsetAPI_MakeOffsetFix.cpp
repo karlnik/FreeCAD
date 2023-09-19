@@ -47,14 +47,18 @@
 
 using namespace Part;
 
-BRepOffsetAPI_MakeOffsetFix::BRepOffsetAPI_MakeOffsetFix() = default;
+BRepOffsetAPI_MakeOffsetFix::BRepOffsetAPI_MakeOffsetFix()
+{
+}
 
 BRepOffsetAPI_MakeOffsetFix::BRepOffsetAPI_MakeOffsetFix(const GeomAbs_JoinType Join, const Standard_Boolean IsOpenResult)
 {
     mkOffset.Init(Join, IsOpenResult);
 }
 
-BRepOffsetAPI_MakeOffsetFix::~BRepOffsetAPI_MakeOffsetFix() = default;
+BRepOffsetAPI_MakeOffsetFix::~BRepOffsetAPI_MakeOffsetFix()
+{
+}
 
 void BRepOffsetAPI_MakeOffsetFix::AddWire(const TopoDS_Wire& Spine)
 {

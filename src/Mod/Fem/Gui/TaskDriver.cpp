@@ -44,6 +44,7 @@ TaskDriver::TaskDriver(Fem::FemAnalysis* pcObject, QWidget* parent)
     this->groupLayout()->addWidget(proxy);
 }
 
-TaskDriver::~TaskDriver() = default;
+TaskDriver::~TaskDriver()
+{}
 
 #include "moc_TaskDriver.cpp"

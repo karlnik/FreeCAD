@@ -48,7 +48,9 @@ void WorkbenchManager::destruct()
     _instance = nullptr;
 }
 
-WorkbenchManager::WorkbenchManager() = default;
+WorkbenchManager::WorkbenchManager() : _activeWorkbench(nullptr)
+{
+}
 
 WorkbenchManager::~WorkbenchManager()
 {

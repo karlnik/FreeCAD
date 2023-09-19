@@ -54,7 +54,9 @@ TaskOrientation::TaskOrientation(App::GeoFeature* obj, QWidget* parent)
             this, &TaskOrientation::onPreview);
 }
 
-TaskOrientation::~TaskOrientation() = default;
+TaskOrientation::~TaskOrientation()
+{
+}
 
 void TaskOrientation::open()
 {

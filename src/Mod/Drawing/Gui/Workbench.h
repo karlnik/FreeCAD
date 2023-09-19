@@ -26,13 +26,12 @@
 #include <Gui/Workbench.h>
 
 
-namespace DrawingGui
-{
+namespace DrawingGui {
 
 /**
  * @author Werner Mayer
  */
-class Workbench: public Gui::StdWorkbench
+class Workbench : public Gui::StdWorkbench
 {
     TYPESYSTEM_HEADER();
 
@@ -46,7 +45,7 @@ protected:
     Gui::ToolBarItem* setupCommandBars() const;
 };
 
-}  // namespace DrawingGui
+} // namespace DrawingGui
 
 
-#endif  // DRAWING_WORKBENCH_H
+#endif // DRAWING_WORKBENCH_H 

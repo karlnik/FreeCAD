@@ -116,7 +116,6 @@ locations = [
         "../Mod/Draft/Resources/translations",
         "../Mod/Draft/Resources/Draft.qrc",
     ],
-    ["Base", "../Base/Resources/translations", "../Base/Resources/Base.qrc"],
     [
         "Drawing",
         "../Mod/Drawing/Gui/Resources/translations",

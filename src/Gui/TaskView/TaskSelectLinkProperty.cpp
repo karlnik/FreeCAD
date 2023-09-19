@@ -153,7 +153,7 @@ void TaskSelectLinkProperty::activate()
 
 bool TaskSelectLinkProperty::accept()
 {
-    // set the property with the selection
+    // set the proptery with the selection
     sendSelection2Property();
 
     // clear selection and remove gate (return to normal operation)

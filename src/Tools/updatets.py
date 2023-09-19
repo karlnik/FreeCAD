@@ -55,7 +55,6 @@ import pathlib
 
 directories = [
     {"tsname": "App", "workingdir": "./src/App", "tsdir": "Resources/translations"},
-    {"tsname": "Base", "workingdir": "./src/Base", "tsdir": "Resources/translations"},
     {"tsname": "FreeCAD", "workingdir": "./src/Gui", "tsdir": "Language"},
     {
         "tsname": "AddonManager",
@@ -148,7 +147,7 @@ directories = [
         "tsdir": "Gui/Resources/translations",
     },
     {
-        "tsname": "StartPage",
+        "tsname": "Start",
         "workingdir": "./src/Mod/Start/",
         "tsdir": "Gui/Resources/translations",
     },

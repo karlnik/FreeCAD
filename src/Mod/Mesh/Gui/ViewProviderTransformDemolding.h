@@ -36,7 +36,6 @@ class SoIndexedFaceSet;
 class SoFaceSet;
 class SoPath;
 class SoLocateHighlight;
-class SbRotation;
 class SoTrackballDragger;
 class SoTransformerManip;
 

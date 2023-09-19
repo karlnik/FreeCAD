@@ -74,11 +74,12 @@ class MeshRenderer::Private {
 public:
     Gui::OpenGLMultiBuffer vertices;
     Gui::OpenGLMultiBuffer indices;
-    const SbColor * pcolors{nullptr};
-    SoMaterialBindingElement::Binding matbinding{SoMaterialBindingElement::OVERALL};
-    bool initialized{false};
+    const SbColor * pcolors;
+    SoMaterialBindingElement::Binding matbinding;
+    bool initialized;
 
     Private();
+    ~Private();
     bool canRenderGLArray(SoGLRenderAction *) const;
     void generateGLArrays(SoGLRenderAction* action,
         SoMaterialBindingElement::Binding matbind,
@@ -95,6 +96,13 @@ private:
 MeshRenderer::Private::Private()
   : vertices(GL_ARRAY_BUFFER)
   , indices(GL_ELEMENT_ARRAY_BUFFER)
+  , pcolors(nullptr)
+  , matbinding(SoMaterialBindingElement::OVERALL)
+  , initialized(false)
+{
+}
+
+MeshRenderer::Private::~Private()
 {
 }
 
@@ -427,7 +435,9 @@ SoFCMaterialEngine::SoFCMaterialEngine()
     SO_ENGINE_ADD_OUTPUT(trigger, SoSFBool);
 }
 
-SoFCMaterialEngine::~SoFCMaterialEngine() = default;
+SoFCMaterialEngine::~SoFCMaterialEngine()
+{
+}
 
 void SoFCMaterialEngine::initClass()
 {
@@ -455,6 +465,7 @@ void SoFCIndexedFaceSet::initClass()
 
 SoFCIndexedFaceSet::SoFCIndexedFaceSet()
   : renderTriangleLimit(UINT_MAX)
+  , selectBuf(nullptr)
 {
     SO_NODE_CONSTRUCTOR(SoFCIndexedFaceSet);
     SO_NODE_ADD_FIELD(updateGLArray, (false));

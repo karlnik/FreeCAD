@@ -75,7 +75,7 @@ int ChFi2d_ChamferAPIPy::PyInit(PyObject* args, PyObject* /*kwd*/)
 // returns a string which represents the object e.g. when printed in python
 std::string ChFi2d_ChamferAPIPy::representation() const
 {
-    return {"<ChamferAPI object>"};
+    return std::string("<ChamferAPI object>");
 }
 
 PyObject* ChFi2d_ChamferAPIPy::init(PyObject *args)

@@ -40,7 +40,9 @@
 
 using namespace Base;
 
-Stream::Stream() = default;
+Stream::Stream() : _swap(false)
+{
+}
 
 Stream::~Stream() = default;
 
@@ -80,56 +82,56 @@ OutputStream& OutputStream::operator << (uint8_t uch)
 
 OutputStream& OutputStream::operator << (int16_t s)
 {
-    if (isSwapped()) SwapEndian<int16_t>(s);
+    if (_swap) SwapEndian<int16_t>(s);
     _out.write((const char*)&s, sizeof(int16_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (uint16_t us)
 {
-    if (isSwapped()) SwapEndian<uint16_t>(us);
+    if (_swap) SwapEndian<uint16_t>(us);
     _out.write((const char*)&us, sizeof(uint16_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (int32_t i)
 {
-    if (isSwapped()) SwapEndian<int32_t>(i);
+    if (_swap) SwapEndian<int32_t>(i);
     _out.write((const char*)&i, sizeof(int32_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (uint32_t ui)
 {
-    if (isSwapped()) SwapEndian<uint32_t>(ui);
+    if (_swap) SwapEndian<uint32_t>(ui);
     _out.write((const char*)&ui, sizeof(uint32_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (int64_t l)
 {
-    if (isSwapped()) SwapEndian<int64_t>(l);
+    if (_swap) SwapEndian<int64_t>(l);
     _out.write((const char*)&l, sizeof(int64_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (uint64_t ul)
 {
-    if (isSwapped()) SwapEndian<uint64_t>(ul);
+    if (_swap) SwapEndian<uint64_t>(ul);
     _out.write((const char*)&ul, sizeof(uint64_t));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (float f)
 {
-    if (isSwapped()) SwapEndian<float>(f);
+    if (_swap) SwapEndian<float>(f);
     _out.write((const char*)&f, sizeof(float));
     return *this;
 }
 
 OutputStream& OutputStream::operator << (double d)
 {
-    if (isSwapped()) SwapEndian<double>(d);
+    if (_swap) SwapEndian<double>(d);
     _out.write((const char*)&d, sizeof(double));
     return *this;
 }
@@ -161,56 +163,56 @@ InputStream& InputStream::operator >> (uint8_t& uch)
 InputStream& InputStream::operator >> (int16_t& s)
 {
     _in.read((char*)&s, sizeof(int16_t));
-    if (isSwapped()) SwapEndian<int16_t>(s);
+    if (_swap) SwapEndian<int16_t>(s);
     return *this;
 }
 
 InputStream& InputStream::operator >> (uint16_t& us)
 {
     _in.read((char*)&us, sizeof(uint16_t));
-    if (isSwapped()) SwapEndian<uint16_t>(us);
+    if (_swap) SwapEndian<uint16_t>(us);
     return *this;
 }
 
 InputStream& InputStream::operator >> (int32_t& i)
 {
     _in.read((char*)&i, sizeof(int32_t));
-    if (isSwapped()) SwapEndian<int32_t>(i);
+    if (_swap) SwapEndian<int32_t>(i);
     return *this;
 }
 
 InputStream& InputStream::operator >> (uint32_t& ui)
 {
     _in.read((char*)&ui, sizeof(uint32_t));
-    if (isSwapped()) SwapEndian<uint32_t>(ui);
+    if (_swap) SwapEndian<uint32_t>(ui);
     return *this;
 }
 
 InputStream& InputStream::operator >> (int64_t& l)
 {
     _in.read((char*)&l, sizeof(int64_t));
-    if (isSwapped()) SwapEndian<int64_t>(l);
+    if (_swap) SwapEndian<int64_t>(l);
     return *this;
 }
 
 InputStream& InputStream::operator >> (uint64_t& ul)
 {
     _in.read((char*)&ul, sizeof(uint64_t));
-    if (isSwapped()) SwapEndian<uint64_t>(ul);
+    if (_swap) SwapEndian<uint64_t>(ul);
     return *this;
 }
 
 InputStream& InputStream::operator >> (float& f)
 {
     _in.read((char*)&f, sizeof(float));
-    if (isSwapped()) SwapEndian<float>(f);
+    if (_swap) SwapEndian<float>(f);
     return *this;
 }
 
 InputStream& InputStream::operator >> (double& d)
 {
     _in.read((char*)&d, sizeof(double));
-    if (isSwapped()) SwapEndian<double>(d);
+    if (_swap) SwapEndian<double>(d);
     return *this;
 }
 
@@ -262,7 +264,7 @@ ByteArrayOStreambuf::seekoff(std::streambuf::off_type off,
             endpos = _buffer->size();
             break;
         default:
-            return {off_type(-1)};
+            return pos_type(off_type(-1));
     }
 
     if (endpos != curpos) {
@@ -270,7 +272,7 @@ ByteArrayOStreambuf::seekoff(std::streambuf::off_type off,
             endpos = -1;
     }
 
-    return {endpos};
+    return pos_type(endpos);
 }
 
 std::streambuf::pos_type
@@ -282,12 +284,11 @@ ByteArrayOStreambuf::seekpos(std::streambuf::pos_type pos,
 
 // ----------------------------------------------------------------------
 
-ByteArrayIStreambuf::ByteArrayIStreambuf(const QByteArray& data)
-    : _buffer(data)
-    , _beg(0)
-    , _end(data.size())
-    , _cur(0)
+ByteArrayIStreambuf::ByteArrayIStreambuf(const QByteArray& data) : _buffer(data)
 {
+    _beg = 0;
+    _end = data.size();
+    _cur = 0;
 }
 
 ByteArrayIStreambuf::~ByteArrayIStreambuf() = default;
@@ -395,7 +396,7 @@ IODeviceOStreambuf::seekoff(std::streambuf::off_type off,
             endpos = device->size();
             break;
         default:
-            return {off_type(-1)};
+            return pos_type(off_type(-1));
     }
 
     if (endpos != curpos) {
@@ -403,7 +404,7 @@ IODeviceOStreambuf::seekoff(std::streambuf::off_type off,
             endpos = -1;
     }
 
-    return {endpos};
+    return pos_type(endpos);
 }
 
 std::streambuf::pos_type
@@ -415,7 +416,7 @@ IODeviceOStreambuf::seekpos(std::streambuf::pos_type pos,
 
 // ----------------------------------------------------------------------
 
-IODeviceIStreambuf::IODeviceIStreambuf(QIODevice* dev) : device(dev)
+IODeviceIStreambuf::IODeviceIStreambuf(QIODevice* dev) : device(dev), buffer{}
 {
     setg (buffer+pbSize,     // beginning of putback area
           buffer+pbSize,     // read position
@@ -440,7 +441,7 @@ using std::memcpy;
      * - use number of characters read
      * - but at most size of putback area
      */
-    int numPutback{};
+    int numPutback;
     numPutback = gptr() - eback();
     if (numPutback > pbSize) {
         numPutback = pbSize;
@@ -453,7 +454,7 @@ using std::memcpy;
             numPutback);
 
     // read at most bufSize new characters
-    int num{};
+    int num;
     num = device->read(buffer+pbSize, bufSize);
     if (num <= 0) {
         // ERROR or EOF
@@ -487,7 +488,7 @@ IODeviceIStreambuf::seekoff(std::streambuf::off_type off,
             endpos = device->size();
             break;
         default:
-            return {off_type(-1)};
+            return pos_type(off_type(-1));
     }
 
     if (endpos != curpos) {
@@ -495,7 +496,7 @@ IODeviceIStreambuf::seekoff(std::streambuf::off_type off,
             endpos = -1;
     }
 
-    return {endpos};
+    return pos_type(endpos);
 }
 
 std::streambuf::pos_type
@@ -513,6 +514,7 @@ IODeviceIStreambuf::seekpos(std::streambuf::pos_type pos,
 // http://www.icce.rug.nl/documents/cplusplus/cplusplus24.html
 PyStreambuf::PyStreambuf(PyObject* o, std::size_t buf_size, std::size_t put_back)
     : inp(o)
+    , type(Unknown)
     , put_back(std::max(put_back, std::size_t(1)))
     , buffer(std::max(buf_size, put_back) + put_back)
 {
@@ -527,7 +529,7 @@ PyStreambuf::PyStreambuf(PyObject* o, std::size_t buf_size, std::size_t put_back
 
 PyStreambuf::~PyStreambuf()
 {
-    PyStreambuf::sync();
+    sync();
     Py_DECREF(inp);
 }
 
@@ -545,7 +547,7 @@ PyStreambuf::int_type PyStreambuf::underflow()
         start += put_back;
     }
 
-    std::size_t n{};
+    std::size_t n;
     Py::Tuple arg(1);
     long len = static_cast<long>(buffer.size() - (start - base));
     arg.setItem(0, Py::Long(len));
@@ -694,7 +696,7 @@ PyStreambuf::seekoff(PyStreambuf::off_type offset, PyStreambuf::seekdir dir, PyS
         whence = 2;
         break;
     default:
-        return {off_type(-1)};
+        return pos_type(off_type(-1));
     }
 
     try {
@@ -713,7 +715,7 @@ PyStreambuf::seekoff(PyStreambuf::off_type offset, PyStreambuf::seekdir dir, PyS
     }
     catch(Py::Exception& e) {
         e.clear();
-        return {off_type(-1)};
+        return pos_type(off_type(-1));
     }
 }
 
@@ -729,7 +731,7 @@ Streambuf::Streambuf(const std::string& data)
 {
     _beg = data.begin();
     _end = data.end();
-    _cur = _beg; //NOLINT
+    _cur = _beg;
 }
 
 Streambuf::~Streambuf() = default;

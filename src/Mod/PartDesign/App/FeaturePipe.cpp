@@ -536,8 +536,10 @@ void Pipe::buildPipePath(const Part::TopoShape& shape, const std::vector<std::st
                     //getContinuousEdges(shape, subedge);
 
                 BRepBuilderAPI_MakeWire mkWire;
-                for (const auto & it : subedge) {
-                    TopoDS_Shape subshape = shape.getSubShape(it.c_str());
+                for (std::vector<std::string>::const_iterator it = subedge.begin();
+                     it != subedge.end();
+                     ++it) {
+                    TopoDS_Shape subshape = shape.getSubShape(it->c_str());
                     mkWire.Add(TopoDS::Edge(subshape));
                 }
                 path = mkWire.Wire();

@@ -46,7 +46,9 @@ ViewProviderHole::ViewProviderHole()
     sPixmap = "PartDesign_Hole.svg";
 }
 
-ViewProviderHole::~ViewProviderHole() = default;
+ViewProviderHole::~ViewProviderHole()
+{
+}
 
 std::vector<App::DocumentObject*> ViewProviderHole::claimChildren()const
 {

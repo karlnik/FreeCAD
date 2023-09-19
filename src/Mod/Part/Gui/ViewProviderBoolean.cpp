@@ -39,9 +39,13 @@ using namespace PartGui;
 
 PROPERTY_SOURCE(PartGui::ViewProviderBoolean,PartGui::ViewProviderPart)
 
-ViewProviderBoolean::ViewProviderBoolean() = default;
+ViewProviderBoolean::ViewProviderBoolean()
+{
+}
 
-ViewProviderBoolean::~ViewProviderBoolean() = default;
+ViewProviderBoolean::~ViewProviderBoolean()
+{
+}
 
 std::vector<App::DocumentObject*> ViewProviderBoolean::claimChildren()const
 {
@@ -157,13 +161,17 @@ bool ViewProviderBoolean::onDelete(const std::vector<std::string> &)
 
 PROPERTY_SOURCE(PartGui::ViewProviderMultiFuse,PartGui::ViewProviderPart)
 
-ViewProviderMultiFuse::ViewProviderMultiFuse() = default;
+ViewProviderMultiFuse::ViewProviderMultiFuse()
+{
+}
 
-ViewProviderMultiFuse::~ViewProviderMultiFuse() = default;
+ViewProviderMultiFuse::~ViewProviderMultiFuse()
+{
+}
 
 std::vector<App::DocumentObject*> ViewProviderMultiFuse::claimChildren()const
 {
-    return static_cast<Part::MultiFuse*>(getObject())->Shapes.getValues();
+    return std::vector<App::DocumentObject*>(static_cast<Part::MultiFuse*>(getObject())->Shapes.getValues());
 }
 
 QIcon ViewProviderMultiFuse::getIcon() const
@@ -223,10 +231,9 @@ void ViewProviderMultiFuse::updateData(const App::Property* prop)
     }
     else if (prop->getTypeId().isDerivedFrom(App::PropertyLinkList::getClassTypeId())) {
         std::vector<App::DocumentObject*> pShapes = static_cast<const App::PropertyLinkList*>(prop)->getValues();
-        for (auto it : pShapes) {
-            if (it) {
-                Gui::Application::Instance->hideViewProvider(it);
-            }
+        for (std::vector<App::DocumentObject*>::iterator it = pShapes.begin(); it != pShapes.end(); ++it) {
+            if (*it)
+                Gui::Application::Instance->hideViewProvider(*it);
         }
     }
 }
@@ -236,10 +243,9 @@ bool ViewProviderMultiFuse::onDelete(const std::vector<std::string> &)
     // get the input shapes
     Part::MultiFuse* pBool = static_cast<Part::MultiFuse*>(getObject());
     std::vector<App::DocumentObject*> pShapes = pBool->Shapes.getValues();
-    for (auto it : pShapes) {
-        if (it) {
-            Gui::Application::Instance->showViewProvider(it);
-        }
+    for (std::vector<App::DocumentObject*>::iterator it = pShapes.begin(); it != pShapes.end(); ++it) {
+        if (*it)
+            Gui::Application::Instance->showViewProvider(*it);
     }
 
     return true;
@@ -292,13 +298,17 @@ void ViewProviderMultiFuse::dropObject(App::DocumentObject* obj)
 
 PROPERTY_SOURCE(PartGui::ViewProviderMultiCommon,PartGui::ViewProviderPart)
 
-ViewProviderMultiCommon::ViewProviderMultiCommon() = default;
+ViewProviderMultiCommon::ViewProviderMultiCommon()
+{
+}
 
-ViewProviderMultiCommon::~ViewProviderMultiCommon() = default;
+ViewProviderMultiCommon::~ViewProviderMultiCommon()
+{
+}
 
 std::vector<App::DocumentObject*> ViewProviderMultiCommon::claimChildren()const
 {
-    return static_cast<Part::MultiCommon*>(getObject())->Shapes.getValues();
+    return std::vector<App::DocumentObject*>(static_cast<Part::MultiCommon*>(getObject())->Shapes.getValues());
 }
 
 QIcon ViewProviderMultiCommon::getIcon() const
@@ -358,10 +368,9 @@ void ViewProviderMultiCommon::updateData(const App::Property* prop)
     }
     else if (prop->getTypeId().isDerivedFrom(App::PropertyLinkList::getClassTypeId())) {
         std::vector<App::DocumentObject*> pShapes = static_cast<const App::PropertyLinkList*>(prop)->getValues();
-        for (auto it : pShapes) {
-            if (it) {
-                Gui::Application::Instance->hideViewProvider(it);
-            }
+        for (std::vector<App::DocumentObject*>::iterator it = pShapes.begin(); it != pShapes.end(); ++it) {
+            if (*it)
+                Gui::Application::Instance->hideViewProvider(*it);
         }
     }
 }
@@ -371,10 +380,9 @@ bool ViewProviderMultiCommon::onDelete(const std::vector<std::string> &)
     // get the input shapes
     Part::MultiCommon* pBool = static_cast<Part::MultiCommon*>(getObject());
     std::vector<App::DocumentObject*> pShapes = pBool->Shapes.getValues();
-    for (auto it : pShapes) {
-        if (it) {
-            Gui::Application::Instance->showViewProvider(it);
-        }
+    for (std::vector<App::DocumentObject*>::iterator it = pShapes.begin(); it != pShapes.end(); ++it) {
+        if (*it)
+            Gui::Application::Instance->showViewProvider(*it);
     }
 
     return true;

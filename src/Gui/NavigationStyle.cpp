@@ -90,7 +90,7 @@ public:
     };
 
     FCSphereSheetProjector(const SbSphere & sph, const SbBool orienttoeye = true)
-        : SbSphereSheetProjector(sph, orienttoeye)
+        : SbSphereSheetProjector(sph, orienttoeye), orbit(Trackball)
     {
     }
 
@@ -169,7 +169,7 @@ public:
 
 private:
     SbMatrix worldToScreen;
-    OrbitStyle orbit{Trackball};
+    OrbitStyle orbit;
 };
 
 NavigationStyleEvent::NavigationStyleEvent(const Base::Type& s)
@@ -177,7 +177,9 @@ NavigationStyleEvent::NavigationStyleEvent(const Base::Type& s)
 {
 }
 
-NavigationStyleEvent::~NavigationStyleEvent() = default;
+NavigationStyleEvent::~NavigationStyleEvent()
+{
+}
 
 const Base::Type& NavigationStyleEvent::style() const
 {
@@ -876,7 +878,7 @@ SbVec3f NavigationStyle::getFocalPoint() const
 {
     SoCamera* cam = viewer->getSoRenderManager()->getCamera();
     if (!cam)
-        return {0,0,0};
+        return SbVec3f(0,0,0);
 
     // Find global coordinates of focal point.
     SbVec3f direction;
@@ -1080,9 +1082,8 @@ void NavigationStyle::saveCursorPosition(const SoEvent * const ev)
         if (!cam) // no camera
             return;
 
-        // Get the bounding box center of the physical object group
         SoGetBoundingBoxAction action(viewer->getSoRenderManager()->getViewportRegion());
-        action.apply(viewer->objectGroup);
+        action.apply(viewer->getSceneGraph());
         SbBox3f boundingBox = action.getBoundingBox();
         SbVec3f boundingBoxCenter = boundingBox.getCenter();
         setRotationCenter(boundingBoxCenter);
@@ -1103,16 +1104,16 @@ SbVec2f NavigationStyle::normalizePixelPos(SbVec2s pixpos)
 {
     const SbViewportRegion & vp = viewer->getSoRenderManager()->getViewportRegion();
     const SbVec2s size(vp.getViewportSizePixels());
-    return {(float) pixpos[0] / (float) std::max((int)(size[0] - 1), 1),
-            (float) pixpos[1] / (float) std::max((int)(size[1] - 1), 1)};
+    return SbVec2f ((float) pixpos[0] / (float) std::max((int)(size[0] - 1), 1),
+                    (float) pixpos[1] / (float) std::max((int)(size[1] - 1), 1));
 }
 
 SbVec2f NavigationStyle::normalizePixelPos(SbVec2f pixpos)
 {
     const SbViewportRegion & vp = viewer->getSoRenderManager()->getViewportRegion();
     const SbVec2s size(vp.getViewportSizePixels());
-    return {pixpos[0] / (float) std::max((int)(size[0] - 1), 1),
-            pixpos[1] / (float) std::max((int)(size[1] - 1), 1)};
+    return SbVec2f ( pixpos[0] / (float) std::max((int)(size[0] - 1), 1),
+                     pixpos[1] / (float) std::max((int)(size[1] - 1), 1));
 }
 
 void NavigationStyle::moveCursorPosition()

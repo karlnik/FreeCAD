@@ -56,7 +56,10 @@ DlgSettings3DViewPart::DlgSettings3DViewPart(QWidget* parent)
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettings3DViewPart::~DlgSettings3DViewPart() = default;
+DlgSettings3DViewPart::~DlgSettings3DViewPart()
+{
+    // no need to delete child widgets, Qt does it all for us
+}
 
 void DlgSettings3DViewPart::onMaxDeviationValueChanged(double v)
 {
@@ -77,11 +80,11 @@ void DlgSettings3DViewPart::saveSettings()
 
     // search for Part view providers and apply the new settings
     std::vector<App::Document*> docs = App::GetApplication().getDocuments();
-    for (auto it : docs) {
-        Gui::Document* doc = Gui::Application::Instance->getDocument(it);
+    for (std::vector<App::Document*>::iterator it = docs.begin(); it != docs.end(); ++it) {
+        Gui::Document* doc = Gui::Application::Instance->getDocument(*it);
         std::vector<Gui::ViewProvider*> views = doc->getViewProvidersOfType(ViewProviderPart::getClassTypeId());
-        for (auto view : views) {
-            static_cast<ViewProviderPart*>(view)->reload();
+        for (std::vector<Gui::ViewProvider*>::iterator jt = views.begin(); jt != views.end(); ++jt) {
+            static_cast<ViewProviderPart*>(*jt)->reload();
         }
     }
 }

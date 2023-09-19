@@ -71,10 +71,10 @@ TaskBooleanParameters::TaskBooleanParameters(ViewProviderBoolean *BooleanView,QW
 
     PartDesign::Boolean* pcBoolean = static_cast<PartDesign::Boolean*>(BooleanView->getObject());
     std::vector<App::DocumentObject*> bodies = pcBoolean->Group.getValues();
-    for (auto body : bodies) {
+    for (std::vector<App::DocumentObject*>::const_iterator it = bodies.begin(); it != bodies.end(); ++it) {
         QListWidgetItem* item = new QListWidgetItem(ui->listWidgetBodies);
-        item->setText(QString::fromUtf8(body->Label.getValue()));
-        item->setData(Qt::UserRole, QString::fromLatin1(body->getNameInDocument()));
+        item->setText(QString::fromUtf8((*it)->Label.getValue()));
+        item->setData(Qt::UserRole, QString::fromLatin1((*it)->getNameInDocument()));
     }
 
     // Create context menu
@@ -284,7 +284,9 @@ void TaskBooleanParameters::onBodyDeleted()
     }
 }
 
-TaskBooleanParameters::~TaskBooleanParameters() = default;
+TaskBooleanParameters::~TaskBooleanParameters()
+{
+}
 
 void TaskBooleanParameters::changeEvent(QEvent *e)
 {
@@ -319,7 +321,10 @@ TaskDlgBooleanParameters::TaskDlgBooleanParameters(ViewProviderBoolean *BooleanV
     Content.push_back(parameter);
 }
 
-TaskDlgBooleanParameters::~TaskDlgBooleanParameters() = default;
+TaskDlgBooleanParameters::~TaskDlgBooleanParameters()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 
@@ -350,9 +355,8 @@ bool TaskDlgBooleanParameters::accept()
         }
         std::stringstream str;
         str << Gui::Command::getObjectCmd(obj) << ".setObjects( [";
-        for (const auto & body : bodies) {
-            str << "App.getDocument('" << obj->getDocument()->getName() << "').getObject('" << body << "'),";
-        }
+        for (std::vector<std::string>::const_iterator it = bodies.begin(); it != bodies.end(); ++it)
+            str << "App.getDocument('" << obj->getDocument()->getName() << "').getObject('" << *it << "'),";
         str << "])";
         Gui::Command::runCommand(Gui::Command::Doc,str.str().c_str());
     }
@@ -378,9 +382,8 @@ bool TaskDlgBooleanParameters::reject()
         if (obj->BaseFeature.getValue()) {
             doc->setShow(obj->BaseFeature.getValue()->getNameInDocument());
             std::vector<App::DocumentObject*> bodies = obj->Group.getValues();
-            for (auto body : bodies) {
-                doc->setShow(body->getNameInDocument());
-            }
+            for (std::vector<App::DocumentObject*>::const_iterator b = bodies.begin(); b != bodies.end(); b++)
+                doc->setShow((*b)->getNameInDocument());
         }
     }
 

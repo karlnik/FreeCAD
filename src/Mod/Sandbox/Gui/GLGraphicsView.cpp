@@ -48,6 +48,7 @@
 #include <QResizeEvent>
 #include <QTimer>
 #include <QVBoxLayout>
+#include <QGLWidget>
 #include <QGraphicsView>
 #include <QPaintEngine>
 #include <QGraphicsItem>
@@ -56,7 +57,6 @@
 #include <QUrl>
 
 #include "GLGraphicsView.h"
-#include <App/Application.h>
 #include <Gui/Document.h>
 #include <Gui/ViewProvider.h>
 
@@ -239,12 +239,10 @@ SceneEventFilter::eventFilter(QObject *, QEvent * qevent)
         }
     case QEvent::GraphicsSceneWheel:
         {
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
             QGraphicsSceneWheelEvent* ev = static_cast<QGraphicsSceneWheelEvent*>(qevent);
             sceneev.reset(new QWheelEvent(ev->pos().toPoint(), ev->delta(), ev->buttons(),
                 ev->modifiers(), ev->orientation()));
             qevent = sceneev.get();
-#endif
             break;
         }
     case QEvent::GraphicsSceneResize:
@@ -353,9 +351,7 @@ GraphicsScene::GraphicsScene()
         pos += QPointF(0, 10 + rect.height());
     }
 
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
     m_time.start();
-#endif
     sorendermanager = new SoRenderManager;
 
     sorendermanager->setAutoClipping(SoRenderManager::VARIABLE_NEAR_PLANE);
@@ -576,18 +572,14 @@ void GraphicsScene::drawBackground(QPainter *painter, const QRectF &)
         return;
     }
 
-#if 0
     glViewport(0, 0, width(), height());
 /**/
     glClearColor(m_backgroundColor.redF(), m_backgroundColor.greenF(), m_backgroundColor.blueF(), 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-#endif
 
 
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
     const int delta = m_time.elapsed() - m_lastTime;
     m_lastTime += delta;
-#endif
 
 
     sorendermanager->render(true/*PRIVATE(this)->clearwindow*/,
@@ -633,9 +625,7 @@ void GraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->isAccepted())
         return;
 
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
     m_mouseEventTime = m_time.elapsed();
-#endif
     event->accept();
 }
 
@@ -664,12 +654,10 @@ GraphicsView3D::GraphicsView3D(Gui::Document* doc, QWidget* parent)
   : Gui::MDIView(doc, parent), m_scene(new GraphicsScene()), m_view(new GraphicsView)
 {
     m_view->installEventFilter(m_scene->getEventFilter());
-#if 0
-    QtGLFormat f;
+    QGLFormat f;
     f.setSampleBuffers(true);
     f.setSamples(8);
     m_view->setViewport(new QGLWidget(f));
-#endif
     m_view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     m_view->setScene(m_scene);
     m_scene->setNavigationModeFile(QUrl(QString::fromLatin1("coin:///scxml/navigation/examiner.xml")));
@@ -710,4 +698,5 @@ void GraphicsView3D::OnChange(ParameterGrp::SubjectType &rCaller,ParameterGrp::M
         m_scene->setBackgroundColor(QColor::fromRgbF(r1, g1, b1));
     }
 }
+
 #include "moc_GLGraphicsView.cpp"

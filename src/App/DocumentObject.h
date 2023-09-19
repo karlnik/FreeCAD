@@ -626,20 +626,20 @@ private:
 protected: // attributes
     Py::SmartPtr PythonObject;
     /// pointer to the document this object belongs to
-    App::Document* _pDoc{nullptr};
+    App::Document* _pDoc;
 
     /// Old label; used for renaming expressions
     std::string oldLabel;
 
     // pointer to the document name string (for performance)
-    const std::string *pcNameInDocument{nullptr};
+    const std::string *pcNameInDocument;
 
 private:
     // accessed by App::Document to record and restore the correct view provider type
     std::string _pcViewProviderName;
 
     // unique identifier (among a document) of this object.
-    long _Id{0};
+    long _Id;
 
 private:
     // Back pointer to all the fathers in a DAG of the document

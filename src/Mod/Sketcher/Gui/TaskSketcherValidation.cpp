@@ -107,14 +107,10 @@ void SketcherValidation::setupConnections()
             &QPushButton::clicked,
             this,
             &SketcherValidation::onFixConstraintClicked);
-    connect(ui->findReversed,
-            &QPushButton::clicked,
-            this,
-            &SketcherValidation::onFindReversedClicked);
-    connect(ui->swapReversed,
-            &QPushButton::clicked,
-            this,
-            &SketcherValidation::onSwapReversedClicked);
+    connect(
+        ui->findReversed, &QPushButton::clicked, this, &SketcherValidation::onFindReversedClicked);
+    connect(
+        ui->swapReversed, &QPushButton::clicked, this, &SketcherValidation::onSwapReversedClicked);
     connect(ui->orientLockEnable,
             &QPushButton::clicked,
             this,
@@ -147,9 +143,8 @@ void SketcherValidation::changeEvent(QEvent* e)
 
 void SketcherValidation::onFindButtonClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     double prec = Precision::Confusion();
     bool ok;
@@ -168,8 +163,7 @@ void SketcherValidation::onFindButtonClicked()
     }
 
     sketchAnalyser.detectMissingPointOnPointConstraints(
-        prec,
-        !ui->checkBoxIgnoreConstruction->isChecked());
+        prec, !ui->checkBoxIgnoreConstruction->isChecked());
 
     std::vector<Sketcher::ConstraintIds>& vertexConstraints =
         sketchAnalyser.getMissingPointOnPointConstraints();
@@ -183,9 +177,8 @@ void SketcherValidation::onFindButtonClicked()
 
     hidePoints();
     if (vertexConstraints.empty()) {
-        Gui::TranslatedNotification(*sketch,
-                                    tr("No missing coincidences"),
-                                    tr("No missing coincidences found"));
+        Gui::TranslatedNotification(
+            *sketch, tr("No missing coincidences"), tr("No missing coincidences found"));
 
         ui->fixButton->setEnabled(false);
     }
@@ -202,9 +195,8 @@ void SketcherValidation::onFindButtonClicked()
 
 void SketcherValidation::onFixButtonClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     // undo command open
     App::Document* doc = sketch->getDocument();
@@ -223,37 +215,32 @@ void SketcherValidation::onFixButtonClicked()
 
 void SketcherValidation::onHighlightButtonClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     std::vector<Base::Vector3d> points;
 
     points = sketchAnalyser.getOpenVertices();
 
     hidePoints();
-    if (!points.empty()) {
+    if (!points.empty())
         showPoints(points);
-    }
 }
 
 void SketcherValidation::onFindConstraintClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     if (sketch->evaluateConstraints()) {
-        Gui::TranslatedNotification(*sketch,
-                                    tr("No invalid constraints"),
-                                    tr("No invalid constraints found"));
+        Gui::TranslatedNotification(
+            *sketch, tr("No invalid constraints"), tr("No invalid constraints found"));
 
         ui->fixConstraint->setEnabled(false);
     }
     else {
-        Gui::TranslatedUserError(*sketch,
-                                 tr("Invalid constraints"),
-                                 tr("Invalid constraints found"));
+        Gui::TranslatedUserError(
+            *sketch, tr("Invalid constraints"), tr("Invalid constraints found"));
 
         ui->fixConstraint->setEnabled(true);
     }
@@ -261,9 +248,8 @@ void SketcherValidation::onFindConstraintClicked()
 
 void SketcherValidation::onFixConstraintClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     sketch->validateConstraints();
     ui->fixConstraint->setEnabled(false);
@@ -271,9 +257,8 @@ void SketcherValidation::onFixConstraintClicked()
 
 void SketcherValidation::onFindReversedClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     std::vector<Base::Vector3d> points;
     const std::vector<Part::Geometry*>& geom = sketch->getExternalGeometry();
@@ -329,9 +314,8 @@ void SketcherValidation::onFindReversedClicked()
 
 void SketcherValidation::onSwapReversedClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     App::Document* doc = sketch->getDocument();
     doc->openTransaction("Sketch porting");
@@ -350,9 +334,8 @@ void SketcherValidation::onSwapReversedClicked()
 
 void SketcherValidation::onOrientLockEnableClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     App::Document* doc = sketch->getDocument();
     doc->openTransaction("Constraint orientation lock");
@@ -371,9 +354,8 @@ void SketcherValidation::onOrientLockEnableClicked()
 
 void SketcherValidation::onOrientLockDisableClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     App::Document* doc = sketch->getDocument();
     doc->openTransaction("Constraint orientation unlock");
@@ -393,9 +375,8 @@ void SketcherValidation::onOrientLockDisableClicked()
 
 void SketcherValidation::onDelConstrExtrClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     int reply;
     reply = QMessageBox::question(
@@ -406,9 +387,8 @@ void SketcherValidation::onDelConstrExtrClicked()
            "you want to delete the constraints?"),
         QMessageBox::No | QMessageBox::Yes,
         QMessageBox::No);
-    if (reply != QMessageBox::Yes) {
+    if (reply != QMessageBox::Yes)
         return;
-    }
 
     App::Document* doc = sketch->getDocument();
     doc->openTransaction("Delete constraints");
@@ -481,24 +461,21 @@ void SketcherValidation::hidePoints()
 
 void SketcherValidation::onFindDegeneratedClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     double prec = Precision::Confusion();
     int count = sketchAnalyser.detectDegeneratedGeometries(prec);
 
     if (count == 0) {
-        Gui::TranslatedNotification(*sketch,
-                                    tr("No degenerated geometry"),
-                                    tr("No degenerated geometry found"));
+        Gui::TranslatedNotification(
+            *sketch, tr("No degenerated geometry"), tr("No degenerated geometry found"));
 
         ui->fixDegenerated->setEnabled(false);
     }
     else {
-        Gui::TranslatedUserWarning(*sketch,
-                                   tr("Degenerated geometry"),
-                                   tr("%1 degenerated geometry found").arg(count));
+        Gui::TranslatedUserWarning(
+            *sketch, tr("Degenerated geometry"), tr("%1 degenerated geometry found").arg(count));
 
         ui->fixDegenerated->setEnabled(true);
     }
@@ -506,9 +483,8 @@ void SketcherValidation::onFindDegeneratedClicked()
 
 void SketcherValidation::onFixDegeneratedClicked()
 {
-    if (sketch.expired()) {
+    if (sketch.expired())
         return;
-    }
 
     // undo command open
     App::Document* doc = sketch->getDocument();

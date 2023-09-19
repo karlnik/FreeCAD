@@ -28,9 +28,8 @@ void loadFreeCAD()
         TestFunction test = (TestFunction)freecadPlugin->resolve("FreeCAD_test");
         if (test) {
             QString file = QFileDialog::getOpenFileName();
-            if (!file.isEmpty()) {
+            if (!file.isEmpty())
                 test(file.toUtf8());
-            }
         }
     }
 }

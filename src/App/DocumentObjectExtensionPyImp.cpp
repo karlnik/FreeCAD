@@ -32,7 +32,7 @@ using namespace App;
 // returns a string which represent the object e.g. when printed in python
 std::string DocumentObjectExtensionPy::representation() const
 {
-    return {"<document object extension>"};
+    return std::string("<document object extension>");
 }
 
 PyObject *DocumentObjectExtensionPy::getCustomAttributes(const char* /*attr*/) const

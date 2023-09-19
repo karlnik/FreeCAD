@@ -59,7 +59,9 @@ TaskExtrudeParameters::TaskExtrudeParameters(ViewProviderSketchBased *SketchBase
     this->groupLayout()->addWidget(proxy);
 }
 
-TaskExtrudeParameters::~TaskExtrudeParameters() = default;
+TaskExtrudeParameters::~TaskExtrudeParameters()
+{
+}
 
 void TaskExtrudeParameters::setupDialog()
 {
@@ -429,7 +431,7 @@ void TaskExtrudeParameters::setCheckboxes(Modes mode, Type type)
     bool isMidplaneEnabled = false;
     bool isMidplaneVisible = false;
     bool isReversedEnabled = false;
-    bool isFaceEditVisible = false;
+    bool isFaceEditEnabled = false;
     bool isTaperEditVisible = false;
     bool isTaperEdit2Visible = false;
 
@@ -461,7 +463,7 @@ void TaskExtrudeParameters::setCheckboxes(Modes mode, Type type)
     else if (mode == Modes::ToFace) {
         isOffsetEditVisible = true;
         isReversedEnabled = true;
-        isFaceEditVisible = true;
+        isFaceEditEnabled = true;
         QMetaObject::invokeMethod(ui->lineFaceName, "setFocus", Qt::QueuedConnection);
         // Go into reference selection mode if no face has been selected yet
         if (ui->lineFaceName->property("FeatureName").isNull())
@@ -501,9 +503,9 @@ void TaskExtrudeParameters::setCheckboxes(Modes mode, Type type)
 
     ui->checkBoxReversed->setEnabled(isReversedEnabled);
 
-    ui->buttonFace->setVisible(isFaceEditVisible);
-    ui->lineFaceName->setVisible(isFaceEditVisible);
-    if (!isFaceEditVisible) {
+    ui->buttonFace->setEnabled(isFaceEditEnabled);
+    ui->lineFaceName->setEnabled(isFaceEditEnabled);
+    if (!isFaceEditEnabled) {
         ui->buttonFace->setChecked(false);
     }
 }

@@ -69,7 +69,16 @@ void CleanupHandler::cleanup()
 class DlgEvaluateMeshImp::Private
 {
 public:
-    Private() : view(nullptr)
+    Private()
+        : meshFeature(nullptr)
+        , view(nullptr)
+        , enableFoldsCheck(false)
+        , checkNonManfoldPoints(false)
+        , strictlyDegenerated(true)
+        , epsilonDegenerated(0.0f)
+    {
+    }
+    ~Private()
     {
     }
 
@@ -82,15 +91,15 @@ public:
         ui.repairFoldsButton->setVisible(on);
     }
 
-    Ui_DlgEvaluateMesh ui{};
+    Ui_DlgEvaluateMesh ui;
     std::map<std::string, ViewProviderMeshDefects*> vp;
-    Mesh::Feature* meshFeature{nullptr};
+    Mesh::Feature* meshFeature;
     QPointer<Gui::View3DInventor> view;
     std::vector<Mesh::FacetIndex> self_intersections;
-    bool enableFoldsCheck{false};
-    bool checkNonManfoldPoints{false};
-    bool strictlyDegenerated{true};
-    float epsilonDegenerated{0.0f};
+    bool enableFoldsCheck;
+    bool checkNonManfoldPoints;
+    bool strictlyDegenerated;
+    float epsilonDegenerated;
 };
 
 /* TRANSLATOR MeshGui::DlgEvaluateMeshImp */
@@ -1353,7 +1362,7 @@ void DockEvaluateMeshImp::closeEvent(QCloseEvent*)
  */
 QSize DockEvaluateMeshImp::sizeHint () const
 {
-    return {371, 579};
+    return QSize(371, 579);
 }
 
 #include "moc_DlgEvaluateMeshImp.cpp"

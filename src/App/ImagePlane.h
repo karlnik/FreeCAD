@@ -48,8 +48,8 @@ public:
     void setXSizeInPixel(int);
     void setYSizeInPixel(int);
 
-    double XPixelsPerMeter{1000.0};
-    double YPixelsPerMeter{1000.0};
+    double XPixelsPerMeter;
+    double YPixelsPerMeter;
 
     /// returns the type name of the ViewProvider
     const char* getViewProviderName() const override {

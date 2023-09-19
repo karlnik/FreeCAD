@@ -37,14 +37,15 @@ DlgSettingsPythonConsole::DlgSettingsPythonConsole(QWidget* parent)
     ui->setupUi(this);
 }
 
-DlgSettingsPythonConsole::~DlgSettingsPythonConsole() = default;
+DlgSettingsPythonConsole::~DlgSettingsPythonConsole()
+{
+}
 
 void DlgSettingsPythonConsole::saveSettings()
 {
     ui->PythonWordWrap->onSave();
     ui->PythonBlockCursor->onSave();
     ui->PythonSaveHistory->onSave();
-    ui->ProfilerInterval->onSave();
 }
 
 void DlgSettingsPythonConsole::loadSettings()
@@ -52,15 +53,14 @@ void DlgSettingsPythonConsole::loadSettings()
     ui->PythonWordWrap->onRestore();
     ui->PythonBlockCursor->onRestore();
     ui->PythonSaveHistory->onRestore();
-    ui->ProfilerInterval->onRestore();
 }
 
-void DlgSettingsPythonConsole::changeEvent(QEvent* event)
+void DlgSettingsPythonConsole::changeEvent(QEvent *e)
 {
-    if (event->type() == QEvent::LanguageChange) {
+    if (e->type() == QEvent::LanguageChange) {
         ui->retranslateUi(this);
     }
-    QWidget::changeEvent(event);
+    QWidget::changeEvent(e);
 }
 
 #include "moc_DlgSettingsPythonConsole.cpp"

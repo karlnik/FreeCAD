@@ -53,9 +53,13 @@ using namespace Part;
 
 TYPESYSTEM_SOURCE(Part::PropertyPartShape , App::PropertyComplexGeoData)
 
-PropertyPartShape::PropertyPartShape() = default;
+PropertyPartShape::PropertyPartShape()
+{
+}
 
-PropertyPartShape::~PropertyPartShape() = default;
+PropertyPartShape::~PropertyPartShape()
+{
+}
 
 void PropertyPartShape::setValue(const TopoShape& sh)
 {
@@ -408,9 +412,13 @@ void PropertyPartShape::RestoreDocFile(Base::Reader &reader)
 
 TYPESYSTEM_SOURCE(Part::PropertyShapeHistory , App::PropertyLists)
 
-PropertyShapeHistory::PropertyShapeHistory() = default;
+PropertyShapeHistory::PropertyShapeHistory()
+{
+}
 
-PropertyShapeHistory::~PropertyShapeHistory() = default;
+PropertyShapeHistory::~PropertyShapeHistory()
+{
+}
 
 void PropertyShapeHistory::setValue(const ShapeHistory& sh)
 {
@@ -470,9 +478,13 @@ void PropertyShapeHistory::Paste(const Property &from)
 
 TYPESYSTEM_SOURCE(Part::PropertyFilletEdges , App::PropertyLists)
 
-PropertyFilletEdges::PropertyFilletEdges() = default;
+PropertyFilletEdges::PropertyFilletEdges()
+{
+}
 
-PropertyFilletEdges::~PropertyFilletEdges() = default;
+PropertyFilletEdges::~PropertyFilletEdges()
+{
+}
 
 void PropertyFilletEdges::setValue(int id, double r1, double r2)
 {
@@ -547,8 +559,8 @@ void PropertyFilletEdges::SaveDocFile (Base::Writer &writer) const
     Base::OutputStream str(writer.Stream());
     uint32_t uCt = (uint32_t)getSize();
     str << uCt;
-    for (const auto & it : _lValueList) {
-        str << it.edgeid << it.radius1 << it.radius2;
+    for (std::vector<FilletElement>::const_iterator it = _lValueList.begin(); it != _lValueList.end(); ++it) {
+        str << it->edgeid << it->radius1 << it->radius2;
     }
 }
 
@@ -558,8 +570,8 @@ void PropertyFilletEdges::RestoreDocFile(Base::Reader &reader)
     uint32_t uCt=0;
     str >> uCt;
     std::vector<FilletElement> values(uCt);
-    for (auto & it : values) {
-        str >> it.edgeid >> it.radius1 >> it.radius2;
+    for (std::vector<FilletElement>::iterator it = values.begin(); it != values.end(); ++it) {
+        str >> it->edgeid >> it->radius1 >> it->radius2;
     }
     setValues(values);
 }

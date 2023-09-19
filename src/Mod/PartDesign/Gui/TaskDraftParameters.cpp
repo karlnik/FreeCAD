@@ -74,8 +74,9 @@ TaskDraftParameters::TaskDraftParameters(ViewProviderDressUp *DressUpView, QWidg
     ui->checkReverse->setChecked(r);
 
     std::vector<std::string> strings = pcDraft->Base.getSubValues();
-    for (const auto & string : strings) {
-        ui->listWidgetReferences->addItem(QString::fromStdString(string));
+    for (std::vector<std::string>::const_iterator i = strings.begin(); i != strings.end(); ++i)
+    {
+        ui->listWidgetReferences->addItem(QString::fromStdString(*i));
     }
 
     QMetaObject::connectSlotsByName(this);
@@ -296,7 +297,10 @@ TaskDlgDraftParameters::TaskDlgDraftParameters(ViewProviderDraft *DressUpView)
     Content.push_back(parameter);
 }
 
-TaskDlgDraftParameters::~TaskDlgDraftParameters() = default;
+TaskDlgDraftParameters::~TaskDlgDraftParameters()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

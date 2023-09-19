@@ -78,9 +78,8 @@ STDAPI_(ULONG) DllAddRef()
 STDAPI_(ULONG) DllRelease()
 {
     LONG cRef = InterlockedDecrement(&g_cRef);
-    if (0 > cRef) {
+    if (0 > cRef)
         cRef = 0;
-    }
     return cRef;
 }
 
@@ -171,12 +170,8 @@ STDAPI CreateRegistryKey(REGKEY_SUBKEY_AND_VALUE* pKey)
     }
 
     if (SUCCEEDED(hr)) {
-        LSTATUS status = SHSetValue(pKey->hKey,
-                                    pKey->lpszSubKey,
-                                    pKey->lpszValue,
-                                    pKey->dwType,
-                                    pvData,
-                                    (DWORD)cbData);
+        LSTATUS status = SHSetValue(
+            pKey->hKey, pKey->lpszSubKey, pKey->lpszValue, pKey->dwType, pvData, (DWORD)cbData);
         if (NOERROR != status) {
             hr = HRESULT_FROM_WIN32(status);
         }

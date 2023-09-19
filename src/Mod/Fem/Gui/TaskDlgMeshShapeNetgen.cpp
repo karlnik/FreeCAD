@@ -57,7 +57,10 @@ TaskDlgMeshShapeNetgen::TaskDlgMeshShapeNetgen(FemGui::ViewProviderFemMeshShapeN
     }
 }
 
-TaskDlgMeshShapeNetgen::~TaskDlgMeshShapeNetgen() = default;
+TaskDlgMeshShapeNetgen::~TaskDlgMeshShapeNetgen()
+{
+
+}
 
 //==== calls from the TaskView ===============================================================
 

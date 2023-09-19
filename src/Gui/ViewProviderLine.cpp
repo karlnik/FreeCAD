@@ -46,7 +46,8 @@ ViewProviderLine::ViewProviderLine()
     sPixmap = "Std_Axis";
 }
 
-ViewProviderLine::~ViewProviderLine() = default;
+ViewProviderLine::~ViewProviderLine()
+{ }
 
 void ViewProviderLine::attach ( App::DocumentObject *obj ) {
     ViewProviderOriginFeature::attach ( obj );

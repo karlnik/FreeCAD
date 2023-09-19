@@ -22,14 +22,13 @@
 
 #include "PreCompiled.h"
 #ifndef _PreComp_
-#include <cmath>
-#include <iostream>
+# include <cmath>
+# include <iostream>
 #endif
 
 #include "MeshFlatteningNurbs.h"
 
 
-// clang-format off
 namespace nurbs{
 
 double divide(double a, double b)
@@ -517,4 +516,3 @@ Eigen::VectorXd NurbsBase1D::getUMesh(int num_u_points)
 
 
 }
-// clang-format on

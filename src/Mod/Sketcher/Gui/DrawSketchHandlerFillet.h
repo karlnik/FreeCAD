@@ -31,7 +31,7 @@
 namespace SketcherGui
 {
 
-extern GeometryCreationMode geometryCreationMode;  // defined in CommandCreateGeo.cpp
+extern GeometryCreationMode geometryCreationMode;// defined in CommandCreateGeo.cpp
 
 class FilletSelection: public Gui::SelectionFilterGate
 {
@@ -45,20 +45,17 @@ public:
 
     bool allow(App::Document* /*pDoc*/, App::DocumentObject* pObj, const char* sSubName) override
     {
-        if (pObj != this->object) {
+        if (pObj != this->object)
             return false;
-        }
-        if (!sSubName || sSubName[0] == '\0') {
+        if (!sSubName || sSubName[0] == '\0')
             return false;
-        }
         std::string element(sSubName);
         if (element.substr(0, 4) == "Edge") {
             int GeoId = std::atoi(element.substr(4, 4000).c_str()) - 1;
             Sketcher::SketchObject* Sketch = static_cast<Sketcher::SketchObject*>(object);
             const Part::Geometry* geom = Sketch->getGeometry(GeoId);
-            if (geom->getTypeId().isDerivedFrom(Part::GeomBoundedCurve::getClassTypeId())) {
+            if (geom->getTypeId().isDerivedFrom(Part::GeomBoundedCurve::getClassTypeId()))
                 return true;
-            }
         }
         if (element.substr(0, 6) == "Vertex") {
             int VtId = std::atoi(element.substr(6, 4000).c_str()) - 1;
@@ -70,9 +67,8 @@ public:
                 const Part::Geometry* geom1 = Sketch->getGeometry(GeoIdList[0]);
                 const Part::Geometry* geom2 = Sketch->getGeometry(GeoIdList[1]);
                 if (geom1->getTypeId() == Part::GeomLineSegment::getClassTypeId()
-                    && geom2->getTypeId() == Part::GeomLineSegment::getClassTypeId()) {
+                    && geom2->getTypeId() == Part::GeomLineSegment::getClassTypeId())
                     return true;
-                }
             }
         }
         return false;
@@ -132,10 +128,8 @@ public:
                 double radius = -1;
                 std::vector<int> GeoIdList;
                 std::vector<Sketcher::PointPos> PosIdList;
-                sketchgui->getSketchObject()->getDirectlyCoincidentPoints(GeoId,
-                                                                          PosId,
-                                                                          GeoIdList,
-                                                                          PosIdList);
+                sketchgui->getSketchObject()->getDirectlyCoincidentPoints(
+                    GeoId, PosId, GeoIdList, PosIdList);
                 if (GeoIdList.size() == 2 && GeoIdList[0] >= 0 && GeoIdList[1] >= 0) {
                     const Part::Geometry* geom1 =
                         sketchgui->getSketchObject()->getGeometry(GeoIdList[0]);
@@ -151,21 +145,18 @@ public:
                             static_cast<const Part::GeomLineSegment*>(geom2);
                         Base::Vector3d dir1 = lineSeg1->getEndPoint() - lineSeg1->getStartPoint();
                         Base::Vector3d dir2 = lineSeg2->getEndPoint() - lineSeg2->getStartPoint();
-                        if (PosIdList[0] == Sketcher::PointPos::end) {
+                        if (PosIdList[0] == Sketcher::PointPos::end)
                             dir1 *= -1;
-                        }
-                        if (PosIdList[1] == Sketcher::PointPos::end) {
+                        if (PosIdList[1] == Sketcher::PointPos::end)
                             dir2 *= -1;
-                        }
                         double l1 = dir1.Length();
                         double l2 = dir2.Length();
                         double angle = dir1.GetAngle(dir2);
                         radius = (l1 < l2 ? l1 : l2) * 0.2 * sin(angle / 2);
                     }
                 }
-                if (radius < 0) {
+                if (radius < 0)
                     return false;
-                }
 
                 int currentgeoid = getHighestCurveIndex();
                 // create fillet at point
@@ -181,9 +172,8 @@ public:
                                           pointFillet ? "True" : "False");
 
                     if (construction) {
-                        Gui::cmdAppObjectArgs(sketchgui->getObject(),
-                                              "toggleConstruction(%d) ",
-                                              currentgeoid + 1);
+                        Gui::cmdAppObjectArgs(
+                            sketchgui->getObject(), "toggleConstruction(%d) ", currentgeoid + 1);
                     }
 
                     Gui::Command::commitCommand();
@@ -244,14 +234,13 @@ public:
                                 sketchgui->getSketchObject()->getGeometry(secondCurve));
 
                         radius = Part::suggestFilletRadius(lineSeg1, lineSeg2, refPnt1, refPnt2);
-                        if (radius < 0) {
+                        if (radius < 0)
                             return false;
-                        }
 
                         construction = Sketcher::GeometryFacade::getConstruction(lineSeg1)
                             && Sketcher::GeometryFacade::getConstruction(lineSeg2);
                     }
-                    else {  // other supported curves
+                    else {// other supported curves
                         const Part::Geometry* geo1 = static_cast<const Part::Geometry*>(
                             sketchgui->getSketchObject()->getGeometry(firstCurve));
                         const Part::Geometry* geo2 = static_cast<const Part::Geometry*>(
@@ -304,9 +293,8 @@ public:
                     tryAutoRecompute(static_cast<Sketcher::SketchObject*>(sketchgui->getObject()));
 
                     if (construction) {
-                        Gui::cmdAppObjectArgs(sketchgui->getObject(),
-                                              "toggleConstruction(%d) ",
-                                              currentgeoid + 1);
+                        Gui::cmdAppObjectArgs(
+                            sketchgui->getObject(), "toggleConstruction(%d) ", currentgeoid + 1);
                     }
 
 
@@ -316,10 +304,9 @@ public:
             }
         }
 
-        if (VtId < 0 && GeoId < 0) {  // exit the fillet tool if the user clicked on empty space
+        if (VtId < 0 && GeoId < 0)// exit the fillet tool if the user clicked on empty space
             sketchgui
-                ->purgeHandler();  // no code after this line, Handler get deleted in ViewProvider
-        }
+                ->purgeHandler();// no code after this line, Handler get deleted in ViewProvider
 
         return true;
     }
@@ -339,7 +326,7 @@ protected:
     Base::Vector2d firstPos;
 };
 
-}  // namespace SketcherGui
+}// namespace SketcherGui
 
 
-#endif  // SKETCHERGUI_DrawSketchHandlerFillet_H
+#endif// SKETCHERGUI_DrawSketchHandlerFillet_H

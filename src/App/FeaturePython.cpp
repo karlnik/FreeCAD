@@ -38,7 +38,7 @@
 using namespace App;
 
 FeaturePythonImp::FeaturePythonImp(App::DocumentObject* o)
-    : object(o)
+    : object(o), has__object__(false)
 {
 }
 
@@ -480,7 +480,7 @@ std::string FeaturePythonImp::getViewProviderName()
         e.ReportException();
     }
 
-    return {};
+    return std::string();
 }
 
 FeaturePythonImp::ValueT

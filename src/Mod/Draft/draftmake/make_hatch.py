@@ -24,8 +24,7 @@
 
 import FreeCAD
 from draftobjects.hatch import Hatch
-if FreeCAD.GuiUp:
-    from draftviewproviders.view_hatch import ViewProviderDraftHatch
+from draftviewproviders.view_hatch import ViewProviderDraftHatch
 
 def make_hatch(baseobject, filename, pattern, scale, rotation):
 

@@ -77,11 +77,7 @@ from draftgeoutils.geometry import (findPerpendicular,
                                     calculatePlacement,
                                     mirror,
                                     are_coplanar,
-                                    is_straight_line,
-                                    mirror_matrix,
-                                    uv_vectors_from_face,
-                                    placement_from_face,
-                                    placement_from_points)
+                                    is_straight_line)
 
 from draftgeoutils.edges import (findEdge,
                                  orientEdge,

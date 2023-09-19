@@ -27,7 +27,6 @@
 # include <TopoDS_Face.hxx>
 #endif
 
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include "BRepFeat/MakePrismPy.h"
@@ -54,14 +53,13 @@ int MakePrismPy::PyInit(PyObject* args, PyObject* kwds)
     PyObject* Direction;
     int Fuse;
     PyObject* Modify;
-    static const std::array<const char *, 7> keywords{"Sbase", "Pbase", "Skface", "Direction", "Fuse", "Modify",
-                                                      nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!O!O!iO!", keywords,
-                                            &(TopoShapePy::Type), &Sbase,
-                                            &(TopoShapePy::Type), &Pbase,
-                                            &(TopoShapeFacePy::Type), &Skface,
-                                            &(Base::VectorPy::Type), &Direction, &Fuse,
-                                            &(PyBool_Type), &Modify)) {
+    static char* keywords[] = {"Sbase", "Pbase", "Skface", "Direction", "Fuse", "Modify", nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!O!O!O!iO!", keywords,
+                                    &(TopoShapePy::Type), &Sbase,
+                                    &(TopoShapePy::Type), &Pbase,
+                                    &(TopoShapeFacePy::Type), &Skface,
+                                    &(Base::VectorPy::Type), &Direction, &Fuse,
+                                    &(PyBool_Type), &Modify)) {
         try {
             TopoDS_Shape sbase = static_cast<TopoShapePy*>(Sbase)->getTopoShapePtr()->getShape();
             TopoDS_Shape pbase = static_cast<TopoShapePy*>(Pbase)->getTopoShapePtr()->getShape();
@@ -101,7 +99,7 @@ int MakePrismPy::PyInit(PyObject* args, PyObject* kwds)
 // returns a string which represents the object e.g. when printed in python
 std::string MakePrismPy::representation() const
 {
-    return {"<BRepFeat_MakePrism object>"};
+    return std::string("<BRepFeat_MakePrism object>");
 }
 
 PyObject* MakePrismPy::init(PyObject *args,  PyObject* kwds)
@@ -112,16 +110,14 @@ PyObject* MakePrismPy::init(PyObject *args,  PyObject* kwds)
     PyObject* Direction;
     int Fuse;
     PyObject* Modify;
-    static const std::array<const char *, 7> keywords{"Sbase", "Pbase", "Skface", "Direction", "Fuse", "Modify",
-                                                      nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!O!O!iO!", keywords,
-                                            &(TopoShapePy::Type), &Sbase,
-                                            &(TopoShapePy::Type), &Pbase,
-                                            &(TopoShapeFacePy::Type), &Skface,
-                                            &(Base::VectorPy::Type), &Direction, &Fuse,
-                                            &(PyBool_Type), &Modify)) {
+    static char* keywords[] = {"Sbase", "Pbase", "Skface", "Direction", "Fuse", "Modify", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!O!O!iO!", keywords,
+                                     &(TopoShapePy::Type), &Sbase,
+                                     &(TopoShapePy::Type), &Pbase,
+                                     &(TopoShapeFacePy::Type), &Skface,
+                                     &(Base::VectorPy::Type), &Direction, &Fuse,
+                                     &(PyBool_Type), &Modify))
         return nullptr;
-    }
 
 
     try {
@@ -144,12 +140,11 @@ PyObject* MakePrismPy::add(PyObject *args,  PyObject* kwds)
 {
     PyObject* Edge;
     PyObject* Face;
-    static const std::array<const char *, 3> keywords{"Edge", "Face", nullptr};
-    if (!Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!", keywords,
-                                             &(TopoShapeEdgePy::Type), &Edge,
-                                             &(TopoShapeFacePy::Type), &Face)) {
+    static char* keywords[] = {"Edge", "Face", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!", keywords,
+                                     &(TopoShapeEdgePy::Type), &Edge,
+                                     &(TopoShapeFacePy::Type), &Face))
         return nullptr;
-    }
 
 
     try {
@@ -169,10 +164,10 @@ PyObject* MakePrismPy::perform(PyObject *args,  PyObject* kwds)
 {
     PyObject* From;
     PyObject* Until;
-    static const std::array<const char *, 3> keywords_fu{"From", "Until", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "O!O!", keywords_fu,
-                                            &(TopoShapePy::Type), &From,
-                                            &(TopoShapePy::Type), &Until)) {
+    static char* keywords_fu[] = {"From", "Until", nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!O!", keywords_fu,
+                                    &(TopoShapePy::Type), &From,
+                                    &(TopoShapePy::Type), &Until)) {
         try {
             TopoDS_Shape from = static_cast<TopoShapePy*>(From)->getTopoShapePtr()->getShape();
             TopoDS_Shape until = static_cast<TopoShapePy*>(Until)->getTopoShapePtr()->getShape();
@@ -186,8 +181,9 @@ PyObject* MakePrismPy::perform(PyObject *args,  PyObject* kwds)
     }
 
     PyErr_Clear();
-    static const std::array<const char *, 2> keywords_u {"Until", nullptr};
-    if (Base:: Wrapped_ParseTupleAndKeywords(args, kwds, "O!", keywords_u, &(TopoShapePy::Type), &Until)) {
+    static char* keywords_u[] = {"Until", nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "O!", keywords_u,
+                                    &(TopoShapePy::Type), &Until)) {
         try {
             TopoDS_Shape until = static_cast<TopoShapePy*>(Until)->getTopoShapePtr()->getShape();
             getBRepFeat_MakePrismPtr()->Perform(until);
@@ -201,8 +197,8 @@ PyObject* MakePrismPy::perform(PyObject *args,  PyObject* kwds)
 
     PyErr_Clear();
     double length;
-    static const std::array<const char *, 2> keywords_l {"Length", nullptr};
-    if (Base::Wrapped_ParseTupleAndKeywords(args, kwds, "d", keywords_l, &length)) {
+    static char* keywords_l[] = {"Length", nullptr};
+    if (PyArg_ParseTupleAndKeywords(args, kwds, "d", keywords_l, &length)) {
         try {
             getBRepFeat_MakePrismPtr()->Perform(length);
             Py_Return;

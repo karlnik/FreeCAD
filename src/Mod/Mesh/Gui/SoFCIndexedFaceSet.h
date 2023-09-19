@@ -108,7 +108,7 @@ public:
 
 protected:
     // Force using the reference count mechanism.
-    ~SoFCIndexedFaceSet() override = default;
+    ~SoFCIndexedFaceSet() override {}
     void GLRender(SoGLRenderAction *action) override;
     void drawFaces(SoGLRenderAction *action);
     void drawCoords(const SoGLCoordinateElement * const vertexlist,
@@ -136,7 +136,7 @@ private:
 
 private:
     MeshRenderer render;
-    GLuint *selectBuf{nullptr};
+    GLuint *selectBuf;
 };
 
 } // namespace MeshGui

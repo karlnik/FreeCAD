@@ -37,7 +37,7 @@ namespace Spaceball
 
     protected:
         explicit EventBase(QEvent::Type event);
-        bool handled{false};
+        bool handled;
     };
 
     class MotionEvent : public EventBase
@@ -61,12 +61,12 @@ namespace Spaceball
         static int MotionEventType;
 
     private:
-        int xTrans{0};
-        int yTrans{0};
-        int zTrans{0};
-        int xRot{0};
-        int yRot{0};
-        int zRot{0};
+        int xTrans;
+        int yTrans;
+        int zTrans;
+        int xRot;
+        int yRot;
+        int zRot;
     };
 
     class ButtonEvent : public EventBase

@@ -195,7 +195,9 @@ class Trimex(gui_base_original.Modifier):
                 arg["ShiftDown"] = False
             elif hasattr(Gui, "Snapper"):
                 Gui.Snapper.setSelectMode(not self.ctrl)
-            self.point, cp, info = gui_tool_utils.getPoint(self, arg)
+            wp = not(self.extrudeMode and self.shift)
+            self.point, cp, info = gui_tool_utils.getPoint(self, arg,
+                                                           workingplane=wp)
             if gui_tool_utils.hasMod(arg, gui_tool_utils.MODSNAP):
                 self.snapped = None
             else:

@@ -84,7 +84,9 @@ DlgActiveBody::DlgActiveBody(QWidget *parent, App::Document*& doc, const QString
     }
 }
 
-DlgActiveBody::~DlgActiveBody() = default;
+DlgActiveBody::~DlgActiveBody()
+{
+}
 
 void DlgActiveBody::accept()
 {

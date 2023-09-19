@@ -42,9 +42,8 @@ SketchObjectSF::SketchObjectSF()
 
 short SketchObjectSF::mustExecute() const
 {
-    if (SketchFlatFile.isTouched()) {
+    if (SketchFlatFile.isTouched())
         return 1;
-    }
     return 0;
 }
 

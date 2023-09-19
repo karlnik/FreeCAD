@@ -26,10 +26,18 @@
 
 using namespace Base;
 
-Axis::Axis(const Vector3d& Orig, const Vector3d& Dir)
-  : _base{Orig}
-  , _dir{Dir}
+Axis::Axis() = default;
+
+Axis::Axis(const Axis& that)
 {
+    this->_base = that._base;
+    this->_dir = that._dir;
+}
+
+Axis::Axis(const Vector3d& Orig, const Vector3d& Dir)
+{
+    this->_base = Orig;
+    this->_dir = Dir;
 }
 
 void Axis::reverse()
@@ -72,3 +80,11 @@ Axis Axis::operator *(const Placement &p) const
     a *= p;
     return a;
 }
+
+Axis& Axis::operator = (const Axis &New)
+{
+    this->_base = New._base;
+    this->_dir = New._dir;
+    return *this;
+}
+

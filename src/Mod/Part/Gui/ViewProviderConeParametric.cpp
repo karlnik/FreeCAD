@@ -39,7 +39,10 @@ ViewProviderConeParametric::ViewProviderConeParametric()
   sPixmap = "Part_Cone_Parametric";
 }
 
-ViewProviderConeParametric::~ViewProviderConeParametric() = default;
+ViewProviderConeParametric::~ViewProviderConeParametric()
+{
+
+}
 
 
 

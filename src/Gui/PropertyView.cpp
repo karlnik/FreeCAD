@@ -568,6 +568,8 @@ PropertyDockView::PropertyDockView(Gui::Document* pcDocument, QWidget *parent)
     resize( 200, 400 );
 }
 
-PropertyDockView::~PropertyDockView() = default;
+PropertyDockView::~PropertyDockView()
+{
+}
 
 #include "moc_PropertyView.cpp"

@@ -54,7 +54,10 @@ class AbstractPolygonTriangulator;
 class MeshExport MeshAlgorithm
 {
 public:
+  /// Construction
   explicit MeshAlgorithm (const MeshKernel &rclM) : _rclMesh(rclM) { }
+  /// Destruction
+  ~MeshAlgorithm () { }
 
 public:
   /**
@@ -341,8 +344,8 @@ protected:
 class MeshExport MeshCollector
 {
 public:
-    MeshCollector() = default;
-    virtual ~MeshCollector() = default;
+    MeshCollector(){}
+    virtual ~MeshCollector(){}
     virtual void Append(const MeshCore::MeshKernel&, FacetIndex index) = 0;
 };
 
@@ -350,6 +353,7 @@ class MeshExport PointCollector : public MeshCollector
 {
 public:
     explicit PointCollector(std::vector<PointIndex>& ind) : indices(ind){}
+    ~PointCollector() override{}
     void Append(const MeshCore::MeshKernel& kernel, FacetIndex index) override
     {
         PointIndex ulP1, ulP2, ulP3;
@@ -367,6 +371,7 @@ class MeshExport FacetCollector : public MeshCollector
 {
 public:
     explicit FacetCollector(std::vector<FacetIndex>& ind) : indices(ind){}
+    ~FacetCollector() override{}
     void Append(const MeshCore::MeshKernel&, FacetIndex index) override
     {
         indices.push_back(index);
@@ -388,6 +393,9 @@ public:
     /// Construction
     explicit MeshRefPointToFacets (const MeshKernel &rclM) : _rclMesh(rclM)
     { Rebuild(); }
+    /// Destruction
+    ~MeshRefPointToFacets ()
+    { }
 
     /// Rebuilds up data structure
     void Rebuild ();
@@ -424,6 +432,9 @@ public:
     /// Construction
     explicit MeshRefFacetToFacets (const MeshKernel &rclM) : _rclMesh(rclM)
     { Rebuild(); }
+    /// Destruction
+    ~MeshRefFacetToFacets ()
+    { }
     /// Rebuilds up data structure
     void Rebuild ();
 
@@ -450,6 +461,9 @@ public:
     /// Construction
     explicit MeshRefPointToPoints (const MeshKernel &rclM) : _rclMesh(rclM)
     { Rebuild(); }
+    /// Destruction
+    ~MeshRefPointToPoints ()
+    { }
 
     /// Rebuilds up data structure
     void Rebuild ();
@@ -476,6 +490,9 @@ public:
     /// Construction
     explicit MeshRefEdgeToFacets (const MeshKernel &rclM) : _rclMesh(rclM)
     { Rebuild(); }
+    /// Destruction
+    ~MeshRefEdgeToFacets ()
+    { }
 
     /// Rebuilds up data structure
     void Rebuild ();
@@ -512,6 +529,9 @@ public:
     /// Construction
     explicit MeshRefNormalToPoints (const MeshKernel &rclM) : _rclMesh(rclM)
     { Rebuild(); }
+    /// Destruction
+    ~MeshRefNormalToPoints ()
+    { }
 
     /// Rebuilds up data structure
     void Rebuild ();

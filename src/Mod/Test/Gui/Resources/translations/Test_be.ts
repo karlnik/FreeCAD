@@ -76,7 +76,7 @@
     <message>
       <location filename="../../UnitTest.ui" line="222"/>
       <source>Errors:</source>
-      <translation>Памылкі:</translation>
+      <translation>Паведамленні памылак (error):</translation>
     </message>
     <message>
       <location filename="../../UnitTest.ui" line="239"/>
@@ -102,7 +102,7 @@
   <context>
     <name>TestGui::UnitTestDialog</name>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="165"/>
+      <location filename="../../UnitTestImp.cpp" line="166"/>
       <source>Help</source>
       <translation>Даведка</translation>
     </message>
@@ -115,15 +115,15 @@ Double click on an error in the tree view to see more information about it, incl
       <translation>Увядзіце імя аб'екта, які пры выкліку верне TestCase.
 Націсніце "Запуск", і тэст пачне сваю працу.
 
-Двойчы пстрыкніце на памылку ў дрэвы прагляду, каб паглядзець дадатковую інфармацыю, які ўключае і трасіроўку стэка.</translation>
+Двойчы пстрыкніце на памылку ў дрэвы прагляду, каб паглядзець дадатковую інфармацыю аб ёй, які ўключае і трасіроўку стэка.</translation>
     </message>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="179"/>
+      <location filename="../../UnitTestImp.cpp" line="178"/>
       <source>About FreeCAD UnitTest</source>
       <translation>Аб FreeCAD UnitTest</translation>
     </message>
     <message>
-      <location filename="../../UnitTestImp.cpp" line="180"/>
+      <location filename="../../UnitTestImp.cpp" line="178"/>
       <source>Copyright (c) Werner Mayer
 
 FreeCAD UnitTest is part of FreeCAD and supports writing Unit Tests for ones own modules.</source>

@@ -52,7 +52,7 @@ public:
     App::PropertyBool Refine;
 
 protected:
-    Type addSubType{Additive};
+    Type addSubType;
 
     TopoDS_Shape refineShapeIfActive(const TopoDS_Shape&) const;
 };
