@@ -615,12 +615,15 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			}
 
 			a2.Intersect(a);
+			cerr << "Area start i=" << i << "\n";
 			for(std::list<CCurve>::const_iterator It = a2.m_curves.begin(); It != a2.m_curves.end(); It++)
 			{
+				cerr << "Curve\n";
 				const CCurve &curve = *It;
 				for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
 				{
 					const CVertex &vertex = *It2;
+					cerr << "Vertex\n";
 					if(vertex.m_p.x < left){
 						left = vertex.m_p.x;
 					}
