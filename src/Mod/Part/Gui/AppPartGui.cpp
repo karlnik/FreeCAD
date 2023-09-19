@@ -61,6 +61,7 @@
 #include "ViewProviderEllipseParametric.h"
 #include "ViewProviderExt.h"
 #include "ViewProviderExtrusion.h"
+#include "ViewProviderScale.h"
 #include "ViewProviderHelixParametric.h"
 #include "ViewProviderPrimitive.h"
 #include "ViewProviderPython.h"
@@ -99,8 +100,6 @@ public:
     {
         initialize("This module is the PartGui module."); // register with Python
     }
-
-    ~Module() override {}
 
 private:
 };
@@ -173,6 +172,7 @@ PyMOD_INIT_FUNC(PartGui)
     PartGui::ViewProviderImport                     ::init();
     PartGui::ViewProviderCurveNet                   ::init();
     PartGui::ViewProviderExtrusion                  ::init();
+    PartGui::ViewProviderScale                      ::init();
     PartGui::ViewProvider2DObject                   ::init();
     PartGui::ViewProvider2DObjectPython             ::init();
     PartGui::ViewProvider2DObjectGrid               ::init();

@@ -42,9 +42,7 @@
 using namespace MeshCore;
 
 
-MeshOrientationVisitor::MeshOrientationVisitor() : _nonuniformOrientation(false)
-{
-}
+MeshOrientationVisitor::MeshOrientationVisitor() = default;
 
 bool MeshOrientationVisitor::Visit (const MeshFacet &rclFacet, const MeshFacet &rclFrom,
                                     FacetIndex ulFInd, unsigned long ulLevel)
@@ -123,10 +121,6 @@ MeshEvalOrientation::MeshEvalOrientation (const MeshKernel& rclM)
 {
 }
 
-MeshEvalOrientation::~MeshEvalOrientation()
-{
-}
-
 bool MeshEvalOrientation::Evaluate ()
 {
     const MeshFacetArray& rFAry = _rclMesh.GetFacets();
@@ -186,7 +180,7 @@ std::vector<FacetIndex> MeshEvalOrientation::GetIndices() const
     FacetIndex ulStartFacet, ulVisited;
 
     if (_rclMesh.CountFacets() == 0)
-        return std::vector<FacetIndex>();
+        return {};
 
     // reset VISIT flags
     MeshAlgorithm cAlg(_rclMesh);
@@ -267,10 +261,6 @@ MeshFixOrientation::MeshFixOrientation (MeshKernel& rclM)
 {
 }
 
-MeshFixOrientation::~MeshFixOrientation()
-{
-}
-
 bool MeshFixOrientation::Fixup ()
 {
     MeshTopoAlgorithm(_rclMesh).HarmonizeNormals();
@@ -281,10 +271,6 @@ bool MeshFixOrientation::Fixup ()
 
 MeshEvalSolid::MeshEvalSolid (const MeshKernel& rclM)
   :MeshEvaluation( rclM )
-{
-}
-
-MeshEvalSolid::~MeshEvalSolid()
 {
 }
 

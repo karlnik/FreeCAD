@@ -94,7 +94,7 @@ void Document::exportGraphviz(std::ostream& out) const
     class GraphCreator {
     public:
 
-        explicit GraphCreator(struct DocumentP* _d) : d(_d), vertex_no(0), seed(std::random_device()()), distribution(0,255) {
+        explicit GraphCreator(struct DocumentP* _d) : d(_d), seed(std::random_device()()), distribution(0,255) {
             build();
         }
 
@@ -132,7 +132,7 @@ void Document::exportGraphviz(std::ostream& out) const
         std::string getId(const ObjectIdentifier & path) {
             DocumentObject * docObj = path.getDocumentObject();
             if (!docObj)
-                return std::string();
+                return {};
 
             return std::string((docObj)->getDocument()->getName()) + "#" + docObj->getNameInDocument() + "." + path.getPropertyName() + path.getSubPathStr();
         }
@@ -399,11 +399,11 @@ void Document::exportGraphviz(std::ostream& out) const
             }
 
             // Internal document objects
-            for (auto It : d->objectMap)
+            for (const auto & It : d->objectMap)
                 addExpressionSubgraphIfNeeded(It.second, CSSubgraphs);
 
             // Add external document objects
-            for (auto it : d->objectMap) {
+            for (const auto & it : d->objectMap) {
                 std::vector<DocumentObject*> OutList = it.second->getOutList();
                 for (auto obj : OutList) {
                     if (obj) {
@@ -424,11 +424,11 @@ void Document::exportGraphviz(std::ostream& out) const
             bool CSSubgraphs = depGrp->GetBool("GeoFeatureSubgraphs", true);
 
             // Add internal document objects
-            for (auto It : d->objectMap)
+            for (const auto & It : d->objectMap)
                 add(It.second, It.second->getNameInDocument(), It.second->Label.getValue(), CSSubgraphs);
 
             // Add external document objects
-            for (auto It : d->objectMap) {
+            for (const auto & It : d->objectMap) {
                 std::vector<DocumentObject*> OutList = It.second->getOutList();
                 for (auto obj : OutList) {
                     if (obj) {
@@ -484,7 +484,7 @@ void Document::exportGraphviz(std::ostream& out) const
             bool omitGeoFeatureGroups = depGrp->GetBool("GeoFeatureSubgraphs", true);
 
             // Add edges between document objects
-            for (auto It : d->objectMap) {
+            for (const auto & It : d->objectMap) {
 
                 if(omitGeoFeatureGroups) {
                     //coordinate systems are represented by subgraphs
@@ -658,7 +658,7 @@ void Document::exportGraphviz(std::ostream& out) const
 
         const struct DocumentP* d;
         Graph DepList;
-        int vertex_no;
+        int vertex_no{0};
         std::map<std::string, Vertex> LocalVertexList;
         std::map<std::string, Vertex> GlobalVertexList;
         std::set<const DocumentObject*> objects;

@@ -199,7 +199,7 @@ public:
     DocumentItem* docItem;
     DocumentObjectItems items;
     ViewProviderDocumentObject* viewObject;
-    DocumentObjectItem* rootItem;
+    DocumentObjectItem* rootItem{nullptr};
     std::vector<App::DocumentObject*> children;
     std::set<App::DocumentObject*> childSet;
     bool removeChildrenFromRoot;
@@ -214,7 +214,8 @@ public:
     Connection connectStat;
 
     DocumentObjectData(DocumentItem* docItem, ViewProviderDocumentObject* vpd)
-        : docItem(docItem), viewObject(vpd), rootItem(nullptr)
+        : docItem(docItem)
+        , viewObject(vpd)
     {
         //NOLINTBEGIN
         // Setup connections
@@ -2433,13 +2434,13 @@ void TreeWidget::slotActiveDocument(const Gui::Document& Doc)
 struct UpdateDisabler {
     QWidget& widget;
     int& blocked;
-    bool visible;
-    bool focus;
+    bool visible{false};
+    bool focus{false};
 
     // Note! DO NOT block signal here, or else
     // QTreeWidgetItem::setChildIndicatorPolicy() does not work
     UpdateDisabler(QWidget& w, int& blocked)
-        : widget(w), blocked(blocked), visible(false), focus(false)
+        : widget(w), blocked(blocked)
     {
         if (++blocked > 1)
             return;
@@ -3095,9 +3096,7 @@ TreePanel::TreePanel(const char* name, QWidget* parent)
             this, &TreePanel::itemSearch);
 }
 
-TreePanel::~TreePanel()
-{
-}
+TreePanel::~TreePanel() = default;
 
 void TreePanel::accept()
 {
@@ -3170,9 +3169,7 @@ TreeDockWidget::TreeDockWidget(Gui::Document* pcDocument, QWidget* parent)
     pLayout->addWidget(panel, 0, 0);
 }
 
-TreeDockWidget::~TreeDockWidget()
-{
-}
+TreeDockWidget::~TreeDockWidget() = default;
 
 void TreeWidget::selectLinkedObject(App::DocumentObject* linked) {
     if (!isSelectionAttached() || isSelectionBlocked())
