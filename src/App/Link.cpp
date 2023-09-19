@@ -81,8 +81,7 @@ public:
     }
 
     // Auto generated code. See class document of LinkParams.
-    ~LinkParamsP() override {
-    }
+    ~LinkParamsP() override = default;
 
     // Auto generated code. See class document of LinkParams.
     void OnChange(Base::Subject<const char*> &, const char* sReason) override {
@@ -149,7 +148,6 @@ void LinkParams::removeCopyOnChangeApplyToAll() {
 EXTENSION_PROPERTY_SOURCE(App::LinkBaseExtension, App::DocumentObjectExtension)
 
 LinkBaseExtension::LinkBaseExtension()
-    :enableLabelCache(false),hasOldSubElement(false),hasCopyOnChange(true)
 {
     initExtensionType(LinkBaseExtension::getExtensionClassTypeId());
     EXTENSION_ADD_PROPERTY_TYPE(_LinkTouched, (false), " Link",
@@ -160,10 +158,6 @@ LinkBaseExtension::LinkBaseExtension()
     EXTENSION_ADD_PROPERTY_TYPE(_LinkOwner, (0), " Link",
             PropertyType(Prop_Hidden|Prop_Output),0);
     props.resize(PropMax,nullptr);
-}
-
-LinkBaseExtension::~LinkBaseExtension()
-{
 }
 
 PyObject* LinkBaseExtension::getExtensionPyObject() {
@@ -583,8 +577,8 @@ void LinkBaseExtension::syncCopyOnChange()
     // the mutated object. The reason for doing so is that we are copying from
     // the original linked object and its dependency, not the mutated objects
     // which are old copies. There could be arbitrary changes in the originals
-    // which may add or remove or change dependending orders, while the
-    // replacement happen between the new and old copies.
+    // which may add or remove or change depending orders, while the
+    // replacement happens between the new and old copies.
 
     std::map<Base::Uuid, App::DocumentObjectT> newObjs;
     for (auto obj : copiedObjs) {
@@ -2233,10 +2227,6 @@ LinkExtension::LinkExtension()
     initExtensionType(LinkExtension::getExtensionClassTypeId());
 
     LINK_PROPS_ADD_EXTENSION(LINK_PARAMS_EXT);
-}
-
-LinkExtension::~LinkExtension()
-{
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////

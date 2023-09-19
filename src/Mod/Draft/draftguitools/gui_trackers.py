@@ -530,7 +530,7 @@ class arcTracker(Tracker):
     """An arc tracker."""
 
     def __init__(self, dotted=False, scolor=None, swidth=None,
-                 start=0, end=math.pi*2, normal=None):
+                 start=0, end=math.pi*2):
         self.circle = None
         self.startangle = math.degrees(start)
         self.endangle = math.degrees(end)
@@ -538,10 +538,11 @@ class arcTracker(Tracker):
         self.trans.translation.setValue([0, 0, 0])
         self.sep = coin.SoSeparator()
         self.autoinvert = True
-        if normal:
-            self.normal = normal
-        else:
-            self.normal = FreeCAD.DraftWorkingPlane.axis
+        self.normal = FreeCAD.DraftWorkingPlane.axis
+        ang = DraftVecUtils.angle(self.getDeviation(),
+                                  FreeCAD.DraftWorkingPlane.u,
+                                  self.normal)
+        self.ang_offset = math.degrees(ang)
         self.recompute()
         super().__init__(dotted, scolor, swidth,
                          [self.trans, self.sep], name="arcTracker")
@@ -578,10 +579,7 @@ class arcTracker(Tracker):
         """Return the angle of a given vector in radians."""
         c = self.trans.translation.getValue()
         center = Vector(c[0], c[1], c[2])
-        rad = pt.sub(center)
-        a = DraftVecUtils.angle(rad, self.getDeviation(), self.normal)
-        # print(a)
-        return a
+        return DraftVecUtils.angle(self.getDeviation(), pt.sub(center), self.normal)
 
     def getAngles(self):
         """Return the start and end angles in degrees."""
@@ -589,11 +587,11 @@ class arcTracker(Tracker):
 
     def setStartPoint(self, pt):
         """Set the start angle from a point."""
-        self.setStartAngle(-self.getAngle(pt))
+        self.setStartAngle(self.getAngle(pt))
 
     def setEndPoint(self, pt):
         """Set the end angle from a point."""
-        self.setEndAngle(-self.getAngle(pt))
+        self.setEndAngle(self.getAngle(pt))
 
     def setApertureAngle(self, ang):
         """Set the end angle by giving the aperture angle."""
@@ -622,12 +620,16 @@ class arcTracker(Tracker):
         if self.circle:
             self.sep.removeChild(self.circle)
         self.circle = None
-        if (self.endangle < self.startangle) or not self.autoinvert:
-            c = Part.makeCircle(1, Vector(0, 0, 0),
-                                self.normal, self.endangle, self.startangle)
+        if self.autoinvert is False:
+            ang_sta = self.endangle
+            ang_end = self.startangle
+        elif self.endangle < self.startangle:
+            ang_sta = self.endangle + self.ang_offset
+            ang_end = self.startangle + self.ang_offset
         else:
-            c = Part.makeCircle(1, Vector(0, 0, 0),
-                                self.normal, self.startangle, self.endangle)
+            ang_sta = self.startangle + self.ang_offset
+            ang_end = self.endangle + self.ang_offset
+        c = Part.makeCircle(1, Vector(0, 0, 0), self.normal, ang_sta, ang_end)
         buf = c.writeInventor(2, 0.01)
         try:
             ivin = coin.SoInput()
@@ -666,7 +668,7 @@ class ghostTracker(Tracker):
     You can pass it an object or a list of objects, or a shape.
     """
 
-    def __init__(self, sel, dotted=False, scolor=None, swidth=None):
+    def __init__(self, sel, dotted=False, scolor=None, swidth=None, mirror=False):
         self.trans = coin.SoTransform()
         self.trans.translation.setValue([0, 0, 0])
         self.children = [self.trans]
@@ -691,6 +693,8 @@ class ghostTracker(Tracker):
                 selnode.addChild(self.marker)
                 node.addChild(selnode)
                 rootsep.addChild(node)
+        if mirror is True:
+            self._flip(rootsep)
         self.children.append(rootsep)
         super().__init__(dotted, scolor, swidth,
                          children=self.children, name="ghostTracker")
@@ -776,12 +780,34 @@ class ghostTracker(Tracker):
             return FreeCAD.Matrix()
 
     def setMatrix(self, matrix):
-        """Set the transformation matrix."""
+        """Set the transformation matrix.
+
+        The 4th column of the matrix (the position) is ignored.
+        """
         m = coin.SbMatrix(matrix.A11, matrix.A12, matrix.A13, matrix.A14,
                           matrix.A21, matrix.A22, matrix.A23, matrix.A24,
                           matrix.A31, matrix.A32, matrix.A33, matrix.A34,
                           matrix.A41, matrix.A42, matrix.A43, matrix.A44)
         self.trans.setMatrix(m)
+
+    def _flip(self, root):
+        """Flip the normals of the coin faces."""
+        # Code by wmayer:
+        # https://forum.freecad.org/viewtopic.php?p=702640#p702640
+        search = coin.SoSearchAction()
+        search.setType(coin.SoIndexedFaceSet.getClassTypeId())
+        search.apply(root)
+        path = search.getPath()
+        if path:
+            node = path.getTail()
+            index = node.coordIndex.getValues()
+            if len(index) % 4 == 0:
+                for i in range(0, len(index), 4):
+                    tmp = index[i]
+                    index[i] = index[i+1]
+                    index[i+1] = tmp
+
+                node.coordIndex.setValues(index)
 
 
 class editTracker(Tracker):
@@ -1267,7 +1293,6 @@ class boxTracker(Tracker):
 
     def update(self, line=None, normal=None):
         """Update the tracker."""
-        import WorkingPlane
         import DraftGeomUtils
         if not normal:
             normal = FreeCAD.DraftWorkingPlane.axis
@@ -1283,16 +1308,18 @@ class boxTracker(Tracker):
             bp = self.baseline.Shape.Edges[0].Vertexes[0].Point
         else:
             return
-        right = lvec.cross(normal)
         self.cube.width.setValue(lvec.Length)
-        p = WorkingPlane.getPlacementFromPoints([bp,
-                                                 bp.add(lvec),
-                                                 bp.add(right)])
-        if p:
-            self.trans.rotation.setValue(p.Rotation.Q)
         bp = bp.add(lvec.multiply(0.5))
         bp = bp.add(DraftVecUtils.scaleTo(normal, self.cube.depth.getValue()/2.0))
         self.pos(bp)
+        tol = 1e-6
+        if lvec.Length > tol and normal.Length > tol:
+            lvec.normalize()
+            normal.normalize()
+            if not lvec.isEqual(normal, tol) \
+                    and not lvec.isEqual(normal.negative(), tol):
+                rot = FreeCAD.Rotation(lvec, FreeCAD.Vector(), normal, "XZY")
+                self.trans.rotation.setValue(rot.Q)
 
     def setRotation(self, rot):
         """Set the rotation."""

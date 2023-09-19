@@ -87,8 +87,7 @@ TYPESYSTEM_SOURCE(App::PropertyExpressionEngine , App::PropertyExpressionContain
  */
 
 PropertyExpressionEngine::PropertyExpressionEngine()
-    : running(false)
-    , validator(0)
+    : validator(0)
 {
 }
 
@@ -752,7 +751,7 @@ void PropertyExpressionEngine::getPathsToDocumentObject(DocumentObject* obj,
 bool PropertyExpressionEngine::depsAreTouched() const
 {
     for(auto &v : _Deps) {
-        // v.second inidcates if it is a hidden reference
+        // v.second indicates if it is a hidden reference
         if(!v.second && v.first->isTouched())
             return true;
     }
@@ -811,7 +810,7 @@ std::string PropertyExpressionEngine::validateExpression(const ObjectIdentifier 
         return e.what();
     }
 
-    return std::string();
+    return {};
 }
 
 /**

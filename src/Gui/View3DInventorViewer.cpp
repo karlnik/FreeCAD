@@ -202,8 +202,8 @@ while the progress bar is running.
 class Gui::ViewerEventFilter : public QObject
 {
 public:
-    ViewerEventFilter() {}
-    ~ViewerEventFilter() override {}
+    ViewerEventFilter() = default;
+    ~ViewerEventFilter() override = default;
 
     bool eventFilter(QObject* obj, QEvent* event) override {
         // Bug #0000607: Some mice also support horizontal scrolling which however might
@@ -245,8 +245,8 @@ public:
 
 class SpaceNavigatorDevice : public Quarter::InputDevice {
 public:
-    SpaceNavigatorDevice() {}
-    ~SpaceNavigatorDevice() override {}
+    SpaceNavigatorDevice() = default;
+    ~SpaceNavigatorDevice() override = default;
     const SoEvent* translateEvent(QEvent* event) override {
 
         if (event->type() == Spaceball::MotionEvent::MotionEventType) {
@@ -335,6 +335,7 @@ View3DInventorViewer::View3DInventorViewer(QWidget* parent, const QtGLWidget* sh
     : Quarter::SoQTQuarterAdaptor(parent, sharewidget)
     , SelectionObserver(false, ResolveMode::NoResolve)
     , editViewProvider(nullptr)
+    , objectGroup(nullptr)
     , navigation(nullptr)
     , renderType(Native)
     , framebuffer(nullptr)
@@ -354,6 +355,7 @@ View3DInventorViewer::View3DInventorViewer(const QtGLFormat& format, QWidget* pa
     : Quarter::SoQTQuarterAdaptor(format, parent, sharewidget)
     , SelectionObserver(false, ResolveMode::NoResolve)
     , editViewProvider(nullptr)
+    , objectGroup(nullptr)
     , navigation(nullptr)
     , renderType(Native)
     , framebuffer(nullptr)
@@ -482,6 +484,11 @@ void View3DInventorViewer::init()
     pcEditingRoot->addChild(pcEditingTransform);
     pcViewProviderRoot->addChild(pcEditingRoot);
 
+    // Create group for the physical object
+    objectGroup = new SoGroup();
+    objectGroup->ref();
+    pcViewProviderRoot->addChild(objectGroup);
+
     // Set our own render action which show a bounding box if
     // the SoFCSelection::BOX style is set
     //
@@ -569,6 +576,8 @@ View3DInventorViewer::~View3DInventorViewer()
     coinRemoveAllChildren(this->pcViewProviderRoot);
     this->pcViewProviderRoot->unref();
     this->pcViewProviderRoot = nullptr;
+    this->objectGroup->unref();
+    this->objectGroup = nullptr;
     this->backlight->unref();
     this->backlight = nullptr;
 
@@ -759,8 +768,15 @@ void View3DInventorViewer::addViewProvider(ViewProvider* pcProvider)
     SoSeparator* root = pcProvider->getRoot();
 
     if (root) {
-        if(pcProvider->canAddToSceneGraph())
-            pcViewProviderRoot->addChild(root);
+        if (pcProvider->canAddToSceneGraph()) {
+            // Add to the physical object group if related to the physical object otherwise add to the scene graph
+            if (pcProvider->isPartOfPhysicalObject()) {
+                objectGroup->addChild(root);
+            }
+            else {
+                pcViewProviderRoot->addChild(root);
+            }
+        }
         _ViewProviderMap[root] = pcProvider;
     }
 
@@ -784,9 +800,15 @@ void View3DInventorViewer::removeViewProvider(ViewProvider* pcProvider)
     SoSeparator* root = pcProvider->getRoot();
 
     if (root) {
-        int index = pcViewProviderRoot->findChild(root);
-        if(index>=0)
+        int index = objectGroup->findChild(root);
+        if (index >= 0) {
+            objectGroup->removeChild(index);
+        }
+
+        index = pcViewProviderRoot->findChild(root);
+        if (index >= 0) {
             pcViewProviderRoot->removeChild(index);
+        }
         _ViewProviderMap.erase(root);
     }
 
@@ -1276,6 +1298,10 @@ bool View3DInventorViewer::hasAxisCross()
 void View3DInventorViewer::showRotationCenter(bool show)
 {
     SoNode* scene = getSceneGraph();
+    if (!scene) {
+        return;
+    }
+
     auto sep = static_cast<SoSeparator*>(scene);
 
     bool showEnabled = App::GetApplication()
@@ -1307,7 +1333,7 @@ void View3DInventorViewer::showRotationCenter(bool show)
 
             auto material = new SoMaterial();
             material->emissiveColor = SbColor(1, 0, 0);
-            material->transparency = 0.8;
+            material->transparency = 0.8F;
 
             auto translation = new SoTranslation();
             translation->translation.setValue(center);
@@ -1673,7 +1699,7 @@ SbVec2f View3DInventorViewer::screenCoordsOfPath(SoPath* path) const
         imageCoords[1] += (height-width) / 2.0;
     }
 
-    return SbVec2f(imageCoords[0], imageCoords[1]);
+    return {imageCoords[0], imageCoords[1]};
 }
 
 std::vector<SbVec2f> View3DInventorViewer::getGLPolygon(const std::vector<SbVec2s>& pnts) const
@@ -2297,7 +2323,7 @@ void View3DInventorViewer::setSeekMode(SbBool on)
 SbVec3f View3DInventorViewer::getCenterPointOnFocalPlane() const {
     SoCamera* cam = getSoRenderManager()->getCamera();
     if (!cam)
-        return SbVec3f(0. ,0. ,0. );
+        return {0. ,0. ,0. };
 
     SbVec3f direction;
     cam->orientation.getValue().multVec(SbVec3f(0, 0, -1), direction);
@@ -2417,7 +2443,7 @@ SbVec3f View3DInventorViewer::getViewDirection() const
     SoCamera* cam = this->getSoRenderManager()->getCamera();
 
     if (!cam)  // this is the default
-        return SbVec3f(0,0,-1);
+        return {0,0,-1};
 
     SbVec3f projDir = cam->getViewVolume().getProjectionDirection();
     return projDir;
@@ -2435,7 +2461,7 @@ SbVec3f View3DInventorViewer::getUpDirection() const
     SoCamera* cam = this->getSoRenderManager()->getCamera();
 
     if (!cam)
-        return SbVec3f(0,1,0);
+        return {0,1,0};
 
     SbRotation camrot = cam->orientation.getValue();
     SbVec3f upvec(0, 1, 0); // init to default up vector
@@ -2448,7 +2474,7 @@ SbRotation View3DInventorViewer::getCameraOrientation() const
     SoCamera* cam = this->getSoRenderManager()->getCamera();
 
     if (!cam)
-        return SbRotation(0,0,0,1); // this is the default
+        return {0,0,0,1}; // this is the default
 
     return cam->orientation.getValue();
 }
@@ -2476,7 +2502,7 @@ SbVec2f View3DInventorViewer::getNormalizedPosition(const SbVec2s& pnt) const
         pY = (pY - 0.5f*dY) / fRatio + 0.5f*dY;
     }
 
-    return SbVec2f(pX, pY);
+    return {pX, pY};
 }
 
 SbVec3f View3DInventorViewer::getPointOnFocalPlane(const SbVec2s& pnt) const
@@ -2485,7 +2511,7 @@ SbVec3f View3DInventorViewer::getPointOnFocalPlane(const SbVec2s& pnt) const
     SoCamera* pCam = this->getSoRenderManager()->getCamera();
 
     if (!pCam)  // return invalid point
-        return SbVec3f();
+        return {};
 
     SbViewVolume  vol = pCam->getViewVolume();
 
@@ -2518,7 +2544,7 @@ SbVec2s View3DInventorViewer::getPointOnViewport(const SbVec3f& pnt) const
     auto x = short(std::roundf(pt[0] * sp[0]));
     auto y = short(std::roundf(pt[1] * sp[1]));
 
-    return SbVec2s(x, y);
+    return {x, y};
 }
 
 QPoint View3DInventorViewer::toQPoint(const SbVec2s& pnt) const
@@ -2532,7 +2558,7 @@ QPoint View3DInventorViewer::toQPoint(const SbVec2s& pnt) const
     xpos = int(std::roundf(xpos / dev_pix_ratio));
     ypos = int(std::roundf(ypos / dev_pix_ratio));
 
-    return QPoint(xpos, ypos);
+    return {xpos, ypos};
 }
 
 SbVec2s View3DInventorViewer::fromQPoint(const QPoint& pnt) const
@@ -2593,7 +2619,7 @@ SbVec3f View3DInventorViewer::projectOnNearPlane(const SbVec2f& pt) const
     SoCamera* cam = this->getSoRenderManager()->getCamera();
 
     if (!cam)  // return invalid point
-        return SbVec3f();
+        return {};
 
     SbViewVolume vol = cam->getViewVolume();
     vol.projectPointToLine(pt, pt1, pt2);
@@ -2606,7 +2632,7 @@ SbVec3f View3DInventorViewer::projectOnFarPlane(const SbVec2f& pt) const
     SoCamera* cam = this->getSoRenderManager()->getCamera();
 
     if (!cam)  // return invalid point
-        return SbVec3f();
+        return {};
 
     SbViewVolume vol = cam->getViewVolume();
     vol.projectPointToLine(pt, pt1, pt2);
@@ -2765,9 +2791,7 @@ namespace Gui {
             startPos = camera->position.getValue();
             startRot = camera->orientation.getValue();
         }
-        ~CameraAnimation() override
-        {
-        }
+        ~CameraAnimation() override = default;
     protected:
         void updateCurrentValue(const QVariant & value) override
         {

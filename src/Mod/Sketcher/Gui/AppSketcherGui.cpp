@@ -47,6 +47,7 @@ void CreateSketcherCommandsConstraints();
 void CreateSketcherCommandsConstraintAccel();
 void CreateSketcherCommandsAlterGeo();
 void CreateSketcherCommandsBSpline();
+void CreateSketcherCommandsOverlay();
 void CreateSketcherCommandsVirtualSpace();
 
 void loadSketcherResource()
@@ -65,7 +66,7 @@ public:
     Module()
         : Py::ExtensionModule<Module>("SketcherGui")
     {
-        initialize("This module is the SketcherGui module.");// register with Python
+        initialize("This module is the SketcherGui module.");  // register with Python
     }
 
     ~Module() override
@@ -79,7 +80,7 @@ PyObject* initModule()
     return Base::Interpreter().addModule(new Module);
 }
 
-}// namespace SketcherGui
+}  // namespace SketcherGui
 
 /* Python entry */
 PyMOD_INIT_FUNC(SketcherGui)
@@ -108,6 +109,7 @@ PyMOD_INIT_FUNC(SketcherGui)
     Gui::BitmapFactory().addPath(QString::fromLatin1(":/icons/pointers"));
     Gui::BitmapFactory().addPath(QString::fromLatin1(":/icons/splines"));
     Gui::BitmapFactory().addPath(QString::fromLatin1(":/icons/tools"));
+    Gui::BitmapFactory().addPath(QString::fromLatin1(":/icons/overlay"));
 
     // instantiating the commands
     CreateSketcherCommands();
@@ -116,6 +118,7 @@ PyMOD_INIT_FUNC(SketcherGui)
     CreateSketcherCommandsAlterGeo();
     CreateSketcherCommandsConstraintAccel();
     CreateSketcherCommandsBSpline();
+    CreateSketcherCommandsOverlay();
     CreateSketcherCommandsVirtualSpace();
 
     SketcherGui::Workbench::init();

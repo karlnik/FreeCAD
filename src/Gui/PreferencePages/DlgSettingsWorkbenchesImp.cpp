@@ -24,9 +24,11 @@
 
 #include "PreCompiled.h"
 #ifndef _PreComp_
+#include <QAction>
 #include <QCheckBox>
-#include <QPushButton>
 #include <QLabel>
+#include <QMenu>
+#include <QPushButton>
 #include <sstream>
 #endif
 
@@ -163,9 +165,7 @@ wbListItem::wbListItem(const QString& wbName, bool enabled, bool startupWb, bool
     layout->setContentsMargins(10, 0, 0, 0);
 }
 
-wbListItem::~wbListItem()
-{
-}
+wbListItem::~wbListItem() = default;
 
 bool wbListItem::isEnabled()
 {
@@ -236,6 +236,16 @@ DlgSettingsWorkbenchesImp::DlgSettingsWorkbenchesImp( QWidget* parent )
     ui->wbList->setDragEnabled(true);
     ui->wbList->setDefaultDropAction(Qt::MoveAction);
 
+    QAction* sortAction = new QAction(tr("Sort alphabetically"), this);
+    connect(sortAction, &QAction::triggered, this, &DlgSettingsWorkbenchesImp::sortEnabledWorkbenches);
+
+    QMenu* contextMenu = new QMenu(ui->wbList);
+    contextMenu->addAction(sortAction);
+    ui->wbList->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->wbList, &QListWidget::customContextMenuRequested, this, [this, contextMenu](const QPoint& pos) {
+        contextMenu->exec(ui->wbList->mapToGlobal(pos));
+    });
+
     connect(ui->wbList->model(), &QAbstractItemModel::rowsMoved, this, &DlgSettingsWorkbenchesImp::wbItemMoved);
     connect(ui->AutoloadModuleCombo, qOverload<int>(&QComboBox::activated), this, &DlgSettingsWorkbenchesImp::onStartWbChanged);
     connect(ui->WorkbenchSelectorPosition, qOverload<int>(&QComboBox::activated), this, &DlgSettingsWorkbenchesImp::onWbSelectorChanged);
@@ -245,10 +255,7 @@ DlgSettingsWorkbenchesImp::DlgSettingsWorkbenchesImp( QWidget* parent )
 /**
  *  Destroys the object and frees any allocated resources
  */
-DlgSettingsWorkbenchesImp::~DlgSettingsWorkbenchesImp()
-{
-}
-
+DlgSettingsWorkbenchesImp::~DlgSettingsWorkbenchesImp() = default;
 
 void DlgSettingsWorkbenchesImp::saveSettings()
 {
@@ -350,6 +357,8 @@ void DlgSettingsWorkbenchesImp::buildWorkbenchList()
 {
     QSignalBlocker sigblk(ui->wbList);
 
+    ui->wbList->clear();
+
     QStringList enabledWbs = getEnabledWorkbenches();
     QStringList disabledWbs = getDisabledWorkbenches();
 
@@ -424,7 +433,7 @@ QStringList DlgSettingsWorkbenchesImp::getDisabledWorkbenches()
     ParameterGrp::handle hGrp;
 
     hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/Workbenches");
-    disabled_wbs = QString::fromStdString(hGrp->GetASCII("Disabled", "NoneWorkbench,TestWorkbench"));
+    disabled_wbs = QString::fromStdString(hGrp->GetASCII("Disabled", "NoneWorkbench,TestWorkbench,AssemblyWorkbench"));
 #if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
     unfiltered_disabled_wbs_list = disabled_wbs.split(QLatin1String(","), Qt::SkipEmptyParts);
 #else
@@ -589,5 +598,14 @@ void DlgSettingsWorkbenchesImp::onWbByTabToggled(bool val)
     requireRestart();
 }
 
+void DlgSettingsWorkbenchesImp::sortEnabledWorkbenches()
+{
+    ParameterGrp::handle hGrp;
+
+    hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/Workbenches");
+    hGrp->SetASCII("Ordered", "");
+
+    buildWorkbenchList();
+}
 #include "moc_DlgSettingsWorkbenchesImp.cpp"
 #include "DlgSettingsWorkbenchesImp.moc"

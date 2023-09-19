@@ -95,6 +95,10 @@ SET(PathPythonMainGui_SRCS
     Path/Main/Gui/JobDlg.py
     Path/Main/Gui/PreferencesJob.py
     Path/Main/Gui/Sanity.py
+    Path/Main/Gui/Sanity_Bulb.svg
+    Path/Main/Gui/Sanity_Caution.svg
+    Path/Main/Gui/Sanity_Note.svg
+    Path/Main/Gui/Sanity_Warning.svg
     Path/Main/Gui/Simulator.py
 )
 
@@ -130,6 +134,7 @@ SET(PathPythonPostScripts_SRCS
     Path/Post/scripts/comparams_post.py
     Path/Post/scripts/dxf_post.py
     Path/Post/scripts/dynapath_post.py
+    Path/Post/scripts/estlcam_post.py
     Path/Post/scripts/example_pre.py
     Path/Post/scripts/fablin_post.py
     Path/Post/scripts/fanuc_post.py
