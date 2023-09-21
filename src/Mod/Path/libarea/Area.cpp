@@ -560,8 +560,6 @@ static void zigzag(const CArea &input_a)
 static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
 {
     const Point null_point(0, 0);
-#warning below material should come from stock
-    CArea material = input_a;													// Material to the right of this curve
 
 	if(input_a.m_curves.size() == 0)
 	{
@@ -571,8 +569,22 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
     one_over_units = 1 / CArea::m_units;
 
-	CArea a(input_a);                               // Make copy of area
+	CArea a(input_a);                               // Make copy of area, pocket to the left of curve?
     rotate_area(a);                                 // Rotate copy of area
+    {
+    	CCurve hole;
+
+    	hole.append(CVertex(0, Point(-7,-7), Point()));
+    	hole.append(CVertex(0, Point(-7,7), Point()));
+    	hole.append(CVertex(0, Point(7,7), Point()));
+    	hole.append(CVertex(0, Point(7,-7), Point()));
+    	hole.append(CVertex(0, Point(-7,-7), Point()));
+
+    	a.append(hole);
+    }
+
+#warning below material should come from stock
+    CArea material = a;													// Material to the right of this curve
 
     CBox2D b;
 	a.GetBox(b);
@@ -594,7 +606,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		const CCurve &curve = *It;
 		int k = 0;
 
-		cerr << "Curve " << ++n << "is closed " << curve.IsClosed() << "\n";
+		cerr << "Curve " << ++n << " is closed " << curve.IsClosed() << "\n";
 		for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
 		{
 			const CVertex &vertex = *It2;
