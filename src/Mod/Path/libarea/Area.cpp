@@ -556,10 +556,12 @@ static void zigzag(const CArea &input_a)
 	CArea::m_processing_done += 0.2 * CArea::m_single_area_processing_length;
 }
 
-/* Experimental zig tool path */
+/* Experimental constant tool angle engagement path */
 static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
 {
     const Point null_point(0, 0);
+#warning below material should come from stock
+    CArea material = input_a;													// Material to the right of this curve
 
 	if(input_a.m_curves.size() == 0)
 	{
@@ -586,6 +588,28 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	if(CArea::m_please_abort)
 	    return;
 
+	int n = 0;
+	for(std::list<CCurve>::const_iterator It = a.m_curves.begin(); It != a.m_curves.end(); It++)
+	{
+		const CCurve &curve = *It;
+		int k = 0;
+
+		cerr << "Curve " << ++n << "is closed " << curve.IsClosed() << "\n";
+		for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
+		{
+			const CVertex &vertex = *It2;
+
+			if(0){
+				cerr << "	Vertex " << ++k
+						<< "point (" << vertex.m_p.x << ", " << vertex.m_p.y << ")"
+						<< "type " << vertex.m_type
+						<< "\n";
+			}
+			else{
+				cerr << vertex.m_p.x << ", " << vertex.m_p.y << "\n";
+			}
+		}
+	}
 	const double step_percent_increment = 0.8 * CArea::m_single_area_processing_length / num_steps;
 
 	for(int i = 0; i<num_steps; i++)
@@ -615,15 +639,13 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			}
 
 			a2.Intersect(a);
-			cerr << "Area start i=" << i << "\n";
 			for(std::list<CCurve>::const_iterator It = a2.m_curves.begin(); It != a2.m_curves.end(); It++)
 			{
-				cerr << "Curve\n";
 				const CCurve &curve = *It;
 				for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
 				{
 					const CVertex &vertex = *It2;
-					cerr << "Vertex\n";
+
 					if(vertex.m_p.x < left){
 						left = vertex.m_p.x;
 					}
