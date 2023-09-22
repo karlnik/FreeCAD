@@ -557,16 +557,58 @@ static void zigzag(const CArea &input_a)
 }
 
 /* Experimental constant tool angle engagement path */
-static CCurve makeTool(void);
-static CCurve makeTool(void){
+static CCurve makeTool(double x, double y);
+static CCurve makeTool(double x, double y){
 	CCurve tool;
-	const CVertex vertex1(1, Point(6,0), Point(0,0));
+	const CVertex vertex1(1, Point(x+6,y+0), Point(x,y));
 
 	tool.m_vertices.emplace_back(vertex1);
-	tool.m_vertices.emplace_back(CVertex(1, Point(-6,0), Point(0,0)));
+	tool.m_vertices.emplace_back(CVertex(1, Point(x-6,y), Point(x,y)));
 	tool.m_vertices.emplace_back(vertex1);
 
 	return tool;
+}
+
+/* Create a new tool each iteration allocate and deallocate a lot memory
+ * may be a performance issue with this but not sure
+ */
+static void setToolPos(CCurve &curve, double x, double y);
+static void setToolPos(CCurve &curve, double x, double y){
+	std::list<CVertex>::iterator It = curve.m_vertices.begin();
+	const double radius = 6;
+
+	if(It == curve.m_vertices.end()){
+#warning should signal error
+	}
+	else{
+		cerr << "1\n";
+		It->m_p.x = x + radius;
+		It->m_p.y = y;
+		It->m_c.x = x;
+		It->m_c.y = y;
+	}
+	It++;
+	if(It == curve.m_vertices.end()){
+#warning should signal error
+	}
+	else{
+		cerr << "2\n";
+		It->m_p.x = x - radius;
+		It->m_p.y = y;
+		It->m_c.x = x;
+		It->m_c.y = y;
+	}
+	It++;
+	if(0&&It != curve.m_vertices.end()){
+#warning should signal error
+	}
+	else{
+		cerr << "3\n";
+		It->m_p.x = x + radius;
+		It->m_p.y = y;
+		It->m_c.x = x;
+		It->m_c.y = y;
+	}
 }
 static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
 {
@@ -587,7 +629,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
      * to define both where pocket and where material is.
      */
 #warning below both start hole and material should come from CAD model of stock
-    {																	// Add star hole
+    {																	// Add start hole
     	CCurve startHole;												// Pocket to the left of curve
 
     	startHole.append(CVertex(0, Point(-7,-7), Point()));
@@ -598,7 +640,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
     	a.append(startHole);
     }
-    CArea stock = a;													// Material to the right of this curve
+    CArea stock = a;													// Material to the right of this curve, this change then material is removed
 
 	if(CArea::m_please_abort)
 	    return;
@@ -617,8 +659,28 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
 		curve_list.emplace_back(curve);
 	}
-	const CCurve tool = makeTool();
-	curve_list.emplace_back(tool);
+
+	{
+		CCurve tool = makeTool(0,0);
+		std::list<Point> intersections;
+
+		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
+		cerr << "Tool intersections " << intersections.size() << endl;
+		curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
+
+		setToolPos(tool, 4, 0.5);
+		intersections.clear();													// Clear intersections
+		stock.CurveIntersections(tool, intersections);
+		cerr << "Tool intersections " << intersections.size() << endl;
+		curve_list.emplace_back(tool);
+
+		setToolPos(tool, 14, 1);
+		intersections.clear();													// Clear intersections
+		stock.CurveIntersections(tool, intersections);
+		cerr << "Tool intersections " << intersections.size() << endl;
+		intersections.clear();
+		curve_list.emplace_back(tool);
+	}
 }
 
 void CArea::SplitAndMakePocketToolpath(std::list<CCurve> &curve_list, const CAreaPocketParams &params)const
