@@ -570,21 +570,24 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     one_over_units = 1 / CArea::m_units;
 
 	CArea a(input_a);                               // Make copy of area, pocket to the left of curve?
-    rotate_area(a);                                 // Rotate copy of area
-    {
-    	CCurve hole;
+    //rotate_area(a);                                 // Rotate copy of area
 
-    	hole.append(CVertex(0, Point(-7,-7), Point()));
-    	hole.append(CVertex(0, Point(-7,7), Point()));
-    	hole.append(CVertex(0, Point(7,7), Point()));
-    	hole.append(CVertex(0, Point(7,-7), Point()));
-    	hole.append(CVertex(0, Point(-7,-7), Point()));
+    /* To allow tool to move outside material there is a need
+     * to define both where pocket and where material is.
+     */
+#warning below both start hole and material should come from CAD model of stock
+    {																	// Add star hole
+    	CCurve startHole;												// Pocket to the left of curve
 
-    	a.append(hole);
+    	startHole.append(CVertex(0, Point(-7,-7), Point()));
+    	startHole.append(CVertex(0, Point(-7,7), Point()));
+    	startHole.append(CVertex(0, Point(7,7), Point()));
+    	startHole.append(CVertex(0, Point(7,-7), Point()));
+    	startHole.append(CVertex(0, Point(-7,-7), Point()));
+
+    	a.append(startHole);
     }
-
-#warning below material should come from stock
-    CArea material = a;													// Material to the right of this curve
+    CArea stock = a;													// Material to the right of this curve
 
     CBox2D b;
 	a.GetBox(b);
@@ -605,6 +608,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	{
 		const CCurve &curve = *It;
 		int k = 0;
+		CCurve curve_segment;
 
 		cerr << "Curve " << ++n << " is closed " << curve.IsClosed() << "\n";
 		for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
@@ -620,8 +624,14 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			else{
 				cerr << vertex.m_p.x << ", " << vertex.m_p.y << "\n";
 			}
+
+			curve_segment.m_vertices.emplace_back(CVertex(unrotated_point(vertex.m_p)));//Point(left, y0))));
 		}
+
+		curve_list.emplace_back(curve);
 	}
+    return;
+
 	const double step_percent_increment = 0.8 * CArea::m_single_area_processing_length / num_steps;
 
 	for(int i = 0; i<num_steps; i++)
