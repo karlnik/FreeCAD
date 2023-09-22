@@ -557,6 +557,17 @@ static void zigzag(const CArea &input_a)
 }
 
 /* Experimental constant tool angle engagement path */
+static CCurve makeTool(void);
+static CCurve makeTool(void){
+	CCurve tool;
+	const CVertex vertex1(1, Point(6,0), Point(0,0));
+
+	tool.m_vertices.emplace_back(vertex1);
+	tool.m_vertices.emplace_back(CVertex(1, Point(-6,0), Point(0,0)));
+	tool.m_vertices.emplace_back(vertex1);
+
+	return tool;
+}
 static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
 {
     const Point null_point(0, 0);
@@ -589,115 +600,25 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     }
     CArea stock = a;													// Material to the right of this curve
 
-    CBox2D b;
-	a.GetBox(b);
-
-    const double xMin = b.MinX();// - 1.0;
-    const double xMax = b.MaxX();// + 1.0;
-
-    const double height = b.MaxY() - b.MinY();
-    const int num_steps = int(height / stepover_for_pocket + 1);
-    double y = b.MinY();// + 0.1 * one_over_units;
-    double yOld = y;
-
 	if(CArea::m_please_abort)
 	    return;
 
-	int n = 0;
 	for(std::list<CCurve>::const_iterator It = a.m_curves.begin(); It != a.m_curves.end(); It++)
 	{
 		const CCurve &curve = *It;
-		int k = 0;
 		CCurve curve_segment;
 
-		cerr << "Curve " << ++n << " is closed " << curve.IsClosed() << "\n";
 		for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
 		{
 			const CVertex &vertex = *It2;
 
-			if(0){
-				cerr << "	Vertex " << ++k
-						<< "point (" << vertex.m_p.x << ", " << vertex.m_p.y << ")"
-						<< "type " << vertex.m_type
-						<< "\n";
-			}
-			else{
-				cerr << vertex.m_p.x << ", " << vertex.m_p.y << "\n";
-			}
-
-			curve_segment.m_vertices.emplace_back(CVertex(unrotated_point(vertex.m_p)));//Point(left, y0))));
+			curve_segment.m_vertices.emplace_back(CVertex(vertex.m_p));//unrotated_point(vertex.m_p)));//Point(left, y0))));
 		}
 
 		curve_list.emplace_back(curve);
 	}
-    return;
-
-	const double step_percent_increment = 0.8 * CArea::m_single_area_processing_length / num_steps;
-
-	for(int i = 0; i<num_steps; i++)
-	{
-		int left = xMax; // Initialize to right end so all values will be smaller
-		int right = xMin; // Initialize to left end so all values will be larger
-		double y0 = y;
-
-		y = y + stepover_for_pocket;
-		{
-			CArea a2;
-			{
-				Point p0(xMin, yOld);
-				Point p1(xMin, y);
-				Point p2(xMax, y);
-				Point p3(xMax, yOld);
-				CCurve c;
-
-				/* Outer bounding box */
-				c.m_vertices.emplace_back(0, p0, null_point, 0);
-				c.m_vertices.emplace_back(0, p1, null_point, 0);
-				c.m_vertices.emplace_back(0, p2, null_point, 1);
-				c.m_vertices.emplace_back(0, p3, null_point, 0);
-				c.m_vertices.emplace_back(0, p0, null_point, 1);
-
-				a2.m_curves.push_back(c);
-			}
-
-			a2.Intersect(a);
-			for(std::list<CCurve>::const_iterator It = a2.m_curves.begin(); It != a2.m_curves.end(); It++)
-			{
-				const CCurve &curve = *It;
-				for(std::list<CVertex>::const_iterator It2 = curve.m_vertices.begin(); It2 != curve.m_vertices.end(); It2++)
-				{
-					const CVertex &vertex = *It2;
-
-					if(vertex.m_p.x < left){
-						left = vertex.m_p.x;
-					}
-					if(vertex.m_p.x > right){
-						right = vertex.m_p.x;
-					}
-				}
-			}
-		}
-		{
-			CCurve curve;
-
-			if(0){ // Conventional cut??
-				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(left, y0))));
-				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(right, y0))));
-			}
-			else{ // Climb cut??
-				right += 6.0;
-				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(right, y0))));
-				curve.m_vertices.emplace_back(CVertex(unrotated_point(Point(left, y0))));
-			}
-			curve_list.emplace_back(curve);
-		}
-		if(CArea::m_please_abort)
-		    return;
-		CArea::m_processing_done += step_percent_increment;
-		yOld = y0;
-	}
-
-	CArea::m_processing_done += 0.2 * CArea::m_single_area_processing_length;
+	const CCurve tool = makeTool();
+	curve_list.emplace_back(tool);
 }
 
 void CArea::SplitAndMakePocketToolpath(std::list<CCurve> &curve_list, const CAreaPocketParams &params)const
