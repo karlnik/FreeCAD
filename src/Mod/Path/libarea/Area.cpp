@@ -557,14 +557,40 @@ static void zigzag(const CArea &input_a)
 }
 
 /* Experimental constant tool angle engagement path */
-static CCurve makeTool(double x, double y);
-static CCurve makeTool(double x, double y){
+static CCurve makeTool(Point point0, Point point1);
+static CCurve makeTool(Point point0, Point point1){
 	CCurve tool;
-	const CVertex vertex1(1, Point(x+6,y+0), Point(x,y));
+	const double x0 = point0.x;
+	const double y0 = point0.y;
+	const double x1 = point1.x;
+	const double y1 = point1.y;
+	const double radius = 6;
+	const double angle = atan2(y1-y0, x1-x0);
+	const CVertex vertex1(1, Point(x0+radius,y0), Point(x0,y0));
 
-	tool.m_vertices.emplace_back(vertex1);
-	tool.m_vertices.emplace_back(CVertex(1, Point(x-6,y), Point(x,y)));
-	tool.m_vertices.emplace_back(vertex1);
+	/* This is a circle but really need to be small movement with
+	 * lines on edges and rounded end for each calculation step.
+	 */
+	{
+		Point p0(x0+radius*cos(angle + PI/2), y0+radius*sin(angle + PI/2));
+		Point p1(x0+radius*cos(angle - PI/2), y0+radius*sin(angle - PI/2));
+		Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
+		Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
+		cerr << "angle=" << angle << endl;
+		cerr << "point0 (" << p0.x << ", " << p0.y << ")\n";
+		cerr << "point1 (" << p1.x << ", " << p1.y << ")\n";
+		cerr << "point2 (" << p2.x << ", " << p2.y << ")\n";
+		cerr << "point3 (" << p3.x << ", " << p3.y << ")\n";
+
+		tool.m_vertices.emplace_back(CVertex(p0));
+		tool.m_vertices.emplace_back(CVertex(1, p1, point0));
+		tool.m_vertices.emplace_back(CVertex(p2));
+		tool.m_vertices.emplace_back(CVertex(1, p3, point1));
+		tool.m_vertices.emplace_back(CVertex(p0));
+	}
+	//tool.m_vertices.emplace_back(vertex1);
+	//tool.m_vertices.emplace_back(CVertex(1, Point(x0-radius,y0), Point(x0,y0)));
+	//tool.m_vertices.emplace_back(vertex1);
 
 	return tool;
 }
@@ -574,6 +600,7 @@ static CCurve makeTool(double x, double y){
  */
 static void setToolPos(CCurve &curve, double x, double y);
 static void setToolPos(CCurve &curve, double x, double y){
+	return;
 	std::list<CVertex>::iterator It = curve.m_vertices.begin();
 	const double radius = 6;
 
@@ -645,13 +672,15 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	if(CArea::m_please_abort)
 	    return;
 
+	/* Machine material from stock, subtract.
+	 */
 	{
-		CCurve tool = makeTool(0,0);
+		CCurve tool = makeTool(Point(0,0),Point(15,4));
 		std::list<Point> intersections;
 
 		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
 		cerr << "Tool intersections " << intersections.size() << endl;
-		//curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
+		curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
 		{
 			CArea toolArea;
 
@@ -659,7 +688,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			stock.Subtract(toolArea);
 		}
 
-		setToolPos(tool, 4, 0.5);
+		//setToolPos(tool, 4, 0.5);
 		intersections.clear();													// Clear intersections
 		stock.CurveIntersections(tool, intersections);
 		cerr << "Tool intersections " << intersections.size() << endl;
@@ -671,7 +700,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			stock.Subtract(toolArea);
 		}
 
-		setToolPos(tool, 14, 1);
+		//setToolPos(tool, 14, 1);
 		intersections.clear();													// Clear intersections
 		stock.CurveIntersections(tool, intersections);
 		cerr << "Tool intersections " << intersections.size() << endl;
