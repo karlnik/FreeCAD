@@ -645,7 +645,46 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	if(CArea::m_please_abort)
 	    return;
 
-	for(std::list<CCurve>::const_iterator It = a.m_curves.begin(); It != a.m_curves.end(); It++)
+	{
+		CCurve tool = makeTool(0,0);
+		std::list<Point> intersections;
+
+		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
+		cerr << "Tool intersections " << intersections.size() << endl;
+		//curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
+		{
+			CArea toolArea;
+
+			toolArea.append(tool);
+			stock.Subtract(toolArea);
+		}
+
+		setToolPos(tool, 4, 0.5);
+		intersections.clear();													// Clear intersections
+		stock.CurveIntersections(tool, intersections);
+		cerr << "Tool intersections " << intersections.size() << endl;
+		//curve_list.emplace_back(tool);
+		{
+			CArea toolArea;
+
+			toolArea.append(tool);
+			stock.Subtract(toolArea);
+		}
+
+		setToolPos(tool, 14, 1);
+		intersections.clear();													// Clear intersections
+		stock.CurveIntersections(tool, intersections);
+		cerr << "Tool intersections " << intersections.size() << endl;
+		intersections.clear();
+		//curve_list.emplace_back(tool);
+		{
+			CArea toolArea;
+
+			toolArea.append(tool);
+			stock.Subtract(toolArea);
+		}
+	}
+	for(std::list<CCurve>::const_iterator It = stock.m_curves.begin(); It != stock.m_curves.end(); It++)
 	{
 		const CCurve &curve = *It;
 		CCurve curve_segment;
@@ -658,28 +697,6 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		}
 
 		curve_list.emplace_back(curve);
-	}
-
-	{
-		CCurve tool = makeTool(0,0);
-		std::list<Point> intersections;
-
-		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
-		cerr << "Tool intersections " << intersections.size() << endl;
-		curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
-
-		setToolPos(tool, 4, 0.5);
-		intersections.clear();													// Clear intersections
-		stock.CurveIntersections(tool, intersections);
-		cerr << "Tool intersections " << intersections.size() << endl;
-		curve_list.emplace_back(tool);
-
-		setToolPos(tool, 14, 1);
-		intersections.clear();													// Clear intersections
-		stock.CurveIntersections(tool, intersections);
-		cerr << "Tool intersections " << intersections.size() << endl;
-		intersections.clear();
-		curve_list.emplace_back(tool);
 	}
 }
 
