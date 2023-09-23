@@ -6,6 +6,7 @@
 #include "Area.h"
 #include "AreaOrderer.h"
 
+#include <math.h>
 #include <map>
 
 double CArea::m_accuracy = 0.01;
@@ -669,9 +670,11 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
 	/* Machine material from stock, subtract.
 	 */
-	double x = 0;
-	double y = 0;
-	for(int i = 0; i < 300; i++){												// Until pocket is machined but limit number of tries
+	double x = 0;																// Tool x position for this step in (?)
+	double y = 0;																// Tool y position for this step in (?)
+	double direction = 0;														// Machine in this direction, angle in (rad)
+	double step = 0.1;															// Step size in (?)
+	for(int i = 0; i < 2800; i++){												// Until pocket is machined but limit number of tries
 		const double x_old = x;
 		const double y_old = y;
 		CCurve tool = makeTool(Point(x_old,y_old),Point(x,y));
@@ -679,15 +682,19 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
 		intersections.clear();
 		pocket.CurveIntersections(tool, intersections);
-		cerr << "Tool intersect pocket " << intersections.size() << endl;
 		if(intersections.size() > 0){												// Hit pocket edge?
 			// Need to limit movement here
 			y += 0.3;
 		}
 		else{																		// Did not reach pocket edge?
-			x += 0.7;
+			x += step*cos(direction);
+			y += step*sin(direction);
 		}
 
+		/* Algorithm:
+		 *   1. Move forward.
+		 *   2. Calculate new direction and subtract machine material.
+		 */
 		intersections.clear();
 		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
 		{
@@ -695,6 +702,68 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
 			toolArea.append(tool);
 			stock.Subtract(toolArea);
+		}
+		double angle_max = NAN;
+		double phi_p1 = NAN;
+		double phi_p2 = NAN;
+		for(std::list<Point>::const_iterator It = intersections.begin();		// For each intersection point
+				It != intersections.end();
+				It++){
+			typedef struct{
+				double x;
+				double y;
+				const double r;
+			} circle_type;
+			typedef struct{
+				double x;
+				double y;
+			} point_type;
+			const point_type p = {.x=It->x, .y=It->y};								// This intersection point
+			double phi_p = fmod(atan2(p.y-y, p.x-x) - direction + 2*PI, 2*PI);		// Angle to this point measured from direction
+			if(0 <= phi_p && phi_p <= PI/2){										// Within 90 degree counter clock wise from current direction?
+				if(!(phi_p < phi_p1)){													// phi_p > phi_p1? note ! work with NAN
+					phi_p1 = phi_p;
+				}
+			}
+			else if(3*PI/2 <= phi_p && phi_p <= 2*PI){								// Within 90 degree clock wise from current direction?
+				if(!(phi_p > phi_p2)){													// phi_p < phi_p2?
+					phi_p2 = phi_p;
+				}
+			}
+			else if(PI/2 < phi_p && phi_p < 3*PI/2){								// Back of tool intersect stock?
+				; // This should not happen so need to add error!!!
+			}
+#if 0
+		    double phi_new = phi_p1;
+
+		    /* Note using ! not so it works also with NAN. */
+		    if(!(phi_p1 <= PI)){          // phi_p1 > PI
+		      if(!(phi_p2 <= PI)){          // phi_p2 > PI
+		        phi_new = NAN;
+		      }
+		      else{                         // phi_p2 < PI or NAN?
+		        phi_new = phi_p2;
+		      }
+		    }
+		    else{                         // phi_p1 < PI or NAN
+		      if(!(phi_p2 <= PI)){          // phi_p2 > PI
+		        phi_new = phi_p1;
+		      }
+		      else{                       // phi_p2 < PI or NAN
+		        if(!(phi_p1 < phi_p2)){     // phi_p1 > phi_p2
+		          phi_new = phi_p1;
+		        }
+		        else{
+		          phi_new = phi_p2;
+		        }
+		      }
+		    }
+#endif
+
+		    if(!std::isnan(phi_p1)){
+		      const double engagement_angle = 127*PI/180;
+		      direction = phi_p1 + direction - engagement_angle;
+		    }
 		}
 		// Add direction here to keep tool engagement constant
 	}
