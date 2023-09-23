@@ -576,11 +576,6 @@ static CCurve makeTool(Point point0, Point point1){
 		Point p1(x0+radius*cos(angle - PI/2), y0+radius*sin(angle - PI/2));
 		Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
 		Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
-		cerr << "angle=" << angle << endl;
-		cerr << "point0 (" << p0.x << ", " << p0.y << ")\n";
-		cerr << "point1 (" << p1.x << ", " << p1.y << ")\n";
-		cerr << "point2 (" << p2.x << ", " << p2.y << ")\n";
-		cerr << "point3 (" << p3.x << ", " << p3.y << ")\n";
 
 		tool.m_vertices.emplace_back(CVertex(p0));
 		tool.m_vertices.emplace_back(CVertex(1, p1, point0));
@@ -637,11 +632,11 @@ static void setToolPos(CCurve &curve, double x, double y){
 		It->m_c.y = y;
 	}
 }
-static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &input_a)
+static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CArea &pocket)
 {
     const Point null_point(0, 0);
 
-	if(input_a.m_curves.size() == 0)
+	if(pocket.m_curves.size() == 0)
 	{
 		CArea::m_processing_done += CArea::m_single_area_processing_length;
 		return;
@@ -649,14 +644,15 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 
     one_over_units = 1 / CArea::m_units;
 
-	CArea a(input_a);                               // Make copy of area, pocket to the left of curve?
+	//CArea a(pocket);                               // Make copy of area, pocket to the left of curve?
     //rotate_area(a);                                 // Rotate copy of area
 
     /* To allow tool to move outside material there is a need
      * to define both where pocket and where material is.
      */
+    CArea stock = pocket;													// Material to the right of this curve, this change then material is removed
 #warning below both start hole and material should come from CAD model of stock
-    {																	// Add start hole
+    {																	// Add start hole to stock
     	CCurve startHole;												// Pocket to the left of curve
 
     	startHole.append(CVertex(0, Point(-7,-7), Point()));
@@ -665,53 +661,42 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	startHole.append(CVertex(0, Point(7,-7), Point()));
     	startHole.append(CVertex(0, Point(-7,-7), Point()));
 
-    	a.append(startHole);
+    	stock.append(startHole);
     }
-    CArea stock = a;													// Material to the right of this curve, this change then material is removed
 
 	if(CArea::m_please_abort)
 	    return;
 
 	/* Machine material from stock, subtract.
 	 */
-	{
-		CCurve tool = makeTool(Point(0,0),Point(15,4));
+	double x = 0;
+	double y = 0;
+	for(int i = 0; i < 300; i++){												// Until pocket is machined but limit number of tries
+		const double x_old = x;
+		const double y_old = y;
+		CCurve tool = makeTool(Point(x_old,y_old),Point(x,y));
 		std::list<Point> intersections;
 
-		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
-		cerr << "Tool intersections " << intersections.size() << endl;
-		curve_list.emplace_back(tool);	// Each empllace_back(...) store a copy
-		{
-			CArea toolArea;
-
-			toolArea.append(tool);
-			stock.Subtract(toolArea);
-		}
-
-		//setToolPos(tool, 4, 0.5);
-		intersections.clear();													// Clear intersections
-		stock.CurveIntersections(tool, intersections);
-		cerr << "Tool intersections " << intersections.size() << endl;
-		//curve_list.emplace_back(tool);
-		{
-			CArea toolArea;
-
-			toolArea.append(tool);
-			stock.Subtract(toolArea);
-		}
-
-		//setToolPos(tool, 14, 1);
-		intersections.clear();													// Clear intersections
-		stock.CurveIntersections(tool, intersections);
-		cerr << "Tool intersections " << intersections.size() << endl;
 		intersections.clear();
-		//curve_list.emplace_back(tool);
+		pocket.CurveIntersections(tool, intersections);
+		cerr << "Tool intersect pocket " << intersections.size() << endl;
+		if(intersections.size() > 0){												// Hit pocket edge?
+			// Need to limit movement here
+			y += 0.3;
+		}
+		else{																		// Did not reach pocket edge?
+			x += 0.7;
+		}
+
+		intersections.clear();
+		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
 		{
 			CArea toolArea;
 
 			toolArea.append(tool);
 			stock.Subtract(toolArea);
 		}
+		// Add direction here to keep tool engagement constant
 	}
 	for(std::list<CCurve>::const_iterator It = stock.m_curves.begin(); It != stock.m_curves.end(); It++)
 	{
