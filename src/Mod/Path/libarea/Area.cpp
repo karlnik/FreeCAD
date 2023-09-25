@@ -558,6 +558,53 @@ static void zigzag(const CArea &input_a)
 }
 
 /* Experimental constant tool angle engagement path */
+
+/* Calculation of path is done in small steps. In each step tool is modeled
+ * with a half arc on back on tool, half arc on front of tool and lines on sides
+ * of tool connecting half arcs.
+ */
+class tool_type{
+public :
+	tool_type(Point pOld, Point pNew){
+		const double x0 = pOld.x;
+		const double y0 = pOld.y;
+		const double x1 = pNew.x;
+		const double y1 = pNew.y;
+		const double radius = 6;
+		const double angle = atan2(y1-y0, x1-x0);
+		const CVertex vertex1(1, Point(x0+radius,y0), Point(x0,y0));
+
+		/* This is a circle but really need to be small movement with
+		 * lines on edges and rounded end for each calculation step.
+		 */
+		{
+			Point p0(x0+radius*cos(angle + PI/2), y0+radius*sin(angle + PI/2));
+			Point p1(x0+radius*cos(angle - PI/2), y0+radius*sin(angle - PI/2));
+			Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
+			Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
+			closed.m_vertices.emplace_back(CVertex(p0));							// Start point
+			closed.m_vertices.emplace_back(CVertex(1, p1, pOld));					// Arc in direction tool is moving
+			closed.m_vertices.emplace_back(CVertex(p2));							// Line connecting arcs to the right of direction
+			closed.m_vertices.emplace_back(CVertex(1, p3, pNew));					// Arc on back of tool
+			closed.m_vertices.emplace_back(CVertex(p0));							// Line connecting arcs to the left of direction
+		}
+	}
+	void intersections(CArea stock, std::list<Point>& intersections){
+#warning lägg till villkor till exempel utanför inuti material bearbetar
+		stock.CurveIntersections(closed, intersections);
+	}
+	void subtractThis(CArea& stock){
+		CArea toolArea;
+
+		toolArea.append(closed);
+		stock.Subtract(toolArea);
+	}
+private :
+	CCurve closed;		// All four connected
+	CCurve toolFront;	// Arc on front of tool
+	CCurve toolRight;	// Line to the right of tool
+	CCurve toolLeft;	// Line to the left of tool
+};
 static CCurve makeTool(Point point0, Point point1);
 static CCurve makeTool(Point point0, Point point1){
 	CCurve tool;
@@ -578,11 +625,11 @@ static CCurve makeTool(Point point0, Point point1){
 		Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
 		Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
 
-		tool.m_vertices.emplace_back(CVertex(p0));
-		tool.m_vertices.emplace_back(CVertex(1, p1, point0));
-		tool.m_vertices.emplace_back(CVertex(p2));
-		tool.m_vertices.emplace_back(CVertex(1, p3, point1));
-		tool.m_vertices.emplace_back(CVertex(p0));
+		tool.m_vertices.emplace_back(CVertex(p0));								// Start point
+		tool.m_vertices.emplace_back(CVertex(1, p1, point0));					// Arc in direction tool is moving
+		tool.m_vertices.emplace_back(CVertex(p2));								// Line connecting arcs to the right of direction
+		tool.m_vertices.emplace_back(CVertex(1, p3, point1));					// Arc on back of tool
+		tool.m_vertices.emplace_back(CVertex(p0));								// Line connecting arcs to the left of direction
 	}
 	//tool.m_vertices.emplace_back(vertex1);
 	//tool.m_vertices.emplace_back(CVertex(1, Point(x0-radius,y0), Point(x0,y0)));
@@ -677,11 +724,12 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	for(int i = 0; i < 2800; i++){												// Until pocket is machined but limit number of tries
 		const double x_old = x;
 		const double y_old = y;
-		CCurve tool = makeTool(Point(x_old,y_old),Point(x,y));
 		std::list<Point> intersections;
+		tool_type tool(Point(x_old,y_old),Point(x,y));
 
 		intersections.clear();
-		pocket.CurveIntersections(tool, intersections);
+		tool.intersections(pocket, intersections);
+
 		if(intersections.size() > 0){												// Hit pocket edge?
 			// Need to limit movement here
 			y += 0.3;
@@ -696,13 +744,8 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		 *   2. Calculate new direction and subtract machine material.
 		 */
 		intersections.clear();
-		stock.CurveIntersections(tool, intersections);							// Add intersections to list of intersections
-		{
-			CArea toolArea;
-
-			toolArea.append(tool);
-			stock.Subtract(toolArea);
-		}
+		tool.intersections(stock, intersections);
+		tool.subtractThis(stock);
 		double angle_max = NAN;
 		double phi_p1 = NAN;
 		double phi_p2 = NAN;
@@ -731,42 +774,21 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 				}
 			}
 			else if(PI/2 < phi_p && phi_p < 3*PI/2){								// Back of tool intersect stock?
-				; // This should not happen so need to add error!!!
+				; // This should never happen
 			}
-#if 0
-		    double phi_new = phi_p1;
 
-		    /* Note using ! not so it works also with NAN. */
-		    if(!(phi_p1 <= PI)){          // phi_p1 > PI
-		      if(!(phi_p2 <= PI)){          // phi_p2 > PI
-		        phi_new = NAN;
-		      }
-		      else{                         // phi_p2 < PI or NAN?
-		        phi_new = phi_p2;
-		      }
+		    if(std::isnan(phi_p1)){													// No intersection?
+		    	;																		// Continue in current direction
 		    }
-		    else{                         // phi_p1 < PI or NAN
-		      if(!(phi_p2 <= PI)){          // phi_p2 > PI
-		        phi_new = phi_p1;
-		      }
-		      else{                       // phi_p2 < PI or NAN
-		        if(!(phi_p1 < phi_p2)){     // phi_p1 > phi_p2
-		          phi_new = phi_p1;
-		        }
-		        else{
-		          phi_new = phi_p2;
-		        }
-		      }
-		    }
-#endif
-
-		    if(!std::isnan(phi_p1)){
+		    else{
 		      const double engagement_angle = 127*PI/180;
+
 		      direction = phi_p1 + direction - engagement_angle;
 		    }
 		}
 		// Add direction here to keep tool engagement constant
 	}
+
 	for(std::list<CCurve>::const_iterator It = stock.m_curves.begin(); It != stock.m_curves.end(); It++)
 	{
 		const CCurve &curve = *It;
