@@ -566,32 +566,46 @@ static void zigzag(const CArea &input_a)
 class tool_type{
 public :
 	tool_type(Point pOld, Point pNew){
-		const double x0 = pOld.x;
-		const double y0 = pOld.y;
-		const double x1 = pNew.x;
-		const double y1 = pNew.y;
+		const double xOld = pOld.x;
+		const double yOld = pOld.y;
+		const double xNew = pNew.x;
+		const double yNew = pNew.y;
 		const double radius = 6;
-		const double angle = atan2(y1-y0, x1-x0);
-		const CVertex vertex1(1, Point(x0+radius,y0), Point(x0,y0));
+		const double angle = atan2(yNew-yOld, xNew-xOld);
+		const CVertex vertex1(1, Point(xOld+radius,yOld), Point(xOld,yOld));
 
 		/* This is a circle but really need to be small movement with
 		 * lines on edges and rounded end for each calculation step.
 		 */
 		{
-			Point p0(x0+radius*std::cos(angle + PI/2), y0+radius*std::sin(angle + PI/2));
-			Point p1(x0+radius*std::cos(angle - PI/2), y0+radius*std::sin(angle - PI/2));
-			Point p2(x1+radius*std::cos(angle - PI/2), y1+radius*std::sin(angle - PI/2));
-			Point p3(x1+radius*std::cos(angle + PI/2), y1+radius*std::sin(angle + PI/2));
+			Point p0(xOld+radius*std::cos(angle + PI/2), yOld+radius*std::sin(angle + PI/2));
+			Point p1(xOld+radius*std::cos(angle - PI/2), yOld+radius*std::sin(angle - PI/2));
+			Point p2(xNew+radius*std::cos(angle - PI/2), yNew+radius*std::sin(angle - PI/2));
+			Point p3(xNew+radius*std::cos(angle + PI/2), yNew+radius*std::sin(angle + PI/2));
+
+			/* Closed curve */
 			closed.m_vertices.emplace_back(CVertex(p0));							// Start point
-			closed.m_vertices.emplace_back(CVertex(1, p1, pOld));					// Arc in direction tool is moving
+			closed.m_vertices.emplace_back(CVertex(1, p1, pOld));					// Arc on back of tool
 			closed.m_vertices.emplace_back(CVertex(p2));							// Line connecting arcs to the right of direction
-			closed.m_vertices.emplace_back(CVertex(1, p3, pNew));					// Arc on back of tool
+			closed.m_vertices.emplace_back(CVertex(1, p3, pNew));					// Arc in direction tool is moving
 			closed.m_vertices.emplace_back(CVertex(p0));							// Line connecting arcs to the left of direction
+
+			/* Tool front */
+			toolFront.m_vertices.emplace_back(CVertex(p2));							// Start point
+			toolFront.m_vertices.emplace_back(CVertex(1, p3, pNew));				// Arc in direction tool is moving
+
+			/* Tool right flank */
+			toolRight.m_vertices.emplace_back(CVertex(p1));							// Point to the front
+			toolRight.m_vertices.emplace_back(CVertex(p2));							// Point to the back
+
+			/* Tool left flank */
+			toolLeft.m_vertices.emplace_back(CVertex(p3));							// Point to the front
+			toolLeft.m_vertices.emplace_back(CVertex(p0));							// Point to the back
 		}
 	}
 	void intersections(CArea stock, std::list<Point>& intersections){
 #warning lägg till villkor till exempel utanför inuti material bearbetar
-		stock.CurveIntersections(closed, intersections);
+		stock.CurveIntersections(toolFront, intersections);
 	}
 	void subtractThis(CArea& stock){
 		CArea toolArea;
@@ -599,11 +613,11 @@ public :
 		toolArea.append(closed);
 		stock.Subtract(toolArea);
 	}
+	CCurve closed;		// All four connected used to subtract machined material from stock
+	CCurve toolFront;	// Arc on front of tool used to calculate tool engagement angles on front
+	CCurve toolRight;	// Line to the right of tool used to calculate if this edge fully engaged
+	CCurve toolLeft;	// Line to the left of tool used to calculate if this edge fully engaged
 private :
-	CCurve closed;		// All four connected
-	CCurve toolFront;	// Arc on front of tool
-	CCurve toolRight;	// Line to the right of tool
-	CCurve toolLeft;	// Line to the left of tool
 };
 static CCurve makeTool(Point point0, Point point1);
 static CCurve makeTool(Point point0, Point point1){
@@ -690,6 +704,29 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		return;
 	}
 
+#if 0 // Debug show tool shape
+	{
+		tool_type tool(Point(-100,100),Point(-95,105));
+		curve_list.emplace_back(tool.closed);
+	}
+
+	{
+		tool_type tool(Point(-100,-100),Point(-95,-95));
+		curve_list.emplace_back(tool.toolFront);
+	}
+
+	{
+		tool_type tool(Point(100,-100),Point(105,-95));
+		curve_list.emplace_back(tool.toolRight);
+	}
+
+	{
+		tool_type tool(Point(100,100),Point(105,105));
+		curve_list.emplace_back(tool.toolLeft);
+	}
+	return;
+#endif
+
     one_over_units = 1 / CArea::m_units;
 
 	//CArea a(pocket);                               // Make copy of area, pocket to the left of curve?
@@ -721,7 +758,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	double y = 0;																// Tool y position for this step in (?)
 	double direction = 0;														// Machine in this direction, angle in (rad)
 	const double step = 0.1;															// Step size in (?)
-	for(int i = 0; i < 300; i++){												// Until pocket is machined but limit number of tries
+	for(int i = 0; i < 100; i++){												// Until pocket is machined but limit number of tries
 		const double x_old = x;
 		const double y_old = y;
 		std::list<Point> intersections;
@@ -748,7 +785,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		intersections.clear();
 		tool.intersections(stock, intersections);
 		tool.subtractThis(stock);
-		cerr << "for each intersection\n";
+		cerr << "For each intersection\n";
 		for(std::list<Point>::const_iterator It = intersections.begin();		// For each intersection point
 				It != intersections.end();
 				It++){
@@ -763,16 +800,15 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			} point_type;
 			const point_type p = {.x=It->x, .y=It->y};								// This intersection point
 			double phi_p = fmod(atan2(p.y-y, p.x-x) - direction + PI/2 + 2*PI, 2*PI);		// Angle to this point measured from direction
-			cerr << "phi_p=" << phi_p << " phi_p1=" << phi_p1 << " phi_p2=" << phi_p2;
 			if(0 <= phi_p && phi_p <= PI){											// Within 90 degree counter clock wise from current direction?
 				phi_p1 = fmax(phi_p, phi_p1);
 				phi_p2 = fmin(phi_p, phi_p2);
-				cerr << "after abs() phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 << endl;
 			}
 			else{																	// Back of tool intersect stock?
-				cerr << endl;
 				; // This should never happen so add signal error!!
 			}
+			cerr << "phi_p1=" << phi_p1 << " phi_p2 " << phi_p2 << " p.x-x=" <<
+					p.x-x << " p.y-y=" << p.y-y << " phi_p=" << phi_p << endl;
 		}
 
 	    if(phi_p1 < phi_p2){													// No intersection?
@@ -780,19 +816,19 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	    }
 	    else{
 	    	const double engagement_angle = 127*PI/180;
+			cerr << "phi_p1 - phi_p2 = " << phi_p1 - phi_p2 << " engagement_angle=" << engagement_angle << endl;
 
 	    	if(phi_p2 > 0){
-	    		cerr << "phi_p1 - phi_p2=" << phi_p1 - phi_p2 <<
-	    				" x=" << x << " y=" << y << endl;
 	    		if(phi_p1 - phi_p2 < engagement_angle){
-	    			direction = (phi_p1 + phi_p2)/2 - PI;
-//	    			cerr << "phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 <<
-	//    					"phi_p1-phi_p2=" << phi_p1 - phi_p2 << endl;
+	    			direction = direction + (phi_p1 + phi_p2)/2 - PI/2;
 	    		}
 	    		else{
-	    			//direction = phi_p1 + direction - engagement_angle;
 	    			break;
+	    			//direction = direction + (phi_p1 - phi_p2) - engagement_angle;
 	    		}
+	    	}
+	    	else{
+	    		//break;
 	    	}
 
 	    	//direction = phi_p1 + direction - engagement_angle;
