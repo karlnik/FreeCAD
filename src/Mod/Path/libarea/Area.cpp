@@ -595,17 +595,21 @@ public :
 			toolFront.m_vertices.emplace_back(CVertex(1, p3, pNew));				// Arc in direction tool is moving
 
 			/* Tool right flank */
-			toolRight.m_vertices.emplace_back(CVertex(p1));							// Point to the front
-			toolRight.m_vertices.emplace_back(CVertex(p2));							// Point to the back
+			toolRight.m_vertices.emplace_back(CVertex(p2));							// Point to the front
+			toolRight.m_vertices.emplace_back(CVertex(p3));						// Point to the back
 
 			/* Tool left flank */
 			toolLeft.m_vertices.emplace_back(CVertex(p3));							// Point to the front
 			toolLeft.m_vertices.emplace_back(CVertex(p0));							// Point to the back
 		}
 	}
-	void intersections(CArea stock, std::list<Point>& intersections){
-#warning lägg till villkor till exempel utanför inuti material bearbetar
+	void intersectFront(CArea stock, std::list<Point>& intersections){
 		stock.CurveIntersections(toolFront, intersections);
+	}
+	bool intersectRight(CArea stock){
+		std::list<Point> intersections;
+		stock.CurveIntersections(toolRight, intersections);
+		return !intersections.empty();
 	}
 	void subtractThis(CArea& stock){
 		CArea toolArea;
@@ -613,11 +617,11 @@ public :
 		toolArea.append(closed);
 		stock.Subtract(toolArea);
 	}
+private :
 	CCurve closed;		// All four connected used to subtract machined material from stock
 	CCurve toolFront;	// Arc on front of tool used to calculate tool engagement angles on front
 	CCurve toolRight;	// Line to the right of tool used to calculate if this edge fully engaged
 	CCurve toolLeft;	// Line to the left of tool used to calculate if this edge fully engaged
-private :
 };
 static CCurve makeTool(Point point0, Point point1);
 static CCurve makeTool(Point point0, Point point1){
@@ -741,8 +745,8 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	CCurve startHole;												// Pocket to the left of curve
 
     	startHole.append(CVertex(0, Point(-7,-7), Point()));
-    	startHole.append(CVertex(0, Point(-7,7), Point()));
-    	startHole.append(CVertex(0, Point(7,7), Point()));
+    	startHole.append(CVertex(0, Point(-7,20), Point()));
+    	startHole.append(CVertex(0, Point(7,20), Point()));
     	startHole.append(CVertex(0, Point(7,-7), Point()));
     	startHole.append(CVertex(0, Point(-7,-7), Point()));
 
@@ -757,8 +761,8 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	double x = 0;																// Tool x position for this step in (?)
 	double y = 0;																// Tool y position for this step in (?)
 	double direction = 0;														// Machine in this direction, angle in (rad)
-	const double step = 0.1;															// Step size in (?)
-	for(int i = 0; i < 100; i++){												// Until pocket is machined but limit number of tries
+	const double step = 0.03;													// Step size in (?)
+	for(int i = 0; i < 550; i++){												// Until pocket is machined but limit number of tries
 		const double x_old = x;
 		const double y_old = y;
 		std::list<Point> intersections;
@@ -767,11 +771,12 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		double phi_p2 = std::numeric_limits<double>::max();
 
 		intersections.clear();
-		tool.intersections(pocket, intersections);
+		tool.intersectFront(pocket, intersections);
 
 		if(intersections.size() > 0){												// Hit pocket edge?
 			// Need to limit movement here
-			y += 0.3;
+			//y += 0.3;
+			cerr << "stopped\n";
 		}
 		else{																		// Did not reach pocket edge?
 			x += step*std::cos(direction);
@@ -783,9 +788,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		 *   2. Calculate new direction and subtract machine material.
 		 */
 		intersections.clear();
-		tool.intersections(stock, intersections);
-		tool.subtractThis(stock);
-		cerr << "For each intersection\n";
+		tool.intersectFront(stock, intersections);
 		for(std::list<Point>::const_iterator It = intersections.begin();		// For each intersection point
 				It != intersections.end();
 				It++){
@@ -806,32 +809,42 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			}
 			else{																	// Back of tool intersect stock?
 				; // This should never happen so add signal error!!
+				if(phi_p > 3*PI/2){
+					phi_p2 = 0;
+				}
+				else{
+					cerr << "fan³ " << phi_p << "\n";
+				}
 			}
-			cerr << "phi_p1=" << phi_p1 << " phi_p2 " << phi_p2 << " p.x-x=" <<
-					p.x-x << " p.y-y=" << p.y-y << " phi_p=" << phi_p << endl;
+			cerr << "fan " << phi_p << "\n";
 		}
+		if(tool.intersectRight(stock)){
+			phi_p2 = 0;
+		}
+
+		tool.subtractThis(stock);												// Must happen last otherwise intersection does not work
 
 	    if(phi_p1 < phi_p2){													// No intersection?
 	    	;																		// Continue in current direction
+			cerr << "1 phi_p1-phi_p2=" << 0 << endl;
 	    }
 	    else{
 	    	const double engagement_angle = 127*PI/180;
-			cerr << "phi_p1 - phi_p2 = " << phi_p1 - phi_p2 << " engagement_angle=" << engagement_angle << endl;
 
 	    	if(phi_p2 > 0){
 	    		if(phi_p1 - phi_p2 < engagement_angle){
+		    		cerr << "2.1 phi_p1-phi_p2=" << phi_p1-phi_p2 << " phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 << endl;
 	    			direction = direction + (phi_p1 + phi_p2)/2 - PI/2;
 	    		}
 	    		else{
-	    			break;
-	    			//direction = direction + (phi_p1 - phi_p2) - engagement_angle;
+		    		cerr << "2.2 phi_p1-phi_p2=" << phi_p1-phi_p2 << " direction=" << direction << " phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 << endl;
+	    			direction = direction + (phi_p1 - phi_p2) - engagement_angle;
 	    		}
 	    	}
 	    	else{
-	    		//break;
+    			direction = direction + (phi_p1 - phi_p2) - engagement_angle;
+    			cerr << "3 phi_p1-phi_p2=" << phi_p1 << " direction=" << direction << endl;
 	    	}
-
-	    	//direction = phi_p1 + direction - engagement_angle;
 	    }
 		// Add direction here to keep tool engagement constant
 	}
