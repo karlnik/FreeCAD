@@ -6,8 +6,8 @@
 #include "Area.h"
 #include "AreaOrderer.h"
 
-#include <math.h>
 #include <map>
+#include <limits>
 
 double CArea::m_accuracy = 0.01;
 double CArea::m_units = 1.0;
@@ -578,10 +578,10 @@ public :
 		 * lines on edges and rounded end for each calculation step.
 		 */
 		{
-			Point p0(x0+radius*cos(angle + PI/2), y0+radius*sin(angle + PI/2));
-			Point p1(x0+radius*cos(angle - PI/2), y0+radius*sin(angle - PI/2));
-			Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
-			Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
+			Point p0(x0+radius*std::cos(angle + PI/2), y0+radius*std::sin(angle + PI/2));
+			Point p1(x0+radius*std::cos(angle - PI/2), y0+radius*std::sin(angle - PI/2));
+			Point p2(x1+radius*std::cos(angle - PI/2), y1+radius*std::sin(angle - PI/2));
+			Point p3(x1+radius*std::cos(angle + PI/2), y1+radius*std::sin(angle + PI/2));
 			closed.m_vertices.emplace_back(CVertex(p0));							// Start point
 			closed.m_vertices.emplace_back(CVertex(1, p1, pOld));					// Arc in direction tool is moving
 			closed.m_vertices.emplace_back(CVertex(p2));							// Line connecting arcs to the right of direction
@@ -620,10 +620,10 @@ static CCurve makeTool(Point point0, Point point1){
 	 * lines on edges and rounded end for each calculation step.
 	 */
 	{
-		Point p0(x0+radius*cos(angle + PI/2), y0+radius*sin(angle + PI/2));
-		Point p1(x0+radius*cos(angle - PI/2), y0+radius*sin(angle - PI/2));
-		Point p2(x1+radius*cos(angle - PI/2), y1+radius*sin(angle - PI/2));
-		Point p3(x1+radius*cos(angle + PI/2), y1+radius*sin(angle + PI/2));
+		Point p0(x0+radius*std::cos(angle + PI/2), y0+radius*std::sin(angle + PI/2));
+		Point p1(x0+radius*std::cos(angle - PI/2), y0+radius*std::sin(angle - PI/2));
+		Point p2(x1+radius*std::cos(angle - PI/2), y1+radius*std::sin(angle - PI/2));
+		Point p3(x1+radius*std::cos(angle + PI/2), y1+radius*std::sin(angle + PI/2));
 
 		tool.m_vertices.emplace_back(CVertex(p0));								// Start point
 		tool.m_vertices.emplace_back(CVertex(1, p1, point0));					// Arc in direction tool is moving
@@ -720,12 +720,14 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 	double x = 0;																// Tool x position for this step in (?)
 	double y = 0;																// Tool y position for this step in (?)
 	double direction = 0;														// Machine in this direction, angle in (rad)
-	double step = 0.1;															// Step size in (?)
-	for(int i = 0; i < 2800; i++){												// Until pocket is machined but limit number of tries
+	const double step = 0.1;															// Step size in (?)
+	for(int i = 0; i < 300; i++){												// Until pocket is machined but limit number of tries
 		const double x_old = x;
 		const double y_old = y;
 		std::list<Point> intersections;
 		tool_type tool(Point(x_old,y_old),Point(x,y));
+		double phi_p1 = -std::numeric_limits<double>::max();
+		double phi_p2 = std::numeric_limits<double>::max();
 
 		intersections.clear();
 		tool.intersections(pocket, intersections);
@@ -735,8 +737,8 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 			y += 0.3;
 		}
 		else{																		// Did not reach pocket edge?
-			x += step*cos(direction);
-			y += step*sin(direction);
+			x += step*std::cos(direction);
+			y += step*std::sin(direction);
 		}
 
 		/* Algorithm:
@@ -746,9 +748,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 		intersections.clear();
 		tool.intersections(stock, intersections);
 		tool.subtractThis(stock);
-		double angle_max = NAN;
-		double phi_p1 = NAN;
-		double phi_p2 = NAN;
+		cerr << "for each intersection\n";
 		for(std::list<Point>::const_iterator It = intersections.begin();		// For each intersection point
 				It != intersections.end();
 				It++){
@@ -762,30 +762,41 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
 				double y;
 			} point_type;
 			const point_type p = {.x=It->x, .y=It->y};								// This intersection point
-			double phi_p = fmod(atan2(p.y-y, p.x-x) - direction + 2*PI, 2*PI);		// Angle to this point measured from direction
-			if(0 <= phi_p && phi_p <= PI/2){										// Within 90 degree counter clock wise from current direction?
-				if(!(phi_p < phi_p1)){													// phi_p > phi_p1? note ! work with NAN
-					phi_p1 = phi_p;
-				}
+			double phi_p = fmod(atan2(p.y-y, p.x-x) - direction + PI/2 + 2*PI, 2*PI);		// Angle to this point measured from direction
+			cerr << "phi_p=" << phi_p << " phi_p1=" << phi_p1 << " phi_p2=" << phi_p2;
+			if(0 <= phi_p && phi_p <= PI){											// Within 90 degree counter clock wise from current direction?
+				phi_p1 = fmax(phi_p, phi_p1);
+				phi_p2 = fmin(phi_p, phi_p2);
+				cerr << "after abs() phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 << endl;
 			}
-			else if(3*PI/2 <= phi_p && phi_p <= 2*PI){								// Within 90 degree clock wise from current direction?
-				if(!(phi_p > phi_p2)){													// phi_p < phi_p2?
-					phi_p2 = phi_p;
-				}
+			else{																	// Back of tool intersect stock?
+				cerr << endl;
+				; // This should never happen so add signal error!!
 			}
-			else if(PI/2 < phi_p && phi_p < 3*PI/2){								// Back of tool intersect stock?
-				; // This should never happen
-			}
-
-		    if(std::isnan(phi_p1)){													// No intersection?
-		    	;																		// Continue in current direction
-		    }
-		    else{
-		      const double engagement_angle = 127*PI/180;
-
-		      direction = phi_p1 + direction - engagement_angle;
-		    }
 		}
+
+	    if(phi_p1 < phi_p2){													// No intersection?
+	    	;																		// Continue in current direction
+	    }
+	    else{
+	    	const double engagement_angle = 127*PI/180;
+
+	    	if(phi_p2 > 0){
+	    		cerr << "phi_p1 - phi_p2=" << phi_p1 - phi_p2 <<
+	    				" x=" << x << " y=" << y << endl;
+	    		if(phi_p1 - phi_p2 < engagement_angle){
+	    			direction = (phi_p1 + phi_p2)/2 - PI;
+//	    			cerr << "phi_p1=" << phi_p1 << " phi_p2=" << phi_p2 <<
+	//    					"phi_p1-phi_p2=" << phi_p1 - phi_p2 << endl;
+	    		}
+	    		else{
+	    			//direction = phi_p1 + direction - engagement_angle;
+	    			break;
+	    		}
+	    	}
+
+	    	//direction = phi_p1 + direction - engagement_angle;
+	    }
 		// Add direction here to keep tool engagement constant
 	}
 
@@ -835,10 +846,10 @@ void CArea::SplitAndMakePocketToolpath(std::list<CCurve> &curve_list, const CAre
 void CArea::MakePocketToolpath(std::list<CCurve> &curve_list, const CAreaPocketParams &params)const
 {
 	double radians_angle = params.zig_angle * PI / 180;
-	sin_angle_for_zigs = sin(-radians_angle);
-	cos_angle_for_zigs = cos(-radians_angle);
-	sin_minus_angle_for_zigs = sin(radians_angle);
-	cos_minus_angle_for_zigs = cos(radians_angle);
+	sin_angle_for_zigs = std::sin(-radians_angle);
+	cos_angle_for_zigs = std::cos(-radians_angle);
+	sin_minus_angle_for_zigs = std::sin(radians_angle);
+	cos_minus_angle_for_zigs = std::cos(radians_angle);
 	stepover_for_pocket = params.stepover;
 
 	CArea a_offset = *this;
