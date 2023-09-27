@@ -8,6 +8,12 @@
 
 #include <map>
 #include <limits>
+#include <gp_Pnt.hxx>
+#include <Geom2d_Ellipse.hxx>
+#include <Geom2d_TrimmedCurve.hxx>
+#include <Geom2dAPI_InterCurveCurve.hxx>
+#include <Geom2d_Line.hxx>
+#include <gp_Dir2d.hxx>
 
 double CArea::m_accuracy = 0.01;
 double CArea::m_units = 1.0;
@@ -751,6 +757,38 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	startHole.append(CVertex(0, Point(-17,-7), Point()));
 
     	stock.append(startHole);
+    }
+    {
+    	const double myNeckHeight = 17;
+    	const double tolerance = 1e-6;
+
+    	gp_Pnt2d pn(-354,122);
+    	gp_Pnt2d pn2(354,-122);
+    	Standard_Real pn2x = 354;
+    	 Standard_Real pn2y = -122;
+    	gp_Pnt2d aPnt(2. * M_PI, myNeckHeight / 2.);
+    	gp_Dir2d aDir(2. * M_PI, myNeckHeight / 4.);
+    	gp_Ax2d anAx2d(aPnt, aDir);
+    	Standard_Real aMajor = 2. * M_PI;
+    	Standard_Real aMinor = myNeckHeight / 10;
+    	Handle(Geom2d_Ellipse) anEllipse1 = new Geom2d_Ellipse(anAx2d, aMajor, aMinor);
+    	Handle(Geom2d_Ellipse) anEllipse2 = new Geom2d_Ellipse(anAx2d, aMajor, aMinor / 4);
+    	Handle(Geom2d_TrimmedCurve) anArc1 = new Geom2d_TrimmedCurve(anEllipse1, 0, M_PI);
+    	Handle(Geom2d_TrimmedCurve) anArc2 = new Geom2d_TrimmedCurve(anEllipse2, 0, M_PI);
+    	Geom2d_Line line(pn, gp_Dir2d(pn2x, pn2y));
+    	gp_Pnt2d anEllipsePnt1 = anEllipse1->Value(0);
+    	gp_Pnt2d anEllipsePnt2;
+    	anEllipse1->D0(M_PI, anEllipsePnt2);
+
+    	Geom2dAPI_InterCurveCurve intersector(anEllipse1,anArc2,tolerance);
+    	Standard_Integer N = intersector.NbPoints();
+    	Standard_Integer M = intersector.NbSegments();
+    	cerr << "N=" << N <<endl;
+    	cerr << "M=" << M <<endl;
+    	for(Standard_Integer i = 0; i < N; i++){
+    		gp_Pnt2d p = intersector.Point(i + 1);
+    		cerr << "x=" << p.X() << " y=" << p.Y() << endl;
+    	}
     }
 
 	if(CArea::m_please_abort)
