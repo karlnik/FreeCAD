@@ -787,13 +787,14 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	Handle(Geom2d_Circle) tool = new Geom2d_Circle(gp_Ax2d(gp_Pnt2d(0,0), gp_Dir2d()), toolRadius);
     	Handle(Geom2d_Line) line = new Geom2d_Line(pn2, gp_Dir2d(24, 0));
 
-    	for(int step = 0; step < 37; step++){
+    	for(int step = 0; step < 40; step++){
     		//line1->SetDirection(gp_Dir2d(7,3));
     		//line1->SetPosition(anAx2d);
-    		tool->SetLocation(gp_Pnt2d(0, step));
+    		tool->SetLocation(gp_Pnt2d(0, 10.99998+step/1000000.0));
     		{
     			const gp_Pnt2d pos = tool->Location();
 
+    			cerr << fixed << setprecision(9);
     			cerr << "tool position = (" << pos.X() << ", " << pos.Y() << ")" << endl;
     		}
 
@@ -803,6 +804,7 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     		cerr << "N=" << N << " M=" << M;
     		for(Standard_Integer i = 0; i < N; i++){
     			gp_Pnt2d p = intersector.Point(i + 1);
+    			//cerr << fixed << setprecision(9);
     			cerr << " xy=(" << p.X() << "," << p.Y() << ")";
     		}
     		cerr << endl;
