@@ -13,6 +13,8 @@
 #include <Geom2d_TrimmedCurve.hxx>
 #include <Geom2dAPI_InterCurveCurve.hxx>
 #include <Geom2d_Line.hxx>
+#include <Geom2d_Circle.hxx>
+#include <GCE2d_MakeArcOfCircle.hxx>
 #include <gp_Dir2d.hxx>
 
 double CArea::m_accuracy = 0.01;
@@ -762,34 +764,53 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	const double myNeckHeight = 17;
     	const double tolerance = 1e-6;
 
-    	gp_Pnt2d pn(-354,122);
-    	gp_Pnt2d pn2(354,-122);
-    	Standard_Real pn2x = 354;
-    	 Standard_Real pn2y = -122;
+    	gp_Pnt2d pn1(-17,-7);
+    	gp_Pnt2d pn2(-17,17);
+    	gp_Pnt2d pn3(7,17);
+    	gp_Pnt2d pn4(7,-7);
     	gp_Pnt2d aPnt(2. * M_PI, myNeckHeight / 2.);
-    	gp_Dir2d aDir(2. * M_PI, myNeckHeight / 4.);
-    	gp_Ax2d anAx2d(aPnt, aDir);
-    	Standard_Real aMajor = 2. * M_PI;
-    	Standard_Real aMinor = myNeckHeight / 10;
-    	Handle(Geom2d_Ellipse) anEllipse1 = new Geom2d_Ellipse(anAx2d, aMajor, aMinor);
-    	Handle(Geom2d_Ellipse) anEllipse2 = new Geom2d_Ellipse(anAx2d, aMajor, aMinor / 4);
-    	Handle(Geom2d_TrimmedCurve) anArc1 = new Geom2d_TrimmedCurve(anEllipse1, 0, M_PI);
-    	Handle(Geom2d_TrimmedCurve) anArc2 = new Geom2d_TrimmedCurve(anEllipse2, 0, M_PI);
-    	Geom2d_Line line(pn, gp_Dir2d(pn2x, pn2y));
-    	gp_Pnt2d anEllipsePnt1 = anEllipse1->Value(0);
-    	gp_Pnt2d anEllipsePnt2;
-    	anEllipse1->D0(M_PI, anEllipsePnt2);
-
-    	Geom2dAPI_InterCurveCurve intersector(anEllipse1,anArc2,tolerance);
-    	Standard_Integer N = intersector.NbPoints();
-    	Standard_Integer M = intersector.NbSegments();
-    	cerr << "N=" << N <<endl;
-    	cerr << "M=" << M <<endl;
-    	for(Standard_Integer i = 0; i < N; i++){
-    		gp_Pnt2d p = intersector.Point(i + 1);
-    		cerr << "x=" << p.X() << " y=" << p.Y() << endl;
+    	{
+    		gp_Dir2d aDir(2. * M_PI, myNeckHeight / 4.);
+    		gp_Ax2d anAx2d(aPnt, aDir);
+    		Standard_Real aMajor = 2. * M_PI;
+    		Standard_Real aMinor = myNeckHeight / 10;
+    		Handle(Geom2d_Ellipse) anEllipse2 = new Geom2d_Ellipse(anAx2d, aMajor, aMinor / 4);
+    		Handle(Geom2d_TrimmedCurve) anArc2 = new Geom2d_TrimmedCurve(anEllipse2, 0, M_PI);
+    		Handle(Geom2d_Line) line1 = new Geom2d_Line(pn2, gp_Dir2d(24, 0));
+    		GCE2d_MakeArcOfCircle(pn1, pn3, pn3);
+    		//gp_Pnt2d anEllipsePnt1 = anEllipse1->Value(0);
+    		//gp_Pnt2d anEllipsePnt2;
+    		//anEllipse1->D0(M_PI, anEllipsePnt2);
     	}
+
+    	Standard_Real toolRadius = 6;
+    	Handle(Geom2d_Circle) tool = new Geom2d_Circle(gp_Ax2d(gp_Pnt2d(0,0), gp_Dir2d()), toolRadius);
+    	Handle(Geom2d_Line) line = new Geom2d_Line(pn2, gp_Dir2d(24, 0));
+
+    	for(int step = 0; step < 37; step++){
+    		//line1->SetDirection(gp_Dir2d(7,3));
+    		//line1->SetPosition(anAx2d);
+    		tool->SetLocation(gp_Pnt2d(0, step));
+    		{
+    			const gp_Pnt2d pos = tool->Location();
+
+    			cerr << "tool position = (" << pos.X() << ", " << pos.Y() << ")" << endl;
+    		}
+
+    		Geom2dAPI_InterCurveCurve intersector(tool,line,tolerance);
+    		Standard_Integer N = intersector.NbPoints();
+    		Standard_Integer M = intersector.NbSegments();
+    		cerr << "N=" << N << " M=" << M;
+    		for(Standard_Integer i = 0; i < N; i++){
+    			gp_Pnt2d p = intersector.Point(i + 1);
+    			cerr << " xy=(" << p.X() << "," << p.Y() << ")";
+    		}
+    		cerr << endl;
+    	}
+
+    	Handle(Geom2d_TrimmedCurve) anArc1 = new Geom2d_TrimmedCurve(tool, 0, M_PI);
     }
+    return;
 
 	if(CArea::m_please_abort)
 	    return;
