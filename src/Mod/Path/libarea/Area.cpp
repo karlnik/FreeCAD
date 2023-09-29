@@ -16,6 +16,13 @@
 #include <Geom2d_Circle.hxx>
 #include <GCE2d_MakeArcOfCircle.hxx>
 #include <gp_Dir2d.hxx>
+#include <BRepBuilderAPI_MakeEdge2d.hxx>
+#include <BRepBuilderAPI_MakeEdge.hxx>
+#include <BRepBuilderAPI_MakeWire.hxx>
+#include <TopoDS_Wire.hxx>
+#include <BRepLib_MakeFace.hxx>
+#include <BRepBuilderAPI_MakeFace.hxx>
+#include <TopoDS_Face.hxx>
 
 double CArea::m_accuracy = 0.01;
 double CArea::m_units = 1.0;
@@ -811,6 +818,12 @@ static void ConstantToolAngleEngagement(std::list<CCurve> &curve_list, const CAr
     	}
 
     	Handle(Geom2d_TrimmedCurve) anArc1 = new Geom2d_TrimmedCurve(tool, 0, M_PI);
+
+     	TopoDS_Edge tool_edge = BRepBuilderAPI_MakeEdge2d(tool);
+     	TopoDS_Edge stock_first_edge = BRepBuilderAPI_MakeEdge2d(line);
+     	BRepBuilderAPI_MakeWire tool_wire(tool_edge, stock_first_edge);
+     	TopoDS_Wire stock_wire = BRepBuilderAPI_MakeWire(tool_edge);
+     	TopoDS_Face tool_face = BRepBuilderAPI_MakeFace(stock_wire);
     }
     return;
 
